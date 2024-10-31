@@ -23,4 +23,5 @@ export enum Primitive {
   TextInstance = "TEXT_INSTANCE",
   LinearGradient = "LINEAR_GRADIENT",
   RadialGradient = "RADIAL_GRADIENT",
+  Xml = "XML",
 }
