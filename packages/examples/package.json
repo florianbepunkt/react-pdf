@@ -1,6 +1,6 @@
 {
   "name": "@easypliant/react-pdf-examples",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "license": "MIT",
   "private": true,
   "author": "Diego Muracciole <diegomuracciole@gmail.com>",
@@ -11,7 +11,7 @@
     "format": "prettier --write \"./**/*.{js,jsx,ts,tsx,json}\""
   },
   "dependencies": {
-    "@easypliant/react-pdf-renderer": "^5.0.0"
+    "@easypliant/react-pdf-renderer": "^5.1.0"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.2.1",

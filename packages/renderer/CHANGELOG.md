@@ -1,5 +1,12 @@
 # @react-pdf/renderer
 
+## 5.1.0
+
+### Minor Changes
+
+- [`45aea1dc780f711e713d37ca9cafe1aa28aa6f22`](https://github.com/easypliant/react-pdf/commit/45aea1dc780f711e713d37ca9cafe1aa28aa6f22)
+  Thanks [@florianbepunkt](https://github.com/florianbepunkt)! - use node:crypto
+
 ## 5.0.0
 
 ### Major Changes

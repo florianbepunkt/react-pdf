@@ -1,6 +1,6 @@
 {
   "name": "@easypliant/react-pdf-renderer",
-  "version": "5.0.0",
+  "version": "5.1.0",
   "license": "MIT",
   "description": "Create PDF files on the browser and server",
   "author": "Diego Muracciole <diegomuracciole@gmail.com>",

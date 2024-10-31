@@ -1,5 +1,13 @@
 # @react-pdf/e2e-node-cjs
 
+## 3.0.1
+
+### Patch Changes
+
+- Updated dependencies
+  [[`45aea1dc780f711e713d37ca9cafe1aa28aa6f22`](https://github.com/easypliant/react-pdf/commit/45aea1dc780f711e713d37ca9cafe1aa28aa6f22)]:
+  - @easypliant/react-pdf-renderer@5.1.0
+
 ## 3.0.0
 
 ### Major Changes
