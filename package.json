@@ -22,7 +22,7 @@
     "test": "vitest",
     "dev": "lerna run dev --scope @react-pdf/examples",
     "changeset": "changeset",
-    "version-packages": "changeset version",
+    "version-packages": "GITHUB_TOKEN=$EASYPLIANT_GITHUB_TOKEN changeset version",
     "release": "changeset publish"
   },
   "devDependencies": {
