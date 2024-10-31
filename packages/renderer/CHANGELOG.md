@@ -1,5 +1,14 @@
 # @react-pdf/renderer
 
+## 5.1.1
+
+### Patch Changes
+
+- Updated dependencies
+  [[`0b1b36a76338aabf83362fcf70947ccf937a5e60`](https://github.com/easypliant/react-pdf/commit/0b1b36a76338aabf83362fcf70947ccf937a5e60)]:
+  - @easypliant/react-pdf-pdfkit@5.0.1
+  - @easypliant/react-pdf-layout@5.0.1
+
 ## 5.1.0
 
 ### Minor Changes

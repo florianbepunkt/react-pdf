@@ -1,5 +1,11 @@
 # @react-pdf/pdfkit
 
+## 5.0.1
+
+### Patch Changes
+
+- [`0b1b36a76338aabf83362fcf70947ccf937a5e60`](https://github.com/easypliant/react-pdf/commit/0b1b36a76338aabf83362fcf70947ccf937a5e60) Thanks [@florianbepunkt](https://github.com/florianbepunkt)! - node crypto
+
 ## 5.0.0
 
 ### Major Changes

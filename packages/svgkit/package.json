@@ -1,7 +1,7 @@
 {
   "name": "@easypliant/react-pdf-svgkit",
   "license": "MIT",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "A SVG generation library for Node.js and browser",
   "type": "module",
   "main": "./lib/index.js",
@@ -27,6 +27,6 @@
   ],
   "dependencies": {
     "@babel/runtime": "^7.20.13",
-    "@easypliant/react-pdf-pdfkit": "^5.0.0"
+    "@easypliant/react-pdf-pdfkit": "^5.0.1"
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "@easypliant/react-pdf-layout",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "license": "MIT",
   "description": "Resolve overall document component's layout",
   "author": "Diego Muracciole <diegomuracciole@gmail.com>",
@@ -25,7 +25,7 @@
     "@babel/runtime": "^7.20.13",
     "@easypliant/react-pdf-fns": "4.0.0",
     "@easypliant/react-pdf-image": "^4.0.0",
-    "@easypliant/react-pdf-pdfkit": "^5.0.0",
+    "@easypliant/react-pdf-pdfkit": "^5.0.1",
     "@easypliant/react-pdf-primitives": "^5.0.0",
     "@easypliant/react-pdf-stylesheet": "^6.0.0",
     "@easypliant/react-pdf-textkit": "^6.0.0",
