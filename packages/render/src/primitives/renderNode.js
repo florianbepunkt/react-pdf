@@ -8,6 +8,7 @@ import renderDebug from './renderDebug';
 import renderCanvas from './renderCanvas';
 import renderBorders from './renderBorders';
 import renderBackground from './renderBackground';
+import renderXml from './renderXml';
 import setLink from '../operations/setLink';
 import clipNode from '../operations/clipNode';
 import transform from '../operations/transform';
@@ -31,6 +32,7 @@ const renderChildren = (ctx, node, options) => {
 };
 
 const renderFns = {
+  [P.Xml]: renderXml,
   [P.Text]: renderText,
   [P.Note]: renderNote,
   [P.Image]: renderImage,

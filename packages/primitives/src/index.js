@@ -22,3 +22,5 @@ export const ClipPath = 'CLIP_PATH';
 export const TextInstance = 'TEXT_INSTANCE';
 export const LinearGradient = 'LINEAR_GRADIENT';
 export const RadialGradient = 'RADIAL_GRADIENT';
+
+export const Xml = 'XML';
