@@ -4,7 +4,7 @@
 
 # @react-pdf/pdfkit
 
-A JavaScript PDF generation library for Node and the browser.
+A JavaScript PDF generation library for Node and the browser. Fork uses node modules, so it is not browser compatible.
 
 ## Acknowledges
 
