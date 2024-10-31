@@ -15,6 +15,7 @@ import MarkingsMixin from './mixins/markings';
 import AcroFormMixin from './mixins/acroform';
 import AttachmentsMixin from './mixins/attachments';
 import MetadataMixin from './mixins/metadata';
+import SubsetMixin from "./mixins/subsets";
 import capitalize from './utils/capitalize';
 
 class PDFDocument extends stream.Readable {
@@ -87,13 +88,16 @@ class PDFDocument extends stream.Readable {
     this.page = null;
 
     // Initialize mixins
+    this.initMetadata();
     this.initColor();
     this.initVector();
-    this.initFonts();
+    this.initFonts(options.font);
     this.initText();
     this.initImages();
     this.initOutline();
-    // this.initMarkings(options)
+    this.initMarkings(options)
+    this.initSubset(options);
+    
 
     // Initialize the metadata
     this.info = {
@@ -265,7 +269,13 @@ class PDFDocument extends stream.Readable {
     }
 
     this.endOutline();
-    // this.endMarkings();
+    this.endMarkings();
+
+    if (this.subset) {
+      this.endSubset();
+    }
+
+    this.endMetadata();
 
     this._root.end();
     this._root.data.Pages.end();
@@ -330,7 +340,7 @@ class PDFDocument extends stream.Readable {
 
   initVector() {}
 
-  initFonts() {}
+  // initFonts() {}
 
   initText() {}
 
@@ -370,5 +380,6 @@ mixin(OutlineMixin);
 mixin(MarkingsMixin);
 mixin(AcroFormMixin);
 mixin(AttachmentsMixin);
+mixin(SubsetMixin);
 
 export default PDFDocument;
