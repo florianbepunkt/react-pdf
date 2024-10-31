@@ -1,6 +1,6 @@
 {
   "name": "@easypliant/react-pdf-pdfkit",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "license": "MIT",
   "description": "A PDF generation library for Node.js",
   "type": "module",
@@ -33,7 +33,7 @@
   ],
   "dependencies": {
     "@babel/runtime": "^7.20.13",
-    "@easypliant/react-pdf-png-js": "^3.0.0",
+    "@easypliant/react-pdf-png-js": "^4.0.0",
     "browserify-zlib": "^0.2.0",
     "crypto-js": "^4.2.0",
     "fontkit": "^1.8.1",

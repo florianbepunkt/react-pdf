@@ -1,6 +1,6 @@
 {
   "name": "@easypliant/react-pdf-types",
-  "version": "2.7.1",
+  "version": "3.0.0",
   "license": "MIT",
   "description": "React-pdf TypeScript definitions",
   "author": "Diego Muracciole <diegomuracciole@gmail.com>",

@@ -1,5 +1,18 @@
 # @react-pdf/pdfkit
 
+## 5.0.0
+
+### Major Changes
+
+- [`0689ca3a7d6275ba4fe37542f670a9fb80133c85`](https://github.com/easypliant/react-pdf/commit/0689ca3a7d6275ba4fe37542f670a9fb80133c85) Thanks [@florianbepunkt](https://github.com/florianbepunkt)! - Facture-x/ZUGFeRD compliant invoices
+
+### Patch Changes
+
+- [`31f4a730d6b54583621c65b0c2f1621f025acfe6`](https://github.com/easypliant/react-pdf/commit/31f4a730d6b54583621c65b0c2f1621f025acfe6) Thanks [@florianbepunkt](https://github.com/florianbepunkt)! - expose xml primitive
+
+- Updated dependencies [[`0689ca3a7d6275ba4fe37542f670a9fb80133c85`](https://github.com/easypliant/react-pdf/commit/0689ca3a7d6275ba4fe37542f670a9fb80133c85), [`31f4a730d6b54583621c65b0c2f1621f025acfe6`](https://github.com/easypliant/react-pdf/commit/31f4a730d6b54583621c65b0c2f1621f025acfe6)]:
+  - @easypliant/react-pdf-png-js@4.0.0
+
 ## 4.0.0
 
 ### Major Changes
