@@ -202,7 +202,7 @@ class EmbeddedFont extends PDFFont {
       descriptor.data.FontFile2 = fontFile;
     }
 
-    if (this.document.subset) {
+    if (this.document.subset && this.document.subset !== 3) {
       const CIDSet = Buffer.from('FFFFFFFFC0', 'hex');
       const CIDSetRef = this.document.ref();
       CIDSetRef.write(CIDSet);
