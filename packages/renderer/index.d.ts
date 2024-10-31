@@ -233,6 +233,12 @@ declare namespace ReactPDF {
     src?: string;
   }
 
+  interface XmlProps {
+    value: string;
+  }
+
+  export class Xml extends React.Component<XmlProps> {}
+
   /**
    * A React component for displaying a hyperlink. Link’s can be nested
    * inside a Text component, or being inside any other valid primitive.
