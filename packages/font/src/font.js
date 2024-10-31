@@ -64,13 +64,13 @@ class FontSource {
           .split('')
           .map((c) => c.charCodeAt(0)),
       );
-      this.data = fontkit.create(uint8Array, postscriptName);
+      this.data = fontkit.create(Buffer.from(uint8Array), postscriptName);
     } else if (BROWSER || isUrl(this.src)) {
       const { headers, body, method = 'GET' } = this.options;
       const data = await fetchFont(this.src, { method, body, headers });
-      this.data = fontkit.create(data, postscriptName);
+      this.data = fontkit.create(Buffer.from(data), postscriptName);
     } else if (!BROWSER) {
-      this.data = await fontkit.open(this.src, postscriptName);
+      this.data = fontkit.openSync(this.src, postscriptName);
     }
   }
 

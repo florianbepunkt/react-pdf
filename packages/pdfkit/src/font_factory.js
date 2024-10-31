@@ -1,4 +1,5 @@
 import * as fontkit from 'fontkit';
+import fs from "node:fs"
 import EmbeddedFont from './font/embedded';
 import StandardFont from './font/standard';
 
@@ -13,13 +14,14 @@ class PDFFontFactory {
 
       
       if (!BROWSER) {
-        font = fontkit.openSync(src, family);
+         src = fs.readFileSync(src);
       } else {
         throw new Error(`Can't open ${src} in browser build`);
       }
     }
+
     if (Buffer.isBuffer(src)) {
-      font = fontkit.create(src, family);
+      font = fontkit.create(src, family);  
     } else if (src instanceof Uint8Array) {
       font = fontkit.create(Buffer.from(src), family);
     } else if (src instanceof ArrayBuffer) {
@@ -36,5 +38,5 @@ class PDFFontFactory {
   }
 }
 
-export { PDFFontFactory }
+export { PDFFontFactory }
 export default PDFFontFactory;
