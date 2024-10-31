@@ -2,7 +2,6 @@ import FontStore from '@react-pdf/font';
 import renderPDF from '@react-pdf/render';
 import PDFDocument from '@react-pdf/pdfkit';
 import layoutDocument from '@react-pdf/layout';
-
 import createRenderer from './renderer';
 import packageJson from '../package.json';
 
@@ -35,16 +34,19 @@ const pdf = (initialValue) => {
 
   const render = async (compress = true) => {
     const props = container.document.props || {};
-    const { pdfVersion, language, pageLayout, pageMode } = props;
+    const { subset, tagged, pdfVersion, language, pageLayout, pageMode } =
+      props;
 
     const ctx = new PDFDocument({
-      compress,
-      pdfVersion,
-      lang: language,
-      displayTitle: true,
       autoFirstPage: false,
+      compress,
+      displayTitle: true,
+      lang: language,
       pageLayout,
       pageMode,
+      pdfVersion,
+      subset,
+      tagged,
     });
 
     const layout = await layoutDocument(container.document, fontStore);
@@ -84,11 +86,8 @@ const pdf = (initialValue) => {
 
   // TODO: rename this method to `toStream` in next major release, because it return stream not a buffer
   const toBuffer = async () => {
-    const {
-      layout: _INTERNAL__LAYOUT__DATA_,
-      fileStream,
-    } = await render();
-    callOnRender({_INTERNAL__LAYOUT__DATA_});
+    const { layout: _INTERNAL__LAYOUT__DATA_, fileStream } = await render();
+    callOnRender({ _INTERNAL__LAYOUT__DATA_ });
 
     return fileStream;
   };

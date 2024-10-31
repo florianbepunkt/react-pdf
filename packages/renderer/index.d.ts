@@ -69,6 +69,7 @@ declare namespace ReactPDF {
     style?: Style | Style[];
     subject?: string;
     subset?: PDFSubset;
+    tagged?: boolean;
     title?: string;
     onRender?: (props: OnRenderProps) => any;
   }
