@@ -4,7 +4,7 @@
   "license": "MIT",
   "description": "Create PDF files on the browser and server",
   "author": "Diego Muracciole <diegomuracciole@gmail.com>",
-  "homepage": "https://github.com/diegomura/react-pdf#readme",
+  "homepage": "https://github.com/easypliant/react-pdf#readme",
   "type": "module",
   "main": "./lib/react-pdf.js",
   "browser": {
@@ -12,8 +12,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/diegomura/react-pdf.git",
+    "url": "https://github.com/easypliant/react-pdf.git",
     "directory": "packages/renderer"
+  },
+  "publishConfig": {
+     "registry": "https://npm.pkg.github.com/easypliant"
   },
   "scripts": {
     "build": "rimraf ./lib && rollup -c",

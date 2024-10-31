@@ -10,13 +10,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/diegomura/react-pdf.git",
+    "url": "https://github.com/easypliant/react-pdf.git",
     "directory": "packages/png-js"
   },
   "author": {
     "name": "Devon Govett",
     "email": "devongovett@gmail.com",
     "url": "http://badassjs.com/"
+  },
+  "publishConfig": {
+     "registry": "https://npm.pkg.github.com/easypliant"
   },
   "scripts": {
     "build": "rimraf ./lib && rollup -c",

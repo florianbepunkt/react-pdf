@@ -4,16 +4,19 @@
   "license": "MIT",
   "description": "Register font and emoji source for react-pdf document",
   "author": "Diego Muracciole <diegomuracciole@gmail.com>",
-  "homepage": "https://github.com/diegomura/react-pdf#readme",
+  "homepage": "https://github.com/easypliant/react-pdf#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/diegomura/react-pdf.git",
+    "url": "https://github.com/easypliant/react-pdf.git",
     "directory": "packages/font"
   },
   "type": "module",
   "main": "./lib/index.js",
   "browser": {
     "./lib/index.js": "./lib/index.browser.js"
+  },
+  "publishConfig": {
+     "registry": "https://npm.pkg.github.com/easypliant"
   },
   "scripts": {
     "test": "vitest",
