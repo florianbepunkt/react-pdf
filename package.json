@@ -16,7 +16,6 @@
     "format": "lerna run format",
     "watch": "lerna run watch --parallel",
     "prepublish": "lerna run build",
-    "lint": "eslint packages",
     "test": "vitest",
     "dev": "lerna run dev --scope @react-pdf/examples",
     "changeset": "changeset",
@@ -46,14 +45,6 @@
     "babel-plugin-add-module-exports": "^1.0.0",
     "canvas": "^2.11.2",
     "chalk": "^2.4.2",
-    "eslint": "^8.56.0",
-    "eslint-config-airbnb": "^19.0.0",
-    "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-import": "^2.29.0",
-    "eslint-plugin-jsx-a11y": "^6.8.0",
-    "eslint-plugin-promise": "^6.1.0",
-    "eslint-plugin-react": "^7.33.0",
-    "eslint-plugin-react-hooks": "^4.6.0",
     "jest-image-snapshot": "^6.1.0",
     "jsdom": "^23.2.0",
     "lerna": "^8.0.2",
@@ -70,12 +61,6 @@
     "rollup-plugin-polyfill-node": "^0.13.0",
     "vitest": "^1.2.0",
     "vitest-fetch-mock": "^0.2.2"
-  },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "yarn lint",
-      "prettier --write"
-    ]
   },
   "collective": {
     "type": "opencollective",
