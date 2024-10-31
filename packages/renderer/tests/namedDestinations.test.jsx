@@ -1,6 +1,6 @@
 import { describe, expect, test } from "vitest";
 
-import { Document, Font, Link, Page, Text, View } from "@react-pdf/renderer";
+import { Document, Font, Link, Page, Text, View } from "@easypliant/react-pdf-renderer";
 import renderToImage from "./renderComponent";
 
 Font.register({

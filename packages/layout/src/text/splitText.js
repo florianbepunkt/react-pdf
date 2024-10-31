@@ -1,4 +1,4 @@
-import { get } from "@react-pdf/fns";
+import { get } from "@easypliant/react-pdf-fns";
 
 import lineIndexAtHeight from "./lineIndexAtHeight";
 import heightAtLineIndex from "./heightAtLineIndex";

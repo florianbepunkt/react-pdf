@@ -5,7 +5,7 @@ import pkg from "./package.json" assert { type: "json" };
 const config = {
   input: "src/index.js",
   output: { format: "es", file: "lib/index.js" },
-  external: Object.keys(pkg.dependencies).concat(/@babel\/runtime/, /@react-pdf/),
+  external: Object.keys(pkg.dependencies).concat(/@babel\/runtime/, /@easypliant/),
   plugins: [
     babel({
       babelrc: true,

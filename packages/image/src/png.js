@@ -1,4 +1,4 @@
-import PNG from "@react-pdf/png-js";
+import PNG from "@easypliant/react-pdf-png-js";
 
 PNG.isValid = function isValid(data) {
   try {

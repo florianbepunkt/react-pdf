@@ -1,6 +1,6 @@
 import { describe, expect, test } from "vitest";
 
-import * as P from "@react-pdf/primitives";
+import * as P from "@easypliant/react-pdf-primitives";
 import shouldBreak from "../../src/node/shouldBreak";
 
 describe("node shouldBreak", () => {

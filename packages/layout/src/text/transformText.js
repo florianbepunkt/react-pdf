@@ -1,4 +1,4 @@
-import { capitalize, upperFirst } from "@react-pdf/fns";
+import { capitalize, upperFirst } from "@easypliant/react-pdf-fns";
 
 /**
  * Apply transformation to text string

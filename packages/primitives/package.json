@@ -1,5 +1,5 @@
 {
-  "name": "@react-pdf/primitives",
+  "name": "@easypliant/react-pdf-primitives",
   "version": "4.0.0",
   "license": "MIT",
   "description": "Define uninitialized elements",

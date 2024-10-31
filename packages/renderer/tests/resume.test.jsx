@@ -1,7 +1,16 @@
 /* eslint-disable react/no-array-index-key */
 import { describe, expect, test } from "vitest";
 
-import { Link, Text, Font, Page, View, Image, Document, StyleSheet } from "@react-pdf/renderer";
+import {
+  Link,
+  Text,
+  Font,
+  Page,
+  View,
+  Image,
+  Document,
+  StyleSheet,
+} from "@easypliant/react-pdf-renderer";
 import renderToImage from "./renderComponent";
 
 const headerStyles = StyleSheet.create({

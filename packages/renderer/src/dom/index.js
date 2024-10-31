@@ -1,4 +1,4 @@
-import * as primitives from "@react-pdf/primitives";
+import * as primitives from "@easypliant/react-pdf-primitives";
 
 import usePDF from "./usePDF";
 import PDFViewer from "./PDFViewer";
@@ -42,7 +42,7 @@ export * from "./BlobProvider";
 
 export * from "./PDFDownloadLink";
 
-export * from "@react-pdf/primitives";
+export * from "@easypliant/react-pdf-primitives";
 
 // TODO: remove this default export in next major release because it breaks tree-shacking
 export default {

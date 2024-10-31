@@ -1,5 +1,5 @@
 {
-  "name": "@react-pdf/examples",
+  "name": "@easypliant/react-pdf-examples",
   "version": "3.3.3",
   "license": "MIT",
   "private": true,
@@ -11,7 +11,7 @@
     "format": "prettier --write \"./**/*.{js,jsx,ts,tsx,json}\""
   },
   "dependencies": {
-    "@react-pdf/renderer": "^4.0.0"
+    "@easypliant/react-pdf-renderer": "^4.0.0"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.2.1",

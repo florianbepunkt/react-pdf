@@ -1,7 +1,7 @@
 /* eslint-disable react/no-array-index-key */
 import { describe, expect, test } from "vitest";
 
-import { Document, Page, View } from "@react-pdf/renderer";
+import { Document, Page, View } from "@easypliant/react-pdf-renderer";
 import renderToImage from "./renderComponent";
 
 const mount = async (children) => {

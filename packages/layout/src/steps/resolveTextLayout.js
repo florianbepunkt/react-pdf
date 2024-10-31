@@ -1,4 +1,4 @@
-import * as P from "@react-pdf/primitives";
+import * as P from "@easypliant/react-pdf-primitives";
 
 import layoutText from "../text/layoutText";
 

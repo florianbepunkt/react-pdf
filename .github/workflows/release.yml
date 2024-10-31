@@ -11,7 +11,6 @@ concurrency:
 
 env:
   FORCE_COLOR: 2
-  HUSKY: 0
   NODE_VERSION: 20
 
 jobs:
@@ -20,9 +19,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        # We aim to test all maintained LTS versions of Node.js as well as the latest stable version
-        node_version: [18, 20, 21]
-        react_version: [16, 17, 18]
+        node_version: [20, 21]
+        react_version: [18]
 
     steps:
       - name: Checkout
@@ -51,7 +49,6 @@ jobs:
 
   release:
     # Prevents this action from running on forks
-    if: github.repository_owner == 'diegomura'
     name: Create Release PR or Publish to npm
     needs: [test]
     runs-on: ubuntu-latest
@@ -84,10 +81,10 @@ jobs:
         uses: changesets/action@v1
         with:
           # This expects you to have a script called release which does a build for your packages and calls changeset publish
-          publish: yarn release
-          version: yarn version-packages
-          commit: 'chore: release packages'
-          title: 'chore: release packages'
+          publish: npm release
+          version: npm version-packages
+          commit: "chore: release packages"
+          title: "chore: release packages"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

@@ -1,7 +1,14 @@
 // Note that this file is ran using a separate Vitest configuration
 import { describe, expect, it, vi } from "vitest";
 import { render, waitFor, screen } from "@testing-library/react";
-import { BlobProvider, PDFViewer, PDFDownloadLink, Document, Page, Text } from "@react-pdf/renderer";
+import {
+  BlobProvider,
+  PDFViewer,
+  PDFDownloadLink,
+  Document,
+  Page,
+  Text,
+} from "@easypliant/react-pdf-renderer";
 
 const TestDocument = ({ title = "Default" }) => (
   <Document title={title}>

@@ -1,5 +1,5 @@
 import zlib from 'zlib';
-import PNG from '@react-pdf/png-js';
+import PNG from '@easypliant/react-pdf-png-js';
 
 class PNGImage {
   constructor(data, label) {

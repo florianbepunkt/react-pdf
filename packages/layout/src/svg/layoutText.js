@@ -1,4 +1,4 @@
-import * as P from "@react-pdf/primitives";
+import * as P from "@easypliant/react-pdf-primitives";
 import layoutEngine, {
   bidi,
   linebreaker,
@@ -6,7 +6,7 @@ import layoutEngine, {
   scriptItemizer,
   wordHyphenation,
   textDecoration,
-} from "@react-pdf/textkit";
+} from "@easypliant/react-pdf-textkit";
 
 import fromFragments from "../text/fromFragments";
 import transformText from "../text/transformText";

@@ -1,5 +1,5 @@
-import * as P from "@react-pdf/primitives";
-import { pick, compose } from "@react-pdf/fns";
+import * as P from "@easypliant/react-pdf-primitives";
+import { pick, compose } from "@easypliant/react-pdf-fns";
 
 const BASE_INHERITABLE_PROPERTIES = [
   "color",

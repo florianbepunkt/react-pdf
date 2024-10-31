@@ -1,4 +1,4 @@
-import { flatten } from "@react-pdf/stylesheet";
+import { flatten } from "@easypliant/react-pdf-stylesheet";
 import getPageSize from "../page/getSize";
 
 /**

@@ -1,5 +1,5 @@
 {
-  "name": "@react-pdf/fns",
+  "name": "@easypliant/react-pdf-fns",
   "version": "3.0.0",
   "license": "MIT",
   "description": "React-pdf helper functions",

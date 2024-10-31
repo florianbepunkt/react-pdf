@@ -1,5 +1,5 @@
 {
-  "name": "@react-pdf/render",
+  "name": "@easypliant/react-pdf-render",
   "version": "4.0.0",
   "license": "MIT",
   "description": "A render engine for Node and the browser",
@@ -23,10 +23,10 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.20.13",
-    "@react-pdf/fns": "3.0.0",
-    "@react-pdf/primitives": "^4.0.0",
-    "@react-pdf/textkit": "^5.0.0",
-    "@react-pdf/types": "^2.7.0",
+    "@easypliant/react-pdf-fns": "3.0.0",
+    "@easypliant/react-pdf-primitives": "^4.0.0",
+    "@easypliant/react-pdf-textkit": "^5.0.0",
+    "@easypliant/react-pdf-types": "^2.7.0",
     "abs-svg-path": "^0.1.1",
     "color-string": "^1.9.1",
     "normalize-svg-path": "^1.1.0",

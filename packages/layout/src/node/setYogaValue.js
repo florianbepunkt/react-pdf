@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-expressions */
-import { isNil, upperFirst, matchPercent } from "@react-pdf/fns";
+import { isNil, upperFirst, matchPercent } from "@easypliant/react-pdf-fns";
 
 /**
  * @typedef {Function} NodeInstanceWrapper

@@ -1,6 +1,6 @@
 import { describe, expect, test, vi } from "vitest";
 
-import * as P from "@react-pdf/primitives";
+import * as P from "@easypliant/react-pdf-primitives";
 
 import layoutText from "../../src/text/layoutText";
 

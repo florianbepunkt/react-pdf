@@ -14,7 +14,7 @@ import {
   Bookmark,
   PageLayout,
   PageMode,
-} from "@react-pdf/types";
+} from "@easypliant/react-pdf-types";
 
 declare class ReactPDF {
   // eslint-disable-next-line no-use-before-define

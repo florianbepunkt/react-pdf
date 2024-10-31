@@ -2,7 +2,7 @@
 /* eslint-disable react/no-array-index-key */
 import { describe, expect, test } from "vitest";
 
-import { Document, Page, View, Text, Link, Font, StyleSheet } from "@react-pdf/renderer";
+import { Document, Page, View, Text, Link, Font, StyleSheet } from "@easypliant/react-pdf-renderer";
 import renderToImage from "./renderComponent";
 
 const styles = StyleSheet.create({

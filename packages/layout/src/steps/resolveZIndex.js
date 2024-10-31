@@ -1,4 +1,4 @@
-import * as P from "@react-pdf/primitives";
+import * as P from "@easypliant/react-pdf-primitives";
 
 const getZIndex = (node) => node.style.zIndex;
 
