@@ -1,8 +1,8 @@
-import { describe, expect, test } from 'vitest';
+import { describe, expect, test } from "vitest";
 
-import * as Yoga from 'yoga-layout/load';
+import * as Yoga from "yoga-layout/load";
 
-import getMargin from '../../src/node/getMargin';
+import getMargin from "../../src/node/getMargin";
 
 const getComputedMargin = (value) => {
   if (value === Yoga.Edge.Top) return 1;
@@ -11,27 +11,27 @@ const getComputedMargin = (value) => {
   return 4;
 };
 
-describe('node getMargin', () => {
-  test('Should return 0 by default if no yoga node available', () => {
+describe("node getMargin", () => {
+  test("Should return 0 by default if no yoga node available", () => {
     const result = getMargin({});
 
-    expect(result).toHaveProperty('marginTop', 0);
-    expect(result).toHaveProperty('marginRight', 0);
-    expect(result).toHaveProperty('marginBottom', 0);
-    expect(result).toHaveProperty('marginLeft', 0);
+    expect(result).toHaveProperty("marginTop", 0);
+    expect(result).toHaveProperty("marginRight", 0);
+    expect(result).toHaveProperty("marginBottom", 0);
+    expect(result).toHaveProperty("marginLeft", 0);
   });
 
-  test('Should return yoga values if node available', () => {
+  test("Should return yoga values if node available", () => {
     const yogaNode = { getComputedMargin };
     const result = getMargin({ yogaNode });
 
-    expect(result).toHaveProperty('marginTop', 1);
-    expect(result).toHaveProperty('marginRight', 2);
-    expect(result).toHaveProperty('marginBottom', 3);
-    expect(result).toHaveProperty('marginLeft', 4);
+    expect(result).toHaveProperty("marginTop", 1);
+    expect(result).toHaveProperty("marginRight", 2);
+    expect(result).toHaveProperty("marginBottom", 3);
+    expect(result).toHaveProperty("marginLeft", 4);
   });
 
-  test('Should return box specific values if available', () => {
+  test("Should return box specific values if available", () => {
     const result = getMargin({
       box: {
         marginTop: 1,
@@ -41,13 +41,13 @@ describe('node getMargin', () => {
       },
     });
 
-    expect(result).toHaveProperty('marginTop', 1);
-    expect(result).toHaveProperty('marginRight', 2);
-    expect(result).toHaveProperty('marginBottom', 3);
-    expect(result).toHaveProperty('marginLeft', 4);
+    expect(result).toHaveProperty("marginTop", 1);
+    expect(result).toHaveProperty("marginRight", 2);
+    expect(result).toHaveProperty("marginBottom", 3);
+    expect(result).toHaveProperty("marginLeft", 4);
   });
 
-  test('Should return style specific values if available', () => {
+  test("Should return style specific values if available", () => {
     const result = getMargin({
       style: {
         marginTop: 1,
@@ -60,13 +60,13 @@ describe('node getMargin', () => {
       },
     });
 
-    expect(result).toHaveProperty('marginTop', 1);
-    expect(result).toHaveProperty('marginRight', 2);
-    expect(result).toHaveProperty('marginBottom', 3);
-    expect(result).toHaveProperty('marginLeft', 4);
+    expect(result).toHaveProperty("marginTop", 1);
+    expect(result).toHaveProperty("marginRight", 2);
+    expect(result).toHaveProperty("marginBottom", 3);
+    expect(result).toHaveProperty("marginLeft", 4);
   });
 
-  test('Should return style axis values if available', () => {
+  test("Should return style axis values if available", () => {
     const result = getMargin({
       style: {
         marginVertical: 1,
@@ -75,22 +75,22 @@ describe('node getMargin', () => {
       },
     });
 
-    expect(result).toHaveProperty('marginTop', 1);
-    expect(result).toHaveProperty('marginRight', 2);
-    expect(result).toHaveProperty('marginBottom', 1);
-    expect(result).toHaveProperty('marginLeft', 2);
+    expect(result).toHaveProperty("marginTop", 1);
+    expect(result).toHaveProperty("marginRight", 2);
+    expect(result).toHaveProperty("marginBottom", 1);
+    expect(result).toHaveProperty("marginLeft", 2);
   });
 
-  test('Should return generic margin value if available', () => {
+  test("Should return generic margin value if available", () => {
     const result = getMargin({
       style: {
         margin: 1,
       },
     });
 
-    expect(result).toHaveProperty('marginTop', 1);
-    expect(result).toHaveProperty('marginRight', 1);
-    expect(result).toHaveProperty('marginBottom', 1);
-    expect(result).toHaveProperty('marginLeft', 1);
+    expect(result).toHaveProperty("marginTop", 1);
+    expect(result).toHaveProperty("marginRight", 1);
+    expect(result).toHaveProperty("marginBottom", 1);
+    expect(result).toHaveProperty("marginLeft", 1);
   });
 });

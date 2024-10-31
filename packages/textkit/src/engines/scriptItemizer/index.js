@@ -1,8 +1,8 @@
-import unicode from 'unicode-properties';
+import unicode from "unicode-properties";
 
-import empty from '../../attributedString/empty';
+import empty from "../../attributedString/empty";
 
-const ignoredScripts = ['Common', 'Inherited', 'Unknown'];
+const ignoredScripts = ["Common", "Inherited", "Unknown"];
 
 /**
  * @typedef {import('../../types.js').AttributedString} AttributedString
@@ -19,7 +19,7 @@ const scriptItemizer = () => {
   return (attributedString) => {
     const { string } = attributedString;
 
-    let lastScript = 'Unknown';
+    let lastScript = "Unknown";
     let lastIndex = 0;
     let index = 0;
     const res = [];
@@ -33,7 +33,7 @@ const scriptItemizer = () => {
       const script = unicode.getScript(codePoint);
 
       if (script !== lastScript && !ignoredScripts.includes(script)) {
-        if (lastScript !== 'Unknown') {
+        if (lastScript !== "Unknown") {
           res.push({
             start: lastIndex,
             end: index,

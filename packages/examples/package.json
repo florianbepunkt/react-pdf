@@ -7,7 +7,8 @@
   "homepage": "https://github.com/easypliant/react-pdf#readme",
   "repository": "git@github.com:easypliant/react-pdf.git",
   "scripts": {
-    "dev": "vite ./src --open"
+    "dev": "vite ./src --open",
+    "format": "prettier --write \"./**/*.{js,jsx,ts,tsx,json}\""
   },
   "dependencies": {
     "@react-pdf/renderer": "^4.0.0"
@@ -20,7 +21,7 @@
     "vite": "^5.0.11"
   },
   "peerDependencies": {
-    "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
-    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
   }
 }

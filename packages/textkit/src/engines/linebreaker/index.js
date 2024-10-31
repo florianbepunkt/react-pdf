@@ -1,8 +1,8 @@
-import bestFit from './bestFit';
-import linebreak from './linebreak';
-import slice from '../../attributedString/slice';
-import insertGlyph from '../../attributedString/insertGlyph';
-import advanceWidthBetween from '../../attributedString/advanceWidthBetween';
+import bestFit from "./bestFit";
+import linebreak from "./linebreak";
+import slice from "../../attributedString/slice";
+import insertGlyph from "../../attributedString/insertGlyph";
+import advanceWidthBetween from "../../attributedString/advanceWidthBetween";
 
 /**
  * @typedef {import('../../types.js').AttributedString} AttributedString
@@ -39,7 +39,7 @@ const breakLines = (string, nodes, breaks) => {
     if (breakPoint.position === nodes.length - 1) return acc;
 
     let line;
-    if (node.type === 'penalty') {
+    if (node.type === "penalty") {
       end = prevNode.value.end;
 
       line = slice(start, end, string);
@@ -72,24 +72,19 @@ const getNodes = (attributedString, { align }, options) => {
 
   const hyphenWidth = 5;
   const { syllables } = attributedString;
-  const hyphenPenalty =
-    options.hyphenationPenalty || (align === 'justify' ? 100 : 600);
+  const hyphenPenalty = options.hyphenationPenalty || (align === "justify" ? 100 : 600);
 
   const result = syllables.reduce((acc, s, index) => {
-    const width = advanceWidthBetween(
-      start,
-      start + s.length,
-      attributedString,
-    );
+    const width = advanceWidthBetween(start, start + s.length, attributedString);
 
-    if (s.trim() === '') {
+    if (s.trim() === "") {
       const stretch = (width * opts.width) / opts.stretch;
       const shrink = (width * opts.width) / opts.shrink;
       const value = { start, end: start + s.length };
 
       acc.push(linebreak.glue(width, value, stretch, shrink));
     } else {
-      const hyphenated = syllables[index + 1] !== ' ';
+      const hyphenated = syllables[index + 1] !== " ";
 
       const value = { start, end: start + s.length };
       acc.push(linebreak.box(width, value, hyphenated));
@@ -145,10 +140,7 @@ const linebreaker = (options) => {
       breaks = linebreak(nodes, availableWidths, { tolerance });
     }
 
-    if (
-      breaks.length === 0 ||
-      (breaks.length === 1 && breaks[0].position === 0)
-    ) {
+    if (breaks.length === 0 || (breaks.length === 1 && breaks[0].position === 0)) {
       breaks = bestFit(nodes, availableWidths);
     }
 

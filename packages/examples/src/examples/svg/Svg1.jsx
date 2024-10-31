@@ -1,5 +1,5 @@
-import React from 'react';
-import { Rect, Svg, G, Path, Text, Tspan } from '@react-pdf/renderer';
+import React from "react";
+import { Rect, Svg, G, Path, Text, Tspan } from "@react-pdf/renderer";
 
 const Svg1 = () => (
   <Svg width="400" viewBox="0 0 600 400">
@@ -58,21 +58,14 @@ const Svg1 = () => (
         <Text
           x="5"
           style={{
-            fontSize: '11',
-            fontWeight: 'bold',
-            color: '#000000',
-            fill: '#000000',
+            fontSize: "11",
+            fontWeight: "bold",
+            color: "#000000",
+            fill: "#000000",
           }}
           y="16"
         >
-          <Tspan
-            x="5"
-            y="16"
-            fill="#FFFFFF"
-            stroke="#FFFFFF"
-            strokeWidth="2"
-            strokeLinejoin="round"
-          >
+          <Tspan x="5" y="16" fill="#FFFFFF" stroke="#FFFFFF" strokeWidth="2" strokeLinejoin="round">
             USD
           </Tspan>
           <Tspan x="5" y="16">
@@ -84,21 +77,14 @@ const Svg1 = () => (
         <Text
           x="5"
           style={{
-            fontSize: '11',
-            fontWeight: 'bold',
-            color: '#000000',
-            fill: '#000000',
+            fontSize: "11",
+            fontWeight: "bold",
+            color: "#000000",
+            fill: "#000000",
           }}
           y="16"
         >
-          <Tspan
-            x="5"
-            y="16"
-            fill="#FFFFFF"
-            stroke="#FFFFFF"
-            strokeWidth="2"
-            strokeLinejoin="round"
-          >
+          <Tspan x="5" y="16" fill="#FFFFFF" stroke="#FFFFFF" strokeWidth="2" strokeLinejoin="round">
             EUR
           </Tspan>
           <Tspan x="5" y="16">
@@ -110,21 +96,14 @@ const Svg1 = () => (
         <Text
           x="5"
           style={{
-            fontSize: '11',
-            fontWeight: 'bold',
-            color: '#000000',
-            fill: '#000000',
+            fontSize: "11",
+            fontWeight: "bold",
+            color: "#000000",
+            fill: "#000000",
           }}
           y="16"
         >
-          <Tspan
-            x="5"
-            y="16"
-            fill="#FFFFFF"
-            stroke="#FFFFFF"
-            strokeWidth="2"
-            strokeLinejoin="round"
-          >
+          <Tspan x="5" y="16" fill="#FFFFFF" stroke="#FFFFFF" strokeWidth="2" strokeLinejoin="round">
             CHF
           </Tspan>
           <Tspan x="5" y="16">
@@ -134,16 +113,7 @@ const Svg1 = () => (
       </G>
     </G>
     <G>
-      <Rect
-        fill="none"
-        rx="0"
-        ry="0"
-        x="0"
-        y="0"
-        width="8"
-        height="8"
-        visibility="hidden"
-      />
+      <Rect fill="none" rx="0" ry="0" x="0" y="0" width="8" height="8" visibility="hidden" />
     </G>
   </Svg>
 );

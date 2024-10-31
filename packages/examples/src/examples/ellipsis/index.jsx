@@ -1,17 +1,10 @@
 /* eslint react/prop-types: 0 */
 /* eslint react/jsx-sort-props: 0 */
 
-import React from 'react';
-import {
-  Document,
-  Page,
-  Text,
-  View,
-  StyleSheet,
-  Font,
-} from '@react-pdf/renderer';
+import React from "react";
+import { Document, Page, Text, View, StyleSheet, Font } from "@react-pdf/renderer";
 
-import RobotoFont from '../../../public/Roboto-Regular.ttf';
+import RobotoFont from "../../../public/Roboto-Regular.ttf";
 
 const styles = StyleSheet.create({
   body: {
@@ -22,14 +15,14 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 15,
     maxLines: 1,
-    fontColor: '#000000',
-    textOverflow: 'ellipsis',
-    fontFamily: 'Roboto',
+    fontColor: "#000000",
+    textOverflow: "ellipsis",
+    fontFamily: "Roboto",
   },
 });
 
 Font.register({
-  family: 'Roboto',
+  family: "Roboto",
   fonts: [
     {
       src: RobotoFont,
@@ -57,8 +50,8 @@ const Ellipsis = () => {
 };
 
 export default {
-  id: 'ellipsis',
-  name: 'Ellipsis',
-  description: '',
+  id: "ellipsis",
+  name: "Ellipsis",
+  description: "",
   Document: Ellipsis,
 };

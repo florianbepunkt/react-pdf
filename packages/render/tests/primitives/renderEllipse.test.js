@@ -1,14 +1,14 @@
-import { describe, expect, test } from 'vitest';
+import { describe, expect, test } from "vitest";
 
-import * as P from '@react-pdf/primitives';
+import * as P from "@react-pdf/primitives";
 
-import createCTX from '../ctx';
-import renderEllipse from '../../src/primitives/renderEllipse';
+import createCTX from "../ctx";
+import renderEllipse from "../../src/primitives/renderEllipse";
 
 const round = (num) => Math.round(num * 100) / 100;
 
-describe('primitive renderEllipse', () => {
-  test('should render ellipse correctly', () => {
+describe("primitive renderEllipse", () => {
+  test("should render ellipse correctly", () => {
     const ctx = createCTX();
     const props = { cx: 50, cy: 80, rx: 20, ry: 10 };
     const node = { type: P.Ellipse, props };

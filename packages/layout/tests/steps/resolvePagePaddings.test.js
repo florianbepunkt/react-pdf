@@ -1,65 +1,65 @@
-import { describe, expect, test } from 'vitest';
+import { describe, expect, test } from "vitest";
 
-import resolvePagePaddings from '../../src/steps/resolvePagePaddings';
+import resolvePagePaddings from "../../src/steps/resolvePagePaddings";
 
-describe('layout resolvePagePaddings', () => {
-  test('Should keep other styles untouched', () => {
+describe("layout resolvePagePaddings", () => {
+  test("Should keep other styles untouched", () => {
     const root = {
-      type: 'DOCUMENT',
-      children: [{ type: 'PAGE', style: { color: 'red' } }],
+      type: "DOCUMENT",
+      children: [{ type: "PAGE", style: { color: "red" } }],
     };
     const result = resolvePagePaddings(root);
 
     expect(result).toMatchSnapshot();
   });
 
-  test('Should leave numeric paddingTop as it is', () => {
+  test("Should leave numeric paddingTop as it is", () => {
     const root = {
-      type: 'DOCUMENT',
-      children: [{ type: 'PAGE', style: { paddingTop: 50 } }],
+      type: "DOCUMENT",
+      children: [{ type: "PAGE", style: { paddingTop: 50 } }],
     };
     const result = resolvePagePaddings(root);
 
     expect(result).toMatchSnapshot();
   });
 
-  test('Should leave numeric paddingRight as it is', () => {
+  test("Should leave numeric paddingRight as it is", () => {
     const root = {
-      type: 'DOCUMENT',
-      children: [{ type: 'PAGE', style: { paddingRight: 50 } }],
+      type: "DOCUMENT",
+      children: [{ type: "PAGE", style: { paddingRight: 50 } }],
     };
     const result = resolvePagePaddings(root);
 
     expect(result).toMatchSnapshot();
   });
 
-  test('Should leave numeric paddingBottom as it is', () => {
+  test("Should leave numeric paddingBottom as it is", () => {
     const root = {
-      type: 'DOCUMENT',
-      children: [{ type: 'PAGE', style: { paddingBottom: 50 } }],
+      type: "DOCUMENT",
+      children: [{ type: "PAGE", style: { paddingBottom: 50 } }],
     };
     const result = resolvePagePaddings(root);
 
     expect(result).toMatchSnapshot();
   });
 
-  test('Should leave numeric paddingLeft as it is', () => {
+  test("Should leave numeric paddingLeft as it is", () => {
     const root = {
-      type: 'DOCUMENT',
-      children: [{ type: 'PAGE', style: { paddingLeft: 50 } }],
+      type: "DOCUMENT",
+      children: [{ type: "PAGE", style: { paddingLeft: 50 } }],
     };
     const result = resolvePagePaddings(root);
 
     expect(result).toMatchSnapshot();
   });
 
-  test('Should resolve percent paddingTop', () => {
+  test("Should resolve percent paddingTop", () => {
     const root = {
-      type: 'DOCUMENT',
+      type: "DOCUMENT",
       children: [
         {
-          type: 'PAGE',
-          style: { paddingTop: '10%', width: 100, height: 200 },
+          type: "PAGE",
+          style: { paddingTop: "10%", width: 100, height: 200 },
         },
       ],
     };
@@ -68,13 +68,13 @@ describe('layout resolvePagePaddings', () => {
     expect(result).toMatchSnapshot();
   });
 
-  test('Should resolve percent paddingRight', () => {
+  test("Should resolve percent paddingRight", () => {
     const root = {
-      type: 'DOCUMENT',
+      type: "DOCUMENT",
       children: [
         {
-          type: 'PAGE',
-          style: { paddingRight: '10%', width: 100, height: 200 },
+          type: "PAGE",
+          style: { paddingRight: "10%", width: 100, height: 200 },
         },
       ],
     };
@@ -83,13 +83,13 @@ describe('layout resolvePagePaddings', () => {
     expect(result).toMatchSnapshot();
   });
 
-  test('Should resolve percent paddingBottom', () => {
+  test("Should resolve percent paddingBottom", () => {
     const root = {
-      type: 'DOCUMENT',
+      type: "DOCUMENT",
       children: [
         {
-          type: 'PAGE',
-          style: { paddingBottom: '10%', width: 100, height: 200 },
+          type: "PAGE",
+          style: { paddingBottom: "10%", width: 100, height: 200 },
         },
       ],
     };
@@ -98,13 +98,13 @@ describe('layout resolvePagePaddings', () => {
     expect(result).toMatchSnapshot();
   });
 
-  test('Should resolve percent paddingLeft', () => {
+  test("Should resolve percent paddingLeft", () => {
     const root = {
-      type: 'DOCUMENT',
+      type: "DOCUMENT",
       children: [
         {
-          type: 'PAGE',
-          style: { paddingLeft: '10%', width: 100, height: 200 },
+          type: "PAGE",
+          style: { paddingLeft: "10%", width: 100, height: 200 },
         },
       ],
     };
@@ -113,23 +113,23 @@ describe('layout resolvePagePaddings', () => {
     expect(result).toMatchSnapshot();
   });
 
-  test('Should resolve several pages', () => {
+  test("Should resolve several pages", () => {
     const root = {
-      type: 'DOCUMENT',
+      type: "DOCUMENT",
       children: [
         {
-          type: 'PAGE',
+          type: "PAGE",
           style: { paddingTop: 10, width: 100, height: 200 },
         },
         {
-          type: 'PAGE',
-          style: { paddingBottom: '10%', width: 100, height: 200 },
+          type: "PAGE",
+          style: { paddingBottom: "10%", width: 100, height: 200 },
         },
         {
-          type: 'PAGE',
+          type: "PAGE",
           style: {
             paddingRight: 10,
-            paddingLeft: '10%',
+            paddingLeft: "10%",
             width: 100,
             height: 200,
           },

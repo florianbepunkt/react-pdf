@@ -1,4 +1,4 @@
-import partition from './partition';
+import partition from "./partition";
 
 /**
  * @typedef {import('../types.js').Rect} Rect

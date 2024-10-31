@@ -1,7 +1,7 @@
-import { beforeEach, describe, expect, test, vi } from 'vitest';
-import setFlexBasis from '../../src/node/setFlexBasis';
+import { beforeEach, describe, expect, test, vi } from "vitest";
+import setFlexBasis from "../../src/node/setFlexBasis";
 
-describe('node setFlexBasis', () => {
+describe("node setFlexBasis", () => {
   const mock = vi.fn();
   const node = { yogaNode: { setFlexBasis: mock } };
 
@@ -9,14 +9,14 @@ describe('node setFlexBasis', () => {
     mock.mockReset();
   });
 
-  test('should return node if no yoga node available', () => {
+  test("should return node if no yoga node available", () => {
     const emptyNode = { box: { width: 10, height: 20 } };
     const result = setFlexBasis(null)(emptyNode);
 
     expect(result).toBe(emptyNode);
   });
 
-  test('Should set provided value', () => {
+  test("Should set provided value", () => {
     const result = setFlexBasis(2)(node);
 
     expect(mock.mock.calls).toHaveLength(1);

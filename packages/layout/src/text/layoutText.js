@@ -5,10 +5,10 @@ import layoutEngine, {
   scriptItemizer,
   wordHyphenation,
   textDecoration,
-} from '@react-pdf/textkit';
+} from "@react-pdf/textkit";
 
-import fontSubstitution from './fontSubstitution';
-import getAttributedString from './getAttributedString';
+import fontSubstitution from "./fontSubstitution";
+import getAttributedString from "./getAttributedString";
 
 const engines = {
   bidi,
@@ -57,10 +57,7 @@ const getContainer = (width, height, node) => {
 const getLayoutOptions = (fontStore, node) => ({
   hyphenationPenalty: node.props.hyphenationPenalty,
   shrinkWhitespaceFactor: { before: -0.5, after: -0.5 },
-  hyphenationCallback:
-    node.props.hyphenationCallback ||
-    fontStore?.getHyphenationCallback() ||
-    null,
+  hyphenationCallback: node.props.hyphenationCallback || fontStore?.getHyphenationCallback() || null,
 });
 
 /**

@@ -18,19 +18,19 @@ const addMetadata = (ctx, doc) => {
   const author = props.author || null;
   const subject = props.subject || null;
   const keywords = props.keywords || null;
-  const creator = props.creator ?? 'react-pdf';
-  const producer = props.producer ?? 'react-pdf';
+  const creator = props.creator ?? "react-pdf";
+  const producer = props.producer ?? "react-pdf";
   const creationDate = props.creationDate || new Date();
   const modificationDate = props.modificationDate || null;
 
-  setProp('Title', title);
-  setProp('Author', author);
-  setProp('Subject', subject);
-  setProp('Keywords', keywords);
-  setProp('Creator', creator);
-  setProp('Producer', producer);
-  setProp('CreationDate', creationDate);
-  setProp('ModificationDate', modificationDate);
+  setProp("Title", title);
+  setProp("Author", author);
+  setProp("Subject", subject);
+  setProp("Keywords", keywords);
+  setProp("Creator", creator);
+  setProp("Producer", producer);
+  setProp("CreationDate", creationDate);
+  setProp("ModificationDate", modificationDate);
 };
 
 export default addMetadata;

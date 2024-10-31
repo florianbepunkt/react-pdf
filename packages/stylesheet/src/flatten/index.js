@@ -1,4 +1,4 @@
-import { compose, castArray } from '@react-pdf/fns';
+import { compose, castArray } from "@react-pdf/fns";
 
 /**
  * Remove nil values from array

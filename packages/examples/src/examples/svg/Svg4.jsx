@@ -1,12 +1,5 @@
-import React from 'react';
-import {
-  Svg,
-  Stop,
-  Defs,
-  Circle,
-  LinearGradient,
-  RadialGradient,
-} from '@react-pdf/renderer';
+import React from "react";
+import { Svg, Stop, Defs, Circle, LinearGradient, RadialGradient } from "@react-pdf/renderer";
 
 const Svg4 = () => (
   <Svg viewBox="0 0 10 20" width="170">

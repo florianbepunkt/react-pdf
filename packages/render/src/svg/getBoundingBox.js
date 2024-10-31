@@ -1,13 +1,13 @@
-import * as P from '@react-pdf/primitives';
-import absPath from 'abs-svg-path';
-import parsePath from 'parse-svg-path';
-import normalizePath from 'normalize-svg-path';
+import * as P from "@react-pdf/primitives";
+import absPath from "abs-svg-path";
+import parsePath from "parse-svg-path";
+import normalizePath from "normalize-svg-path";
 
-import parsePoints from './parsePoints';
+import parsePoints from "./parsePoints";
 
 // From https://github.com/dy/svg-path-bounds/blob/master/index.js
 const getPathBoundingBox = (node) => {
-  const path = normalizePath(absPath(parsePath(node.props?.d || '')));
+  const path = normalizePath(absPath(parsePath(node.props?.d || "")));
 
   if (!path.length) return [0, 0, 0, 0];
 
@@ -50,12 +50,7 @@ const getLineBoundingBox = (node) => {
   const x2 = node.props?.x2 || 0;
   const y2 = node.props?.y2 || 0;
 
-  return [
-    Math.min(x1, x2),
-    Math.min(y1, y2),
-    Math.max(x1, x2),
-    Math.max(y1, y2),
-  ];
+  return [Math.min(x1, x2), Math.min(y1, y2), Math.max(x1, x2), Math.max(y1, y2)];
 };
 
 const getRectBoundingBox = (node) => {

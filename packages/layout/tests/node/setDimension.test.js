@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, test, vi } from 'vitest';
+import { beforeEach, describe, expect, test, vi } from "vitest";
 import {
   setWidth,
   setMinWidth,
@@ -6,9 +6,9 @@ import {
   setHeight,
   setMinHeight,
   setMaxHeight,
-} from '../../src/node/setDimension';
+} from "../../src/node/setDimension";
 
-describe('node setDimension', () => {
+describe("node setDimension", () => {
   const mockSetWidth = vi.fn();
   const mockSetWidthPercent = vi.fn();
   const mockSetMinWidth = vi.fn();
@@ -42,15 +42,15 @@ describe('node setDimension', () => {
     mockSetMaxHeight.mockReset();
   });
 
-  describe('setWidth', () => {
-    test('should return node if no yoga node available', () => {
+  describe("setWidth", () => {
+    test("should return node if no yoga node available", () => {
       const emptyNode = { box: { width: 10, height: 20 } };
       const result = setWidth(null)(emptyNode);
 
       expect(result).toBe(emptyNode);
     });
 
-    test('Should call appropiate yoga node method for numeric values', () => {
+    test("Should call appropiate yoga node method for numeric values", () => {
       const result = setWidth(50)(node);
 
       expect(mockSetWidth.mock.calls).toHaveLength(1);
@@ -59,8 +59,8 @@ describe('node setDimension', () => {
       expect(result).toBe(node);
     });
 
-    test('Should call appropiate yoga node method for percent values', () => {
-      const result = setWidth('50%')(node);
+    test("Should call appropiate yoga node method for percent values", () => {
+      const result = setWidth("50%")(node);
 
       expect(mockSetWidth.mock.calls).toHaveLength(0);
       expect(mockSetWidthPercent.mock.calls).toHaveLength(1);
@@ -69,15 +69,15 @@ describe('node setDimension', () => {
     });
   });
 
-  describe('setMinWidth', () => {
-    test('should return node if no yoga node available', () => {
+  describe("setMinWidth", () => {
+    test("should return node if no yoga node available", () => {
       const emptyNode = { box: { width: 10, height: 20 } };
       const result = setMinWidth(null)(emptyNode);
 
       expect(result).toBe(emptyNode);
     });
 
-    test('Should call appropiate yoga node method for numeric values', () => {
+    test("Should call appropiate yoga node method for numeric values", () => {
       const result = setMinWidth(50)(node);
 
       expect(mockSetMaxWidth.mock.calls).toHaveLength(0);
@@ -86,20 +86,20 @@ describe('node setDimension', () => {
       expect(result).toBe(node);
     });
 
-    test('Should throw error for percent values', () => {
-      expect(() => setMinWidth('50%')(node)).toThrow();
+    test("Should throw error for percent values", () => {
+      expect(() => setMinWidth("50%")(node)).toThrow();
     });
   });
 
-  describe('setMaxWidth', () => {
-    test('should return node if no yoga node available', () => {
+  describe("setMaxWidth", () => {
+    test("should return node if no yoga node available", () => {
       const emptyNode = { box: { width: 10, height: 20 } };
       const result = setMaxWidth(null)(emptyNode);
 
       expect(result).toBe(emptyNode);
     });
 
-    test('Should call appropiate yoga node method for numeric values', () => {
+    test("Should call appropiate yoga node method for numeric values", () => {
       const result = setMaxWidth(50)(node);
 
       expect(mockSetMinWidth.mock.calls).toHaveLength(0);
@@ -108,20 +108,20 @@ describe('node setDimension', () => {
       expect(result).toBe(node);
     });
 
-    test('Should throw error for percent values', () => {
-      expect(() => setMaxWidth('50%')(node)).toThrow();
+    test("Should throw error for percent values", () => {
+      expect(() => setMaxWidth("50%")(node)).toThrow();
     });
   });
 
-  describe('setHeight', () => {
-    test('should return node if no yoga node available', () => {
+  describe("setHeight", () => {
+    test("should return node if no yoga node available", () => {
       const emptyNode = { box: { width: 10, height: 20 } };
       const result = setHeight(null)(emptyNode);
 
       expect(result).toBe(emptyNode);
     });
 
-    test('Should call appropiate yoga node method for numeric values', () => {
+    test("Should call appropiate yoga node method for numeric values", () => {
       const result = setHeight(50)(node);
 
       expect(mockSetHeight.mock.calls).toHaveLength(1);
@@ -130,8 +130,8 @@ describe('node setDimension', () => {
       expect(result).toBe(node);
     });
 
-    test('Should call appropiate yoga node method for percent values', () => {
-      const result = setHeight('50%')(node);
+    test("Should call appropiate yoga node method for percent values", () => {
+      const result = setHeight("50%")(node);
 
       expect(mockSetHeight.mock.calls).toHaveLength(0);
       expect(mockSetHeightPercent.mock.calls).toHaveLength(1);
@@ -140,15 +140,15 @@ describe('node setDimension', () => {
     });
   });
 
-  describe('setMinHeight', () => {
-    test('should return node if no yoga node available', () => {
+  describe("setMinHeight", () => {
+    test("should return node if no yoga node available", () => {
       const emptyNode = { box: { width: 10, height: 20 } };
       const result = setMinWidth(null)(emptyNode);
 
       expect(result).toBe(emptyNode);
     });
 
-    test('Should call appropiate yoga node method for numeric values', () => {
+    test("Should call appropiate yoga node method for numeric values", () => {
       const result = setMinHeight(50)(node);
 
       expect(mockSetMaxHeight.mock.calls).toHaveLength(0);
@@ -157,20 +157,20 @@ describe('node setDimension', () => {
       expect(result).toBe(node);
     });
 
-    test('Should throw error for percent values', () => {
-      expect(() => setMinHeight('50%')(node)).toThrow();
+    test("Should throw error for percent values", () => {
+      expect(() => setMinHeight("50%")(node)).toThrow();
     });
   });
 
-  describe('setMaxHeight', () => {
-    test('should return node if no yoga node available', () => {
+  describe("setMaxHeight", () => {
+    test("should return node if no yoga node available", () => {
       const emptyNode = { box: { width: 10, height: 20 } };
       const result = setMaxHeight(null)(emptyNode);
 
       expect(result).toBe(emptyNode);
     });
 
-    test('Should call appropiate yoga node method for numeric values', () => {
+    test("Should call appropiate yoga node method for numeric values", () => {
       const result = setMaxHeight(50)(node);
 
       expect(mockSetMinHeight.mock.calls).toHaveLength(0);
@@ -179,8 +179,8 @@ describe('node setDimension', () => {
       expect(result).toBe(node);
     });
 
-    test('Should throw error for percent values', () => {
-      expect(() => setMaxHeight('50%')(node)).toThrow();
+    test("Should throw error for percent values", () => {
+      expect(() => setMaxHeight("50%")(node)).toThrow();
     });
   });
 });

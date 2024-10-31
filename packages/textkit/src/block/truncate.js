@@ -1,7 +1,7 @@
-import { last } from '@react-pdf/fns';
+import { last } from "@react-pdf/fns";
 
-import trim from '../attributedString/trim';
-import append from '../attributedString/append';
+import trim from "../attributedString/trim";
+import append from "../attributedString/append";
 
 const ELLIPSIS_UNICODE = 8230;
 const ELLIPSIS_STRING = String.fromCharCode(ELLIPSIS_UNICODE);

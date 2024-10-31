@@ -1,4 +1,4 @@
-import { evolve, matchPercent } from '@react-pdf/fns';
+import { evolve, matchPercent } from "@react-pdf/fns";
 
 /**
  * @typedef {Function} ResolveRadius
@@ -16,9 +16,7 @@ const resolveRadius = (container) => (value) => {
 
   const match = matchPercent(value);
 
-  return match
-    ? match.percent * Math.min(container.width, container.height)
-    : value;
+  return match ? match.percent * Math.min(container.width, container.height) : value;
 };
 
 /**

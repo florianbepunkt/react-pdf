@@ -1,41 +1,41 @@
 /* eslint react/prop-types: 0 */
 /* eslint react/jsx-sort-props: 0 */
 
-import React from 'react';
-import { Document, Page, Text, StyleSheet, Font } from '@react-pdf/renderer';
+import React from "react";
+import { Document, Page, Text, StyleSheet, Font } from "@react-pdf/renderer";
 
-import RobotoFont from '../../../public/Roboto-Regular.ttf';
-import RobotoFontMedium from '../../../public/Roboto-Medium.ttf';
-import RobotoFontBold from '../../../public/Roboto-Bold.ttf';
-import RobotoFontBlack from '../../../public/Roboto-Black.ttf';
+import RobotoFont from "../../../public/Roboto-Regular.ttf";
+import RobotoFontMedium from "../../../public/Roboto-Medium.ttf";
+import RobotoFontBold from "../../../public/Roboto-Bold.ttf";
+import RobotoFontBlack from "../../../public/Roboto-Black.ttf";
 
 const styles = StyleSheet.create({
   body: {
     paddingTop: 35,
     paddingBottom: 45,
     paddingHorizontal: 35,
-    position: 'relative',
+    position: "relative",
   },
   regular: {
-    fontFamily: 'Roboto',
+    fontFamily: "Roboto",
     fontWeight: 400,
   },
   medium: {
-    fontFamily: 'Roboto',
+    fontFamily: "Roboto",
     fontWeight: 500,
   },
   bold: {
     fontWeight: 600,
-    fontFamily: 'Roboto',
+    fontFamily: "Roboto",
   },
   black: {
     fontWeight: 900,
-    fontFamily: 'Roboto',
+    fontFamily: "Roboto",
   },
 });
 
 Font.register({
-  family: 'Roboto',
+  family: "Roboto",
   fonts: [
     {
       src: RobotoFont,
@@ -76,8 +76,8 @@ const FontWeight = () => {
 };
 
 export default {
-  id: 'font-weight',
-  name: 'Font Weight',
-  description: '',
+  id: "font-weight",
+  name: "Font Weight",
+  description: "",
   Document: FontWeight,
 };

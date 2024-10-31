@@ -1,4 +1,4 @@
-import matchMedia from 'media-engine';
+import matchMedia from "media-engine";
 
 /**
  * Resolves media queries in styles object

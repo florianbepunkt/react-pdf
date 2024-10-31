@@ -1,23 +1,23 @@
-import { describe, expect, test } from 'vitest';
+import { describe, expect, test } from "vitest";
 
-import { loadYoga } from '../../src/yoga';
+import { loadYoga } from "../../src/yoga";
 
-import resolvePagination from '../../src/steps/resolvePagination';
-import resolveDimensions from '../../src/steps/resolveDimensions';
+import resolvePagination from "../../src/steps/resolvePagination";
+import resolveDimensions from "../../src/steps/resolveDimensions";
 
 // dimensions is required by pagination step and them are calculated here
 const calcLayout = (node) => resolvePagination(resolveDimensions(node));
 
-describe('pagination step', () => {
-  test('should stretch absolute block to full page size', async () => {
+describe("pagination step", () => {
+  test("should stretch absolute block to full page size", async () => {
     const yoga = await loadYoga();
 
     const root = {
-      type: 'DOCUMENT',
+      type: "DOCUMENT",
       yoga,
       children: [
         {
-          type: 'PAGE',
+          type: "PAGE",
           box: {},
           style: {
             width: 100,
@@ -25,11 +25,11 @@ describe('pagination step', () => {
           },
           children: [
             {
-              type: 'VIEW',
+              type: "VIEW",
               box: {},
               style: {
-                position: 'absolute',
-                width: '50%',
+                position: "absolute",
+                width: "50%",
                 top: 0,
                 bottom: 0,
               },
@@ -37,14 +37,14 @@ describe('pagination step', () => {
               children: [],
             },
             {
-              type: 'TEXT',
+              type: "TEXT",
               box: {},
               style: {},
               props: {},
               children: [
                 {
-                  type: 'TEXT_INSTANCE',
-                  value: 'hello world',
+                  type: "TEXT_INSTANCE",
+                  value: "hello world",
                 },
               ],
             },
@@ -62,15 +62,15 @@ describe('pagination step', () => {
     expect(view.box.height).toBe(100);
   });
 
-  test('should force new height for split nodes', async () => {
+  test("should force new height for split nodes", async () => {
     const yoga = await loadYoga();
 
     const root = {
-      type: 'DOCUMENT',
+      type: "DOCUMENT",
       yoga,
       children: [
         {
-          type: 'PAGE',
+          type: "PAGE",
           box: {},
           style: {
             width: 15,
@@ -79,20 +79,20 @@ describe('pagination step', () => {
 
           children: [
             {
-              type: 'VIEW',
+              type: "VIEW",
               box: {},
               style: {},
               props: {},
               children: [
                 {
-                  type: 'TEXT',
+                  type: "TEXT",
                   box: {},
                   style: {},
                   props: {},
                   children: [
                     {
-                      type: 'TEXT_INSTANCE',
-                      value: 'a a a a',
+                      type: "TEXT_INSTANCE",
+                      value: "a a a a",
                     },
                   ],
                 },
@@ -112,15 +112,15 @@ describe('pagination step', () => {
     expect(view2.box.height).not.toBe(60);
   });
 
-  test('should force new height for split nodes with fixed height', async () => {
+  test("should force new height for split nodes with fixed height", async () => {
     const yoga = await loadYoga();
 
     const root = {
-      type: 'DOCUMENT',
+      type: "DOCUMENT",
       yoga,
       children: [
         {
-          type: 'PAGE',
+          type: "PAGE",
           box: {},
           style: {
             width: 5,
@@ -129,7 +129,7 @@ describe('pagination step', () => {
 
           children: [
             {
-              type: 'VIEW',
+              type: "VIEW",
               box: {},
               style: { height: 130 },
               props: {},
@@ -151,15 +151,15 @@ describe('pagination step', () => {
     expect(view3.box.height).toBe(10);
   });
 
-  test('should not wrap page with false wrap prop', async () => {
+  test("should not wrap page with false wrap prop", async () => {
     const yoga = await loadYoga();
 
     const root = {
-      type: 'DOCUMENT',
+      type: "DOCUMENT",
       yoga,
       children: [
         {
-          type: 'PAGE',
+          type: "PAGE",
           box: {},
           style: {
             width: 5,
@@ -170,7 +170,7 @@ describe('pagination step', () => {
           },
           children: [
             {
-              type: 'VIEW',
+              type: "VIEW",
               box: {},
               style: { height: 130 },
               props: {},
@@ -186,15 +186,15 @@ describe('pagination step', () => {
     expect(layout.children.length).toBe(1);
   });
 
-  test('should break on a container whose children can not fit on a page', async () => {
+  test("should break on a container whose children can not fit on a page", async () => {
     const yoga = await loadYoga();
 
     const root = {
-      type: 'DOCUMENT',
+      type: "DOCUMENT",
       yoga,
       children: [
         {
-          type: 'PAGE',
+          type: "PAGE",
           box: {},
           style: {
             width: 5,
@@ -203,7 +203,7 @@ describe('pagination step', () => {
 
           children: [
             {
-              type: 'VIEW',
+              type: "VIEW",
               box: {},
               style: {
                 width: 5,
@@ -213,7 +213,7 @@ describe('pagination step', () => {
               children: [],
             },
             {
-              type: 'VIEW',
+              type: "VIEW",
               box: {},
               style: {
                 width: 5,
@@ -221,7 +221,7 @@ describe('pagination step', () => {
               props: {},
               children: [
                 {
-                  type: 'VIEW',
+                  type: "VIEW",
                   box: {},
                   style: {
                     height: 40,
@@ -250,27 +250,27 @@ describe('pagination step', () => {
     expect(page2.children[0].box.height).toBe(40);
   });
 
-  test('should not infinitely loop when splitting pages', async () => {
+  test("should not infinitely loop when splitting pages", async () => {
     const yoga = await loadYoga();
 
     const root = {
-      type: 'DOCUMENT',
+      type: "DOCUMENT",
       yoga,
       children: [
         {
-          type: 'PAGE',
+          type: "PAGE",
           box: {},
           style: {
             height: 400,
           },
           children: [
             {
-              type: 'VIEW',
+              type: "VIEW",
               box: {},
               style: { height: 401 },
               children: [
                 {
-                  type: 'VIEW',
+                  type: "VIEW",
                   box: {},
                   style: {
                     height: 400,

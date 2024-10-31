@@ -1,4 +1,4 @@
-import bidiFactory from 'bidi-js';
+import bidiFactory from "bidi-js";
 
 const bidi = bidiFactory();
 

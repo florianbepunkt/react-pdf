@@ -20,14 +20,7 @@ const clipNode = (ctx, node) => {
 
   ctx.moveTo(left + rtr, top);
   ctx.lineTo(left + width - rtr, top);
-  ctx.bezierCurveTo(
-    left + width - ctr,
-    top,
-    left + width,
-    top + ctr,
-    left + width,
-    top + rtr,
-  );
+  ctx.bezierCurveTo(left + width - ctr, top, left + width, top + ctr, left + width, top + rtr);
 
   // Border right
   const rbr = Math.min(borderBottomRightRadius, 0.5 * width, 0.5 * height);
@@ -48,14 +41,7 @@ const clipNode = (ctx, node) => {
   const cbl = rbl * (1.0 - KAPPA);
 
   ctx.lineTo(left + rbl, top + height);
-  ctx.bezierCurveTo(
-    left + cbl,
-    top + height,
-    left,
-    top + height - cbl,
-    left,
-    top + height - rbl,
-  );
+  ctx.bezierCurveTo(left + cbl, top + height, left, top + height - cbl, left, top + height - rbl);
 
   // Border left
   const rtl = Math.min(borderTopLeftRadius, 0.5 * width, 0.5 * height);

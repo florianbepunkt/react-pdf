@@ -22,9 +22,7 @@ const slice = (start, end, font, glyph) => {
   const string = String.fromCodePoint(...codePoints);
 
   // passing LTR To force fontkit to not reverse the string
-  return font
-    ? font.layout(string, undefined, undefined, undefined, 'ltr').glyphs
-    : [glyph];
+  return font ? font.layout(string, undefined, undefined, undefined, "ltr").glyphs : [glyph];
 };
 
 export default slice;

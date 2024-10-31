@@ -172,7 +172,7 @@ class AFMFont {
   }
 
   constructor(contents) {
-        if (typeof contents === "string") {
+    if (typeof contents === 'string') {
       this.contents = contents;
       this.parse();
     } else {
@@ -180,14 +180,14 @@ class AFMFont {
       this.glyphWidths = contents.glyphWidths;
       this.kernPairs = contents.kernPairs;
     }
-    
+
     // todo: remove charWidths since appears to not be used
     this.charWidths = new Array(256);
     for (let char = 0; char <= 255; char++) {
       this.charWidths[char] = this.glyphWidths[characters[char]];
     }
 
-    this.bbox = this.attributes['FontBBox'].split(/\s+/).map(e => +e);
+    this.bbox = this.attributes['FontBBox'].split(/\s+/).map((e) => +e);
     this.ascender = +(this.attributes['Ascender'] || 0);
     this.descender = +(this.attributes['Descender'] || 0);
     this.xHeight = +(this.attributes['XHeight'] || 0);

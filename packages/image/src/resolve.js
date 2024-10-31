@@ -1,29 +1,22 @@
-import fs from 'fs';
-import url from 'url';
-import path from 'path';
-import fetch from 'cross-fetch';
+import fs from "fs";
+import url from "url";
+import path from "path";
+import fetch from "cross-fetch";
 
-import PNG from './png';
-import JPEG from './jpeg';
-import createCache from './cache';
+import PNG from "./png";
+import JPEG from "./jpeg";
+import createCache from "./cache";
 
 export const IMAGE_CACHE = createCache({ limit: 30 });
 
 const getAbsoluteLocalPath = (src) => {
   if (BROWSER) {
-    throw new Error('Cannot check local paths in client-side environment');
+    throw new Error("Cannot check local paths in client-side environment");
   }
 
-  const {
-    protocol,
-    auth,
-    host,
-    port,
-    hostname,
-    path: pathname,
-  } = url.parse(src);
+  const { protocol, auth, host, port, hostname, path: pathname } = url.parse(src);
   const absolutePath = path.resolve(pathname);
-  if ((protocol && protocol !== 'file:') || auth || host || port || hostname) {
+  if ((protocol && protocol !== "file:") || auth || host || port || hostname) {
     return undefined;
   }
   return absolutePath;
@@ -33,7 +26,7 @@ const fetchLocalFile = (src) =>
   new Promise((resolve, reject) => {
     try {
       if (BROWSER) {
-        reject(new Error('Cannot fetch local file in this environemnt'));
+        reject(new Error("Cannot fetch local file in this environemnt"));
         return;
       }
       const absolutePath = getAbsoluteLocalPath(src);
@@ -41,9 +34,7 @@ const fetchLocalFile = (src) =>
         reject(new Error(`Cannot fetch non-local path: ${src}`));
         return;
       }
-      fs.readFile(absolutePath, (err, data) =>
-        err ? reject(err) : resolve(data),
-      );
+      fs.readFile(absolutePath, (err, data) => (err ? reject(err) : resolve(data)));
     } catch (err) {
       reject(err);
     }
@@ -52,39 +43,36 @@ const fetchLocalFile = (src) =>
 const fetchRemoteFile = async (uri, options) => {
   const response = await fetch(uri, options);
 
-  const buffer = await (response.buffer
-    ? response.buffer()
-    : response.arrayBuffer());
+  const buffer = await (response.buffer ? response.buffer() : response.arrayBuffer());
 
-  return buffer.constructor.name === 'Buffer' ? buffer : Buffer.from(buffer);
+  return buffer.constructor.name === "Buffer" ? buffer : Buffer.from(buffer);
 };
 
 const isValidFormat = (format) => {
   const lower = format.toLowerCase();
-  return lower === 'jpg' || lower === 'jpeg' || lower === 'png';
+  return lower === "jpg" || lower === "jpeg" || lower === "png";
 };
 
 const guessFormat = (buffer) => {
   let format;
 
   if (JPEG.isValid(buffer)) {
-    format = 'jpg';
+    format = "jpg";
   } else if (PNG.isValid(buffer)) {
-    format = 'png';
+    format = "png";
   }
 
   return format;
 };
 
-const isCompatibleBase64 = ({ uri }) =>
-  /^data:image\/[a-zA-Z]*;base64,[^"]*/g.test(uri);
+const isCompatibleBase64 = ({ uri }) => /^data:image\/[a-zA-Z]*;base64,[^"]*/g.test(uri);
 
 function getImage(body, extension) {
   switch (extension.toLowerCase()) {
-    case 'jpg':
-    case 'jpeg':
+    case "jpg":
+    case "jpeg":
       return new JPEG(body);
-    case 'png':
+    case "png":
       return new PNG(body);
     default:
       return null;
@@ -101,7 +89,7 @@ const resolveBase64Image = ({ uri }) => {
   }
 
   return new Promise((resolve) => {
-    return resolve(getImage(Buffer.from(data, 'base64'), format));
+    return resolve(getImage(Buffer.from(data, "base64"), format));
   });
 };
 
@@ -125,17 +113,17 @@ const resolveBufferImage = (buffer) => {
 
 const resolveBlobImage = async (blob) => {
   const { type } = blob;
-  if (!type || type === 'application/octet-stream') {
+  if (!type || type === "application/octet-stream") {
     const arrayBuffer = await blob.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
     return resolveBufferImage(buffer);
   }
 
-  if (!type.startsWith('image/')) {
+  if (!type.startsWith("image/")) {
     throw new Error(`Invalid blob type: ${type}`);
   }
 
-  const format = type.replace('image/', '');
+  const format = type.replace("image/", "");
 
   if (!isValidFormat(format)) {
     throw new Error(`Invalid blob type: ${type}`);
@@ -159,20 +147,20 @@ const getImageFormat = (body) => {
 
   const isJpg = body[0] === 255 && body[1] === 216 && body[2] === 255;
 
-  let extension = '';
+  let extension = "";
   if (isPng) {
-    extension = 'png';
+    extension = "png";
   } else if (isJpg) {
-    extension = 'jpg';
+    extension = "jpg";
   } else {
-    throw new Error('Not valid image extension');
+    throw new Error("Not valid image extension");
   }
 
   return extension;
 };
 
 const resolveImageFromUrl = async (src) => {
-  const { uri, body, headers, method = 'GET', credentials } = src;
+  const { uri, body, headers, method = "GET", credentials } = src;
 
   const data =
     !BROWSER && getAbsoluteLocalPath(uri)
@@ -193,7 +181,7 @@ const resolveImage = (src, { cache = true } = {}) => {
   let image;
   const cacheKey = src.data ? src.data.toString() : src.uri;
 
-  if (typeof Blob !== 'undefined' && src instanceof Blob) {
+  if (typeof Blob !== "undefined" && src instanceof Blob) {
     image = resolveBlobImage(src);
   } else if (Buffer.isBuffer(src)) {
     image = resolveBufferImage(src);
@@ -201,14 +189,14 @@ const resolveImage = (src, { cache = true } = {}) => {
     return IMAGE_CACHE.get(cacheKey);
   } else if (isCompatibleBase64(src)) {
     image = resolveBase64Image(src);
-  } else if (typeof src === 'object' && src.data) {
+  } else if (typeof src === "object" && src.data) {
     image = resolveImageFromData(src);
   } else {
     image = resolveImageFromUrl(src);
   }
 
   if (!image) {
-    throw new Error('Cannot resolve image');
+    throw new Error("Cannot resolve image");
   }
 
   if (cache) {

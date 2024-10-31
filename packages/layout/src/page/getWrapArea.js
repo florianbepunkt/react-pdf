@@ -1,4 +1,4 @@
-import getPadding from '../node/getPadding';
+import getPadding from "../node/getPadding";
 
 const getWrapArea = (page) => {
   const { paddingBottom } = getPadding(page);

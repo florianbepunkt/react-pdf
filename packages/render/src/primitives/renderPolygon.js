@@ -1,4 +1,4 @@
-import renderPolyline from './renderPolyline';
+import renderPolyline from "./renderPolyline";
 
 const renderPolygon = (ctx, node) => {
   renderPolyline(ctx, node);

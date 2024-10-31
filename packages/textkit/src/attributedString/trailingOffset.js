@@ -1,6 +1,6 @@
-import { last } from '@react-pdf/fns';
+import { last } from "@react-pdf/fns";
 
-import runTrailingOffset from '../run/trailingOffset';
+import runTrailingOffset from "../run/trailingOffset";
 
 /**
  * @typedef {import('../types.js').AttributedString} AttributedString

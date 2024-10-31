@@ -1,18 +1,18 @@
 /* eslint-disable no-useless-escape */
 
-import { createElement } from './element';
+import { createElement } from "./element";
 
 export default {
   text(text, x, y) {
     const parent = this.closestGroupOrSvg();
-    const textElement = createElement('text');
+    const textElement = createElement("text");
 
     textElement.appendChild(text);
-    textElement.setAttribute('x', x);
-    textElement.setAttribute('y', y);
-    textElement.setAttribute('alignment-baseline', 'hanging');
-    textElement.setAttribute('font-size', this.fontSizeStyle);
-    textElement.setAttribute('font-family', this.fontFamilyStyle);
+    textElement.setAttribute("x", x);
+    textElement.setAttribute("y", y);
+    textElement.setAttribute("alignment-baseline", "hanging");
+    textElement.setAttribute("font-size", this.fontSizeStyle);
+    textElement.setAttribute("font-family", this.fontFamilyStyle);
 
     parent.appendChild(textElement);
   },

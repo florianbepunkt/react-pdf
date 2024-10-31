@@ -1,8 +1,8 @@
 /* eslint-disable react/no-array-index-key */
-import { describe, expect, test } from 'vitest';
+import { describe, expect, test } from "vitest";
 
-import { Document, Page, View } from '@react-pdf/renderer';
-import renderToImage from './renderComponent';
+import { Document, Page, View } from "@react-pdf/renderer";
+import renderToImage from "./renderComponent";
 
 const mount = async (children) => {
   const image = await renderToImage(
@@ -14,28 +14,18 @@ const mount = async (children) => {
   return image;
 };
 
-const items = [
-  'red',
-  'red',
-  'red',
-  'green',
-  'green',
-  'green',
-  'blue',
-  'blue',
-  'blue',
-];
+const items = ["red", "red", "red", "green", "green", "green", "blue", "blue", "blue"];
 
-describe('flex', () => {
-  test('should support gap', async () => {
+describe("flex", () => {
+  test("should support gap", async () => {
     const image = await mount(
       <View
         style={{
-          height: '100%',
-          width: '100%',
-          display: 'flex',
-          flexWrap: 'wrap',
-          backgroundColor: '#e2e2e2',
+          height: "100%",
+          width: "100%",
+          display: "flex",
+          flexWrap: "wrap",
+          backgroundColor: "#e2e2e2",
           gap: 30,
         }}
       >
@@ -55,16 +45,16 @@ describe('flex', () => {
     expect(image).toMatchImageSnapshot();
   });
 
-  test('should support percentage gap', async () => {
+  test("should support percentage gap", async () => {
     const image = await mount(
       <View
         style={{
-          height: '100%',
-          width: '100%',
-          display: 'flex',
-          flexWrap: 'wrap',
-          backgroundColor: '#e2e2e2',
-          gap: '15%',
+          height: "100%",
+          width: "100%",
+          display: "flex",
+          flexWrap: "wrap",
+          backgroundColor: "#e2e2e2",
+          gap: "15%",
         }}
       >
         {items.map((color, index) => (
@@ -83,17 +73,17 @@ describe('flex', () => {
     expect(image).toMatchImageSnapshot();
   });
 
-  test('should support rowGap and columnGap', async () => {
+  test("should support rowGap and columnGap", async () => {
     const image = await mount(
       <View
         style={{
-          height: '100%',
-          width: '100%',
-          display: 'flex',
-          flexWrap: 'wrap',
-          backgroundColor: '#e2e2e2',
-          rowGap: '60px',
-          columnGap: '80px',
+          height: "100%",
+          width: "100%",
+          display: "flex",
+          flexWrap: "wrap",
+          backgroundColor: "#e2e2e2",
+          rowGap: "60px",
+          columnGap: "80px",
         }}
       >
         {items.slice(0, 4).map((color, index) => (
@@ -112,17 +102,17 @@ describe('flex', () => {
     expect(image).toMatchImageSnapshot();
   });
 
-  test('should support percentage rowGap and columnGap', async () => {
+  test("should support percentage rowGap and columnGap", async () => {
     const image = await mount(
       <View
         style={{
-          height: '100%',
-          width: '100%',
-          display: 'flex',
-          flexWrap: 'wrap',
-          backgroundColor: '#e2e2e2',
-          rowGap: '10%',
-          columnGap: '20%',
+          height: "100%",
+          width: "100%",
+          display: "flex",
+          flexWrap: "wrap",
+          backgroundColor: "#e2e2e2",
+          rowGap: "10%",
+          columnGap: "20%",
         }}
       >
         {items.map((color, index) => (

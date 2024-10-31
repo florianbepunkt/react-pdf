@@ -1,6 +1,6 @@
-import ascent from './ascent';
-import descent from './descent';
-import lineGap from './lineGap';
+import ascent from "./ascent";
+import descent from "./descent";
+import lineGap from "./lineGap";
 
 /**
  * @typedef {import('../types.js').Run} Run

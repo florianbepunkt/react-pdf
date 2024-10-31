@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-expressions */
-import { isNil, upperFirst, matchPercent } from '@react-pdf/fns';
+import { isNil, upperFirst, matchPercent } from "@react-pdf/fns";
 
 /**
  * @typedef {Function} NodeInstanceWrapper
@@ -40,7 +40,7 @@ const setYogaValue = (attr, edge) => (value) => (node) => {
       } else {
         yogaNode[percentMethod]?.(percent.value);
       }
-    } else if (value === 'auto') {
+    } else if (value === "auto") {
       if (hasEdge) {
         yogaNode[autoMethod]?.(edge);
       } else {

@@ -3,6 +3,6 @@
  *
  * @returns {Object} empty attributed string
  */
-const empty = () => ({ string: '', runs: [] });
+const empty = () => ({ string: "", runs: [] });
 
 export default empty;

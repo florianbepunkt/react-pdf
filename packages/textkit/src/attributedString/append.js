@@ -1,8 +1,8 @@
-import { last } from '@react-pdf/fns';
+import { last } from "@react-pdf/fns";
 
-import emptyRun from '../run/empty';
-import appendToRun from '../run/append';
-import stringFromCodePoints from '../utils/stringFromCodePoints';
+import emptyRun from "../run/empty";
+import appendToRun from "../run/append";
+import stringFromCodePoints from "../utils/stringFromCodePoints";
 
 /**
  * @typedef {import('../types.js').AttributedString} AttributedString

@@ -1,28 +1,21 @@
-import React from 'react';
-import {
-  Document,
-  Page,
-  View,
-  Text,
-  Font,
-  StyleSheet,
-} from '@react-pdf/renderer';
+import React from "react";
+import { Document, Page, View, Text, Font, StyleSheet } from "@react-pdf/renderer";
 
 const styles = StyleSheet.create({
   container: {
     height: 700,
     marginVertical: 70,
-    marginHorizontal: '10%',
+    marginHorizontal: "10%",
   },
   text: {
     fontSize: 100,
-    textAlign: 'center',
+    textAlign: "center",
   },
 });
 
 Font.registerEmojiSource({
-  format: 'png',
-  url: 'https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/72x72/',
+  format: "png",
+  url: "https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/72x72/",
 });
 
 const Emoji = () => (
@@ -36,8 +29,8 @@ const Emoji = () => (
 );
 
 export default {
-  id: 'emoji',
-  name: 'Emoji',
-  description: '',
+  id: "emoji",
+  name: "Emoji",
+  description: "",
   Document: Emoji,
 };

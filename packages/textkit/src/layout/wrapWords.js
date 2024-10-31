@@ -1,4 +1,4 @@
-import fromFragments from '../attributedString/fromFragments';
+import fromFragments from "../attributedString/fromFragments";
 
 /**
  * @typedef {import('../types.js').AttributedString} AttributedString
@@ -29,12 +29,10 @@ const wrapWords = (engines = {}, options = {}) => {
     const fragments = [];
 
     const hyphenateWord =
-      options.hyphenationCallback ||
-      engines.wordHyphenation?.(options) ||
-      defaultHyphenationEngine;
+      options.hyphenationCallback || engines.wordHyphenation?.(options) || defaultHyphenationEngine;
 
     for (let i = 0; i < attributedString.runs.length; i += 1) {
-      let string = '';
+      let string = "";
       const run = attributedString.runs[i];
       const words = attributedString.string
         .slice(run.start, run.end)
@@ -46,7 +44,7 @@ const wrapWords = (engines = {}, options = {}) => {
         const parts = hyphenateWord(word);
 
         syllables.push(...parts);
-        string += parts.join('');
+        string += parts.join("");
       }
 
       fragments.push({ ...run, string });

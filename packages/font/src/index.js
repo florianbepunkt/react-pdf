@@ -1,5 +1,5 @@
-import font from './font';
-import standard from './standard';
+import font from "./font";
+import standard from "./standard";
 
 function FontStore() {
   let fonts = {};
@@ -25,12 +25,7 @@ function FontStore() {
     }
   };
 
-  this.registerEmojiSource = ({
-    url,
-    format = 'png',
-    builder,
-    withVariationSelectors = false,
-  }) => {
+  this.registerEmojiSource = ({ url, format = "png", builder, withVariationSelectors = false }) => {
     emojiSource = { url, format, builder, withVariationSelectors };
   };
 
@@ -55,8 +50,7 @@ function FontStore() {
 
   this.load = async (descriptor) => {
     const { fontFamily } = descriptor;
-    const fontFamilies =
-      typeof fontFamily === 'string' ? [fontFamily] : [...(fontFamily || [])];
+    const fontFamilies = typeof fontFamily === "string" ? [fontFamily] : [...(fontFamily || [])];
 
     const promises = [];
 

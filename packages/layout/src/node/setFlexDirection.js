@@ -1,9 +1,9 @@
-import * as Yoga from 'yoga-layout/load';
+import * as Yoga from "yoga-layout/load";
 
 const FLEX_DIRECTIONS = {
   row: Yoga.FlexDirection.Row,
-  'row-reverse': Yoga.FlexDirection.RowReverse,
-  'column-reverse': Yoga.FlexDirection.ColumnReverse,
+  "row-reverse": Yoga.FlexDirection.RowReverse,
+  "column-reverse": Yoga.FlexDirection.ColumnReverse,
 };
 
 /**

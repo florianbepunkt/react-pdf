@@ -1,4 +1,4 @@
-import maxY from './maxY';
+import maxY from "./maxY";
 
 /**
  * @typedef {import('../types.js').Rect} Rect

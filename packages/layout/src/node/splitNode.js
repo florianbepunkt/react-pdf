@@ -1,4 +1,4 @@
-import { isNil } from '@react-pdf/fns';
+import { isNil } from "@react-pdf/fns";
 
 const getTop = (node) => node.box?.top || 0;
 
@@ -26,9 +26,7 @@ const splitNode = (node, height) => {
 
   current.style.height = height - nodeTop;
 
-  const nextHeight = hasFixedHeight(node)
-    ? node.box.height - (height - nodeTop)
-    : null;
+  const nextHeight = hasFixedHeight(node) ? node.box.height - (height - nodeTop) : null;
 
   const next = Object.assign({}, node, {
     box: {

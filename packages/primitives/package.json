@@ -13,9 +13,10 @@
     "directory": "packages/primitives"
   },
   "publishConfig": {
-     "registry": "https://npm.pkg.github.com/easypliant"
+    "registry": "https://npm.pkg.github.com/easypliant"
   },
   "scripts": {
+    "format": "prettier --write \"./**/*.{js,jsx,ts,tsx,json}\"",
     "test": "vitest"
   },
   "files": [

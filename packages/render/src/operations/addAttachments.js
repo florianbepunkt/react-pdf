@@ -4,7 +4,7 @@ const addAttachments = (ctx, root) => {
   attachments.forEach((attachment) => {
     ctx.file(attachment.content, {
       creationDate: attachment.creationDate,
-      description: attachment.description || '',
+      description: attachment.description || "",
       modifiedDate: attachment.modifiedDate || attachment.creationDate,
       name: attachment.name,
       relationship: attachment.relationship,

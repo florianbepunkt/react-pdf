@@ -1,4 +1,4 @@
-import isWhiteSpace from '../glyph/isWhiteSpace';
+import isWhiteSpace from "../glyph/isWhiteSpace";
 
 /**
  * @typedef {import('../types.js').Position} Position

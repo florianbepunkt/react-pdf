@@ -1,15 +1,15 @@
-import { describe, expect, test } from 'vitest';
+import { describe, expect, test } from "vitest";
 
-import font from '../internal/font';
-import pluck from '../internal/pluck';
-import resolveYOffset from '../../src/layout/resolveYOffset';
+import font from "../internal/font";
+import pluck from "../internal/pluck";
+import resolveYOffset from "../../src/layout/resolveYOffset";
 
 const instance = resolveYOffset();
 
-describe('resolveYOffset', () => {
-  test('should return same string if no attributes present', () => {
+describe("resolveYOffset", () => {
+  test("should return same string if no attributes present", () => {
     const string = {
-      string: 'Lorem',
+      string: "Lorem",
       runs: [
         {
           start: 0,
@@ -38,9 +38,9 @@ describe('resolveYOffset', () => {
     expect(result).toEqual(string);
   });
 
-  test('should return same string if no yOffset present', () => {
+  test("should return same string if no yOffset present", () => {
     const string = {
-      string: 'Lorem',
+      string: "Lorem",
       runs: [
         {
           start: 0,
@@ -70,9 +70,9 @@ describe('resolveYOffset', () => {
     expect(result).toEqual(string);
   });
 
-  test('should return same string if no font present', () => {
+  test("should return same string if no font present", () => {
     const string = {
-      string: 'Lorem',
+      string: "Lorem",
       runs: [
         {
           start: 0,
@@ -102,9 +102,9 @@ describe('resolveYOffset', () => {
     expect(result).toEqual(string);
   });
 
-  test('should return same string if no positions present', () => {
+  test("should return same string if no positions present", () => {
     const string = {
-      string: 'Lorem',
+      string: "Lorem",
       runs: [
         {
           start: 0,
@@ -127,7 +127,7 @@ describe('resolveYOffset', () => {
     expect(result).toEqual(string);
   });
 
-  test('should not mutate passed string', () => {
+  test("should not mutate passed string", () => {
     const string = {
       string: `Lorem`,
       runs: [
@@ -157,15 +157,11 @@ describe('resolveYOffset', () => {
     instance(string);
 
     expect(string.runs[0].glyphIndices).toEqual([0, 1, 2, 3, 4]);
-    expect(pluck('id', string.runs[0].glyphs)).toEqual([
-      76, 111, 114, 101, 109,
-    ]);
-    expect(pluck('xAdvance', string.runs[0].positions)).toEqual([
-      8, 7, 6, 5, 4,
-    ]);
+    expect(pluck("id", string.runs[0].glyphs)).toEqual([76, 111, 114, 101, 109]);
+    expect(pluck("xAdvance", string.runs[0].positions)).toEqual([8, 7, 6, 5, 4]);
   });
 
-  test('should change glyph positions appropiately', () => {
+  test("should change glyph positions appropiately", () => {
     const string = {
       string: `Lorem`,
       runs: [
@@ -194,14 +190,8 @@ describe('resolveYOffset', () => {
     const result = instance(string);
 
     expect(result.runs[0].glyphIndices).toEqual([0, 1, 2, 3, 4]);
-    expect(pluck('id', result.runs[0].glyphs)).toEqual([
-      76, 111, 114, 101, 109,
-    ]);
-    expect(pluck('xAdvance', result.runs[0].positions)).toEqual([
-      8, 7, 6, 5, 4,
-    ]);
-    expect(pluck('yOffset', result.runs[0].positions)).toEqual([
-      40, 40, 40, 40, 40,
-    ]); // yOffset * font.unitsPerEm
+    expect(pluck("id", result.runs[0].glyphs)).toEqual([76, 111, 114, 101, 109]);
+    expect(pluck("xAdvance", result.runs[0].positions)).toEqual([8, 7, 6, 5, 4]);
+    expect(pluck("yOffset", result.runs[0].positions)).toEqual([40, 40, 40, 40, 40]); // yOffset * font.unitsPerEm
   });
 });

@@ -1,7 +1,7 @@
-import * as P from '@react-pdf/primitives';
+import * as P from "@react-pdf/primitives";
 
-import fetchEmojis from '../text/emoji';
-import fetchImage from '../image/fetchImage';
+import fetchEmojis from "../text/emoji";
+import fetchImage from "../image/fetchImage";
 
 const isImage = (node) => node.type === P.Image;
 
@@ -28,11 +28,11 @@ const fetchAssets = (fontStore, node) => {
       promises.push(fontStore.load(n.style));
     }
 
-    if (typeof n === 'string') {
+    if (typeof n === "string") {
       promises.push(...fetchEmojis(n, emojiSource));
     }
 
-    if (typeof n.value === 'string') {
+    if (typeof n.value === "string") {
       promises.push(...fetchEmojis(n.value, emojiSource));
     }
 

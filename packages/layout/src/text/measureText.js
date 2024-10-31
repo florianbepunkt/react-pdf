@@ -1,10 +1,10 @@
 /* eslint-disable no-param-reassign */
 
-import * as Yoga from 'yoga-layout/load';
+import * as Yoga from "yoga-layout/load";
 
-import layoutText from './layoutText';
-import linesWidth from './linesWidth';
-import linesHeight from './linesHeight';
+import layoutText from "./layoutText";
+import linesWidth from "./linesWidth";
+import linesHeight from "./linesHeight";
 
 const ALIGNMENT_FACTORS = { center: 0.5, right: 1 };
 

@@ -1,4 +1,4 @@
-import castArray from './castArray';
+import castArray from "./castArray";
 
 /**
  * Creates a new object by omitting specified keys from the original object.

@@ -1,5 +1,5 @@
-import React from 'react';
-import { Page, Document, Link, View, Image } from '@react-pdf/renderer';
+import React from "react";
+import { Page, Document, Link, View, Image } from "@react-pdf/renderer";
 
 const GoTo = () => (
   <Document>
@@ -8,15 +8,15 @@ const GoTo = () => (
     </Page>
 
     <Page size="A4">
-      <View style={{ height: 300, backgroundColor: 'black' }} />
+      <View style={{ height: 300, backgroundColor: "black" }} />
       <Image id="myDest" src="https://react-pdf.org/images/logo.png" />
     </Page>
   </Document>
 );
 
 export default {
-  id: 'go-to',
-  name: 'Go To',
-  description: '',
+  id: "go-to",
+  name: "Go To",
+  description: "",
   Document: GoTo,
 };

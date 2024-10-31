@@ -15,9 +15,9 @@ const evolve = (transformations, object) => {
     const transformation = transformations[key];
     const type = typeof transformation;
 
-    if (type === 'function') {
+    if (type === "function") {
       result[key] = transformation(object[key]);
-    } else if (transformation && type === 'object') {
+    } else if (transformation && type === "object") {
       result[key] = evolve(transformation, object[key]);
     } else {
       result[key] = object[key];

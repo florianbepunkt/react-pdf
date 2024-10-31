@@ -1,4 +1,4 @@
-import processBoxModel from './boxModel';
+import processBoxModel from "./boxModel";
 
 const processPadding = processBoxModel({
   expandsTo: ({ first, second, third, fourth }) => ({
@@ -28,9 +28,4 @@ const processPaddingHorizontal = processBoxModel({
 
 const processPaddingSingle = processBoxModel();
 
-export {
-  processPadding,
-  processPaddingVertical,
-  processPaddingHorizontal,
-  processPaddingSingle,
-};
+export { processPadding, processPaddingVertical, processPaddingHorizontal, processPaddingSingle };

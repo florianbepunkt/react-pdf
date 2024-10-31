@@ -1,4 +1,4 @@
-import colorString from 'color-string';
+import colorString from "color-string";
 
 const black = { value: [0, 0, 0], opacity: 1 };
 

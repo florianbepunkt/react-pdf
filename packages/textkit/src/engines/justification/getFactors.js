@@ -1,4 +1,4 @@
-import isWhiteSpace from '../../glyph/isWhiteSpace';
+import isWhiteSpace from "../../glyph/isWhiteSpace";
 
 const WHITESPACE_PRIORITY = 1;
 const LETTER_PRIORITY = 2;
@@ -35,7 +35,7 @@ const getCharFactor = (direction, options) => {
   const expandCharFactor = options.expandCharFactor || {};
   const shrinkCharFactor = options.shrinkCharFactor || {};
 
-  return direction === 'GROW'
+  return direction === "GROW"
     ? Object.assign({}, EXPAND_CHAR_FACTOR, expandCharFactor)
     : Object.assign({}, SHRINK_CHAR_FACTOR, shrinkCharFactor);
 };
@@ -44,7 +44,7 @@ const getWhitespaceFactor = (direction, options) => {
   const expandWhitespaceFactor = options.expandWhitespaceFactor || {};
   const shrinkWhitespaceFactor = options.shrinkWhitespaceFactor || {};
 
-  return direction === 'GROW'
+  return direction === "GROW"
     ? Object.assign({}, EXPAND_WHITESPACE_FACTOR, expandWhitespaceFactor)
     : Object.assign({}, SHRINK_WHITESPACE_FACTOR, shrinkWhitespaceFactor);
 };
@@ -83,7 +83,7 @@ const factor = (direction, options) => (glyphs) => {
 };
 
 const getFactors = (gap, line, options) => {
-  const direction = gap > 0 ? 'GROW' : 'SHRINK';
+  const direction = gap > 0 ? "GROW" : "SHRINK";
   const getFactor = factor(direction, options);
 
   const factors = line.runs.reduce((acc, run) => {

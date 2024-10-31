@@ -1,4 +1,4 @@
-const VALID_ORIENTATIONS = ['portrait', 'landscape'];
+const VALID_ORIENTATIONS = ["portrait", "landscape"];
 
 /**
  * Get page orientation. Defaults to portrait
@@ -7,8 +7,8 @@ const VALID_ORIENTATIONS = ['portrait', 'landscape'];
  * @returns {string} page orientation
  */
 const getOrientation = (page) => {
-  const value = page.props?.orientation || 'portrait';
-  return VALID_ORIENTATIONS.includes(value) ? value : 'portrait';
+  const value = page.props?.orientation || "portrait";
+  return VALID_ORIENTATIONS.includes(value) ? value : "portrait";
 };
 
 export default getOrientation;

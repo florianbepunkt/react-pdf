@@ -1,6 +1,6 @@
 const renderNote = (ctx, node) => {
   const { top, left } = node.box;
-  const value = node?.children?.[0].value || '';
+  const value = node?.children?.[0].value || "";
   const color = node.style?.backgroundColor || null;
   const borderWidth = node.style?.borderWidth || null;
 

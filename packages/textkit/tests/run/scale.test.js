@@ -1,21 +1,21 @@
-import { describe, expect, test } from 'vitest';
+import { describe, expect, test } from "vitest";
 
-import scale from '../../src/run/scale';
+import scale from "../../src/run/scale";
 
-describe('run scale operator', () => {
-  test('should return 0 if font not present', () => {
+describe("run scale operator", () => {
+  test("should return 0 if font not present", () => {
     const run = { attributes: { fontSize: 12 } };
 
     expect(scale(run)).toBe(0);
   });
 
-  test('should return 0 if unknown font unitsPerEm', () => {
-    const run = { attributes: { fontSize: 12, font: { other: 'blah' } } };
+  test("should return 0 if unknown font unitsPerEm", () => {
+    const run = { attributes: { fontSize: 12, font: { other: "blah" } } };
 
     expect(scale(run)).toBe(0);
   });
 
-  test('should return correct font scale', () => {
+  test("should return correct font scale", () => {
     const run = { attributes: { fontSize: 12, font: { unitsPerEm: 2 } } };
 
     expect(scale(run)).toBe(12 / 2);

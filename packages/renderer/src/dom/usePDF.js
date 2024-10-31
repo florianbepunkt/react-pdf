@@ -1,9 +1,9 @@
 /* eslint-disable no-console */
 
-import queue from 'queue';
-import { useState, useRef, useEffect, useCallback } from 'react';
+import queue from "queue";
+import { useState, useRef, useEffect, useCallback } from "react";
 
-import { pdf } from '../index';
+import { pdf } from "../index";
 
 /**
  * PDF hook
@@ -48,17 +48,17 @@ export const usePDF = ({ document } = {}) => {
     };
 
     pdfInstance.current = pdf();
-    pdfInstance.current.on('change', queueDocumentRender);
+    pdfInstance.current.on("change", queueDocumentRender);
     if (document) {
       pdfInstance.current.updateContainer(document);
     }
 
-    renderQueue.on('error', onRenderFailed);
-    renderQueue.on('success', onRenderSuccessful);
+    renderQueue.on("error", onRenderFailed);
+    renderQueue.on("success", onRenderSuccessful);
 
     return () => {
       renderQueue.end();
-      pdfInstance.current.removeListener('change', queueDocumentRender);
+      pdfInstance.current.removeListener("change", queueDocumentRender);
     };
   }, []);
 

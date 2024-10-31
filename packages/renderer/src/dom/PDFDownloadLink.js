@@ -1,11 +1,11 @@
 /* eslint-disable no-console */
 
-import { useEffect } from 'react';
+import { useEffect } from "react";
 
-import usePDF from './usePDF';
+import usePDF from "./usePDF";
 
 export const PDFDownloadLink = ({
-  fileName = 'document.pdf',
+  fileName = "document.pdf",
   document: doc,
   children,
   onClick,
@@ -17,7 +17,7 @@ export const PDFDownloadLink = ({
   useEffect(() => updateInstance(doc), [doc]);
 
   if (!doc) {
-    console.warn('You should pass a valid document to PDFDownloadLink');
+    console.warn("You should pass a valid document to PDFDownloadLink");
     return null;
   }
 
@@ -30,12 +30,12 @@ export const PDFDownloadLink = ({
 
   const handleClick = (event) => {
     handleDownloadIE();
-    if (typeof onClick === 'function') onClick(event, instance);
+    if (typeof onClick === "function") onClick(event, instance);
   };
 
   return (
     <a href={instance.url} download={fileName} onClick={handleClick} {...rest}>
-      {typeof children === 'function' ? children(instance) : children}
+      {typeof children === "function" ? children(instance) : children}
     </a>
   );
 };

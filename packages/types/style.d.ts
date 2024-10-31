@@ -2,35 +2,29 @@ export interface Style {
   // Flexbox
 
   alignContent?:
-    | 'flex-start'
-    | 'flex-end'
-    | 'center'
-    | 'stretch'
-    | 'space-between'
-    | 'space-around'
-    | 'space-evenly';
-  alignItems?: 'flex-start' | 'flex-end' | 'center' | 'stretch' | 'baseline';
-  alignSelf?:
-    | 'auto'
-    | 'flex-start'
-    | 'flex-end'
-    | 'center'
-    | 'baseline'
-    | 'stretch';
+    | "flex-start"
+    | "flex-end"
+    | "center"
+    | "stretch"
+    | "space-between"
+    | "space-around"
+    | "space-evenly";
+  alignItems?: "flex-start" | "flex-end" | "center" | "stretch" | "baseline";
+  alignSelf?: "auto" | "flex-start" | "flex-end" | "center" | "baseline" | "stretch";
   flex?: number | string;
-  flexDirection?: 'row' | 'row-reverse' | 'column' | 'column-reverse';
-  flexWrap?: 'nowrap' | 'wrap' | 'wrap-reverse';
+  flexDirection?: "row" | "row-reverse" | "column" | "column-reverse";
+  flexWrap?: "nowrap" | "wrap" | "wrap-reverse";
   flexFlow?: number;
   flexGrow?: number;
   flexShrink?: number;
   flexBasis?: number | string;
   justifyContent?:
-    | 'flex-start'
-    | 'flex-end'
-    | 'center'
-    | 'space-around'
-    | 'space-between'
-    | 'space-evenly';
+    | "flex-start"
+    | "flex-end"
+    | "center"
+    | "space-around"
+    | "space-between"
+    | "space-evenly";
   gap?: number | string;
   rowGap?: number | string;
   columnGap?: number | string;
@@ -39,12 +33,12 @@ export interface Style {
 
   aspectRatio?: number | string;
   bottom?: number | string;
-  display?: 'flex' | 'none';
+  display?: "flex" | "none";
   left?: number | string;
-  position?: 'absolute' | 'relative' | 'static';
+  position?: "absolute" | "relative" | "static";
   right?: number | string;
   top?: number | string;
-  overflow?: 'hidden';
+  overflow?: "hidden";
   zIndex?: number | string;
 
   // Dimension
@@ -66,39 +60,39 @@ export interface Style {
 
   fontSize?: number | string;
   fontFamily?: string | string[];
-  fontStyle?: string | 'normal';
+  fontStyle?: string | "normal";
   fontWeight?:
     | number
-    | 'thin'
-    | 'hairline'
-    | 'ultralight'
-    | 'extralight'
-    | 'light'
-    | 'normal'
-    | 'medium'
-    | 'semibold'
-    | 'demibold'
-    | 'bold'
-    | 'ultrabold'
-    | 'extrabold'
-    | 'heavy'
-    | 'black';
+    | "thin"
+    | "hairline"
+    | "ultralight"
+    | "extralight"
+    | "light"
+    | "normal"
+    | "medium"
+    | "semibold"
+    | "demibold"
+    | "bold"
+    | "ultrabold"
+    | "extrabold"
+    | "heavy"
+    | "black";
   letterSpacing?: number | string;
   lineHeight?: number | string;
   maxLines?: number; // ?
-  textAlign?: 'left' | 'right' | 'center' | 'justify'; // ?
+  textAlign?: "left" | "right" | "center" | "justify"; // ?
   textDecoration?:
-    | 'line-through'
-    | 'underline'
-    | 'none'
-    | 'line-through underline'
-    | 'underline line-through';
+    | "line-through"
+    | "underline"
+    | "none"
+    | "line-through underline"
+    | "underline line-through";
   textDecorationColor?: string;
-  textDecorationStyle?: 'dashed' | 'dotted' | 'solid' | string; // ?
+  textDecorationStyle?: "dashed" | "dotted" | "solid" | string; // ?
   textIndent?: any; // ?
-  textOverflow?: 'ellipsis';
-  textTransform?: 'capitalize' | 'lowercase' | 'uppercase';
-  verticalAlign?: 'sub' | 'super';
+  textOverflow?: "ellipsis";
+  textTransform?: "capitalize" | "lowercase" | "uppercase";
+  verticalAlign?: "sub" | "super";
 
   // Sizing/positioning
 
@@ -136,22 +130,22 @@ export interface Style {
   border?: number | string;
   borderWidth?: number | string;
   borderColor?: string;
-  borderStyle?: 'dashed' | 'dotted' | 'solid';
+  borderStyle?: "dashed" | "dotted" | "solid";
   borderTop?: number | string;
   borderTopColor?: string;
-  borderTopStyle?: 'dashed' | 'dotted' | 'solid'; // ?
+  borderTopStyle?: "dashed" | "dotted" | "solid"; // ?
   borderTopWidth?: number | string;
   borderRight?: number | string;
   borderRightColor?: string;
-  borderRightStyle?: 'dashed' | 'dotted' | 'solid'; // ?
+  borderRightStyle?: "dashed" | "dotted" | "solid"; // ?
   borderRightWidth?: number | string;
   borderBottom?: number | string;
   borderBottomColor?: string;
-  borderBottomStyle?: 'dashed' | 'dotted' | 'solid'; // ?
+  borderBottomStyle?: "dashed" | "dotted" | "solid"; // ?
   borderBottomWidth?: number | string;
   borderLeft?: number | string;
   borderLeftColor?: string;
-  borderLeftStyle?: 'dashed' | 'dotted' | 'solid'; // ?
+  borderLeftStyle?: "dashed" | "dotted" | "solid"; // ?
   borderLeftWidth?: number | string;
   borderTopLeftRadius?: number | string;
   borderTopRightRadius?: number | string;

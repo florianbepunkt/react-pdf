@@ -1,4 +1,4 @@
 export default {
   automock: false,
-  testRegex: 'tests/.*?(test)\\.js$',
+  testRegex: "tests/.*?(test)\\.js$",
 };

@@ -12,6 +12,9 @@
     "directory": "packages/types"
   },
   "publishConfig": {
-     "registry": "https://npm.pkg.github.com/easypliant"
+    "registry": "https://npm.pkg.github.com/easypliant"
+  },
+  "scripts": {
+    "format": "prettier --write \"./**/*.{js,jsx,ts,tsx,json}\""
   }
 }

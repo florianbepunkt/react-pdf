@@ -1,4 +1,4 @@
-import { isNil } from '@react-pdf/fns';
+import { isNil } from "@react-pdf/fns";
 
 /**
  * @typedef {Function} NodeInstanceWrapper

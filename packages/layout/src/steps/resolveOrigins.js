@@ -1,4 +1,4 @@
-import getOrigin from '../node/getOrigin';
+import getOrigin from "../node/getOrigin";
 
 /**
  * Resolve node origin

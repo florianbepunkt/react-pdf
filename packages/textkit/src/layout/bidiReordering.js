@@ -1,7 +1,7 @@
-import bidiFactory from 'bidi-js';
-import { repeat } from '@react-pdf/fns';
+import bidiFactory from "bidi-js";
+import { repeat } from "@react-pdf/fns";
 
-import stringLength from '../attributedString/length';
+import stringLength from "../attributedString/length";
 
 /**
  * @typedef {import('../types.js').AttributedString} AttributedString
@@ -67,25 +67,19 @@ const getItemAtIndex = (runs, objectName, index) => {
 const reorderLine = (attributedString) => {
   const levels = getBidiLevels(attributedString.runs);
   const direction = attributedString.runs[0]?.attributes.direction;
-  const level = direction === 'rtl' ? 1 : 0;
+  const level = direction === "rtl" ? 1 : 0;
   const end = stringLength(attributedString) - 1;
   const paragraphs = [{ start: 0, end, level }];
   const embeddingLevels = { paragraphs, levels };
 
-  const segments = bidi.getReorderSegments(
-    attributedString.string,
-    embeddingLevels,
-  );
+  const segments = bidi.getReorderSegments(attributedString.string, embeddingLevels);
 
   // No need for bidi reordering
   if (segments.length === 0) return attributedString;
 
   const indices = getReorderedIndices(attributedString.string, segments);
 
-  const updatedString = bidi.getReorderedString(
-    attributedString.string,
-    embeddingLevels,
-  );
+  const updatedString = bidi.getReorderedString(attributedString.string, embeddingLevels);
 
   const updatedRuns = attributedString.runs.map((run) => {
     const selectedIndices = indices.slice(run.start, run.end);
@@ -97,14 +91,12 @@ const reorderLine = (attributedString) => {
     for (let i = 0; i < selectedIndices.length; i += 1) {
       const index = selectedIndices[i];
 
-      const glyph = getItemAtIndex(attributedString.runs, 'glyphs', index);
+      const glyph = getItemAtIndex(attributedString.runs, "glyphs", index);
 
       if (addedGlyphs.has(glyph.id)) continue;
 
       updatedGlyphs.push(glyph);
-      updatedPositions.push(
-        getItemAtIndex(attributedString.runs, 'positions', index),
-      );
+      updatedPositions.push(getItemAtIndex(attributedString.runs, "positions", index));
 
       if (glyph.isLigature) {
         addedGlyphs.add(glyph.id);

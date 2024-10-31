@@ -1,4 +1,4 @@
-import setYogaValue from './setYogaValue';
+import setYogaValue from "./setYogaValue";
 
 /**
  * @typedef {Function} NodeInstanceWrapper
@@ -13,7 +13,7 @@ import setYogaValue from './setYogaValue';
  * @returns {NodeInstanceWrapper} node instance wrapper
  */
 const setFlexShrink = (value) => (node) => {
-  return setYogaValue('flexShrink')(value || 1)(node);
+  return setYogaValue("flexShrink")(value || 1)(node);
 };
 
 export default setFlexShrink;

@@ -1,5 +1,5 @@
-import start from './start';
-import end from './end';
+import start from "./start";
+import end from "./end";
 
 /**
  * @typedef {import('../types.js').AttributedString} AttributedString

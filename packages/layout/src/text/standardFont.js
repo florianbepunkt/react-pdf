@@ -1,6 +1,6 @@
 /* eslint-disable class-methods-use-this */
 
-import { PDFFontFactory as PDFFont } from '@react-pdf/pdfkit';
+import { PDFFontFactory as PDFFont } from "@react-pdf/pdfkit";
 
 class StandardFont {
   constructor(src) {
@@ -43,7 +43,7 @@ class StandardFont {
   }
 
   hasGlyphForCodePoint(codePoint) {
-    return this.src.font.characterToGlyph(codePoint) !== '.notdef';
+    return this.src.font.characterToGlyph(codePoint) !== ".notdef";
   }
 
   // Based on empirical observation
@@ -54,15 +54,15 @@ class StandardFont {
   // Based on empirical observation
   get capHeight() {
     switch (this.name) {
-      case 'Times-Roman':
-      case 'Times-Bold':
-      case 'Times-Italic':
-      case 'Times-BoldItalic':
+      case "Times-Roman":
+      case "Times-Bold":
+      case "Times-Italic":
+      case "Times-BoldItalic":
         return 650;
-      case 'Courier':
-      case 'Courier-Bold':
-      case 'Courier-Oblique':
-      case 'Courier-BoldOblique':
+      case "Courier":
+      case "Courier-Bold":
+      case "Courier-Oblique":
+      case "Courier-BoldOblique":
         return 550;
       default:
         return 690;
@@ -72,15 +72,15 @@ class StandardFont {
   // Based on empirical observation
   get xHeight() {
     switch (this.name) {
-      case 'Times-Roman':
-      case 'Times-Bold':
-      case 'Times-Italic':
-      case 'Times-BoldItalic':
+      case "Times-Roman":
+      case "Times-Bold":
+      case "Times-Italic":
+      case "Times-BoldItalic":
         return 440;
-      case 'Courier':
-      case 'Courier-Bold':
-      case 'Courier-Oblique':
-      case 'Courier-BoldOblique':
+      case "Courier":
+      case "Courier-Bold":
+      case "Courier-Oblique":
+      case "Courier-BoldOblique":
         return 390;
       default:
         return 490;
@@ -90,15 +90,15 @@ class StandardFont {
   // Based on empirical observation
   get descent() {
     switch (this.name) {
-      case 'Times-Roman':
-      case 'Times-Bold':
-      case 'Times-Italic':
-      case 'Times-BoldItalic':
+      case "Times-Roman":
+      case "Times-Bold":
+      case "Times-Italic":
+      case "Times-BoldItalic":
         return -220;
-      case 'Courier':
-      case 'Courier-Bold':
-      case 'Courier-Oblique':
-      case 'Courier-BoldOblique':
+      case "Courier":
+      case "Courier-Bold":
+      case "Courier-Oblique":
+      case "Courier-BoldOblique":
         return -230;
       default:
         return -200;

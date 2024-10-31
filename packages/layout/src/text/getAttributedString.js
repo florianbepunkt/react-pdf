@@ -1,9 +1,9 @@
-import * as P from '@react-pdf/primitives';
+import * as P from "@react-pdf/primitives";
 
-import { embedEmojis } from './emoji';
-import ignoreChars from './ignoreChars';
-import fromFragments from './fromFragments';
-import transformText from './transformText';
+import { embedEmojis } from "./emoji";
+import ignoreChars from "./ignoreChars";
+import fromFragments from "./fromFragments";
+import transformText from "./transformText";
 
 const PREPROCESSORS = [ignoreChars, embedEmojis];
 
@@ -21,14 +21,14 @@ const isTextInstance = (node) => node.type === P.TextInstance;
  * @returns {Object[]} text fragments
  */
 const getFragments = (fontStore, instance, parentLink, level = 0) => {
-  if (!instance) return [{ string: '' }];
+  if (!instance) return [{ string: "" }];
 
   let fragments = [];
 
   const {
-    color = 'black',
-    direction = 'ltr',
-    fontFamily = 'Helvetica',
+    color = "black",
+    direction = "ltr",
+    fontFamily = "Helvetica",
     fontWeight,
     fontStyle,
     fontSize = 18,
@@ -44,11 +44,10 @@ const getFragments = (fontStore, instance, parentLink, level = 0) => {
     verticalAlign,
   } = instance.style;
 
-  const fontFamilies =
-    typeof fontFamily === 'string' ? [fontFamily] : [...(fontFamily || [])];
+  const fontFamilies = typeof fontFamily === "string" ? [fontFamily] : [...(fontFamily || [])];
 
   const font = fontFamilies.map((fontFamilyName) => {
-    if (typeof fontFamilyName !== 'string') return fontFamilyName;
+    if (typeof fontFamilyName !== "string") return fontFamilyName;
 
     const opts = { fontFamily: fontFamilyName, fontWeight, fontStyle };
     const obj = fontStore ? fontStore.getFont(opts) : null;
@@ -71,18 +70,18 @@ const getFragments = (fontStore, instance, parentLink, level = 0) => {
     strikeStyle: textDecorationStyle,
     underlineStyle: textDecorationStyle,
     underline:
-      textDecoration === 'underline' ||
-      textDecoration === 'underline line-through' ||
-      textDecoration === 'line-through underline',
+      textDecoration === "underline" ||
+      textDecoration === "underline line-through" ||
+      textDecoration === "line-through underline",
     strike:
-      textDecoration === 'line-through' ||
-      textDecoration === 'underline line-through' ||
-      textDecoration === 'line-through underline',
+      textDecoration === "line-through" ||
+      textDecoration === "underline line-through" ||
+      textDecoration === "line-through underline",
     strikeColor: textDecorationColor || color,
     underlineColor: textDecorationColor || color,
     link: parentLink || instance.props?.src || instance.props?.href,
     lineHeight: lineHeight ? lineHeight * fontSize : null,
-    align: textAlign || (direction === 'rtl' ? 'right' : 'left'),
+    align: textAlign || (direction === "rtl" ? "right" : "left"),
   };
 
   for (let i = 0; i < instance.children.length; i += 1) {
@@ -106,9 +105,7 @@ const getFragments = (fontStore, instance, parentLink, level = 0) => {
         attributes,
       });
     } else if (child) {
-      fragments.push(
-        ...getFragments(fontStore, child, attributes.link, level + 1),
-      );
+      fragments.push(...getFragments(fontStore, child, attributes.link, level + 1));
     }
   }
 

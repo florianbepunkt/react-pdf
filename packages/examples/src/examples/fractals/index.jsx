@@ -1,7 +1,7 @@
-import React from 'react';
-import { Page, Document } from '@react-pdf/renderer';
+import React from "react";
+import { Page, Document } from "@react-pdf/renderer";
 
-import Fractal from './Fractal';
+import Fractal from "./Fractal";
 
 const Fractals = () => (
   <Document>
@@ -20,8 +20,8 @@ const Fractals = () => (
 );
 
 export default {
-  id: 'fractals',
-  name: 'Fractals',
-  description: '',
+  id: "fractals",
+  name: "Fractals",
+  description: "",
   Document: Fractals,
 };

@@ -1,6 +1,6 @@
-import * as Yoga from 'yoga-layout/load';
+import * as Yoga from "yoga-layout/load";
 
-import setYogaValue from './setYogaValue';
+import setYogaValue from "./setYogaValue";
 
 /**
  * @typedef {Function} NodeInstanceWrapper
@@ -15,7 +15,7 @@ import setYogaValue from './setYogaValue';
  * @param {Object} node node instance
  * @returns {Object} node instance
  */
-export const setPaddingTop = setYogaValue('padding', Yoga.Edge.Top);
+export const setPaddingTop = setYogaValue("padding", Yoga.Edge.Top);
 
 /**
  * Set padding right attribute to node's Yoga instance
@@ -24,7 +24,7 @@ export const setPaddingTop = setYogaValue('padding', Yoga.Edge.Top);
  * @param {Object} node node instance
  * @returns {Object} node instance
  */
-export const setPaddingRight = setYogaValue('padding', Yoga.Edge.Right);
+export const setPaddingRight = setYogaValue("padding", Yoga.Edge.Right);
 
 /**
  * Set padding bottom attribute to node's Yoga instance
@@ -33,7 +33,7 @@ export const setPaddingRight = setYogaValue('padding', Yoga.Edge.Right);
  * @param {Object} node node instance
  * @returns {Object} node instance
  */
-export const setPaddingBottom = setYogaValue('padding', Yoga.Edge.Bottom);
+export const setPaddingBottom = setYogaValue("padding", Yoga.Edge.Bottom);
 
 /**
  * Set padding left attribute to node's Yoga instance
@@ -42,7 +42,7 @@ export const setPaddingBottom = setYogaValue('padding', Yoga.Edge.Bottom);
  * @param {Object} node node instance
  * @returns {Object} node instance
  */
-export const setPaddingLeft = setYogaValue('padding', Yoga.Edge.Left);
+export const setPaddingLeft = setYogaValue("padding", Yoga.Edge.Left);
 
 /**
  * Set all paddings at once

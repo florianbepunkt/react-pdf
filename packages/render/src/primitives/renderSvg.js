@@ -1,19 +1,19 @@
-import * as P from '@react-pdf/primitives';
-import { isNil } from '@react-pdf/fns';
+import * as P from "@react-pdf/primitives";
+import { isNil } from "@react-pdf/fns";
 
-import renderPath from './renderPath';
-import renderRect from './renderRect';
-import renderLine from './renderLine';
-import renderGroup from './renderGroup';
-import renderCircle from './renderCircle';
-import renderSvgText from './renderSvgText';
-import renderEllipse from './renderEllipse';
-import renderPolygon from './renderPolygon';
-import renderPolyline from './renderPolyline';
-import renderSvgImage from './renderSvgImage';
-import clipNode from '../operations/clipNode';
-import transform from '../operations/transform';
-import getBoundingBox from '../svg/getBoundingBox';
+import renderPath from "./renderPath";
+import renderRect from "./renderRect";
+import renderLine from "./renderLine";
+import renderGroup from "./renderGroup";
+import renderCircle from "./renderCircle";
+import renderSvgText from "./renderSvgText";
+import renderEllipse from "./renderEllipse";
+import renderPolygon from "./renderPolygon";
+import renderPolyline from "./renderPolyline";
+import renderSvgImage from "./renderSvgImage";
+import clipNode from "../operations/clipNode";
+import transform from "../operations/transform";
+import getBoundingBox from "../svg/getBoundingBox";
 
 const setStrokeWidth = (ctx, node) => {
   const lineWidth = node.props?.strokeWidth || 0;
@@ -53,14 +53,12 @@ const setLineCap = (ctx, node) => {
 const setLineDash = (ctx, node) => {
   const value = node.props?.strokeDasharray || null;
 
-  if (value) ctx.dash(value.split(',').map(Number));
+  if (value) ctx.dash(value.split(",").map(Number));
 };
 
-const hasLinearGradientFill = (node) =>
-  node.props?.fill?.type === P.LinearGradient;
+const hasLinearGradientFill = (node) => node.props?.fill?.type === P.LinearGradient;
 
-const hasRadialGradientFill = (node) =>
-  node.props?.fill?.type === P.RadialGradient;
+const hasRadialGradientFill = (node) => node.props?.fill?.type === P.RadialGradient;
 
 // Math simplified from https://github.com/devongovett/svgkit/blob/master/src/elements/SVGGradient.js#L104
 const setLinearGradientFill = (ctx, node) => {
@@ -221,7 +219,7 @@ const drawChildren = (ctx, node) => {
 const resolveAspectRatio = (ctx, node) => {
   const { width, height } = node.box;
   const { viewBox, preserveAspectRatio = {} } = node.props;
-  const { meetOrSlice = 'meet', align = 'xMidYMid' } = preserveAspectRatio;
+  const { meetOrSlice = "meet", align = "xMidYMid" } = preserveAspectRatio;
 
   if (viewBox == null || width == null || height == null) return;
 
@@ -235,64 +233,52 @@ const resolveAspectRatio = (ctx, node) => {
   const scaleX = width / logicalWidth;
   const scaleY = height / logicalHeight;
 
-  if (align === 'none') {
+  if (align === "none") {
     ctx.scale(scaleX, scaleY);
     ctx.translate(-x, -y);
     return;
   }
 
   if (
-    (logicalRatio < physicalRatio && meetOrSlice === 'meet') ||
-    (logicalRatio >= physicalRatio && meetOrSlice === 'slice')
+    (logicalRatio < physicalRatio && meetOrSlice === "meet") ||
+    (logicalRatio >= physicalRatio && meetOrSlice === "slice")
   ) {
     ctx.scale(scaleY, scaleY);
 
     switch (align) {
-      case 'xMinYMin':
-      case 'xMinYMid':
-      case 'xMinYMax':
+      case "xMinYMin":
+      case "xMinYMid":
+      case "xMinYMax":
         ctx.translate(-x, -y);
         break;
 
-      case 'xMidYMin':
-      case 'xMidYMid':
-      case 'xMidYMax':
-        ctx.translate(
-          -x - (logicalWidth - (width * logicalHeight) / height) / 2,
-          -y,
-        );
+      case "xMidYMin":
+      case "xMidYMid":
+      case "xMidYMax":
+        ctx.translate(-x - (logicalWidth - (width * logicalHeight) / height) / 2, -y);
         break;
 
       default:
-        ctx.translate(
-          -x - (logicalWidth - (width * logicalHeight) / height),
-          -y,
-        );
+        ctx.translate(-x - (logicalWidth - (width * logicalHeight) / height), -y);
     }
   } else {
     ctx.scale(scaleX, scaleX);
 
     switch (align) {
-      case 'xMinYMin':
-      case 'xMidYMin':
-      case 'xMaxYMin':
+      case "xMinYMin":
+      case "xMidYMin":
+      case "xMaxYMin":
         ctx.translate(-x, -y);
         break;
 
-      case 'xMinYMid':
-      case 'xMidYMid':
-      case 'xMaxYMid':
-        ctx.translate(
-          -x,
-          -y - (logicalHeight - (height * logicalWidth) / width) / 2,
-        );
+      case "xMinYMid":
+      case "xMidYMid":
+      case "xMaxYMid":
+        ctx.translate(-x, -y - (logicalHeight - (height * logicalWidth) / width) / 2);
         break;
 
       default:
-        ctx.translate(
-          -x,
-          -y - (logicalHeight - (height * logicalWidth) / width),
-        );
+        ctx.translate(-x, -y - (logicalHeight - (height * logicalWidth) / width));
     }
   }
 };

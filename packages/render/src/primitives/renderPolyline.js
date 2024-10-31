@@ -1,4 +1,4 @@
-import parsePoints from '../svg/parsePoints';
+import parsePoints from "../svg/parsePoints";
 
 export const drawPolyline = (ctx, points) => {
   if (points.length > 0) {
@@ -8,7 +8,7 @@ export const drawPolyline = (ctx, points) => {
 };
 
 const renderPolyline = (ctx, node) => {
-  const points = parsePoints(node.props.points || '');
+  const points = parsePoints(node.props.points || "");
   drawPolyline(ctx, points);
 };
 

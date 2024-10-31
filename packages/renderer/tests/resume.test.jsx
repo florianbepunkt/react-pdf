@@ -1,53 +1,44 @@
 /* eslint-disable react/no-array-index-key */
-import { describe, expect, test } from 'vitest';
+import { describe, expect, test } from "vitest";
 
-import {
-  Link,
-  Text,
-  Font,
-  Page,
-  View,
-  Image,
-  Document,
-  StyleSheet,
-} from '@react-pdf/renderer';
-import renderToImage from './renderComponent';
+import { Link, Text, Font, Page, View, Image, Document, StyleSheet } from "@react-pdf/renderer";
+import renderToImage from "./renderComponent";
 
 const headerStyles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
+    flexDirection: "row",
     borderBottomWidth: 2,
-    borderBottomColor: '#112131',
-    borderBottomStyle: 'solid',
-    alignItems: 'stretch',
+    borderBottomColor: "#112131",
+    borderBottomStyle: "solid",
+    alignItems: "stretch",
   },
   detailColumn: {
-    flexDirection: 'column',
+    flexDirection: "column",
     flexGrow: 9,
-    textTransform: 'uppercase',
+    textTransform: "uppercase",
   },
   linkColumn: {
-    flexDirection: 'column',
+    flexDirection: "column",
     flexGrow: 2,
-    alignSelf: 'flex-end',
-    justifySelf: 'flex-end',
+    alignSelf: "flex-end",
+    justifySelf: "flex-end",
   },
   name: {
     fontSize: 24,
-    fontFamily: 'Lato Bold',
+    fontFamily: "Lato Bold",
   },
   subtitle: {
     fontSize: 10,
-    justifySelf: 'flex-end',
-    fontFamily: 'Lato',
+    justifySelf: "flex-end",
+    fontFamily: "Lato",
   },
   link: {
-    fontFamily: 'Lato',
+    fontFamily: "Lato",
     fontSize: 10,
-    color: 'black',
-    textDecoration: 'none',
-    alignSelf: 'flex-end',
-    justifySelf: 'flex-end',
+    color: "black",
+    textDecoration: "none",
+    alignSelf: "flex-end",
+    justifySelf: "flex-end",
   },
 });
 
@@ -67,31 +58,29 @@ const Header = () => (
 
 const titleStyles = StyleSheet.create({
   title: {
-    fontFamily: 'Lato Bold',
+    fontFamily: "Lato Bold",
     fontSize: 14,
     marginBottom: 10,
-    textTransform: 'uppercase',
+    textTransform: "uppercase",
   },
 });
 
-const Title = ({ children }) => (
-  <Text style={titleStyles.title}>{children}</Text>
-);
+const Title = ({ children }) => <Text style={titleStyles.title}>{children}</Text>;
 
 const listStyles = StyleSheet.create({
   item: {
-    flexDirection: 'row',
+    flexDirection: "row",
     marginBottom: 5,
   },
   bulletPoint: {
-    fontFamily: 'Lato',
+    fontFamily: "Lato",
     width: 10,
     fontSize: 10,
   },
   itemContent: {
     flex: 1,
     fontSize: 10,
-    fontFamily: 'Lato',
+    fontFamily: "Lato",
   },
 });
 
@@ -106,12 +95,12 @@ const Item = ({ children }) => (
 
 const skilsStyles = StyleSheet.create({
   title: {
-    fontFamily: 'Lato Bold',
+    fontFamily: "Lato Bold",
     fontSize: 11,
     marginBottom: 10,
   },
   skills: {
-    fontFamily: 'Lato',
+    fontFamily: "Lato",
     fontSize: 10,
     marginBottom: 10,
   },
@@ -134,9 +123,9 @@ const Skills = () => (
     <SkillEntry
       name="Combat Abilities"
       skills={[
-        'Completed Jedi Master training and built a lightsaber from scratch in order to do battle against the Empire',
-        'Defeated the Rancor and rescued Princess Leia from Jabba the Hutt',
-        'Competent fighter pilot as well as an excelent shot with nearly any weapon',
+        "Completed Jedi Master training and built a lightsaber from scratch in order to do battle against the Empire",
+        "Defeated the Rancor and rescued Princess Leia from Jabba the Hutt",
+        "Competent fighter pilot as well as an excelent shot with nearly any weapon",
       ]}
     />
   </View>
@@ -147,15 +136,15 @@ const educationStyles = StyleSheet.create({
     marginBottom: 10,
   },
   school: {
-    fontFamily: 'Lato Bold',
+    fontFamily: "Lato Bold",
     fontSize: 10,
   },
   degree: {
-    fontFamily: 'Lato',
+    fontFamily: "Lato",
     fontSize: 10,
   },
   candidate: {
-    fontFamily: 'Lato Italic',
+    fontFamily: "Lato Italic",
     fontSize: 10,
   },
 });
@@ -174,7 +163,7 @@ const expStyles = StyleSheet.create({
     flex: 1,
     paddingTop: 30,
     paddingLeft: 15,
-    '@media max-width: 400': {
+    "@media max-width: 400": {
       paddingTop: 10,
       paddingLeft: 0,
     },
@@ -184,15 +173,15 @@ const expStyles = StyleSheet.create({
   },
   date: {
     fontSize: 11,
-    fontFamily: 'Lato Italic',
+    fontFamily: "Lato Italic",
   },
   detailLeftColumn: {
-    flexDirection: 'column',
+    flexDirection: "column",
     marginLeft: 10,
     marginRight: 10,
   },
   detailRightColumn: {
-    flexDirection: 'column',
+    flexDirection: "column",
     flexGrow: 9,
   },
   bulletPoint: {
@@ -200,27 +189,27 @@ const expStyles = StyleSheet.create({
   },
   details: {
     fontSize: 10,
-    fontFamily: 'Lato',
+    fontFamily: "Lato",
   },
   headerContainer: {
-    flexDirection: 'row',
+    flexDirection: "row",
     marginBottom: 10,
   },
   leftColumn: {
-    flexDirection: 'column',
+    flexDirection: "column",
     flexGrow: 9,
   },
   rightColumn: {
-    flexDirection: 'column',
+    flexDirection: "column",
     flexGrow: 1,
-    alignItems: 'flex-end',
-    justifySelf: 'flex-end',
+    alignItems: "flex-end",
+    justifySelf: "flex-end",
   },
   title: {
     fontSize: 11,
-    color: 'black',
-    textDecoration: 'none',
-    fontFamily: 'Lato Bold',
+    color: "black",
+    textDecoration: "none",
+    fontFamily: "Lato Bold",
   },
 });
 
@@ -247,44 +236,44 @@ const ExperienceEntry = ({ company, details, position, date }) => {
 
 const experienceData = [
   {
-    company: 'Jedi Temple, Coruseant',
-    date: 'A long time ago...',
+    company: "Jedi Temple, Coruseant",
+    date: "A long time ago...",
     details: [
-      'Started a new Jedi Temple in order to train the next generation of Jedi Masters',
-      'Discovered and trained a new generation of Jedi Knights, which he recruited from within the New Republic',
-      'Communicates with decesased Jedi Masters such as Anakin Skywalker, Yoda, Obi-Wan Kenobi in order to learn the secrets of the Jedi Order',
+      "Started a new Jedi Temple in order to train the next generation of Jedi Masters",
+      "Discovered and trained a new generation of Jedi Knights, which he recruited from within the New Republic",
+      "Communicates with decesased Jedi Masters such as Anakin Skywalker, Yoda, Obi-Wan Kenobi in order to learn the secrets of the Jedi Order",
     ],
-    position: 'Head Jedi Master',
+    position: "Head Jedi Master",
   },
   {
-    company: 'Rebel Alliance',
-    date: 'A long time ago...',
+    company: "Rebel Alliance",
+    date: "A long time ago...",
     details: [
-      'Lead legions of troops into battle while demonstrating bravery, competence and honor',
-      'Created complicated battle plans in conjunction with other Rebel leaders in order to ensure the greatest chance of success',
-      'Defeated Darth Vader in single-combat, and convinced him to betray his mentor, the Emperor',
+      "Lead legions of troops into battle while demonstrating bravery, competence and honor",
+      "Created complicated battle plans in conjunction with other Rebel leaders in order to ensure the greatest chance of success",
+      "Defeated Darth Vader in single-combat, and convinced him to betray his mentor, the Emperor",
     ],
-    position: 'General',
+    position: "General",
   },
   {
-    company: 'Rebel Alliance',
-    date: 'A long time ago...',
+    company: "Rebel Alliance",
+    date: "A long time ago...",
     details: [
-      'Destroyed the Death Star by using the force to find its only weakness and delivering a torpedo into the center of the ship',
-      'Commanded of squadron of X-Wings into battle',
-      'Defeated an enemy AT-AT single handedly after his ship was destroyed',
-      'Awarded a medal for valor and bravery in battle for his successful destruction of the Death Star',
+      "Destroyed the Death Star by using the force to find its only weakness and delivering a torpedo into the center of the ship",
+      "Commanded of squadron of X-Wings into battle",
+      "Defeated an enemy AT-AT single handedly after his ship was destroyed",
+      "Awarded a medal for valor and bravery in battle for his successful destruction of the Death Star",
     ],
-    position: 'Lieutenant Commander',
+    position: "Lieutenant Commander",
   },
   {
-    company: 'Tatooine Moisture Refinery',
-    date: 'A long time ago...',
+    company: "Tatooine Moisture Refinery",
+    date: "A long time ago...",
     details: [
-      'Replaced damaged power converters',
-      'Performed menial labor thoughout the farm in order to ensure its continued operation',
+      "Replaced damaged power converters",
+      "Performed menial labor thoughout the farm in order to ensure its continued operation",
     ],
-    position: 'Moisture Farmer',
+    position: "Moisture Farmer",
   },
 ];
 
@@ -309,60 +298,60 @@ const resumeStyles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    flexDirection: 'row',
-    '@media max-width: 400': {
-      flexDirection: 'column',
+    flexDirection: "row",
+    "@media max-width: 400": {
+      flexDirection: "column",
     },
   },
   image: {
     marginBottom: 10,
   },
   leftColumn: {
-    flexDirection: 'column',
+    flexDirection: "column",
     width: 170,
     paddingTop: 30,
     paddingRight: 15,
-    '@media max-width: 400': {
-      width: '100%',
+    "@media max-width: 400": {
+      width: "100%",
       paddingRight: 0,
     },
-    '@media orientation: landscape': {
+    "@media orientation: landscape": {
       width: 200,
     },
   },
   footer: {
     fontSize: 12,
-    fontFamily: 'Lato Bold',
-    textAlign: 'center',
+    fontFamily: "Lato Bold",
+    textAlign: "center",
     marginTop: 15,
     paddingTop: 5,
     borderWidth: 3,
-    borderColor: 'gray',
-    borderStyle: 'dashed',
-    '@media orientation: landscape': {
+    borderColor: "gray",
+    borderStyle: "dashed",
+    "@media orientation: landscape": {
       marginTop: 10,
     },
   },
 });
 
 Font.register({
-  family: 'Open Sans',
-  src: 'https://fonts.gstatic.com/s/opensans/v17/mem8YaGs126MiZpBA-UFVZ0e.ttf',
+  family: "Open Sans",
+  src: "https://fonts.gstatic.com/s/opensans/v17/mem8YaGs126MiZpBA-UFVZ0e.ttf",
 });
 
 Font.register({
-  family: 'Lato',
-  src: 'https://fonts.gstatic.com/s/lato/v16/S6uyw4BMUTPHjx4wWw.ttf',
+  family: "Lato",
+  src: "https://fonts.gstatic.com/s/lato/v16/S6uyw4BMUTPHjx4wWw.ttf",
 });
 
 Font.register({
-  family: 'Lato Italic',
-  src: 'https://fonts.gstatic.com/s/lato/v16/S6u8w4BMUTPHjxsAXC-v.ttf',
+  family: "Lato Italic",
+  src: "https://fonts.gstatic.com/s/lato/v16/S6u8w4BMUTPHjxsAXC-v.ttf",
 });
 
 Font.register({
-  family: 'Lato Bold',
-  src: 'https://fonts.gstatic.com/s/lato/v16/S6u9w4BMUTPHh6UVSwiPHA.ttf',
+  family: "Lato Bold",
+  src: "https://fonts.gstatic.com/s/lato/v16/S6u9w4BMUTPHh6UVSwiPHA.ttf",
 });
 
 const Resume = (props) => (
@@ -370,23 +359,18 @@ const Resume = (props) => (
     <Header />
     <View style={resumeStyles.container}>
       <View style={resumeStyles.leftColumn}>
-        <Image
-          src="https://react-pdf.org/images/luke.jpg"
-          style={resumeStyles.image}
-        />
+        <Image src="https://react-pdf.org/images/luke.jpg" style={resumeStyles.image} />
         <Education />
         <Skills />
       </View>
       <Experience />
     </View>
-    <Text style={resumeStyles.footer}>
-      This IS the candidate you are looking for
-    </Text>
+    <Text style={resumeStyles.footer}>This IS the candidate you are looking for</Text>
   </Page>
 );
 
-describe('resume', () => {
-  test('should match snapshot', async () => {
+describe("resume", () => {
+  test("should match snapshot", async () => {
     const image = await renderToImage(
       <Document
         author="Luke Skywalker"
@@ -401,7 +385,7 @@ describe('resume', () => {
     expect(image).toMatchImageSnapshot();
   });
 
-  test('should match snapshot', async () => {
+  test("should match snapshot", async () => {
     const image = await renderToImage(
       <Document
         author="Luke Skywalker"
@@ -416,7 +400,7 @@ describe('resume', () => {
     expect(image).toMatchImageSnapshot();
   });
 
-  test('should match snapshot', async () => {
+  test("should match snapshot", async () => {
     const image = await renderToImage(
       <Document
         author="Luke Skywalker"

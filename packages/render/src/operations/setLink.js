@@ -7,7 +7,7 @@ const setLink = (ctx, node) => {
 
   if (src) {
     const isId = isSrcId(src);
-    const method = isId ? 'goTo' : 'link';
+    const method = isId ? "goTo" : "link";
     const value = isId ? src.slice(1) : src;
 
     ctx[method](left, top, width, height, value);

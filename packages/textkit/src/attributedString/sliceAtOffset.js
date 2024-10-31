@@ -1,5 +1,5 @@
-import slice from './slice';
-import indexAtOffset from './indexAtOffset';
+import slice from "./slice";
+import indexAtOffset from "./indexAtOffset";
 
 /**
  * @typedef {import('../types.js').AttributedString} AttributedString

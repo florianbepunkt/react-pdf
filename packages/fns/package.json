@@ -13,10 +13,11 @@
     "directory": "packages/fns"
   },
   "publishConfig": {
-     "registry": "https://npm.pkg.github.com/easypliant"
+    "registry": "https://npm.pkg.github.com/easypliant"
   },
   "scripts": {
     "test": "vitest",
+    "format": "prettier --write \"./**/*.{js,jsx,ts,tsx,json}\"",
     "build": "rimraf ./lib && rollup -c",
     "watch": "rimraf ./lib && rollup -c -w"
   },

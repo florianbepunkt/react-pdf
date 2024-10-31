@@ -1,1 +1,1 @@
-export default { extends: '../../babel.config.js' };
+export default { extends: "../../babel.config.js" };

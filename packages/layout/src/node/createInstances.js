@@ -1,12 +1,11 @@
-import { castArray } from '@react-pdf/fns';
-import { TextInstance } from '@react-pdf/primitives';
+import { castArray } from "@react-pdf/fns";
+import { TextInstance } from "@react-pdf/primitives";
 
-const isString = (value) => typeof value === 'string';
+const isString = (value) => typeof value === "string";
 
-const isNumber = (value) => typeof value === 'number';
+const isNumber = (value) => typeof value === "number";
 
-const isFragment = (value) =>
-  value && value.type === Symbol.for('react.fragment');
+const isFragment = (value) => value && value.type === Symbol.for("react.fragment");
 
 /**
  * Transforms a react element instance to internal element format.

@@ -1,6 +1,6 @@
-import * as Yoga from 'yoga-layout/load';
+import * as Yoga from "yoga-layout/load";
 
-import setYogaValue from './setYogaValue';
+import setYogaValue from "./setYogaValue";
 
 /**
  * @typedef {Function} NodeInstanceWrapper
@@ -15,7 +15,7 @@ import setYogaValue from './setYogaValue';
  * @param {Object} node node instance
  * @returns {Object} node instance
  */
-export const setMarginTop = setYogaValue('margin', Yoga.Edge.Top);
+export const setMarginTop = setYogaValue("margin", Yoga.Edge.Top);
 
 /**
  * Set margin right attribute to node's Yoga instance
@@ -24,7 +24,7 @@ export const setMarginTop = setYogaValue('margin', Yoga.Edge.Top);
  * @param {Object} node node instance
  * @returns {Object} node instance
  */
-export const setMarginRight = setYogaValue('margin', Yoga.Edge.Right);
+export const setMarginRight = setYogaValue("margin", Yoga.Edge.Right);
 
 /**
  * Set margin bottom attribute to node's Yoga instance
@@ -33,7 +33,7 @@ export const setMarginRight = setYogaValue('margin', Yoga.Edge.Right);
  * @param {Object} node node instance
  * @returns {Object} node instance
  */
-export const setMarginBottom = setYogaValue('margin', Yoga.Edge.Bottom);
+export const setMarginBottom = setYogaValue("margin", Yoga.Edge.Bottom);
 
 /**
  * Set margin left attribute to node's Yoga instance
@@ -42,7 +42,7 @@ export const setMarginBottom = setYogaValue('margin', Yoga.Edge.Bottom);
  * @param {Object} node node instance
  * @returns {Object} node instance
  */
-export const setMarginLeft = setYogaValue('margin', Yoga.Edge.Left);
+export const setMarginLeft = setYogaValue("margin", Yoga.Edge.Left);
 
 /**
  * Set all margins at once

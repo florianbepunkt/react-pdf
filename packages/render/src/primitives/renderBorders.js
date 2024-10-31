@@ -15,14 +15,7 @@ const clipBorderTop = (ctx, layout, style, rtr, rtl) => {
   const c0 = rtr * (1.0 - KAPPA);
 
   // Clip outer top right cap
-  ctx.bezierCurveTo(
-    left + width - c0,
-    top,
-    left + width,
-    top + c0,
-    left + width,
-    top + rtr,
-  );
+  ctx.bezierCurveTo(left + width - c0, top, left + width, top + c0, left + width, top + rtr);
 
   // Move down in case the margin exceedes the radius
   const topRightYCoord = top + Math.max(borderTopWidth, rtr);
@@ -103,13 +96,7 @@ const clipBorderTop = (ctx, layout, style, rtr, rtl) => {
 
 const fillBorderTop = (ctx, layout, style, rtr, rtl) => {
   const { top, left, width } = layout;
-  const {
-    borderTopColor,
-    borderTopWidth,
-    borderTopStyle,
-    borderRightWidth,
-    borderLeftWidth,
-  } = style;
+  const { borderTopColor, borderTopWidth, borderTopStyle, borderRightWidth, borderLeftWidth } = style;
 
   const c0 = rtl * (1.0 - KAPPA);
   const c1 = rtr * (1.0 - KAPPA);
@@ -117,23 +104,14 @@ const fillBorderTop = (ctx, layout, style, rtr, rtl) => {
   ctx.moveTo(left, top + Math.max(rtl, borderTopWidth));
   ctx.bezierCurveTo(left, top + c0, left + c0, top, left + rtl, top);
   ctx.lineTo(left + width - rtr, top);
-  ctx.bezierCurveTo(
-    left + width - c1,
-    top,
-    left + width,
-    top + c1,
-    left + width,
-    top + rtr,
-  );
+  ctx.bezierCurveTo(left + width - c1, top, left + width, top + c1, left + width, top + rtr);
 
   ctx.strokeColor(borderTopColor);
-  ctx.lineWidth(
-    Math.max(borderRightWidth, borderTopWidth, borderLeftWidth) * 2,
-  );
+  ctx.lineWidth(Math.max(borderRightWidth, borderTopWidth, borderLeftWidth) * 2);
 
-  if (borderTopStyle === 'dashed') {
+  if (borderTopStyle === "dashed") {
     ctx.dash(borderTopWidth * 2, { space: borderTopWidth * 1.2 });
-  } else if (borderTopStyle === 'dotted') {
+  } else if (borderTopStyle === "dotted") {
     ctx.dash(borderTopWidth, { space: borderTopWidth * 1.2 });
   }
 
@@ -186,10 +164,7 @@ const clipBorderRight = (ctx, layout, style, rtr, rbr) => {
   );
 
   // Clip inner right border edge
-  ctx.lineTo(
-    left + width - borderRightWidth,
-    top + Math.max(rtr, borderTopWidth),
-  );
+  ctx.lineTo(left + width - borderRightWidth, top + Math.max(rtr, borderTopWidth));
 
   // Ellipse coefficients inner top right cap
   const innerTopRightRadiusX = Math.max(rtr - borderRightWidth, 0);
@@ -216,14 +191,7 @@ const clipBorderRight = (ctx, layout, style, rtr, rbr) => {
   const c5 = rtr * (1.0 - KAPPA);
 
   // Clip outer top right cap
-  ctx.bezierCurveTo(
-    left + width - c5,
-    top,
-    left + width,
-    top + c5,
-    left + width,
-    top + rtr,
-  );
+  ctx.bezierCurveTo(left + width - c5, top, left + width, top + c5, left + width, top + rtr);
 
   ctx.closePath();
   ctx.clip();
@@ -252,26 +220,14 @@ const clipBorderRight = (ctx, layout, style, rtr, rbr) => {
 
 const fillBorderRight = (ctx, layout, style, rtr, rbr) => {
   const { top, left, width, height } = layout;
-  const {
-    borderRightColor,
-    borderRightStyle,
-    borderRightWidth,
-    borderTopWidth,
-    borderBottomWidth,
-  } = style;
+  const { borderRightColor, borderRightStyle, borderRightWidth, borderTopWidth, borderBottomWidth } =
+    style;
 
   const c0 = rbr * (1.0 - KAPPA);
   const c1 = rtr * (1.0 - KAPPA);
 
   ctx.moveTo(left + width - rtr, top);
-  ctx.bezierCurveTo(
-    left + width - c1,
-    top,
-    left + width,
-    top + c1,
-    left + width,
-    top + rtr,
-  );
+  ctx.bezierCurveTo(left + width - c1, top, left + width, top + c1, left + width, top + rtr);
   ctx.lineTo(left + width, top + height - rbr);
   ctx.bezierCurveTo(
     left + width,
@@ -283,13 +239,11 @@ const fillBorderRight = (ctx, layout, style, rtr, rbr) => {
   );
 
   ctx.strokeColor(borderRightColor);
-  ctx.lineWidth(
-    Math.max(borderRightWidth, borderTopWidth, borderBottomWidth) * 2,
-  );
+  ctx.lineWidth(Math.max(borderRightWidth, borderTopWidth, borderBottomWidth) * 2);
 
-  if (borderRightStyle === 'dashed') {
+  if (borderRightStyle === "dashed") {
     ctx.dash(borderRightWidth * 2, { space: borderRightWidth * 1.2 });
-  } else if (borderRightStyle === 'dotted') {
+  } else if (borderRightStyle === "dotted") {
     ctx.dash(borderRightWidth, { space: borderRightWidth * 1.2 });
   }
 
@@ -309,14 +263,7 @@ const clipBorderBottom = (ctx, layout, style, rbl, rbr) => {
   const c0 = rbl * (1.0 - KAPPA);
 
   // Clip outer top right cap
-  ctx.bezierCurveTo(
-    left + c0,
-    top + height,
-    left,
-    top + height - c0,
-    left,
-    top + height - rbl,
-  );
+  ctx.bezierCurveTo(left + c0, top + height, left, top + height - c0, left, top + height - rbl);
 
   // Move up in case the margin exceedes the radius
   const bottomLeftYCoord = top + height - Math.max(borderBottomWidth, rbl);
@@ -342,10 +289,7 @@ const clipBorderBottom = (ctx, layout, style, rbl, rbr) => {
   );
 
   // Clip inner bottom border edge
-  ctx.lineTo(
-    left + width - Math.max(rbr, borderRightWidth),
-    top + height - borderBottomWidth,
-  );
+  ctx.lineTo(left + width - Math.max(rbr, borderRightWidth), top + height - borderBottomWidth);
 
   // Ellipse coefficients inner top left cap
   const innerBottomRightRadiusX = Math.max(rbr - borderRightWidth, 0);
@@ -407,13 +351,8 @@ const clipBorderBottom = (ctx, layout, style, rbl, rbr) => {
 
 const fillBorderBottom = (ctx, layout, style, rbl, rbr) => {
   const { top, left, width, height } = layout;
-  const {
-    borderBottomColor,
-    borderBottomStyle,
-    borderBottomWidth,
-    borderRightWidth,
-    borderLeftWidth,
-  } = style;
+  const { borderBottomColor, borderBottomStyle, borderBottomWidth, borderRightWidth, borderLeftWidth } =
+    style;
 
   const c0 = rbl * (1.0 - KAPPA);
   const c1 = rbr * (1.0 - KAPPA);
@@ -428,23 +367,14 @@ const fillBorderBottom = (ctx, layout, style, rbl, rbr) => {
     top + height,
   );
   ctx.lineTo(left + rbl, top + height);
-  ctx.bezierCurveTo(
-    left + c0,
-    top + height,
-    left,
-    top + height - c0,
-    left,
-    top + height - rbl,
-  );
+  ctx.bezierCurveTo(left + c0, top + height, left, top + height - c0, left, top + height - rbl);
 
   ctx.strokeColor(borderBottomColor);
-  ctx.lineWidth(
-    Math.max(borderBottomWidth, borderRightWidth, borderLeftWidth) * 2,
-  );
+  ctx.lineWidth(Math.max(borderBottomWidth, borderRightWidth, borderLeftWidth) * 2);
 
-  if (borderBottomStyle === 'dashed') {
+  if (borderBottomStyle === "dashed") {
     ctx.dash(borderBottomWidth * 2, { space: borderBottomWidth * 1.2 });
-  } else if (borderBottomStyle === 'dotted') {
+  } else if (borderBottomStyle === "dotted") {
     ctx.dash(borderBottomWidth, { space: borderBottomWidth * 1.2 });
   }
 
@@ -490,10 +420,7 @@ const clipBorderLeft = (ctx, layout, style, rbl, rtl) => {
   );
 
   // Clip inner left border edge
-  ctx.lineTo(
-    left + borderLeftWidth,
-    top + height - Math.max(rbl, borderBottomWidth),
-  );
+  ctx.lineTo(left + borderLeftWidth, top + height - Math.max(rbl, borderBottomWidth));
 
   // Ellipse coefficients inner bottom left cap
   const innerBottomLeftRadiusX = Math.max(rbl - borderLeftWidth, 0);
@@ -520,14 +447,7 @@ const clipBorderLeft = (ctx, layout, style, rbl, rtl) => {
   const c5 = rbl * (1.0 - KAPPA);
 
   // Clip outer top right cap
-  ctx.bezierCurveTo(
-    left + c5,
-    top + height,
-    left,
-    top + height - c5,
-    left,
-    top + height - rbl,
-  );
+  ctx.bezierCurveTo(left + c5, top + height, left, top + height - c5, left, top + height - rbl);
 
   ctx.closePath();
   ctx.clip();
@@ -556,37 +476,22 @@ const clipBorderLeft = (ctx, layout, style, rbl, rtl) => {
 
 const fillBorderLeft = (ctx, layout, style, rbl, rtl) => {
   const { top, left, height } = layout;
-  const {
-    borderLeftColor,
-    borderLeftStyle,
-    borderLeftWidth,
-    borderTopWidth,
-    borderBottomWidth,
-  } = style;
+  const { borderLeftColor, borderLeftStyle, borderLeftWidth, borderTopWidth, borderBottomWidth } = style;
 
   const c0 = rbl * (1.0 - KAPPA);
   const c1 = rtl * (1.0 - KAPPA);
 
   ctx.moveTo(left + rbl, top + height);
-  ctx.bezierCurveTo(
-    left + c0,
-    top + height,
-    left,
-    top + height - c0,
-    left,
-    top + height - rbl,
-  );
+  ctx.bezierCurveTo(left + c0, top + height, left, top + height - c0, left, top + height - rbl);
   ctx.lineTo(left, top + rtl);
   ctx.bezierCurveTo(left, top + c1, left + c1, top, left + rtl, top);
 
   ctx.strokeColor(borderLeftColor);
-  ctx.lineWidth(
-    Math.max(borderLeftWidth, borderTopWidth, borderBottomWidth) * 2,
-  );
+  ctx.lineWidth(Math.max(borderLeftWidth, borderTopWidth, borderBottomWidth) * 2);
 
-  if (borderLeftStyle === 'dashed') {
+  if (borderLeftStyle === "dashed") {
     ctx.dash(borderLeftWidth * 2, { space: borderLeftWidth * 1.2 });
-  } else if (borderLeftStyle === 'dotted') {
+  } else if (borderLeftStyle === "dotted") {
     ctx.dash(borderLeftWidth, { space: borderLeftWidth * 1.2 });
   }
 
@@ -604,14 +509,8 @@ const shouldRenderBorders = (node) =>
 const renderBorders = (ctx, node) => {
   if (!shouldRenderBorders(node)) return;
 
-  const {
-    width,
-    height,
-    borderTopWidth,
-    borderLeftWidth,
-    borderRightWidth,
-    borderBottomWidth,
-  } = node.box;
+  const { width, height, borderTopWidth, borderLeftWidth, borderRightWidth, borderBottomWidth } =
+    node.box;
 
   const {
     opacity,
@@ -619,14 +518,14 @@ const renderBorders = (ctx, node) => {
     borderTopRightRadius = 0,
     borderBottomLeftRadius = 0,
     borderBottomRightRadius = 0,
-    borderTopColor = 'black',
-    borderTopStyle = 'solid',
-    borderLeftColor = 'black',
-    borderLeftStyle = 'solid',
-    borderRightColor = 'black',
-    borderRightStyle = 'solid',
-    borderBottomColor = 'black',
-    borderBottomStyle = 'solid',
+    borderTopColor = "black",
+    borderTopStyle = "solid",
+    borderLeftColor = "black",
+    borderLeftStyle = "solid",
+    borderRightColor = "black",
+    borderRightStyle = "solid",
+    borderBottomColor = "black",
+    borderBottomStyle = "solid",
   } = node.style;
 
   const style = {

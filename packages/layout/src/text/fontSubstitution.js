@@ -1,6 +1,6 @@
-import { last } from '@react-pdf/fns';
+import { last } from "@react-pdf/fns";
 
-import StandardFont from './standardFont';
+import StandardFont from "./standardFont";
 
 const fontCache = {};
 
@@ -17,7 +17,7 @@ const getOrCreateFont = (name) => {
   return font;
 };
 
-const getFallbackFont = () => getOrCreateFont('Helvetica');
+const getFallbackFont = () => getOrCreateFont("Helvetica");
 
 const pickFontFromFontStack = (codePoint, fontStack, lastFont) => {
   const fontStackWithFallback = [...fontStack, lastFont, getFallbackFont()];
@@ -49,7 +49,7 @@ const fontSubstitution =
       const run = runs[i];
 
       const defaultFont = run.attributes.font.map((font) =>
-        typeof font === 'string' ? getOrCreateFont(font) : font,
+        typeof font === "string" ? getOrCreateFont(font) : font,
       );
 
       if (string.length === 0) {
@@ -67,11 +67,7 @@ const fontSubstitution =
         const fontSize = getFontSize(run);
 
         // If anything that would impact res has changed, update it
-        if (
-          font !== lastFont ||
-          fontSize !== lastFontSize ||
-          font.unitsPerEm !== lastFont.unitsPerEm
-        ) {
+        if (font !== lastFont || fontSize !== lastFontSize || font.unitsPerEm !== lastFont.unitsPerEm) {
           if (lastFont) {
             res.push({
               start: lastIndex,

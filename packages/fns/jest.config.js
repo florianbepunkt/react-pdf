@@ -1,3 +1,3 @@
 export default {
-  testRegex: 'tests/.*?(test)\\.js$',
+  testRegex: "tests/.*?(test)\\.js$",
 };

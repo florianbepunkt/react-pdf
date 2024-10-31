@@ -1,5 +1,5 @@
-import length from '../attributedString/length';
-import slice from '../attributedString/slice';
+import length from "../attributedString/length";
+import slice from "../attributedString/slice";
 
 /**
  * @typedef {import('../types.js').AttributedString} AttributedString
@@ -17,12 +17,12 @@ const splitParagraphs = () => {
     const res = [];
 
     let start = 0;
-    let breakPoint = attributedString.string.indexOf('\n') + 1;
+    let breakPoint = attributedString.string.indexOf("\n") + 1;
 
     while (breakPoint > 0) {
       res.push(slice(start, breakPoint, attributedString));
       start = breakPoint;
-      breakPoint = attributedString.string.indexOf('\n', breakPoint) + 1;
+      breakPoint = attributedString.string.indexOf("\n", breakPoint) + 1;
     }
 
     if (start === 0) {

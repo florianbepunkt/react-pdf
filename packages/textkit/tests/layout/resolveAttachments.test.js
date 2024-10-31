@@ -1,14 +1,14 @@
-import { describe, expect, test } from 'vitest';
+import { describe, expect, test } from "vitest";
 
-import pluck from '../internal/pluck';
-import resolveAttachments from '../../src/layout/resolveAttachments';
+import pluck from "../internal/pluck";
+import resolveAttachments from "../../src/layout/resolveAttachments";
 
 const instance = resolveAttachments();
 
-describe('resolveAttachments', () => {
-  test('should return same string if no attributes present', () => {
+describe("resolveAttachments", () => {
+  test("should return same string if no attributes present", () => {
     const string = {
-      string: 'Lorem',
+      string: "Lorem",
       runs: [
         {
           start: 0,
@@ -37,9 +37,9 @@ describe('resolveAttachments', () => {
     expect(result).toEqual(string);
   });
 
-  test('should return same string if no attachment present', () => {
+  test("should return same string if no attachment present", () => {
     const string = {
-      string: 'Lorem',
+      string: "Lorem",
       runs: [
         {
           start: 0,
@@ -69,9 +69,9 @@ describe('resolveAttachments', () => {
     expect(result).toEqual(string);
   });
 
-  test('should return same string if no attachment code point present', () => {
+  test("should return same string if no attachment code point present", () => {
     const string = {
-      string: 'Lorem',
+      string: "Lorem",
       runs: [
         {
           start: 0,
@@ -101,9 +101,9 @@ describe('resolveAttachments', () => {
     expect(result).toEqual(string);
   });
 
-  test('should return same string if attachment code point present but no attachment', () => {
+  test("should return same string if attachment code point present but no attachment", () => {
     const string = {
-      string: 'Lorem',
+      string: "Lorem",
       runs: [
         {
           start: 0,
@@ -132,7 +132,7 @@ describe('resolveAttachments', () => {
     expect(result).toEqual(string);
   });
 
-  test('should not mutate passed string', () => {
+  test("should not mutate passed string", () => {
     const string = {
       string: `Lo${String.fromCodePoint(65532)}em`,
       runs: [
@@ -162,15 +162,11 @@ describe('resolveAttachments', () => {
     instance(string);
 
     expect(string.runs[0].glyphIndices).toEqual([0, 1, 2, 3, 4]);
-    expect(pluck('id', string.runs[0].glyphs)).toEqual([
-      76, 111, 65532, 101, 109,
-    ]);
-    expect(pluck('xAdvance', string.runs[0].positions)).toEqual([
-      8, 7, 6, 5, 4,
-    ]);
+    expect(pluck("id", string.runs[0].glyphs)).toEqual([76, 111, 65532, 101, 109]);
+    expect(pluck("xAdvance", string.runs[0].positions)).toEqual([8, 7, 6, 5, 4]);
   });
 
-  test('should change attachment glyph position appropiately', () => {
+  test("should change attachment glyph position appropiately", () => {
     const string = {
       string: `Lo${String.fromCodePoint(65532)}em`,
       runs: [
@@ -199,15 +195,11 @@ describe('resolveAttachments', () => {
     const result = instance(string);
 
     expect(result.runs[0].glyphIndices).toEqual([0, 1, 2, 3, 4]);
-    expect(pluck('id', result.runs[0].glyphs)).toEqual([
-      76, 111, 65532, 101, 109,
-    ]);
-    expect(pluck('xAdvance', result.runs[0].positions)).toEqual([
-      8, 7, 20, 5, 4,
-    ]);
+    expect(pluck("id", result.runs[0].glyphs)).toEqual([76, 111, 65532, 101, 109]);
+    expect(pluck("xAdvance", result.runs[0].positions)).toEqual([8, 7, 20, 5, 4]);
   });
 
-  test('should change attachment glyph position appropiately when ligature is present before', () => {
+  test("should change attachment glyph position appropiately when ligature is present before", () => {
     const string = {
       string: `Lo${String.fromCodePoint(65532)}em`,
       runs: [
@@ -234,13 +226,11 @@ describe('resolveAttachments', () => {
     const result = instance(string);
 
     expect(result.runs[0].glyphIndices).toEqual([0, 0, 1, 2, 3]);
-    expect(pluck('id', result.runs[0].glyphs)).toEqual([
-      64257, 65532, 101, 109,
-    ]);
-    expect(pluck('xAdvance', result.runs[0].positions)).toEqual([10, 20, 5, 4]);
+    expect(pluck("id", result.runs[0].glyphs)).toEqual([64257, 65532, 101, 109]);
+    expect(pluck("xAdvance", result.runs[0].positions)).toEqual([10, 20, 5, 4]);
   });
 
-  test('should change attachment glyph position appropiately when ligature is present after', () => {
+  test("should change attachment glyph position appropiately when ligature is present after", () => {
     const string = {
       string: `Lo${String.fromCodePoint(65532)}em`,
       runs: [
@@ -267,7 +257,7 @@ describe('resolveAttachments', () => {
     const result = instance(string);
 
     expect(result.runs[0].glyphIndices).toEqual([0, 1, 2, 2, 3]);
-    expect(pluck('id', result.runs[0].glyphs)).toEqual([76, 65532, 64257, 109]);
-    expect(pluck('xAdvance', result.runs[0].positions)).toEqual([7, 20, 10, 4]);
+    expect(pluck("id", result.runs[0].glyphs)).toEqual([76, 65532, 64257, 109]);
+    expect(pluck("xAdvance", result.runs[0].positions)).toEqual([7, 20, 10, 4]);
   });
 });

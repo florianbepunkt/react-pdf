@@ -1,6 +1,6 @@
-import { describe, test, expect } from 'vitest';
+import { describe, test, expect } from "vitest";
 
-import bidiReordering from '../../src/layout/bidiReordering';
+import bidiReordering from "../../src/layout/bidiReordering";
 
 const bidiReorderingInstance = bidiReordering();
 
@@ -12,16 +12,16 @@ const initializeToIndex = (size) => {
   return arr;
 };
 
-describe('bidiReordering', () => {
-  test('should return reversed string', () => {
-    const word = 'Lorem';
-    const wordReversed = word.split('').reverse().join('');
+describe("bidiReordering", () => {
+  test("should return reversed string", () => {
+    const word = "Lorem";
+    const wordReversed = word.split("").reverse().join("");
     const string = {
       string: word,
       runs: [
         {
           attributes: {
-            direction: 'rtl',
+            direction: "rtl",
             bidiLevel: 1,
           },
           start: 0,
@@ -34,22 +34,18 @@ describe('bidiReordering', () => {
     };
     const result = bidiReorderingInstance([[string]]);
     expect(result[0][0].string).toBe(wordReversed);
-    expect(result[0][0].runs[0].glyphs).toEqual(
-      string.runs[0].glyphs.reverse(),
-    );
-    expect(result[0][0].runs[0].positions).toEqual(
-      string.runs[0].positions.reverse(),
-    );
+    expect(result[0][0].runs[0].glyphs).toEqual(string.runs[0].glyphs.reverse());
+    expect(result[0][0].runs[0].positions).toEqual(string.runs[0].positions.reverse());
   });
 
-  test('should return normal string for direction ltr', () => {
-    const word = 'Lorem';
+  test("should return normal string for direction ltr", () => {
+    const word = "Lorem";
     const string = {
       string: word,
       runs: [
         {
           attributes: {
-            direction: 'ltr',
+            direction: "ltr",
             bidiLevel: 0,
           },
           start: 0,
@@ -66,13 +62,13 @@ describe('bidiReordering', () => {
     expect(result[0][0].runs[0].positions).toEqual(string.runs[0].positions);
   });
 
-  test('should return part of the string reversed', () => {
+  test("should return part of the string reversed", () => {
     const string = {
-      string: 'Lorem ipsum',
+      string: "Lorem ipsum",
       runs: [
         {
           attributes: {
-            direction: 'ltr',
+            direction: "ltr",
             bidiLevel: 0,
           },
           start: 0,
@@ -83,7 +79,7 @@ describe('bidiReordering', () => {
         },
         {
           attributes: {
-            direction: 'rtl',
+            direction: "rtl",
             bidiLevel: 1,
           },
           start: 6,
@@ -96,25 +92,21 @@ describe('bidiReordering', () => {
     };
     const result = bidiReorderingInstance([[string]]);
 
-    expect(result[0][0].string).toBe('Lorem muspi');
+    expect(result[0][0].string).toBe("Lorem muspi");
     expect(result[0][0].runs[0].glyphs).toEqual(string.runs[0].glyphs);
     expect(result[0][0].runs[0].positions).toEqual(string.runs[0].positions);
 
-    expect(result[0][0].runs[1].glyphs).toEqual(
-      string.runs[1].glyphs.reverse(),
-    );
-    expect(result[0][0].runs[1].positions).toEqual(
-      string.runs[1].positions.reverse(),
-    );
+    expect(result[0][0].runs[1].glyphs).toEqual(string.runs[1].glyphs.reverse());
+    expect(result[0][0].runs[1].positions).toEqual(string.runs[1].positions.reverse());
   });
 
-  test('should return string reversed not repeating ligatures characters', () => {
+  test("should return string reversed not repeating ligatures characters", () => {
     const string = {
-      string: 'Lore',
+      string: "Lore",
       runs: [
         {
           attributes: {
-            direction: 'rtl',
+            direction: "rtl",
             bidiLevel: 1,
           },
           start: 0,
@@ -133,7 +125,7 @@ describe('bidiReordering', () => {
 
     const result = bidiReorderingInstance([[string]]);
 
-    expect(result[0][0].string).toBe('eroL');
+    expect(result[0][0].string).toBe("eroL");
     expect(result[0][0].runs[0].positions).toEqual([0]);
   });
 });

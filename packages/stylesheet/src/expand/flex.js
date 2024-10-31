@@ -5,7 +5,7 @@ const flexDefaults = [1, 1, 0];
 /**
  * @type {(number | 'auto')[]}
  */
-const flexAuto = [1, 1, 'auto'];
+const flexAuto = [1, 1, "auto"];
 
 const expandFlex = (key, value) => {
   /**
@@ -13,10 +13,10 @@ const expandFlex = (key, value) => {
    */
   let defaults = flexDefaults;
   let matches = [];
-  if (value === 'auto') {
+  if (value === "auto") {
     defaults = flexAuto;
   } else {
-    matches = `${value}`.split(' ');
+    matches = `${value}`.split(" ");
   }
 
   const flexGrow = matches[0] || defaults[0];

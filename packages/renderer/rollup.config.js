@@ -1,47 +1,44 @@
-import json from '@rollup/plugin-json';
-import babel from '@rollup/plugin-babel';
-import nodeResolve from '@rollup/plugin-node-resolve';
-import replace from '@rollup/plugin-replace';
-import alias from '@rollup/plugin-alias';
-import ignore from 'rollup-plugin-ignore';
-import terser from '@rollup/plugin-terser';
-import commonjs from '@rollup/plugin-commonjs';
-import copy from 'rollup-plugin-copy';
+import json from "@rollup/plugin-json";
+import babel from "@rollup/plugin-babel";
+import nodeResolve from "@rollup/plugin-node-resolve";
+import replace from "@rollup/plugin-replace";
+import alias from "@rollup/plugin-alias";
+import ignore from "rollup-plugin-ignore";
+import terser from "@rollup/plugin-terser";
+import commonjs from "@rollup/plugin-commonjs";
+import copy from "rollup-plugin-copy";
 
-import pkg from './package.json' assert { type: 'json' };
+import pkg from "./package.json" assert { type: "json" };
 
-const nodeInput = './src/node/index.js';
-const domInput = './src/dom/index.js';
+const nodeInput = "./src/node/index.js";
+const domInput = "./src/dom/index.js";
 
 const babelConfig = () => ({
   babelrc: true,
-  exclude: 'node_modules/**',
-  babelHelpers: 'runtime',
-  presets: [['@babel/preset-react', { runtime: 'automatic' }]],
+  exclude: "node_modules/**",
+  babelHelpers: "runtime",
+  presets: [["@babel/preset-react", { runtime: "automatic" }]],
 });
 
 const getExternal = ({ browser }) => [
   /@babel\/runtime/,
-  'react/jsx-runtime',
-  ...(browser ? [] : ['fs', 'path', 'url']),
-  ...Object.keys(pkg.dependencies).filter(
-    (name) => name !== 'react-reconciler',
-  ),
+  "react/jsx-runtime",
+  ...(browser ? [] : ["fs", "path", "url"]),
+  ...Object.keys(pkg.dependencies).filter((name) => name !== "react-reconciler"),
   ...Object.keys(pkg.peerDependencies),
 ];
 
 const getPlugins = ({ browser, declarationDests, minify = false }) => [
   json(),
-  ...(browser ? [ignore(['fs', 'path', 'url'])] : []),
+  ...(browser ? [ignore(["fs", "path", "url"])] : []),
   alias({
     entries: {
-      'react-reconciler':
-        'react-reconciler/cjs/react-reconciler.production.min.js',
+      "react-reconciler": "react-reconciler/cjs/react-reconciler.production.min.js",
     },
   }),
   babel(babelConfig()),
   commonjs({
-    esmExternals: ['scheduler'],
+    esmExternals: ["scheduler"],
   }),
   nodeResolve({ browser, preferBuiltins: !browser }),
   replace({
@@ -52,8 +49,8 @@ const getPlugins = ({ browser, declarationDests, minify = false }) => [
   }),
   copy({
     targets: declarationDests.map((destPath) => {
-      const [dest, rename] = destPath.split('/');
-      return { src: 'index.d.ts', dest, rename };
+      const [dest, rename] = destPath.split("/");
+      return { src: "index.d.ts", dest, rename };
     }),
   }),
   ...(minify ? [terser()] : []),
@@ -61,55 +58,44 @@ const getPlugins = ({ browser, declarationDests, minify = false }) => [
 
 const serverConfig = {
   input: nodeInput,
-  output: { file: 'lib/react-pdf.js', format: 'es', sourcemap: true },
+  output: { file: "lib/react-pdf.js", format: "es", sourcemap: true },
   external: getExternal({ browser: false }),
   plugins: getPlugins({
     browser: false,
-    declarationDests: ['lib/react-pdf.d.ts', 'lib/react-pdf.d.cts'],
+    declarationDests: ["lib/react-pdf.d.ts", "lib/react-pdf.d.cts"],
   }),
 };
 
 const serverProdConfig = {
   input: nodeInput,
-  output: { file: 'lib/react-pdf.min.js', sourcemap: false, format: 'es' },
+  output: { file: "lib/react-pdf.min.js", sourcemap: false, format: "es" },
   external: getExternal({ browser: false }),
   plugins: getPlugins({
     browser: false,
-    declarationDests: ['lib/react-pdf.min.d.ts', 'lib/react-pdf.min.d.cts'],
+    declarationDests: ["lib/react-pdf.min.d.ts", "lib/react-pdf.min.d.cts"],
     minify: true,
   }),
 };
 
 const browserConfig = {
   input: domInput,
-  output: { file: 'lib/react-pdf.browser.js', format: 'es', sourcemap: true },
+  output: { file: "lib/react-pdf.browser.js", format: "es", sourcemap: true },
   external: getExternal({ browser: true }),
   plugins: getPlugins({
     browser: true,
-    declarationDests: [
-      'lib/react-pdf.browser.d.ts',
-      'lib/react-pdf.browser.d.cts',
-    ],
+    declarationDests: ["lib/react-pdf.browser.d.ts", "lib/react-pdf.browser.d.cts"],
   }),
 };
 
 const browserProdConfig = {
   input: domInput,
-  output: { file: 'lib/react-pdf.browser.min.js', format: 'es' },
+  output: { file: "lib/react-pdf.browser.min.js", format: "es" },
   external: getExternal({ browser: true }),
   plugins: getPlugins({
     browser: true,
-    declarationDests: [
-      'lib/react-pdf.browser.min.d.ts',
-      'lib/react-pdf.browser.min.d.cts',
-    ],
+    declarationDests: ["lib/react-pdf.browser.min.d.ts", "lib/react-pdf.browser.min.d.cts"],
     minify: true,
   }),
 };
 
-export default [
-  serverConfig,
-  serverProdConfig,
-  browserConfig,
-  browserProdConfig,
-];
+export default [serverConfig, serverProdConfig, browserConfig, browserProdConfig];

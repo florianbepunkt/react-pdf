@@ -18,10 +18,10 @@ const glyphFromChar = (v) => glyphForCodePoint(v.codePointAt(0));
 const layoutGlyphs = (v) => {
   const splits = v.split(/(ffi|fi|.)/g);
   const result = splits.map((s) => {
-    if (s === 'fi') return [shortLigature];
-    if (s === 'ffi') return [longLigature];
+    if (s === "fi") return [shortLigature];
+    if (s === "ffi") return [longLigature];
 
-    return s.split('').map(glyphFromChar);
+    return s.split("").map(glyphFromChar);
   });
 
   return result.flat();

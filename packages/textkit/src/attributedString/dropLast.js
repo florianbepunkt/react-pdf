@@ -1,6 +1,6 @@
-import { adjust, dropLast as arrayDropLast } from '@react-pdf/fns';
+import { adjust, dropLast as arrayDropLast } from "@react-pdf/fns";
 
-import runDropLast from '../run/dropLast';
+import runDropLast from "../run/dropLast";
 
 /**
  * @typedef {import('../types.js').AttributedString} AttributedString

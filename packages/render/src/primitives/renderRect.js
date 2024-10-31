@@ -16,14 +16,7 @@ const renderRect = (ctx, node) => {
 
     ctx.moveTo(x + rx, y);
     ctx.lineTo(x - rx + width, y);
-    ctx.bezierCurveTo(
-      x - rx + width + krx,
-      y,
-      x + width,
-      y + ry - kry,
-      x + width,
-      y + ry,
-    );
+    ctx.bezierCurveTo(x - rx + width + krx, y, x + width, y + ry - kry, x + width, y + ry);
     ctx.lineTo(x + width, y + height - ry);
     ctx.bezierCurveTo(
       x + width,
@@ -34,14 +27,7 @@ const renderRect = (ctx, node) => {
       y + height,
     );
     ctx.lineTo(x + rx, y + height);
-    ctx.bezierCurveTo(
-      x + rx - krx,
-      y + height,
-      x,
-      y + height - ry + kry,
-      x,
-      y + height - ry,
-    );
+    ctx.bezierCurveTo(x + rx - krx, y + height, x, y + height - ry + kry, x, y + height - ry);
     ctx.lineTo(x, y + ry);
     ctx.bezierCurveTo(x, y + ry - kry, x + rx - krx, y, x + rx, y);
   } else {

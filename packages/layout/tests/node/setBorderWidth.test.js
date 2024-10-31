@@ -1,15 +1,15 @@
-import { beforeEach, describe, expect, test, vi } from 'vitest';
+import { beforeEach, describe, expect, test, vi } from "vitest";
 
-import * as Yoga from 'yoga-layout/load';
+import * as Yoga from "yoga-layout/load";
 
 import setBorder, {
   setBorderTop,
   setBorderRight,
   setBorderBottom,
   setBorderLeft,
-} from '../../src/node/setBorderWidth';
+} from "../../src/node/setBorderWidth";
 
-describe('node setBorderWidth', () => {
+describe("node setBorderWidth", () => {
   const mock = vi.fn();
   const node = { yogaNode: { setBorder: mock } };
 
@@ -17,15 +17,15 @@ describe('node setBorderWidth', () => {
     mock.mockReset();
   });
 
-  describe('setBorderTop', () => {
-    test('should return node if no yoga node available', () => {
+  describe("setBorderTop", () => {
+    test("should return node if no yoga node available", () => {
       const emptyNode = { box: { width: 10, height: 20 } };
       const result = setBorderTop(null)(emptyNode);
 
       expect(result).toBe(emptyNode);
     });
 
-    test('Should call appropiate yoga node method for numeric values', () => {
+    test("Should call appropiate yoga node method for numeric values", () => {
       const result = setBorderTop(50)(node);
 
       expect(mock.mock.calls).toHaveLength(1);
@@ -34,20 +34,20 @@ describe('node setBorderWidth', () => {
       expect(result).toBe(node);
     });
 
-    test('Should throw error for percent values', () => {
-      expect(() => setBorderTop('50%')(node)).toThrow();
+    test("Should throw error for percent values", () => {
+      expect(() => setBorderTop("50%")(node)).toThrow();
     });
   });
 
-  describe('setBorderRight', () => {
-    test('should return node if no yoga node available', () => {
+  describe("setBorderRight", () => {
+    test("should return node if no yoga node available", () => {
       const emptyNode = { box: { width: 10, height: 20 } };
       const result = setBorderRight(null)(emptyNode);
 
       expect(result).toBe(emptyNode);
     });
 
-    test('Should call appropiate yoga node method for numeric values', () => {
+    test("Should call appropiate yoga node method for numeric values", () => {
       const result = setBorderRight(50)(node);
 
       expect(mock.mock.calls).toHaveLength(1);
@@ -56,20 +56,20 @@ describe('node setBorderWidth', () => {
       expect(result).toBe(node);
     });
 
-    test('Should throw error for percent values', () => {
-      expect(() => setBorderRight('50%')(node)).toThrow();
+    test("Should throw error for percent values", () => {
+      expect(() => setBorderRight("50%")(node)).toThrow();
     });
   });
 
-  describe('setBorderBottom', () => {
-    test('should return node if no yoga node available', () => {
+  describe("setBorderBottom", () => {
+    test("should return node if no yoga node available", () => {
       const emptyNode = { box: { width: 10, height: 20 } };
       const result = setBorderBottom(null)(emptyNode);
 
       expect(result).toBe(emptyNode);
     });
 
-    test('Should call appropiate yoga node method for numeric values', () => {
+    test("Should call appropiate yoga node method for numeric values", () => {
       const result = setBorderBottom(50)(node);
 
       expect(mock.mock.calls).toHaveLength(1);
@@ -78,20 +78,20 @@ describe('node setBorderWidth', () => {
       expect(result).toBe(node);
     });
 
-    test('Should throw error for percent values', () => {
-      expect(() => setBorderBottom('50%')(node)).toThrow();
+    test("Should throw error for percent values", () => {
+      expect(() => setBorderBottom("50%")(node)).toThrow();
     });
   });
 
-  describe('setBorderLeft', () => {
-    test('should return node if no yoga node available', () => {
+  describe("setBorderLeft", () => {
+    test("should return node if no yoga node available", () => {
       const emptyNode = { box: { width: 10, height: 20 } };
       const result = setBorderLeft(null)(emptyNode);
 
       expect(result).toBe(emptyNode);
     });
 
-    test('Should call appropiate yoga node method for numeric values', () => {
+    test("Should call appropiate yoga node method for numeric values", () => {
       const result = setBorderLeft(50)(node);
 
       expect(mock.mock.calls).toHaveLength(1);
@@ -100,20 +100,20 @@ describe('node setBorderWidth', () => {
       expect(result).toBe(node);
     });
 
-    test('Should throw error for percent values', () => {
-      expect(() => setBorderLeft('50%')(node)).toThrow();
+    test("Should throw error for percent values", () => {
+      expect(() => setBorderLeft("50%")(node)).toThrow();
     });
   });
 
-  describe('setBorder', () => {
-    test('should return node if no yoga node available', () => {
+  describe("setBorder", () => {
+    test("should return node if no yoga node available", () => {
       const emptyNode = { box: { width: 10, height: 20 } };
       const result = setBorder(null)(emptyNode);
 
       expect(result).toBe(emptyNode);
     });
 
-    test('Should call appropiate yoga node method for numeric values', () => {
+    test("Should call appropiate yoga node method for numeric values", () => {
       const result = setBorder(50)(node);
 
       expect(mock.mock.calls).toHaveLength(4);
@@ -124,8 +124,8 @@ describe('node setBorderWidth', () => {
       expect(result).toBe(node);
     });
 
-    test('Should throw error for percent values', () => {
-      expect(() => setBorder('50%')(node)).toThrow();
+    test("Should throw error for percent values", () => {
+      expect(() => setBorder("50%")(node)).toThrow();
     });
   });
 });

@@ -1,12 +1,12 @@
-import * as Yoga from 'yoga-layout/load';
-import { isNil } from '@react-pdf/fns';
+import * as Yoga from "yoga-layout/load";
+import { isNil } from "@react-pdf/fns";
 
 const JUSTIFY_CONTENT = {
   center: Yoga.Justify.Center,
-  'flex-end': Yoga.Justify.FlexEnd,
-  'space-between': Yoga.Justify.SpaceBetween,
-  'space-around': Yoga.Justify.SpaceAround,
-  'space-evenly': Yoga.Justify.SpaceEvenly,
+  "flex-end": Yoga.Justify.FlexEnd,
+  "space-between": Yoga.Justify.SpaceBetween,
+  "space-around": Yoga.Justify.SpaceAround,
+  "space-evenly": Yoga.Justify.SpaceEvenly,
 };
 
 /**

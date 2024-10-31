@@ -1,7 +1,7 @@
-import { beforeEach, describe, expect, test, vi } from 'vitest';
-import setAspectRatio from '../../src/node/setAspectRatio';
+import { beforeEach, describe, expect, test, vi } from "vitest";
+import setAspectRatio from "../../src/node/setAspectRatio";
 
-describe('node setAspectRatio', () => {
+describe("node setAspectRatio", () => {
   const mock = vi.fn();
   const node = { yogaNode: { setAspectRatio: mock } };
 
@@ -9,14 +9,14 @@ describe('node setAspectRatio', () => {
     mock.mockReset();
   });
 
-  test('should return node if no yoga node available', () => {
+  test("should return node if no yoga node available", () => {
     const emptyNode = { box: { width: 10, height: 20 } };
     const result = setAspectRatio(null)(emptyNode);
 
     expect(result).toBe(emptyNode);
   });
 
-  test('Should call yoga node setter if provided', () => {
+  test("Should call yoga node setter if provided", () => {
     const result = setAspectRatio(3)(node);
 
     expect(mock.mock.calls).toHaveLength(1);

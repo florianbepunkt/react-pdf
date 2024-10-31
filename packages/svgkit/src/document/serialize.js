@@ -3,13 +3,13 @@ const serializeAttributes = (attributes) => {
     return `${key}="${attributes[key]}"`;
   });
 
-  return res.join(' ');
+  return res.join(" ");
 };
 
 const serializeXML = (element) => {
-  let res = '';
+  let res = "";
 
-  if (typeof element === 'string') {
+  if (typeof element === "string") {
     res += element;
   } else {
     res += `<${element.type} ${serializeAttributes(element.attributes)}>`;

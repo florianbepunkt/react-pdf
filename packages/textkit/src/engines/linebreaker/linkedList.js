@@ -24,11 +24,7 @@ class LinkedList {
 
   isLinked(node) {
     return !(
-      (node &&
-        node.prev === null &&
-        node.next === null &&
-        this.tail !== node &&
-        this.head !== node) ||
+      (node && node.prev === null && node.next === null && this.tail !== node && this.head !== node) ||
       this.isEmpty()
     );
   }

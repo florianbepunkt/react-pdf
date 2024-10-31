@@ -1,10 +1,10 @@
 /* eslint react/prop-types: 0 */
 /* eslint react/jsx-sort-props: 0 */
 
-import React from 'react';
-import { Document, Page, Image, StyleSheet } from '@react-pdf/renderer';
+import React from "react";
+import { Document, Page, Image, StyleSheet } from "@react-pdf/renderer";
 
-import Quijote1 from '../../../public/quijote1.jpg';
+import Quijote1 from "../../../public/quijote1.jpg";
 
 const styles = StyleSheet.create({
   body: {
@@ -17,27 +17,27 @@ const styles = StyleSheet.create({
     marginHorizontal: 0,
     width: 520,
     height: 200,
-    backgroundColor: 'red',
-    objectFit: 'fill',
-    objectPositionX: 'center',
-    objectPositionY: 'center',
+    backgroundColor: "red",
+    objectFit: "fill",
+    objectPositionX: "center",
+    objectPositionY: "center",
     borderWith: 2,
     padding: 2,
-    borderColor: 'blue',
-    borderStyle: 'solid',
+    borderColor: "blue",
+    borderStyle: "solid",
   },
   image2: {
     marginVertical: 15,
     marginHorizontal: 0,
     width: 300,
-    backgroundColor: 'green',
-    objectFit: 'fill',
-    objectPositionX: 'center',
-    objectPositionY: 'center',
+    backgroundColor: "green",
+    objectFit: "fill",
+    objectPositionX: "center",
+    objectPositionY: "center",
     borderWith: 2,
     padding: 2,
-    borderColor: 'blue',
-    borderStyle: 'solid',
+    borderColor: "blue",
+    borderStyle: "solid",
   },
 });
 
@@ -61,8 +61,8 @@ const DuplicatedImages = () => {
 };
 
 export default {
-  id: 'duplicated-images',
-  name: 'Duplicated Images',
-  description: '',
+  id: "duplicated-images",
+  name: "Duplicated Images",
+  description: "",
   Document: DuplicatedImages,
 };

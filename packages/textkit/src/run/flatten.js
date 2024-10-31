@@ -1,5 +1,5 @@
-import sort from './sort';
-import isEmpty from './isEmpty';
+import sort from "./sort";
+import isEmpty from "./isEmpty";
 
 /**
  * @typedef {import('../types.js').Point} Point
@@ -23,8 +23,8 @@ const sortPoints = (a, b) => {
 const generatePoints = (runs) => {
   const result = runs.reduce((acc, run, i) => {
     return acc.concat([
-      ['start', run.start, run.attributes, i],
-      ['end', run.end, run.attributes, i],
+      ["start", run.start, run.attributes, i],
+      ["end", run.end, run.attributes, i],
     ]);
   }, []);
 
@@ -83,7 +83,7 @@ const flattenRegularRuns = (runs) => {
       res.push({ start, end: offset, attributes: attrs });
     }
 
-    if (type === 'start') {
+    if (type === "start") {
       stack.push(attributes);
       attrs = Object.assign({}, attrs, attributes);
     } else {

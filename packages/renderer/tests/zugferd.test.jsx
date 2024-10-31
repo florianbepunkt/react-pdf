@@ -1,20 +1,18 @@
 /* eslint-disable import/no-named-as-default-member */
-import { describe, expect, test } from 'vitest';
+import { describe, expect, test } from "vitest";
 
-import fs from 'fs';
-import path from 'path';
-import url from 'url';
-import ReactPDF from '../src/node';
+import fs from "fs";
+import path from "path";
+import url from "url";
+import ReactPDF from "../src/node";
 
 const { Document, Font, Page, Text, Xml } = ReactPDF;
 
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
-const fontPath = path.join(path.resolve(__dirname), 'assets/inter-500.ttf');
-const exampleXml = fs.readFileSync(
-  path.join(path.resolve(__dirname), 'assets/example.xml'),
-);
+const fontPath = path.join(path.resolve(__dirname), "assets/inter-500.ttf");
+const exampleXml = fs.readFileSync(path.join(path.resolve(__dirname), "assets/example.xml"));
 
-Font.register({ family: 'Inter', src: fontPath });
+Font.register({ family: "Inter", src: fontPath });
 
 /**
  * @param {Object} props
@@ -26,12 +24,12 @@ const TestDocument = ({ onRender }) => {
         {
           content: exampleXml,
           creationDate: new Date(2020, 3, 1),
-          description: 'ZUGFeRD Invoice Data',
+          description: "ZUGFeRD Invoice Data",
           hidden: false,
           modifiedDate: new Date(2020, 3, 1),
-          name: 'zugferd-invoice.xml',
-          relationship: 'Alternative',
-          type: 'application/xml',
+          name: "zugferd-invoice.xml",
+          relationship: "Alternative",
+          type: "application/xml",
         },
       ]}
       author="Test GmbH"
@@ -47,7 +45,7 @@ const TestDocument = ({ onRender }) => {
       title="Test"
     >
       <Page>
-        <Text style={{ fontFamily: 'Inter' }}>Lorem</Text>
+        <Text style={{ fontFamily: "Inter" }}>Lorem</Text>
         <Xml
           value={`<rdf:Description rdf:about="" xmlns:zf="urn:zugferd:pdfa:CrossIndustryDocument:invoice:2p0#">
         <zf:ConformanceLevel>BASIC</zf:ConformanceLevel>
@@ -107,11 +105,11 @@ const TestDocument = ({ onRender }) => {
   );
 };
 
-describe('node', () => {
-  test('should render to file', async () => {
+describe("node", () => {
+  test("should render to file", async () => {
     const pdfPath = `${__dirname}/test.pdf`;
     await ReactPDF.renderToFile(<TestDocument />, pdfPath);
     expect(fs.existsSync(pdfPath)).toBeTruthy();
-    fs.unlinkSync(pdfPath);
+    // fs.unlinkSync(pdfPath);
   });
 });

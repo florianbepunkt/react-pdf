@@ -1,4 +1,4 @@
-import processBoxModel from './boxModel';
+import processBoxModel from "./boxModel";
 
 const processMargin = processBoxModel({
   expandsTo: ({ first, second, third, fourth }) => ({
@@ -33,9 +33,4 @@ const processMarginSingle = processBoxModel({
   autoSupported: true,
 });
 
-export {
-  processMargin,
-  processMarginVertical,
-  processMarginHorizontal,
-  processMarginSingle,
-};
+export { processMargin, processMarginVertical, processMarginHorizontal, processMarginSingle };

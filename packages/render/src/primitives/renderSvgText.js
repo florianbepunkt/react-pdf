@@ -1,4 +1,4 @@
-import renderGlyphs from './renderGlyphs';
+import renderGlyphs from "./renderGlyphs";
 
 const renderRun = (ctx, run) => {
   const runAdvanceWidth = run.xAdvance;
@@ -26,7 +26,7 @@ const renderRun = (ctx, run) => {
 
     ctx.restore();
   } else {
-    ctx.font(typeof font.name === 'string' ? font.name : font, fontSize);
+    ctx.font(typeof font.name === "string" ? font.name : font, fontSize);
 
     try {
       renderGlyphs(ctx, run.glyphs, run.positions, 0, 0);
@@ -56,10 +56,10 @@ const renderSpan = (ctx, line, textAnchor, dominantBaseline) => {
   let yTranslate = y;
 
   switch (textAnchor) {
-    case 'middle':
+    case "middle":
       xTranslate = x - width / 2;
       break;
-    case 'end':
+    case "end":
       xTranslate = x - width;
       break;
     default:
@@ -68,20 +68,20 @@ const renderSpan = (ctx, line, textAnchor, dominantBaseline) => {
   }
 
   switch (dominantBaseline) {
-    case 'middle':
-    case 'central':
+    case "middle":
+    case "central":
       yTranslate = y + capHeight / 2;
       break;
-    case 'hanging':
+    case "hanging":
       yTranslate = y + capHeight;
       break;
-    case 'mathematical':
+    case "mathematical":
       yTranslate = y + xHeight;
       break;
-    case 'text-after-edge':
+    case "text-after-edge":
       yTranslate = y + descent;
       break;
-    case 'text-before-edge':
+    case "text-before-edge":
       yTranslate = y + ascent;
       break;
     default:
@@ -98,12 +98,7 @@ const renderSpan = (ctx, line, textAnchor, dominantBaseline) => {
 
 const renderSvgText = (ctx, node) => {
   node.children.forEach((span) =>
-    renderSpan(
-      ctx,
-      span.lines[0],
-      span.props.textAnchor,
-      span.props.dominantBaseline,
-    ),
+    renderSpan(ctx, span.lines[0], span.props.textAnchor, span.props.dominantBaseline),
   );
 };
 

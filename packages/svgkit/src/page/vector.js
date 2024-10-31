@@ -1,16 +1,16 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable prefer-destructuring */
 
-import uuid from '../utils/uuid';
-import { Gradient } from '../gradient';
-import { createElement } from './element';
+import uuid from "../utils/uuid";
+import { Gradient } from "../gradient";
+import { createElement } from "./element";
 
 export default {
   beginPath() {
-    this.currentPath = '';
+    this.currentPath = "";
     this.currentPosition = {};
 
-    const path = createElement('path');
+    const path = createElement("path");
     const parent = this.closestGroupOrSvg();
     parent.appendChild(path);
     this.currentElement = path;
@@ -19,20 +19,20 @@ export default {
   addPathCommand(command) {
     if (!this.currentPath) this.beginPath();
 
-    this.currentPath += ' ';
+    this.currentPath += " ";
     this.currentPath += command;
   },
 
   closePath() {
     if (this.currentPath) {
-      this.addPathCommand('Z');
+      this.addPathCommand("Z");
     }
   },
 
   moveTo(x, y) {
     if (!this.currentPath) this.beginPath();
 
-    if (this.currentElement.nodeName !== 'path') this.beginPath();
+    if (this.currentElement.nodeName !== "path") this.beginPath();
     this.currentPosition = { x, y };
 
     this.addPathCommand(`M ${x} ${y}`);
@@ -43,7 +43,7 @@ export default {
 
     this.currentPosition = { x, y };
 
-    if (this.currentPath.indexOf('M') > -1) {
+    if (this.currentPath.indexOf("M") > -1) {
       this.addPathCommand(`L ${x} ${y}`);
     } else {
       this.addPathCommand(`M ${x} ${y}`);
@@ -84,9 +84,7 @@ export default {
 
     this.lineTo(startX, startY);
 
-    this.addPathCommand(
-      `A ${radius} ${radius} 0 1 1 ${startX} ${startY - 0.5}`,
-    );
+    this.addPathCommand(`A ${radius} ${radius} 0 1 1 ${startX} ${startY - 0.5}`);
 
     this.closePath();
   },
@@ -97,11 +95,11 @@ export default {
     const element = createElement(gradient.type, gradient.attributes);
 
     gradient.stops.forEach((stop) => {
-      const stopChild = createElement('stop');
+      const stopChild = createElement("stop");
 
-      stopChild.setAttribute('offset', stop.offset);
-      stopChild.setAttribute('stop-color', stop.color);
-      stopChild.setAttribute('stop-opacity', stop.opacity);
+      stopChild.setAttribute("offset", stop.offset);
+      stopChild.setAttribute("stop-color", stop.color);
+      stopChild.setAttribute("stop-opacity", stop.opacity);
 
       element.appendChild(stopChild);
     });
@@ -114,8 +112,8 @@ export default {
   fill() {
     let fillColorStyle = this.fillColorStyle;
 
-    if (this.currentElement.nodeName === 'path') {
-      this.currentElement.setAttribute('paint-order', 'stroke fill markers');
+    if (this.currentElement.nodeName === "path") {
+      this.currentElement.setAttribute("paint-order", "stroke fill markers");
     }
 
     this.applyCurrentPath();
@@ -125,76 +123,76 @@ export default {
       fillColorStyle = `url('#${fillColorStyle.id}')`;
     }
 
-    this.currentElement.setAttribute('stroke', 'none');
-    this.currentElement.setAttribute('fill', fillColorStyle);
-    this.currentElement.setAttribute('opacity', this.opacityStyle);
-    this.currentElement.setAttribute('fill-rule', this.fillRuleStyle);
-    this.currentElement.setAttribute('fill-opacity', this.fillOpacityStyle);
+    this.currentElement.setAttribute("stroke", "none");
+    this.currentElement.setAttribute("fill", fillColorStyle);
+    this.currentElement.setAttribute("opacity", this.opacityStyle);
+    this.currentElement.setAttribute("fill-rule", this.fillRuleStyle);
+    this.currentElement.setAttribute("fill-opacity", this.fillOpacityStyle);
 
-    this.currentPath = '';
+    this.currentPath = "";
   },
 
   stroke() {
-    if (this.currentElement.nodeName === 'path') {
-      this.currentElement.setAttribute('paint-order', 'fill stroke markers');
+    if (this.currentElement.nodeName === "path") {
+      this.currentElement.setAttribute("paint-order", "fill stroke markers");
     }
 
     this.applyCurrentPath();
 
-    this.currentElement.setAttribute('fill', 'none');
-    this.currentElement.setAttribute('opacity', this.opacityStyle);
-    this.currentElement.setAttribute('stroke', this.strokeColorStyle);
-    this.currentElement.setAttribute('stroke-width', this.lineWidthStyle);
-    this.currentElement.setAttribute('stroke-linecap', this.lineCapStyle);
-    this.currentElement.setAttribute('stroke-linejoin', this.lineJoinStyle);
-    this.currentElement.setAttribute('stroke-dasharray', this.lineDashStyle);
-    this.currentElement.setAttribute('stroke-opacity', this.strokeOpacityStyle);
+    this.currentElement.setAttribute("fill", "none");
+    this.currentElement.setAttribute("opacity", this.opacityStyle);
+    this.currentElement.setAttribute("stroke", this.strokeColorStyle);
+    this.currentElement.setAttribute("stroke-width", this.lineWidthStyle);
+    this.currentElement.setAttribute("stroke-linecap", this.lineCapStyle);
+    this.currentElement.setAttribute("stroke-linejoin", this.lineJoinStyle);
+    this.currentElement.setAttribute("stroke-dasharray", this.lineDashStyle);
+    this.currentElement.setAttribute("stroke-opacity", this.strokeOpacityStyle);
 
-    this.currentPath = '';
+    this.currentPath = "";
   },
 
   fillAndStroke() {
-    if (this.currentElement.nodeName === 'path') {
-      this.currentElement.setAttribute('paint-order', 'fill stroke markers');
+    if (this.currentElement.nodeName === "path") {
+      this.currentElement.setAttribute("paint-order", "fill stroke markers");
     }
 
     this.applyCurrentPath();
 
-    this.currentElement.setAttribute('fill', this.fillColorStyle);
-    this.currentElement.setAttribute('fill-rule', this.fillRuleStyle);
-    this.currentElement.setAttribute('fill-opacity', this.fillOpacityStyle);
-    this.currentElement.setAttribute('opacity', this.opacityStyle);
-    this.currentElement.setAttribute('stroke', this.strokeColorStyle);
-    this.currentElement.setAttribute('stroke-width', this.lineWidthStyle);
-    this.currentElement.setAttribute('stroke-linecap', this.lineCapStyle);
-    this.currentElement.setAttribute('stroke-linejoin', this.lineJoinStyle);
-    this.currentElement.setAttribute('stroke-dasharray', this.lineDashStyle);
-    this.currentElement.setAttribute('stroke-opacity', this.strokeOpacityStyle);
+    this.currentElement.setAttribute("fill", this.fillColorStyle);
+    this.currentElement.setAttribute("fill-rule", this.fillRuleStyle);
+    this.currentElement.setAttribute("fill-opacity", this.fillOpacityStyle);
+    this.currentElement.setAttribute("opacity", this.opacityStyle);
+    this.currentElement.setAttribute("stroke", this.strokeColorStyle);
+    this.currentElement.setAttribute("stroke-width", this.lineWidthStyle);
+    this.currentElement.setAttribute("stroke-linecap", this.lineCapStyle);
+    this.currentElement.setAttribute("stroke-linejoin", this.lineJoinStyle);
+    this.currentElement.setAttribute("stroke-dasharray", this.lineDashStyle);
+    this.currentElement.setAttribute("stroke-opacity", this.strokeOpacityStyle);
 
-    this.currentPath = '';
+    this.currentPath = "";
   },
 
   applyCurrentPath() {
-    if (this.currentElement.nodeName === 'path') {
-      this.currentElement.setAttribute('d', this.currentPath);
+    if (this.currentElement.nodeName === "path") {
+      this.currentElement.setAttribute("d", this.currentPath);
     }
   },
 
   clip() {
     const group = this.closestGroupOrSvg();
-    const clipPath = createElement('clipPath');
+    const clipPath = createElement("clipPath");
     const id = uuid();
-    const newGroup = createElement('g');
+    const newGroup = createElement("g");
 
     this.applyCurrentPath();
 
     group.removeChild(this.currentElement);
-    clipPath.setAttribute('id', id);
+    clipPath.setAttribute("id", id);
     clipPath.appendChild(this.currentElement);
 
     this.defs.appendChild(clipPath);
 
-    group.setAttribute('clip-path', `url(#${id})`);
+    group.setAttribute("clip-path", `url(#${id})`);
     group.appendChild(newGroup);
 
     this.currentElement = newGroup;

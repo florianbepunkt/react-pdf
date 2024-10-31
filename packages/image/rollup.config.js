@@ -1,22 +1,22 @@
-import babel from '@rollup/plugin-babel';
-import replace from '@rollup/plugin-replace';
-import ignore from 'rollup-plugin-ignore';
-import nodePolyfills from 'rollup-plugin-polyfill-node';
+import babel from "@rollup/plugin-babel";
+import replace from "@rollup/plugin-replace";
+import ignore from "rollup-plugin-ignore";
+import nodePolyfills from "rollup-plugin-polyfill-node";
 
-import pkg from './package.json' assert { type: 'json' };
+import pkg from "./package.json" assert { type: "json" };
 
-const input = './src/index.js';
+const input = "./src/index.js";
 
 const babelConfig = () => ({
   babelrc: true,
-  exclude: 'node_modules/**',
-  babelHelpers: 'runtime',
+  exclude: "node_modules/**",
+  babelHelpers: "runtime",
 });
 
 const getExternal = ({ browser }) => [
   /@babel\/runtime/,
   ...Object.keys(pkg.dependencies),
-  ...(browser ? [] : ['fs', 'path', 'url']),
+  ...(browser ? [] : ["fs", "path", "url"]),
 ];
 
 const getPlugins = ({ browser }) => [
@@ -27,7 +27,7 @@ const getPlugins = ({ browser }) => [
   }),
   ...(browser
     ? [
-        ignore(['fs', 'path', 'url']),
+        ignore(["fs", "path", "url"]),
         nodePolyfills({
           include: [/node_modules\/.+\.js/, /\/image\/src\/.*\.js/],
         }),
@@ -37,14 +37,14 @@ const getPlugins = ({ browser }) => [
 
 const serverConfig = {
   input,
-  output: { format: 'es', file: 'lib/index.js' },
+  output: { format: "es", file: "lib/index.js" },
   external: getExternal({ browser: false }),
   plugins: getPlugins({ browser: false }),
 };
 
 const browserConfig = {
   input,
-  output: { format: 'es', file: 'lib/index.browser.js' },
+  output: { format: "es", file: "lib/index.browser.js" },
   external: getExternal({ browser: true }),
   plugins: getPlugins({ browser: true }),
 };

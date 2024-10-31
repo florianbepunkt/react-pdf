@@ -1,4 +1,4 @@
-import * as P from '@react-pdf/primitives';
+import * as P from "@react-pdf/primitives";
 import layoutEngine, {
   bidi,
   linebreaker,
@@ -6,11 +6,11 @@ import layoutEngine, {
   scriptItemizer,
   wordHyphenation,
   textDecoration,
-} from '@react-pdf/textkit';
+} from "@react-pdf/textkit";
 
-import fromFragments from '../text/fromFragments';
-import transformText from '../text/transformText';
-import fontSubstitution from '../text/fontSubstitution';
+import fromFragments from "../text/fromFragments";
+import transformText from "../text/transformText";
+import fontSubstitution from "../text/fontSubstitution";
 
 const isTextInstance = (node) => node.type === P.TextInstance;
 
@@ -27,13 +27,13 @@ const engines = {
 const engine = layoutEngine(engines);
 
 const getFragments = (fontStore, instance) => {
-  if (!instance) return [{ string: '' }];
+  if (!instance) return [{ string: "" }];
 
   const fragments = [];
 
   const {
-    fill = 'black',
-    fontFamily = 'Helvetica',
+    fill = "black",
+    fontFamily = "Helvetica",
     fontWeight,
     fontStyle,
     fontSize = 18,
@@ -45,11 +45,10 @@ const getFragments = (fontStore, instance) => {
 
   const _textDecoration = instance.props.textDecoration;
 
-  const fontFamilies =
-    typeof fontFamily === 'string' ? [fontFamily] : [...(fontFamily || [])];
+  const fontFamilies = typeof fontFamily === "string" ? [fontFamily] : [...(fontFamily || [])];
 
   const font = fontFamilies.map((fontFamilyName) => {
-    if (typeof fontFamilyName !== 'string') return fontFamilyName;
+    if (typeof fontFamilyName !== "string") return fontFamilyName;
 
     const opts = { fontFamily: fontFamilyName, fontWeight, fontStyle };
     const obj = fontStore ? fontStore.getFont(opts) : null;
@@ -63,14 +62,14 @@ const getFragments = (fontStore, instance) => {
     color: fill,
     underlineStyle: textDecorationStyle,
     underline:
-      _textDecoration === 'underline' ||
-      _textDecoration === 'underline line-through' ||
-      _textDecoration === 'line-through underline',
+      _textDecoration === "underline" ||
+      _textDecoration === "underline line-through" ||
+      _textDecoration === "line-through underline",
     underlineColor: textDecorationColor || fill,
     strike:
-      _textDecoration === 'line-through' ||
-      _textDecoration === 'underline line-through' ||
-      _textDecoration === 'line-through underline',
+      _textDecoration === "line-through" ||
+      _textDecoration === "underline line-through" ||
+      _textDecoration === "line-through underline",
     strikeStyle: textDecorationStyle,
     strikeColor: textDecorationColor || fill,
   };
@@ -91,8 +90,7 @@ const getFragments = (fontStore, instance) => {
   return fragments;
 };
 
-const getAttributedString = (fontStore, instance) =>
-  fromFragments(getFragments(fontStore, instance));
+const getAttributedString = (fontStore, instance) => fromFragments(getFragments(fontStore, instance));
 
 const AlmostInfinity = 999999999999;
 
@@ -107,9 +105,7 @@ const layoutTspan = (fontStore) => (node) => {
   const container = { x, y, width: AlmostInfinity, height: AlmostInfinity };
 
   const hyphenationCallback =
-    node.props.hyphenationCallback ||
-    fontStore?.getHyphenationCallback() ||
-    null;
+    node.props.hyphenationCallback || fontStore?.getHyphenationCallback() || null;
 
   const layoutOptions = { hyphenationCallback, shrinkWhitespaceFactor };
   const lines = engine(attributedString, container, layoutOptions).flat();

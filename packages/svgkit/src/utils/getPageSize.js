@@ -1,6 +1,6 @@
 const PAGE_SIZES = {
-  '4A0': [4767.87, 6740.79],
-  '2A0': [3370.39, 4767.87],
+  "4A0": [4767.87, 6740.79],
+  "2A0": [3370.39, 4767.87],
   A0: [2383.94, 3370.39],
   A1: [1683.78, 2383.94],
   A2: [1190.55, 1683.78],
@@ -100,17 +100,17 @@ const getSize = (value, orientation) => {
    */
   let size;
 
-  if (typeof value === 'string') {
+  if (typeof value === "string") {
     size = getStringSize(value);
   } else if (Array.isArray(value)) {
     size = toSizeObject(value);
-  } else if (typeof value === 'number') {
+  } else if (typeof value === "number") {
     size = getNumberSize(value);
   } else {
     size = value;
   }
 
-  return orientation === 'landscape' ? flipSizeObject(size) : size;
+  return orientation === "landscape" ? flipSizeObject(size) : size;
 };
 
 export default getSize;

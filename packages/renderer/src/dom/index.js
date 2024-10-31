@@ -1,10 +1,10 @@
-import * as primitives from '@react-pdf/primitives';
+import * as primitives from "@react-pdf/primitives";
 
-import usePDF from './usePDF';
-import PDFViewer from './PDFViewer';
-import BlobProvider from './BlobProvider';
-import PDFDownloadLink from './PDFDownloadLink';
-import { pdf, version, Font, StyleSheet } from '../index';
+import usePDF from "./usePDF";
+import PDFViewer from "./PDFViewer";
+import BlobProvider from "./BlobProvider";
+import PDFDownloadLink from "./PDFDownloadLink";
+import { pdf, version, Font, StyleSheet } from "../index";
 
 const throwEnvironmentError = (name) => {
   throw new Error(
@@ -13,36 +13,36 @@ const throwEnvironmentError = (name) => {
 };
 
 export const renderToStream = () => {
-  throwEnvironmentError('renderToStream');
+  throwEnvironmentError("renderToStream");
 };
 
 export const renderToBuffer = () => {
-  throwEnvironmentError('renderToBuffer');
+  throwEnvironmentError("renderToBuffer");
 };
 
 export const renderToString = () => {
-  throwEnvironmentError('renderToString');
+  throwEnvironmentError("renderToString");
 };
 
 export const renderToFile = () => {
-  throwEnvironmentError('renderToFile');
+  throwEnvironmentError("renderToFile");
 };
 
 export const render = () => {
-  throwEnvironmentError('render');
+  throwEnvironmentError("render");
 };
 
-export * from '../index';
+export * from "../index";
 
-export * from './usePDF';
+export * from "./usePDF";
 
-export * from './PDFViewer';
+export * from "./PDFViewer";
 
-export * from './BlobProvider';
+export * from "./BlobProvider";
 
-export * from './PDFDownloadLink';
+export * from "./PDFDownloadLink";
 
-export * from '@react-pdf/primitives';
+export * from "@react-pdf/primitives";
 
 // TODO: remove this default export in next major release because it breaks tree-shacking
 export default {

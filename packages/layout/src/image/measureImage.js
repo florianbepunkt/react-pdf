@@ -1,9 +1,9 @@
-import * as Yoga from 'yoga-layout/load';
+import * as Yoga from "yoga-layout/load";
 
-import getRatio from './getRatio';
-import getMargin from '../node/getMargin';
-import getPadding from '../node/getPadding';
-import isHeightAuto from '../page/isHeightAuto';
+import getRatio from "./getRatio";
+import getMargin from "../node/getMargin";
+import getPadding from "../node/getPadding";
+import isHeightAuto from "../page/isHeightAuto";
 
 const SAFETY_HEIGHT = 10;
 
@@ -39,34 +39,24 @@ const measureImage = (page, node) => (width, widthMode, height, heightMode) => {
   // Skip measure if image data not present yet
   if (!node.image) return { width: 0, height: 0 };
 
-  if (
-    widthMode === Yoga.MeasureMode.Exactly &&
-    heightMode === Yoga.MeasureMode.Undefined
-  ) {
+  if (widthMode === Yoga.MeasureMode.Exactly && heightMode === Yoga.MeasureMode.Undefined) {
     const scaledHeight = width / imageRatio;
     return { height: Math.min(pageArea, scaledHeight) };
   }
 
   if (
     heightMode === Yoga.MeasureMode.Exactly &&
-    (widthMode === Yoga.MeasureMode.AtMost ||
-      widthMode === Yoga.MeasureMode.Undefined)
+    (widthMode === Yoga.MeasureMode.AtMost || widthMode === Yoga.MeasureMode.Undefined)
   ) {
     return { width: Math.min(height * imageRatio, width) };
   }
 
-  if (
-    widthMode === Yoga.MeasureMode.Exactly &&
-    heightMode === Yoga.MeasureMode.AtMost
-  ) {
+  if (widthMode === Yoga.MeasureMode.Exactly && heightMode === Yoga.MeasureMode.AtMost) {
     const scaledHeight = width / imageRatio;
     return { height: Math.min(height, pageArea, scaledHeight) };
   }
 
-  if (
-    widthMode === Yoga.MeasureMode.AtMost &&
-    heightMode === Yoga.MeasureMode.AtMost
-  ) {
+  if (widthMode === Yoga.MeasureMode.AtMost && heightMode === Yoga.MeasureMode.AtMost) {
     if (imageRatio > 1) {
       return {
         width,

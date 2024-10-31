@@ -19,10 +19,11 @@
     "url": "http://badassjs.com/"
   },
   "publishConfig": {
-     "registry": "https://npm.pkg.github.com/easypliant"
+    "registry": "https://npm.pkg.github.com/easypliant"
   },
   "scripts": {
     "clear": "rimraf ./lib ./src/font/data/*.json",
+    "format": "prettier --write \"./**/*.{js,jsx,ts,tsx,json}\"",
     "parse:afm": "node ./src/font/data/compressData.js",
     "build": "npm run clear && npm run parse:afm && rollup -c ",
     "watch": "npm run clear && npm run parse:afm && rollup -c -w"

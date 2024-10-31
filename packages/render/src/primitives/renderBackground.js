@@ -1,7 +1,7 @@
-import { isNil } from '@react-pdf/fns';
+import { isNil } from "@react-pdf/fns";
 
-import clipNode from '../operations/clipNode';
-import parseColor from '../utils/parseColor';
+import clipNode from "../operations/clipNode";
+import parseColor from "../utils/parseColor";
 
 const drawBackground = (ctx, node) => {
   const { top, left, width, height } = node.box;
@@ -9,11 +9,7 @@ const drawBackground = (ctx, node) => {
   const nodeOpacity = isNil(node.style?.opacity) ? 1 : node.style.opacity;
   const opacity = Math.min(color.opacity, nodeOpacity);
 
-  ctx
-    .fillOpacity(opacity)
-    .fillColor(color.value)
-    .rect(left, top, width, height)
-    .fill();
+  ctx.fillOpacity(opacity).fillColor(color.value).rect(left, top, width, height).fill();
 };
 
 const renderBackground = (ctx, node) => {

@@ -1,5 +1,5 @@
-import { flatten } from '@react-pdf/stylesheet';
-import getPageSize from '../page/getSize';
+import { flatten } from "@react-pdf/stylesheet";
+import getPageSize from "../page/getSize";
 
 /**
  * Resolves page size

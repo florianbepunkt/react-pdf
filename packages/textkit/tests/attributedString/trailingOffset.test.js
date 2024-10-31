@@ -1,11 +1,11 @@
-import { describe, expect, test } from 'vitest';
+import { describe, expect, test } from "vitest";
 
-import trailingOffset from '../../src/attributedString/trailingOffset';
+import trailingOffset from "../../src/attributedString/trailingOffset";
 
-describe('attributeString trailingOffset operator', () => {
-  test('should return zero for single run string without spaces', () => {
+describe("attributeString trailingOffset operator", () => {
+  test("should return zero for single run string without spaces", () => {
     const string = {
-      string: 'Lorem',
+      string: "Lorem",
       runs: [
         {
           start: 0,
@@ -32,9 +32,9 @@ describe('attributeString trailingOffset operator', () => {
     expect(result).toBe(0);
   });
 
-  test('should return zero for multipe run string without spaces', () => {
+  test("should return zero for multipe run string without spaces", () => {
     const string = {
-      string: 'Lorem',
+      string: "Lorem",
       runs: [
         {
           start: 0,
@@ -63,9 +63,9 @@ describe('attributeString trailingOffset operator', () => {
     expect(result).toBe(0);
   });
 
-  test('should return correct offset for single run string with spaces', () => {
+  test("should return correct offset for single run string with spaces", () => {
     const string = {
-      string: 'Lorem',
+      string: "Lorem",
       runs: [
         {
           start: 0,
@@ -93,9 +93,9 @@ describe('attributeString trailingOffset operator', () => {
     expect(result).toBe(17);
   });
 
-  test('should return correct offset for multiple run string with spaces', () => {
+  test("should return correct offset for multiple run string with spaces", () => {
     const string = {
-      string: 'Lorem',
+      string: "Lorem",
       runs: [
         {
           start: 0,

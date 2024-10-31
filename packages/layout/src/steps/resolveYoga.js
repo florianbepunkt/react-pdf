@@ -1,4 +1,4 @@
-import { loadYoga } from '../yoga/index';
+import { loadYoga } from "../yoga/index";
 
 const resolveYoga = async (root) => {
   const yoga = await loadYoga();

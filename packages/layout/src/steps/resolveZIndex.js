@@ -1,4 +1,4 @@
-import * as P from '@react-pdf/primitives';
+import * as P from "@react-pdf/primitives";
 
 const getZIndex = (node) => node.style.zIndex;
 
@@ -24,9 +24,7 @@ const sortZIndex = (a, b) => {
 const resolveZIndex = (node) => {
   if (!node.children) return node;
 
-  const sortedChildren = shouldSort(node)
-    ? node.children.sort(sortZIndex)
-    : node.children;
+  const sortedChildren = shouldSort(node) ? node.children.sort(sortZIndex) : node.children;
 
   const children = sortedChildren.map(resolveZIndex);
 

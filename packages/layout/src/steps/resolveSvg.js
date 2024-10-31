@@ -1,35 +1,35 @@
-import * as P from '@react-pdf/primitives';
-import { transformColor, processTransform } from '@react-pdf/stylesheet';
-import { pick, evolve, compose, mapValues, matchPercent } from '@react-pdf/fns';
+import * as P from "@react-pdf/primitives";
+import { transformColor, processTransform } from "@react-pdf/stylesheet";
+import { pick, evolve, compose, mapValues, matchPercent } from "@react-pdf/fns";
 
-import layoutText from '../svg/layoutText';
-import replaceDefs from '../svg/replaceDefs';
-import getContainer from '../svg/getContainer';
-import parseViewbox from '../svg/parseViewbox';
-import inheritProps from '../svg/inheritProps';
-import parseAspectRatio from '../svg/parseAspectRatio';
+import layoutText from "../svg/layoutText";
+import replaceDefs from "../svg/replaceDefs";
+import getContainer from "../svg/getContainer";
+import parseViewbox from "../svg/parseViewbox";
+import inheritProps from "../svg/inheritProps";
+import parseAspectRatio from "../svg/parseAspectRatio";
 
 const STYLE_PROPS = [
-  'width',
-  'height',
-  'color',
-  'stroke',
-  'strokeWidth',
-  'opacity',
-  'fillOpacity',
-  'strokeOpacity',
-  'fill',
-  'fillRule',
-  'clipPath',
-  'offset',
-  'transform',
-  'strokeLinejoin',
-  'strokeLinecap',
-  'strokeDasharray',
+  "width",
+  "height",
+  "color",
+  "stroke",
+  "strokeWidth",
+  "opacity",
+  "fillOpacity",
+  "strokeOpacity",
+  "fill",
+  "fillRule",
+  "clipPath",
+  "offset",
+  "transform",
+  "strokeLinejoin",
+  "strokeLinecap",
+  "strokeDasharray",
 ];
 
-const VERTICAL_PROPS = ['y', 'y1', 'y2', 'height', 'cy', 'ry'];
-const HORIZONTAL_PROPS = ['x', 'x1', 'x2', 'width', 'cx', 'rx'];
+const VERTICAL_PROPS = ["y", "y1", "y2", "height", "cy", "ry"];
+const HORIZONTAL_PROPS = ["x", "x1", "x2", "width", "cx", "rx"];
 
 const isType = (type) => (node) => node.type === type;
 
@@ -99,7 +99,7 @@ const mergeStyles = (node) => {
 };
 
 const removeNoneValues = (node) => {
-  const removeNone = (value) => (value === 'none' ? null : value);
+  const removeNone = (value) => (value === "none" ? null : value);
   const props = mapValues(node.props, removeNone);
 
   return Object.assign({}, node, { props });
@@ -137,8 +137,7 @@ const addMissingTspan = (node) => {
   if (!isText(node)) return node;
   if (!node.children) return node;
 
-  const resolveChild = (child) =>
-    isTextInstance(child) ? wrapBetweenTspan(child) : child;
+  const resolveChild = (child) => (isTextInstance(child) ? wrapBetweenTspan(child) : child);
 
   const children = node.children.map(resolveChild);
 
@@ -156,20 +155,12 @@ const parseText = (fontStore) => (node) => {
 };
 
 const resolveSvgNode = (container) =>
-  compose(
-    parseProps(container),
-    addMissingTspan,
-    removeNoneValues,
-    mergeStyles,
-  );
+  compose(parseProps(container), addMissingTspan, removeNoneValues, mergeStyles);
 
 const resolveChildren = (container) => (node) => {
   if (!node.children) return node;
 
-  const resolveChild = compose(
-    resolveChildren(container),
-    resolveSvgNode(container),
-  );
+  const resolveChild = compose(resolveChildren(container), resolveSvgNode(container));
 
   const children = node.children.map(resolveChild);
 

@@ -1,12 +1,12 @@
-import { describe, expect, test } from 'vitest';
+import { describe, expect, test } from "vitest";
 
-import * as P from '@react-pdf/primitives';
+import * as P from "@react-pdf/primitives";
 
-import createCTX from '../ctx';
-import renderCanvas from '../../src/primitives/renderCanvas';
+import createCTX from "../ctx";
+import renderCanvas from "../../src/primitives/renderCanvas";
 
-describe('primitive renderCanvas', () => {
-  test('should be scoped operation', () => {
+describe("primitive renderCanvas", () => {
+  test("should be scoped operation", () => {
     const ctx = createCTX();
     const box = { top: 20, left: 40, width: 140, height: 200 };
     const node = { type: P.Canvas, box, props: {} };
@@ -17,7 +17,7 @@ describe('primitive renderCanvas', () => {
     expect(ctx.restore.mock.calls).toHaveLength(1);
   });
 
-  test('should call paint method with ctx', () => {
+  test("should call paint method with ctx", () => {
     const ctx = createCTX();
     const box = { top: 20, left: 40, width: 140, height: 200 };
     const paint = (p) => expect(p).toBeTruthy();
@@ -26,7 +26,7 @@ describe('primitive renderCanvas', () => {
     renderCanvas(ctx, node);
   });
 
-  test('should remove dangerous methods from passed ctx', () => {
+  test("should remove dangerous methods from passed ctx", () => {
     const ctx = createCTX();
     const box = { top: 20, left: 40, width: 140, height: 200 };
     const paint = (p) => expect(p.registerFont).toBeFalsy();
@@ -35,7 +35,7 @@ describe('primitive renderCanvas', () => {
     renderCanvas(ctx, node);
   });
 
-  test('should get correct available width and height', () => {
+  test("should get correct available width and height", () => {
     const ctx = createCTX();
     const box = { top: 20, left: 40, width: 140, height: 200 };
     const paint = (_, width, height) => {
@@ -47,7 +47,7 @@ describe('primitive renderCanvas', () => {
     renderCanvas(ctx, node);
   });
 
-  test('should get correct available width and height with paddings', () => {
+  test("should get correct available width and height with paddings", () => {
     const ctx = createCTX();
     const box = {
       top: 20,

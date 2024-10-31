@@ -22,7 +22,7 @@ export default {
    */
   file(src, options = {}) {
     options.name = options.name || src;
-    options.relationship = options.relationship || "Unspecified";
+    options.relationship = options.relationship || 'Unspecified';
 
     const refBody = {
       Type: 'EmbeddedFile',
@@ -108,8 +108,8 @@ export default {
     }
 
     // Add file to the catalogue to be PDF/A3 compliant
-    if(this._root.data.AF) {
-      this._root.data.AF.push(filespec)
+    if (this._root.data.AF) {
+      this._root.data.AF.push(filespec);
     } else {
       this._root.data.AF = [filespec];
     }

@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { vi } from "vitest";
 
 /**
  * Test script itemizer based on the string 'Lorem'
@@ -15,8 +15,8 @@ export const scriptItemizerImpl = vi.fn((string) => {
     string.runs.length === 0
       ? []
       : [
-          { start: 0, end: 3, attributes: { script: 'Latin' } },
-          { start: 3, end: 5, attributes: { script: 'Non-latin' } },
+          { start: 0, end: 3, attributes: { script: "Latin" } },
+          { start: 3, end: 5, attributes: { script: "Non-latin" } },
         ];
 
   return Object.assign({}, string, { runs });

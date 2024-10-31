@@ -1,10 +1,10 @@
-import transformUnits from './units';
-import transformColor from './colors';
-import processTransform from './transform';
-import processFontWeight from './fontWeight';
-import processObjectPosition from './objectPosition';
-import processTransformOrigin from './transformOrigin';
-import castFloat from '../utils/castFloat';
+import transformUnits from "./units";
+import transformColor from "./colors";
+import processTransform from "./transform";
+import processFontWeight from "./fontWeight";
+import processObjectPosition from "./objectPosition";
+import processTransformOrigin from "./transformOrigin";
+import castFloat from "../utils/castFloat";
 
 const handlers = {
   transform: processTransform,

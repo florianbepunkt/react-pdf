@@ -1,11 +1,11 @@
-import { isNil } from '@react-pdf/fns';
+import { isNil } from "@react-pdf/fns";
 
-import copyRect from '../rect/copy';
-import cropRect from '../rect/crop';
-import blockHeight from '../block/height';
-import truncateBlock from '../block/truncate';
-import layoutParagraph from './layoutParagraph';
-import sliceBlockAtHeight from '../block/sliceAtHeight';
+import copyRect from "../rect/copy";
+import cropRect from "../rect/crop";
+import blockHeight from "../block/height";
+import truncateBlock from "../block/truncate";
+import layoutParagraph from "./layoutParagraph";
+import sliceBlockAtHeight from "../block/sliceAtHeight";
 
 /**
  * @typedef {import('../types.js').AttributedString} AttributedString
@@ -30,7 +30,7 @@ const typesetter = (engines, options, container) => {
     const paragraphs = [...attributedStrings];
     const layoutBlock = layoutParagraph(engines, options);
     const maxLines = isNil(container.maxLines) ? Infinity : container.maxLines;
-    const truncateEllipsis = container.truncateMode === 'ellipsis';
+    const truncateEllipsis = container.truncateMode === "ellipsis";
 
     let linesCount = maxLines;
     let paragraphRect = copyRect(container);
@@ -41,8 +41,7 @@ const typesetter = (engines, options, container) => {
       const slicedBlock = block.slice(0, linesCount);
       const linesHeight = blockHeight(slicedBlock);
 
-      const shouldTruncate =
-        truncateEllipsis && block.length !== slicedBlock.length;
+      const shouldTruncate = truncateEllipsis && block.length !== slicedBlock.length;
 
       linesCount -= slicedBlock.length;
 
@@ -51,9 +50,7 @@ const typesetter = (engines, options, container) => {
         paragraphRect = cropRect(linesHeight, paragraphRect);
         nextParagraph = paragraphs.shift();
       } else {
-        blocks.push(
-          truncateBlock(sliceBlockAtHeight(paragraphRect.height, slicedBlock)),
-        );
+        blocks.push(truncateBlock(sliceBlockAtHeight(paragraphRect.height, slicedBlock)));
         break;
       }
     }

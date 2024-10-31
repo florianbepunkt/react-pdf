@@ -1,13 +1,13 @@
-import { last, compose } from '@react-pdf/fns';
+import { last, compose } from "@react-pdf/fns";
 
-import runHeight from '../run/height';
-import runAscent from '../run/ascent';
-import runDescent from '../run/descent';
-import runAdvanceWidth from '../run/advanceWidth';
-import advanceWidth from '../attributedString/advanceWidth';
-import leadingOffset from '../attributedString/leadingOffset';
-import trailingOffset from '../attributedString/trailingOffset';
-import dropLast from '../attributedString/dropLast';
+import runHeight from "../run/height";
+import runAscent from "../run/ascent";
+import runDescent from "../run/descent";
+import runAdvanceWidth from "../run/advanceWidth";
+import advanceWidth from "../attributedString/advanceWidth";
+import leadingOffset from "../attributedString/leadingOffset";
+import trailingOffset from "../attributedString/trailingOffset";
+import dropLast from "../attributedString/dropLast";
 
 const ALIGNMENT_FACTORS = { center: 0.5, right: 1 };
 
@@ -18,7 +18,7 @@ const ALIGNMENT_FACTORS = { center: 0.5, right: 1 };
  * @returns {Object} line
  */
 const removeNewLine = (line) => {
-  return last(line.string) === '\n' ? dropLast(line) : line;
+  return last(line.string) === "\n" ? dropLast(line) : line;
 };
 
 const getOverflowLeft = (line) => {
@@ -62,7 +62,7 @@ const justifyLine = (engines, options, align) => {
     const lineWidth = advanceWidth(line);
     const alignFactor = ALIGNMENT_FACTORS[align] || 0;
     const remainingWidth = Math.max(0, line.box.width - lineWidth);
-    const shouldJustify = align === 'justify' || lineWidth > line.box.width;
+    const shouldJustify = align === "justify" || lineWidth > line.box.width;
 
     const x = line.box.x + remainingWidth * alignFactor;
     const box = Object.assign({}, line.box, { x });

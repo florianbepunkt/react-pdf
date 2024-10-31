@@ -1,16 +1,16 @@
-export type FontStyle = 'normal' | 'italic' | 'oblique';
+export type FontStyle = "normal" | "italic" | "oblique";
 
 export type FontWeight =
   | number
-  | 'thin'
-  | 'ultralight'
-  | 'light'
-  | 'normal'
-  | 'medium'
-  | 'semibold'
-  | 'bold'
-  | 'ultrabold'
-  | 'heavy';
+  | "thin"
+  | "ultralight"
+  | "light"
+  | "normal"
+  | "medium"
+  | "semibold"
+  | "bold"
+  | "ultrabold"
+  | "heavy";
 
 export interface FontDescriptor {
   fontFamily: string;
@@ -33,10 +33,7 @@ interface FontInstance {
   sources: FontSource[];
 }
 
-export type HyphenationCallback = (
-  words: string,
-  glyphString: { [key: string]: any },
-) => string[];
+export type HyphenationCallback = (words: string, glyphString: { [key: string]: any }) => string[];
 
 interface RegisteredFont {
   src: string;

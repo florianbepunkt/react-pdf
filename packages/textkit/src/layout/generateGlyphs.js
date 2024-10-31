@@ -1,5 +1,5 @@
-import scale from '../run/scale';
-import resolveGlyphIndices from '../indices/resolve';
+import scale from "../run/scale";
+import resolveGlyphIndices from "../indices/resolve";
 
 /**
  * @typedef {import('../types.js').AttributedString} AttributedString
@@ -58,13 +58,7 @@ const layoutRun = (string) => {
     const runString = string.slice(start, end);
 
     // passing LTR To force fontkit to not reverse the string
-    const glyphRun = font.layout(
-      runString,
-      undefined,
-      undefined,
-      undefined,
-      'ltr',
-    );
+    const glyphRun = font.layout(runString, undefined, undefined, undefined, "ltr");
 
     const positions = scalePositions(run, glyphRun.positions);
     const glyphIndices = resolveGlyphIndices(glyphRun.glyphs);

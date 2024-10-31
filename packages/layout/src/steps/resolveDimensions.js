@@ -1,48 +1,33 @@
-import * as P from '@react-pdf/primitives';
-import { isNil, compose } from '@react-pdf/fns';
+import * as P from "@react-pdf/primitives";
+import { isNil, compose } from "@react-pdf/fns";
 
-import getMargin from '../node/getMargin';
-import getPadding from '../node/getPadding';
-import getPosition from '../node/getPosition';
-import getDimension from '../node/getDimension';
-import getBorderWidth from '../node/getBorderWidth';
-import setDisplay from '../node/setDisplay';
-import setOverflow from '../node/setOverflow';
-import setFlexWrap from '../node/setFlexWrap';
-import setFlexGrow from '../node/setFlexGrow';
-import setFlexBasis from '../node/setFlexBasis';
-import setAlignSelf from '../node/setAlignSelf';
-import setAlignItems from '../node/setAlignItems';
-import setFlexShrink from '../node/setFlexShrink';
-import setAspectRatio from '../node/setAspectRatio';
-import setAlignContent from '../node/setAlignContent';
-import setPositionType from '../node/setPositionType';
-import setFlexDirection from '../node/setFlexDirection';
-import setJustifyContent from '../node/setJustifyContent';
-import {
-  setMarginTop,
-  setMarginRight,
-  setMarginBottom,
-  setMarginLeft,
-} from '../node/setMargin';
-import {
-  setPaddingTop,
-  setPaddingRight,
-  setPaddingBottom,
-  setPaddingLeft,
-} from '../node/setPadding';
-import {
-  setBorderTop,
-  setBorderRight,
-  setBorderBottom,
-  setBorderLeft,
-} from '../node/setBorderWidth';
+import getMargin from "../node/getMargin";
+import getPadding from "../node/getPadding";
+import getPosition from "../node/getPosition";
+import getDimension from "../node/getDimension";
+import getBorderWidth from "../node/getBorderWidth";
+import setDisplay from "../node/setDisplay";
+import setOverflow from "../node/setOverflow";
+import setFlexWrap from "../node/setFlexWrap";
+import setFlexGrow from "../node/setFlexGrow";
+import setFlexBasis from "../node/setFlexBasis";
+import setAlignSelf from "../node/setAlignSelf";
+import setAlignItems from "../node/setAlignItems";
+import setFlexShrink from "../node/setFlexShrink";
+import setAspectRatio from "../node/setAspectRatio";
+import setAlignContent from "../node/setAlignContent";
+import setPositionType from "../node/setPositionType";
+import setFlexDirection from "../node/setFlexDirection";
+import setJustifyContent from "../node/setJustifyContent";
+import { setMarginTop, setMarginRight, setMarginBottom, setMarginLeft } from "../node/setMargin";
+import { setPaddingTop, setPaddingRight, setPaddingBottom, setPaddingLeft } from "../node/setPadding";
+import { setBorderTop, setBorderRight, setBorderBottom, setBorderLeft } from "../node/setBorderWidth";
 import {
   setPositionTop,
   setPositionRight,
   setPositionBottom,
   setPositionLeft,
-} from '../node/setPosition';
+} from "../node/setPosition";
 import {
   setWidth,
   setHeight,
@@ -50,12 +35,12 @@ import {
   setMaxWidth,
   setMinHeight,
   setMaxHeight,
-} from '../node/setDimension';
-import { setRowGap, setColumnGap } from '../node/setGap';
-import measureSvg from '../svg/measureSvg';
-import measureText from '../text/measureText';
-import measureImage from '../image/measureImage';
-import measureCanvas from '../canvas/measureCanvas';
+} from "../node/setDimension";
+import { setRowGap, setColumnGap } from "../node/setGap";
+import measureSvg from "../svg/measureSvg";
+import measureText from "../text/measureText";
+import measureImage from "../image/measureImage";
+import measureCanvas from "../canvas/measureCanvas";
 
 const isType = (type) => (node) => node.type === type;
 
@@ -159,8 +144,7 @@ const setMeasureFunc = (node, page, fontStore) => {
   return node;
 };
 
-const isLayoutElement = (node) =>
-  !isText(node) && !isNote(node) && !isSvg(node);
+const isLayoutElement = (node) => !isText(node) && !isNote(node) && !isSvg(node);
 
 /**
  * @typedef {Function} CreateYogaNodes
@@ -182,10 +166,7 @@ const createYogaNodes = (page, fontStore, yoga) => (node) => {
   setYogaValues(result);
 
   if (isLayoutElement(node) && node.children) {
-    const resolveChild = compose(
-      insertYogaNodes(yogaNode),
-      createYogaNodes(page, fontStore, yoga),
-    );
+    const resolveChild = compose(insertYogaNodes(yogaNode), createYogaNodes(page, fontStore, yoga));
 
     result.children = node.children.map(resolveChild);
   }
@@ -291,8 +272,7 @@ export const resolvePageDimensions = (page, fontStore, yoga) => {
 const resolveDimensions = (node, fontStore) => {
   if (!node.children) return node;
 
-  const resolveChild = (child) =>
-    resolvePageDimensions(child, fontStore, node.yoga);
+  const resolveChild = (child) => resolvePageDimensions(child, fontStore, node.yoga);
   const children = node.children.map(resolveChild);
 
   return Object.assign({}, node, { children });

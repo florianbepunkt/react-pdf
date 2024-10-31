@@ -1,12 +1,12 @@
-import { get } from '@react-pdf/fns';
+import { get } from "@react-pdf/fns";
 
-import lineIndexAtHeight from './lineIndexAtHeight';
-import heightAtLineIndex from './heightAtLineIndex';
+import lineIndexAtHeight from "./lineIndexAtHeight";
+import heightAtLineIndex from "./heightAtLineIndex";
 
 const getLineBreak = (node, height) => {
-  const top = get(node, ['box', 'top'], 0);
-  const widows = get(node, ['props', 'widows'], 2);
-  const orphans = get(node, ['props', 'orphans'], 2);
+  const top = get(node, ["box", "top"], 0);
+  const widows = get(node, ["props", "widows"], 2);
+  const orphans = get(node, ["props", "orphans"], 2);
   const linesQuantity = node.lines.length;
   const slicedLine = lineIndexAtHeight(node, height - top);
 

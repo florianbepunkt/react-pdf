@@ -1,4 +1,4 @@
-import setYogaValue from './setYogaValue';
+import setYogaValue from "./setYogaValue";
 
 /**
  * Set flex basis attribute to node's Yoga instance
@@ -7,6 +7,6 @@ import setYogaValue from './setYogaValue';
  * @param {Object} node instance
  * @returns {Object} node instance
  */
-const setFlexBasis = setYogaValue('flexBasis');
+const setFlexBasis = setYogaValue("flexBasis");
 
 export default setFlexBasis;

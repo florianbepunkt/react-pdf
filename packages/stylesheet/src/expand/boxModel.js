@@ -1,19 +1,19 @@
 /* eslint-disable no-plusplus */
 // This file is ran directly with Node - needs to have .js extension
 // eslint-disable-next-line import/extensions
-import parse from 'postcss-value-parser/lib/parse.js';
+import parse from "postcss-value-parser/lib/parse.js";
 // This file is ran directly with Node - needs to have .js extension
 // eslint-disable-next-line import/extensions
-import parseUnit from 'postcss-value-parser/lib/unit.js';
+import parseUnit from "postcss-value-parser/lib/unit.js";
 
-const BOX_MODEL_UNITS = 'px,in,mm,cm,pt,%,vw,vh';
+const BOX_MODEL_UNITS = "px,in,mm,cm,pt,%,vw,vh";
 
 const logError = (style, value) => {
   console.error(`
     @react-pdf/stylesheet parsing error:
 
     ${style}: ${value},
-    ${' '.repeat(style.length + 2)}^
+    ${" ".repeat(style.length + 2)}^
     Unsupported ${style} value format
   `);
 };
@@ -36,18 +36,14 @@ const expandBoxModel =
 
       // value contains `calc`, `url` or other css function
       // `,`, `/` or strings that unsupported by margin and padding
-      if (
-        node.type === 'function' ||
-        node.type === 'string' ||
-        node.type === 'div'
-      ) {
+      if (node.type === "function" || node.type === "string" || node.type === "div") {
         logError(model, value);
 
         return {};
       }
 
-      if (node.type === 'word') {
-        if (node.value === 'auto' && autoSupported) {
+      if (node.type === "word") {
+        if (node.value === "auto" && autoSupported) {
           parts.push(node.value);
         } else {
           const result = parseUnit(node.value);

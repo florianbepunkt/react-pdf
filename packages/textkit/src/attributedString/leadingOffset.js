@@ -1,4 +1,4 @@
-import runLeadingOffset from '../run/leadingOffset';
+import runLeadingOffset from "../run/leadingOffset";
 
 /**
  * @typedef {import('../types.js').AttributedString} AttributedString
