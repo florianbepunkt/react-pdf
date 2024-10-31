@@ -28,24 +28,48 @@ declare namespace ReactPDF {
   interface Styles {
     [key: string]: Style;
   }
+
   interface OnRenderProps {
     blob?: Blob;
   }
 
+  interface Attachment {
+    content: Buffer | ArrayBuffer | string;
+    creationDate: Date;
+    description?: string;
+    hidden?: boolean;
+    modifiedDate?: Date;
+    relationship?:
+      | 'Alternative'
+      | 'Data'
+      | 'Source'
+      | 'Supplement'
+      | 'Unspecified';
+    name: string;
+    type: string;
+  }
+
+  type PDFSubset =
+    | `PDF/A-1${'' | 'a' | 'b'}`
+    | `PDF/A-2${'' | 'a' | 'b'}`
+    | `PDF/A-3${'' | 'a' | 'b'}`;
+
   interface DocumentProps {
-    style?: Style | Style[];
-    title?: string;
+    attachments: Attachment[];
     author?: string;
-    subject?: string;
+    creationDate?: Date;
     creator?: string;
     keywords?: string;
-    producer?: string;
     language?: string;
-    creationDate?: Date;
     modificationDate?: Date;
-    pdfVersion?: PDFVersion;
-    pageMode?: PageMode;
     pageLayout?: PageLayout;
+    pageMode?: PageMode;
+    pdfVersion?: PDFVersion;
+    producer?: string;
+    style?: Style | Style[];
+    subject?: string;
+    subset?: PDFSubset;
+    title?: string;
     onRender?: (props: OnRenderProps) => any;
   }
 
