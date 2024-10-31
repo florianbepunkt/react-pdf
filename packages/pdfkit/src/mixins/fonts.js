@@ -1,7 +1,7 @@
-import PDFFont from '../font';
+import PDFFontFactory from '../font_factory';
 
 export default {
-  initFonts() {
+  initFonts(defaultFont = 'Helvetica') {
     // Lookup table for embedded fonts
     this._fontFamilies = {};
     this._fontCount = 0;
@@ -13,12 +13,13 @@ export default {
     this._registeredFonts = {};
 
     // Set the default font
-    return this.font('Helvetica');
+    if (defaultFont) {
+      this.font(defaultFont);
+    }
   },
 
   font(src, family, size) {
-    let cacheKey;
-    let font;
+    let cacheKey, font;
     if (typeof family === 'number') {
       size = family;
       family = null;
@@ -47,7 +48,7 @@ export default {
 
     // load the font
     const id = `F${++this._fontCount}`;
-    this._font = PDFFont.open(this, src, family, id);
+    this._font = PDFFontFactory.open(this, src, family, id);
 
     // check for existing font familes with the same name already in the PDF
     // useful if the font was passed as a buffer
