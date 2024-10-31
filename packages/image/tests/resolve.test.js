@@ -7,8 +7,8 @@ import resolveImage, { IMAGE_CACHE } from "../src/resolve";
 
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 
-const jpgImageUrl = "https://react-pdf.org/static/images/quijote1.jpg";
-const pngImageUrl = "https://react-pdf.org/static/images/quijote2.png";
+const jpgImageUrl = "https://placehold.jp/3d4070/ffffff/150x150.jpg";
+const pngImageUrl = "https://app.easypliant.de/logo.png";
 const jpgLogalPath = path.join(__dirname, "./assets/test.jpg");
 const localJPGImage = fs.readFileSync(jpgLogalPath);
 const pngLogalPath = path.join(__dirname, "./assets/test.png");
@@ -21,7 +21,7 @@ describe("image resolveImage", () => {
   });
 
   test("Should fetch remote image using GET method by default", async () => {
-    fetch.once(localJPGImage);
+    fetch.mockResponseOnce(localJPGImage);
 
     await resolveImage({ uri: jpgImageUrl });
 
@@ -29,7 +29,7 @@ describe("image resolveImage", () => {
   });
 
   test("Should fetch remote image using passed method", async () => {
-    fetch.once(localJPGImage);
+    fetch.mockResponseOnce(localJPGImage);
 
     await resolveImage({ uri: jpgImageUrl, method: "POST" });
 
@@ -37,7 +37,7 @@ describe("image resolveImage", () => {
   });
 
   test("Should fetch remote image using passed headers", async () => {
-    fetch.once(localJPGImage);
+    fetch.mockResponseOnce(localJPGImage);
 
     const headers = { Authorization: "Bearer qwerty" };
     await resolveImage({ uri: jpgImageUrl, headers });
@@ -47,7 +47,7 @@ describe("image resolveImage", () => {
 
   // TypeError: Request with GET/HEAD method cannot have body
   test.skip("Should fetch remote image using passed body", async () => {
-    fetch.once(localJPGImage);
+    fetch.mockResponseOnce(localJPGImage);
 
     const body = "qwerty";
     await resolveImage({ uri: jpgImageUrl, body });
@@ -56,7 +56,7 @@ describe("image resolveImage", () => {
   });
 
   test("Should fetch remote image using passed credentials", async () => {
-    fetch.once(localJPGImage);
+    fetch.mockResponseOnce(localJPGImage);
 
     const credentials = "include";
     await resolveImage({ uri: jpgImageUrl, credentials });
@@ -65,7 +65,7 @@ describe("image resolveImage", () => {
   });
 
   test("Should not include credentials if not exist", async () => {
-    fetch.once(localJPGImage);
+    fetch.mockResponseOnce(localJPGImage);
 
     await resolveImage({ uri: jpgImageUrl });
 
@@ -73,7 +73,7 @@ describe("image resolveImage", () => {
   });
 
   test("Should render a jpeg image over http", async () => {
-    fetch.once(localJPGImage);
+    fetch.mockResponseOnce(localJPGImage);
 
     const image = await resolveImage({ uri: jpgImageUrl });
 
@@ -83,7 +83,7 @@ describe("image resolveImage", () => {
   });
 
   test("Should render a png image over http", async () => {
-    fetch.once(localPNGImage);
+    fetch.mockResponseOnce(localPNGImage);
 
     const image = await resolveImage({ uri: pngImageUrl });
 

@@ -84,7 +84,7 @@ const renderComponent = async (element) => {
   const source = await renderToBuffer(element);
 
   const document = await pdfjs.getDocument({
-    data: source,
+    data: source.buffer,
     verbosity: 0,
   }).promise;
 
