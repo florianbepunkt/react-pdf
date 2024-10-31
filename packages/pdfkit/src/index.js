@@ -1,4 +1,4 @@
 import PDFDocument from './document';
 
-export * from './font';
+export { PDFFontFactory } from "./font_factory"
 export default PDFDocument;
