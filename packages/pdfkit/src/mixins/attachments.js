@@ -1,10 +1,11 @@
 import fs from 'fs';
-// This file is ran directly with Node - needs to have .js extension
-// eslint-disable-next-line import/extensions
-import * as CryptoJS from 'crypto-js/core.js';
-// This file is ran directly with Node - needs to have .js extension
-// eslint-disable-next-line import/extensions
-import MD5 from 'crypto-js/md5.js';
+import crypto from "node:crypto";
+
+export const generateChecksum = (buffer, algorithm = "md5") => {
+  const hash = crypto.createHash(algorithm);
+  hash.update(buffer);
+  return hash.digest("hex");
+};
 
 export default {
   /**
@@ -72,7 +73,8 @@ export default {
     }
 
     // add checksum and size information
-    const checksum = MD5(CryptoJS.lib.WordArray.create(new Uint8Array(data)));
+    // const checksum = MD5(CryptoJS.lib.WordArray.create(new Uint8Array(data)));
+    const checksum = generateChecksum(data);
     refBody.Params.CheckSum = new String(checksum);
     refBody.Params.Size = data.byteLength;
 
