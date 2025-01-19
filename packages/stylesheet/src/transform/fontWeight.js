@@ -17,7 +17,7 @@ const FONT_WEIGHTS = {
 
 const processFontWeight = (value) => {
   if (!value) return FONT_WEIGHTS.normal;
-  if (typeof value === 'number') return value;
+  if (typeof value === "number") return value;
 
   const lv = value.toLowerCase();
 

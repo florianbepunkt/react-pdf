@@ -7,19 +7,19 @@ export interface SVGPresentationAttributes {
   opacity?: string | number;
   strokeWidth?: string | number;
   fillOpacity?: string | number;
-  fillRule?: 'nonzero' | 'evenodd';
+  fillRule?: "nonzero" | "evenodd";
   strokeOpacity?: string | number;
-  textAnchor?: 'start' | 'middle' | 'end';
-  strokeLinecap?: 'butt' | 'round' | 'square';
-  strokeLinejoin?: 'butt' | 'round' | 'square';
-  visibility?: 'visible' | 'hidden' | 'collapse';
+  textAnchor?: "start" | "middle" | "end";
+  strokeLinecap?: "butt" | "round" | "square";
+  strokeLinejoin?: "butt" | "round" | "square";
+  visibility?: "visible" | "hidden" | "collapse";
   clipPath?: string;
   dominantBaseline?:
-    | 'auto'
-    | 'middle'
-    | 'central'
-    | 'hanging'
-    | 'mathematical'
-    | 'text-after-edge'
-    | 'text-before-edge';
+    | "auto"
+    | "middle"
+    | "central"
+    | "hanging"
+    | "mathematical"
+    | "text-after-edge"
+    | "text-before-edge";
 }

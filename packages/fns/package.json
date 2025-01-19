@@ -1,19 +1,23 @@
 {
-  "name": "@react-pdf/fns",
-  "version": "3.0.0",
+  "name": "@easypliant/react-pdf-fns",
+  "version": "4.0.0",
   "license": "MIT",
   "description": "React-pdf helper functions",
   "author": "Diego Muracciole <diegomuracciole@gmail.com>",
-  "homepage": "https://github.com/diegomura/react-pdf#readme",
+  "homepage": "https://github.com/easypliant/react-pdf#readme",
   "type": "module",
   "main": "./lib/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/diegomura/react-pdf.git",
+    "url": "https://github.com/easypliant/react-pdf.git",
     "directory": "packages/fns"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/easypliant"
   },
   "scripts": {
     "test": "vitest",
+    "format": "prettier --write \"./**/*.{js,jsx,ts,tsx,json}\"",
     "build": "rimraf ./lib && rollup -c",
     "watch": "rimraf ./lib && rollup -c -w"
   },

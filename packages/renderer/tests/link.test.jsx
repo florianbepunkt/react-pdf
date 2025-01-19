@@ -1,12 +1,12 @@
-import { describe, expect, test } from 'vitest';
+import { describe, expect, test } from "vitest";
 
-import { Document, Page, Link, Font, Text } from '@react-pdf/renderer';
-import renderToImage from './renderComponent';
+import { Document, Page, Link, Font, Text } from "@easypliant/react-pdf-renderer";
+import renderToImage from "./renderComponent";
 
 // pdf.js does not render default fonts in node and I use Open Sans (:
 Font.register({
-  family: 'Open Sans',
-  src: 'https://fonts.gstatic.com/s/opensans/v17/mem8YaGs126MiZpBA-UFVZ0e.ttf',
+  family: "Open Sans",
+  src: "https://fonts.gstatic.com/s/opensans/v17/mem8YaGs126MiZpBA-UFVZ0e.ttf",
 });
 
 const mount = async (children) => {
@@ -19,13 +19,10 @@ const mount = async (children) => {
   return image;
 };
 
-describe('Link', () => {
-  test('should render text', async () => {
+describe("Link", () => {
+  test("should render text", async () => {
     const image = await mount(
-      <Link
-        href="https://github.com/wojtekmaj/react-pdf"
-        style={{ fontFamily: 'Open Sans' }}
-      >
+      <Link href="https://github.com/wojtekmaj/react-pdf" style={{ fontFamily: "Open Sans" }}>
         hello
       </Link>,
     );
@@ -33,14 +30,14 @@ describe('Link', () => {
     expect(image).toMatchImageSnapshot();
   });
 
-  test('should render TEXT component', async () => {
+  test("should render TEXT component", async () => {
     const image = await mount(
       <Link
         href="https://github.com/wojtekmaj/react-pdf"
-        style={{ fontFamily: 'Open Sans', textDecoration: 'none' }}
+        style={{ fontFamily: "Open Sans", textDecoration: "none" }}
       >
         he
-        <Text style={{ textDecoration: 'underline' }}>llo</Text>
+        <Text style={{ textDecoration: "underline" }}>llo</Text>
       </Link>,
     );
 

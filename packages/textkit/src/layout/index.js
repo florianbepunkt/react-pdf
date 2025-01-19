@@ -1,17 +1,17 @@
-import { compose } from '@react-pdf/fns';
+import { compose } from "@easypliant/react-pdf-fns";
 
-import wrapWords from './wrapWords';
-import typesetter from './typesetter';
-import bidiReordering from './bidiReordering';
-import generateGlyphs from './generateGlyphs';
-import resolveYOffset from './resolveYOffset';
-import preprocessRuns from './preprocessRuns';
-import splitParagraphs from './splitParagraphs';
-import finalizeFragments from './finalizeFragments';
-import resolveAttachments from './resolveAttachments';
-import applyDefaultStyles from './applyDefaultStyles';
-import verticalAlignment from './verticalAlign';
-import bidiMirroring from './bidiMirroring';
+import wrapWords from "./wrapWords";
+import typesetter from "./typesetter";
+import bidiReordering from "./bidiReordering";
+import generateGlyphs from "./generateGlyphs";
+import resolveYOffset from "./resolveYOffset";
+import preprocessRuns from "./preprocessRuns";
+import splitParagraphs from "./splitParagraphs";
+import finalizeFragments from "./finalizeFragments";
+import resolveAttachments from "./resolveAttachments";
+import applyDefaultStyles from "./applyDefaultStyles";
+import verticalAlignment from "./verticalAlign";
+import bidiMirroring from "./bidiMirroring";
 
 /**
  * @typedef {import('../types.js').AttributedString} AttributedString

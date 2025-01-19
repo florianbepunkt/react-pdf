@@ -1,5 +1,5 @@
-import React from 'react';
-import { Svg, G, Polygon } from '@react-pdf/renderer';
+import React from "react";
+import { Svg, G, Polygon } from "@easypliant/react-pdf-renderer";
 
 const Tiger = () => (
   <Svg style={{ width: 400, height: 400 }}>
@@ -12,10 +12,7 @@ const Tiger = () => (
         fill="#e5b27f"
         points=" 142,79 136,74 138,82 133,78 133,84 127,78 128,85 124,80 125,87 119,82 119,90 125,99 125,96 128,100 128,94 131,98 132,93 135,97 136,93 138,97 139,94 141,98 143,94 144,85"
       />
-      <Polygon
-        fill="#eb8080"
-        points=" 127,101 132,100 137,99 144,101 143,105 135,110"
-      />
+      <Polygon fill="#eb8080" points=" 127,101 132,100 137,99 144,101 143,105 135,110" />
       <Polygon
         fill="#f2cc99"
         points=" 178,229 157,248 139,296 126,349 137,356 158,357 183,342 212,332 235,288 235,261 228,252 212,250 188,251"

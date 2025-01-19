@@ -1,12 +1,9 @@
 {
   "$schema": "https://unpkg.com/@changesets/config@2.3.0/schema.json",
-  "changelog": [
-    "@changesets/changelog-github",
-    { "repo": "diegomura/react-pdf" }
-  ],
+  "changelog": ["@changesets/changelog-github", { "repo": "easypliant/react-pdf" }],
   "commit": false,
-  "access": "public",
-  "baseBranch": "master",
+  "access": "restricted",
+  "baseBranch": "main",
   "updateInternalDependencies": "patch",
   "___experimentalUnsafeOptions_WILL_CHANGE_IN_PATCH": {
     "updateInternalDependents": "always"

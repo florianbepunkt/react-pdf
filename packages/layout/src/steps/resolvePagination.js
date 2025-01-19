@@ -2,29 +2,28 @@
 /* eslint-disable no-continue */
 /* eslint-disable prefer-destructuring */
 
-import * as P from '@react-pdf/primitives';
-import { isNil, omit, compose } from '@react-pdf/fns';
+import * as P from "@easypliant/react-pdf-primitives";
+import { isNil, omit, compose } from "@easypliant/react-pdf-fns";
 
-import isFixed from '../node/isFixed';
-import splitText from '../text/splitText';
-import splitNode from '../node/splitNode';
-import canNodeWrap from '../node/getWrap';
-import getWrapArea from '../page/getWrapArea';
-import getContentArea from '../page/getContentArea';
-import createInstances from '../node/createInstances';
-import shouldNodeBreak from '../node/shouldBreak';
-import resolveTextLayout from './resolveTextLayout';
-import resolveInheritance from './resolveInheritance';
-import { resolvePageDimensions } from './resolveDimensions';
-import { resolvePageStyles } from './resolveStyles';
+import isFixed from "../node/isFixed";
+import splitText from "../text/splitText";
+import splitNode from "../node/splitNode";
+import canNodeWrap from "../node/getWrap";
+import getWrapArea from "../page/getWrapArea";
+import getContentArea from "../page/getContentArea";
+import createInstances from "../node/createInstances";
+import shouldNodeBreak from "../node/shouldBreak";
+import resolveTextLayout from "./resolveTextLayout";
+import resolveInheritance from "./resolveInheritance";
+import { resolvePageDimensions } from "./resolveDimensions";
+import { resolvePageStyles } from "./resolveStyles";
 
 const isText = (node) => node.type === P.Text;
 
 // Prevent splitting elements by low decimal numbers
 const SAFETY_THRESHOLD = 0.001;
 
-const assingChildren = (children, node) =>
-  Object.assign({}, node, { children });
+const assingChildren = (children, node) => Object.assign({}, node, { children });
 
 const getTop = (node) => node.box?.top || 0;
 
@@ -136,16 +135,9 @@ const splitChildren = (height, contentArea, node) => {
 
 const splitView = (node, height, contentArea) => {
   const [currentNode, nextNode] = splitNode(node, height);
-  const [currentChilds, nextChildren] = splitChildren(
-    height,
-    contentArea,
-    node,
-  );
+  const [currentChilds, nextChildren] = splitChildren(height, contentArea, node);
 
-  return [
-    assingChildren(currentChilds, currentNode),
-    assingChildren(nextChildren, nextNode),
-  ];
+  return [assingChildren(currentChilds, currentNode), assingChildren(nextChildren, nextNode)];
 };
 
 const split = (node, height, contentArea) =>
@@ -196,24 +188,17 @@ const splitPage = (page, pageNumber, fontStore, yoga) => {
   const dynamicPage = resolveDynamicPage({ pageNumber }, page, fontStore, yoga);
   const height = page.style.height;
 
-  const [currentChilds, nextChilds] = splitNodes(
-    wrapArea,
-    contentArea,
-    dynamicPage.children,
-  );
+  const [currentChilds, nextChilds] = splitNodes(wrapArea, contentArea, dynamicPage.children);
 
   const relayout = (node) => relayoutPage(node, fontStore, yoga);
 
   const currentBox = { ...page.box, height };
-  const currentPage = relayout(
-    Object.assign({}, page, { box: currentBox, children: currentChilds }),
-  );
+  const currentPage = relayout(Object.assign({}, page, { box: currentBox, children: currentChilds }));
 
-  if (nextChilds.length === 0 || allFixed(nextChilds))
-    return [currentPage, null];
+  if (nextChilds.length === 0 || allFixed(nextChilds)) return [currentPage, null];
 
-  const nextBox = omit('height', page.box);
-  const nextProps = omit('bookmark', page.props);
+  const nextBox = omit("height", page.box);
+  const nextProps = omit("bookmark", page.props);
 
   const nextPage = relayout(
     Object.assign({}, page, {
@@ -248,7 +233,7 @@ const assocSubPageData = (subpages) => {
 };
 
 const dissocSubPageData = (page) => {
-  return omit(['subPageNumber', 'subPageTotalPages'], page);
+  return omit(["subPageNumber", "subPageTotalPages"], page);
 };
 
 const paginate = (page, pageNumber, fontStore, yoga) => {
@@ -262,12 +247,7 @@ const paginate = (page, pageNumber, fontStore, yoga) => {
   let nextPage = splittedPage[1];
 
   while (nextPage !== null) {
-    splittedPage = splitPage(
-      nextPage,
-      pageNumber + pages.length,
-      fontStore,
-      yoga,
-    );
+    splittedPage = splitPage(nextPage, pageNumber + pages.length, fontStore, yoga);
 
     pages.push(splittedPage[0]);
     nextPage = splittedPage[1];
@@ -297,9 +277,7 @@ const resolvePagination = (doc, fontStore) => {
     pages = pages.concat(subpages);
   }
 
-  pages = pages.map((...args) =>
-    dissocSubPageData(resolvePageIndices(fontStore, doc.yoga, ...args)),
-  );
+  pages = pages.map((...args) => dissocSubPageData(resolvePageIndices(fontStore, doc.yoga, ...args)));
 
   return assingChildren(pages, doc);
 };

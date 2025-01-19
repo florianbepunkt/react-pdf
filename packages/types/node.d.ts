@@ -1,8 +1,8 @@
-import { Style } from './style';
-import { Primitive } from './primitive';
-import { HyphenationCallback } from './font';
-import { PageSize, Orientation } from './page';
-import { Bookmark } from './bookmark';
+import { Style } from "./style";
+import { Primitive } from "./primitive";
+import { HyphenationCallback } from "./font";
+import { PageSize, Orientation } from "./page";
+import { Bookmark } from "./bookmark";
 
 interface BaseProps {
   id?: string;
@@ -13,10 +13,7 @@ interface BaseProps {
   minPresenceAhead?: number;
 }
 
-type DynamicRenderCallback = (props: {
-  pageNumber: number;
-  totalPages: number;
-}) => any;
+type DynamicRenderCallback = (props: { pageNumber: number; totalPages: number }) => any;
 
 interface TextProps extends BaseProps {
   wrap?: boolean;
@@ -39,20 +36,14 @@ interface PageProps extends BaseProps {
 }
 
 type PageLayout =
-  | 'singlePage'
-  | 'oneColumn'
-  | 'twoColumnLeft'
-  | 'twoColumnRight'
-  | 'twoPageLeft'
-  | 'twoPageRight';
+  | "singlePage"
+  | "oneColumn"
+  | "twoColumnLeft"
+  | "twoColumnRight"
+  | "twoPageLeft"
+  | "twoPageRight";
 
-type PageMode =
-  | 'useNone'
-  | 'useOutlines'
-  | 'useThumbs'
-  | 'fullScreen'
-  | 'useOC'
-  | 'useAttachments';
+type PageMode = "useNone" | "useOutlines" | "useThumbs" | "fullScreen" | "useOC" | "useAttachments";
 
 interface DocumentProps {
   title?: string;

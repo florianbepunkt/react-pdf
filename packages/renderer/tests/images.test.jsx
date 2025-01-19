@@ -1,9 +1,9 @@
-import { describe, expect, test } from 'vitest';
-import fs from 'fs';
-import url from 'url';
-import path from 'path';
-import { Document, Page, View, Image } from '@react-pdf/renderer';
-import renderToImage from './renderComponent';
+import { describe, expect, test } from "vitest";
+import fs from "fs";
+import url from "url";
+import path from "path";
+import { Document, Page, View, Image } from "@easypliant/react-pdf-renderer";
+import renderToImage from "./renderComponent";
 
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 
@@ -26,10 +26,10 @@ const mount = async (children) => {
   return image;
 };
 
-describe('Image', () => {
-  test('should render jpgs with different exif orientations', async () => {
+describe("Image", () => {
+  test("should render jpgs with different exif orientations", async () => {
     const image = await mount(
-      <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
+      <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
         <Image src={Orientation1} style={{ width: 220, margin: 5 }} />
         <Image src={Orientation2} style={{ width: 220, margin: 5 }} />
         <Image src={Orientation3} style={{ width: 220, margin: 5 }} />

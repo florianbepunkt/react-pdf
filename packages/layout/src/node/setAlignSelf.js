@@ -1,4 +1,4 @@
-import setAlign from './setAlign';
+import setAlign from "./setAlign";
 
 /**
  * Set align self attribute to node's Yoga instance
@@ -7,6 +7,6 @@ import setAlign from './setAlign';
  * @param {Object} node instance
  * @returns {Object} node instance
  */
-const setAlignSelf = setAlign('self');
+const setAlignSelf = setAlign("self");
 
 export default setAlignSelf;

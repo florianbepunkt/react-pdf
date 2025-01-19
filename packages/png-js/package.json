@@ -1,7 +1,7 @@
 {
-  "name": "@react-pdf/png-js",
+  "name": "@easypliant/react-pdf-png-js",
   "description": "A PNG decoder in JS",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "license": "MIT",
   "type": "module",
   "main": "./lib/png-js.js",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/diegomura/react-pdf.git",
+    "url": "https://github.com/easypliant/react-pdf.git",
     "directory": "packages/png-js"
   },
   "author": {
@@ -18,7 +18,11 @@
     "email": "devongovett@gmail.com",
     "url": "http://badassjs.com/"
   },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/easypliant"
+  },
   "scripts": {
+    "format": "prettier --write \"./**/*.{js,jsx,ts,tsx,json}\"",
     "build": "rimraf ./lib && rollup -c",
     "watch": "rimraf ./lib && rollup -c -w"
   },

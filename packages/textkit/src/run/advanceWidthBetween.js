@@ -1,5 +1,5 @@
-import glyphIndexAt from './glyphIndexAt';
-import positionsAdvanceWidth from '../positions/advanceWidth';
+import glyphIndexAt from "./glyphIndexAt";
+import positionsAdvanceWidth from "../positions/advanceWidth";
 
 /**
  * @typedef {import('../types.js').Run} Run

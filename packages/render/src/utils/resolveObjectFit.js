@@ -1,4 +1,4 @@
-import { matchPercent } from '@react-pdf/fns';
+import { matchPercent } from "@easypliant/react-pdf-fns";
 
 const isNumeric = (n) => {
   return !Number.isNaN(parseFloat(n)) && Number.isFinite(n);
@@ -71,9 +71,7 @@ const applyScaleDownObjectFit = (cw, ch, iw, ih, px, py) => {
   const containDimension = applyContainObjectFit(cw, ch, iw, ih, px, py);
   const noneDimension = applyNoneObjectFit(cw, ch, iw, ih, px, py);
 
-  return containDimension.width < noneDimension.width
-    ? containDimension
-    : noneDimension;
+  return containDimension.width < noneDimension.width ? containDimension : noneDimension;
 };
 
 const applyFillObjectFit = (cw, ch, px, py) => {
@@ -85,15 +83,15 @@ const applyFillObjectFit = (cw, ch, px, py) => {
   };
 };
 
-const resolveObjectFit = (type = 'fill', cw, ch, iw, ih, px, py) => {
+const resolveObjectFit = (type = "fill", cw, ch, iw, ih, px, py) => {
   switch (type) {
-    case 'contain':
+    case "contain":
       return applyContainObjectFit(cw, ch, iw, ih, px, py);
-    case 'cover':
+    case "cover":
       return applyCoverObjectFit(cw, ch, iw, ih, px, py);
-    case 'none':
+    case "none":
       return applyNoneObjectFit(cw, ch, iw, ih, px, py);
-    case 'scale-down':
+    case "scale-down":
       return applyScaleDownObjectFit(cw, ch, iw, ih, px, py);
     default:
       return applyFillObjectFit(cw, ch, px, py);

@@ -1,23 +1,23 @@
-import { describe, expect, test } from 'vitest';
+import { describe, expect, test } from "vitest";
 
-import pluck from '../internal/pluck';
-import dropLast from '../../src/attributedString/dropLast';
+import pluck from "../internal/pluck";
+import dropLast from "../../src/attributedString/dropLast";
 
-describe('attributeString dropLast operator', () => {
-  test('should dropLast with one run', () => {
+describe("attributeString dropLast operator", () => {
+  test("should dropLast with one run", () => {
     const runs = [{ start: 0, end: 11, attributes: { font: {} } }];
-    const string = { string: 'Lorem ipsum', runs };
+    const string = { string: "Lorem ipsum", runs };
     const result = dropLast(string);
 
-    expect(result.string).toBe('Lorem ipsu');
-    expect(result.runs[0]).toHaveProperty('start', 0);
-    expect(result.runs[0]).toHaveProperty('end', 10);
-    expect(result.runs[0]).toHaveProperty('attributes', { font: {} });
+    expect(result.string).toBe("Lorem ipsu");
+    expect(result.runs[0]).toHaveProperty("start", 0);
+    expect(result.runs[0]).toHaveProperty("end", 10);
+    expect(result.runs[0]).toHaveProperty("attributes", { font: {} });
   });
 
-  test('should dropLast with two runs', () => {
+  test("should dropLast with two runs", () => {
     const string = {
-      string: 'Lorem ipsum',
+      string: "Lorem ipsum",
       runs: [
         { start: 0, end: 6, attributes: { font: {} } },
         { start: 6, end: 11, attributes: { fontSize: 16 } },
@@ -25,43 +25,43 @@ describe('attributeString dropLast operator', () => {
     };
     const splittedString = dropLast(string);
 
-    expect(splittedString.string).toBe('Lorem ipsu');
-    expect(splittedString.runs[0]).toHaveProperty('start', 0);
-    expect(splittedString.runs[0]).toHaveProperty('end', 6);
-    expect(splittedString.runs[0]).toHaveProperty('attributes', { font: {} });
-    expect(splittedString.runs[1]).toHaveProperty('start', 6);
-    expect(splittedString.runs[1]).toHaveProperty('end', 10);
-    expect(splittedString.runs[1]).toHaveProperty('attributes', {
+    expect(splittedString.string).toBe("Lorem ipsu");
+    expect(splittedString.runs[0]).toHaveProperty("start", 0);
+    expect(splittedString.runs[0]).toHaveProperty("end", 6);
+    expect(splittedString.runs[0]).toHaveProperty("attributes", { font: {} });
+    expect(splittedString.runs[1]).toHaveProperty("start", 6);
+    expect(splittedString.runs[1]).toHaveProperty("end", 10);
+    expect(splittedString.runs[1]).toHaveProperty("attributes", {
       fontSize: 16,
     });
   });
 
-  test('should slice with several runs', () => {
+  test("should slice with several runs", () => {
     const runs = [
       { start: 0, end: 3, attributes: { font: {} } },
       { start: 3, end: 6, attributes: { fontSize: 16 } },
       { start: 6, end: 11, attributes: { fontSize: 20 } },
     ];
-    const string = { string: 'Lorem ipsum', runs };
+    const string = { string: "Lorem ipsum", runs };
     const splittedString = dropLast(string);
 
-    expect(splittedString.string).toBe('Lorem ipsu');
-    expect(splittedString.runs[0]).toHaveProperty('start', 0);
-    expect(splittedString.runs[0]).toHaveProperty('end', 3);
-    expect(splittedString.runs[0]).toHaveProperty('attributes', { font: {} });
-    expect(splittedString.runs[1]).toHaveProperty('start', 3);
-    expect(splittedString.runs[1]).toHaveProperty('end', 6);
-    expect(splittedString.runs[1]).toHaveProperty('attributes', {
+    expect(splittedString.string).toBe("Lorem ipsu");
+    expect(splittedString.runs[0]).toHaveProperty("start", 0);
+    expect(splittedString.runs[0]).toHaveProperty("end", 3);
+    expect(splittedString.runs[0]).toHaveProperty("attributes", { font: {} });
+    expect(splittedString.runs[1]).toHaveProperty("start", 3);
+    expect(splittedString.runs[1]).toHaveProperty("end", 6);
+    expect(splittedString.runs[1]).toHaveProperty("attributes", {
       fontSize: 16,
     });
-    expect(splittedString.runs[2]).toHaveProperty('start', 6);
-    expect(splittedString.runs[2]).toHaveProperty('end', 10);
-    expect(splittedString.runs[2]).toHaveProperty('attributes', {
+    expect(splittedString.runs[2]).toHaveProperty("start", 6);
+    expect(splittedString.runs[2]).toHaveProperty("end", 10);
+    expect(splittedString.runs[2]).toHaveProperty("attributes", {
       fontSize: 20,
     });
   });
 
-  test('should dropLast glyphs with one run', () => {
+  test("should dropLast glyphs with one run", () => {
     const runs = [
       {
         start: 0,
@@ -84,18 +84,18 @@ describe('attributeString dropLast operator', () => {
       },
     ];
 
-    const string = { string: 'Lorem', runs, sylables: [] };
+    const string = { string: "Lorem", runs, sylables: [] };
     const result = dropLast(string);
 
-    expect(result.string).toBe('Lore');
-    expect(result.runs[0]).toHaveProperty('start', 0);
-    expect(result.runs[0]).toHaveProperty('end', 4);
+    expect(result.string).toBe("Lore");
+    expect(result.runs[0]).toHaveProperty("start", 0);
+    expect(result.runs[0]).toHaveProperty("end", 4);
     expect(result.runs[0].glyphIndices).toEqual([0, 1, 2, 3]);
-    expect(pluck('id', result.runs[0].glyphs)).toEqual([76, 111, 114, 101]);
-    expect(pluck('xAdvance', result.runs[0].positions)).toEqual([6, 7, 8, 9]);
+    expect(pluck("id", result.runs[0].glyphs)).toEqual([76, 111, 114, 101]);
+    expect(pluck("xAdvance", result.runs[0].positions)).toEqual([6, 7, 8, 9]);
   });
 
-  test('should dropLast glyphs with several runs', () => {
+  test("should dropLast glyphs with several runs", () => {
     const runs = [
       {
         start: 0,
@@ -119,21 +119,21 @@ describe('attributeString dropLast operator', () => {
         glyphIndices: [0, 1],
       },
     ];
-    const string = { string: 'Lorem', runs };
+    const string = { string: "Lorem", runs };
     const result = dropLast(string);
 
-    expect(result.string).toBe('Lore');
+    expect(result.string).toBe("Lore");
 
-    expect(result.runs[0]).toHaveProperty('start', 0);
-    expect(result.runs[0]).toHaveProperty('end', 3);
+    expect(result.runs[0]).toHaveProperty("start", 0);
+    expect(result.runs[0]).toHaveProperty("end", 3);
     expect(result.runs[0].glyphIndices).toEqual([0, 1, 2]);
-    expect(pluck('id', result.runs[0].glyphs)).toEqual([76, 111, 114]);
-    expect(pluck('xAdvance', result.runs[0].positions)).toEqual([6, 7, 8]);
+    expect(pluck("id", result.runs[0].glyphs)).toEqual([76, 111, 114]);
+    expect(pluck("xAdvance", result.runs[0].positions)).toEqual([6, 7, 8]);
 
-    expect(result.runs[1]).toHaveProperty('start', 3);
-    expect(result.runs[1]).toHaveProperty('end', 4);
+    expect(result.runs[1]).toHaveProperty("start", 3);
+    expect(result.runs[1]).toHaveProperty("end", 4);
     expect(result.runs[1].glyphIndices).toEqual([0]);
-    expect(pluck('id', result.runs[1].glyphs)).toEqual([101]);
-    expect(pluck('xAdvance', result.runs[1].positions)).toEqual([9]);
+    expect(pluck("id", result.runs[1].glyphs)).toEqual([101]);
+    expect(pluck("xAdvance", result.runs[1].positions)).toEqual([9]);
   });
 });

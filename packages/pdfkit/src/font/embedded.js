@@ -1,6 +1,6 @@
 import PDFFont from '../font';
 
-const toHex = function(num) {
+const toHex = function (num) {
   return `0000${num.toString(16)}`.slice(-4);
 };
 
@@ -132,7 +132,6 @@ class EmbeddedFont extends PDFFont {
     return res;
   }
 
-
   widthOfString(string, size, features) {
     const width = this.layout(string, features, true).advanceWidth;
     const scale = size / 1000;
@@ -149,7 +148,7 @@ class EmbeddedFont extends PDFFont {
 
     this.subset
       .encodeStream()
-      .on('data', data => fontFile.write(data))
+      .on('data', (data) => fontFile.write(data))
       .on('end', () => fontFile.end());
 
     const familyClass =
@@ -173,7 +172,7 @@ class EmbeddedFont extends PDFFont {
 
     // generate a tag (6 uppercase letters. 17 is the char code offset from '0' to 'A'. 73 will map to 'Z')
     const tag = [1, 2, 3, 4, 5, 6]
-      .map(i => String.fromCharCode((this.id.charCodeAt(i) || 73) + 17))
+      .map((i) => String.fromCharCode((this.id.charCodeAt(i) || 73) + 17))
       .join('');
     const name = tag + '+' + this.font.postscriptName;
 
@@ -277,7 +276,9 @@ class EmbeddedFont extends PDFFont {
     for (let i = 0; i < chunks; i++) {
       const start = i * chunkSize;
       const end = Math.min((i + 1) * chunkSize, entries.length);
-      ranges.push(`<${toHex(start)}> <${toHex(end - 1)}> [${entries.slice(start, end).join(' ')}]`);
+      ranges.push(
+        `<${toHex(start)}> <${toHex(end - 1)}> [${entries.slice(start, end).join(' ')}]`
+      );
     }
 
     cmap.end(`\

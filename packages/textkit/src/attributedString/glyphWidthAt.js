@@ -1,5 +1,5 @@
-import runAt from './runAt';
-import glyphIndexAt from '../run/glyphIndexAt';
+import runAt from "./runAt";
+import glyphIndexAt from "../run/glyphIndexAt";
 
 /**
  * @typedef {import('../types.js').AttributedString} AttributedString

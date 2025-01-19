@@ -1,9 +1,9 @@
-import FontStore from '@react-pdf/font';
-import renderPDF from '@react-pdf/render';
-import PDFDocument from '@react-pdf/pdfkit';
-import layoutDocument from '@react-pdf/layout';
-import createRenderer from './renderer';
-import packageJson from '../package.json';
+import FontStore from "@easypliant/react-pdf-font";
+import renderPDF from "@easypliant/react-pdf-render";
+import PDFDocument from "@easypliant/react-pdf-pdfkit";
+import layoutDocument from "@easypliant/react-pdf-layout";
+import createRenderer from "./renderer";
+import packageJson from "../package.json";
 
 const { version } = packageJson;
 
@@ -22,7 +22,7 @@ const pdf = (initialValue) => {
     for (let i = 0; i < listeners.length; i += 1) listeners[i]();
   };
 
-  const container = { type: 'ROOT', document: null };
+  const container = { type: "ROOT", document: null };
   renderer = renderer || createRenderer({ onChange });
   const mountNode = renderer.createContainer(container);
 
@@ -34,8 +34,7 @@ const pdf = (initialValue) => {
 
   const render = async (compress = true) => {
     const props = container.document.props || {};
-    const { subset, tagged, pdfVersion, language, pageLayout, pageMode } =
-      props;
+    const { subset, tagged, pdfVersion, language, pageLayout, pageMode } = props;
 
     const ctx = new PDFDocument({
       autoFirstPage: false,
@@ -62,19 +61,16 @@ const pdf = (initialValue) => {
 
   const toBlob = async () => {
     const chunks = [];
-    const { layout: _INTERNAL__LAYOUT__DATA_, fileStream: instance } =
-      await render();
+    const { layout: _INTERNAL__LAYOUT__DATA_, fileStream: instance } = await render();
 
     return new Promise((resolve, reject) => {
-      instance.on('data', (chunk) => {
-        chunks.push(
-          chunk instanceof Uint8Array ? chunk : new Uint8Array(chunk),
-        );
+      instance.on("data", (chunk) => {
+        chunks.push(chunk instanceof Uint8Array ? chunk : new Uint8Array(chunk));
       });
 
-      instance.on('end', () => {
+      instance.on("end", () => {
         try {
-          const blob = new Blob(chunks, { type: 'application/pdf' });
+          const blob = new Blob(chunks, { type: "application/pdf" });
           callOnRender({ blob, _INTERNAL__LAYOUT__DATA_ });
           resolve(blob);
         } catch (error) {
@@ -99,22 +95,20 @@ const pdf = (initialValue) => {
    * - https://github.com/diegomura/react-pdf/issues/2095
    */
   const toString = async () => {
-    if (process.env.NODE_ENV === 'development') {
-      console.warn(
-        '`toString` is deprecated and will be removed in next major release',
-      );
+    if (process.env.NODE_ENV === "development") {
+      console.warn("`toString` is deprecated and will be removed in next major release");
     }
 
-    let result = '';
+    let result = "";
     const { fileStream: instance } = await render(false); // For some reason, when rendering to string if compress=true the document is blank
 
     return new Promise((resolve, reject) => {
       try {
-        instance.on('data', (buffer) => {
+        instance.on("data", (buffer) => {
           result += buffer;
         });
 
-        instance.on('end', () => {
+        instance.on("end", () => {
           callOnRender();
           resolve(result);
         });

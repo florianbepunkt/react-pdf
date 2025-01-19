@@ -1,8 +1,8 @@
-import scale from './scale';
-import getFont from './getFont';
-import isNumber from '../utils/isNumber';
-import appendIndices from '../indices/append';
-import glyphFromCodePoint from '../glyph/fromCodePoint';
+import scale from "./scale";
+import getFont from "./getFont";
+import isNumber from "../utils/isNumber";
+import appendIndices from "../indices/append";
+import glyphFromCodePoint from "../glyph/fromCodePoint";
 
 /**
  * @typedef {import('../types.js').Glyph} Glyph
@@ -22,8 +22,7 @@ const appendGlyph = (glyph, run) => {
   const glyphs = run.glyphs.concat(glyph);
   const glyphIndices = appendIndices(glyphLength, run.glyphIndices);
 
-  if (!run.positions)
-    return Object.assign({}, run, { end, glyphs, glyphIndices });
+  if (!run.positions) return Object.assign({}, run, { end, glyphs, glyphIndices });
 
   const positions = run.positions.concat({
     xAdvance: glyph.advanceWidth * scale(run),

@@ -15,7 +15,7 @@ import MarkingsMixin from './mixins/markings';
 import AcroFormMixin from './mixins/acroform';
 import AttachmentsMixin from './mixins/attachments';
 import MetadataMixin from './mixins/metadata';
-import SubsetMixin from "./mixins/subsets";
+import SubsetMixin from './mixins/subsets';
 import capitalize from './utils/capitalize';
 
 class PDFDocument extends stream.Readable {
@@ -95,9 +95,8 @@ class PDFDocument extends stream.Readable {
     this.initText();
     this.initImages();
     this.initOutline();
-    this.initMarkings(options)
+    this.initMarkings(options);
     this.initSubset(options);
-    
 
     // Initialize the metadata
     this.info = {

@@ -7,16 +7,16 @@ const sortTransformOriginPair = (a, b) => {
 };
 
 const getTransformOriginPair = (values) => {
-  if (!values || values.length === 0) return ['center', 'center'];
+  if (!values || values.length === 0) return ["center", "center"];
 
-  const pair = values.length === 1 ? [values[0], 'center'] : values;
+  const pair = values.length === 1 ? [values[0], "center"] : values;
 
   return pair.sort(sortTransformOriginPair);
 };
 
 // Transforms shorthand transformOrigin values
 const expandTransformOrigin = (key, value) => {
-  const match = `${value}`.split(' ');
+  const match = `${value}`.split(" ");
 
   const pair = getTransformOriginPair(match);
 

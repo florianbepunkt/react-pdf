@@ -1,8 +1,8 @@
-import { isNil } from '@react-pdf/fns';
+import { isNil } from "@easypliant/react-pdf-fns";
 
-import omit from '../run/omit';
-import flatten from '../run/flatten';
-import empty from '../attributedString/empty';
+import omit from "../run/omit";
+import flatten from "../run/flatten";
+import empty from "../attributedString/empty";
 
 /**
  * @typedef {import('../types.js').AttributedString} AttributedString
@@ -14,7 +14,7 @@ import empty from '../attributedString/empty';
  * @returns {AttributedString} attributed string without font
  */
 const omitFont = (attributedString) => {
-  const runs = attributedString.runs.map((run) => omit('font', run));
+  const runs = attributedString.runs.map((run) => omit("font", run));
   return Object.assign({}, attributedString, { runs });
 };
 
@@ -37,14 +37,10 @@ const preprocessRuns = (engines, options) => {
 
     const { runs: omittedFontRuns } = omitFont(attributedString);
     const { runs: itemizationRuns } = scriptItemizer(options)(attributedString);
-    const { runs: substitutedRuns } =
-      fontSubstitution(options)(attributedString);
+    const { runs: substitutedRuns } = fontSubstitution(options)(attributedString);
     const { runs: bidiRuns } = bidi(options)(attributedString);
 
-    const runs = bidiRuns
-      .concat(substitutedRuns)
-      .concat(itemizationRuns)
-      .concat(omittedFontRuns);
+    const runs = bidiRuns.concat(substitutedRuns).concat(itemizationRuns).concat(omittedFontRuns);
 
     return { string, runs: flatten(runs) };
   };

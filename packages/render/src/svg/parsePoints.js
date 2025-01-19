@@ -22,10 +22,10 @@ const pairs = (values) => {
  * @returns {number[][]} points array ex. [[20, 30], [50, 60]]
  */
 const parsePoints = (points) => {
-  let values = (points || '')
+  let values = (points || "")
     .trim()
-    .replace(/,/g, ' ')
-    .replace(/(\d)-(\d)/g, '$1 -$2')
+    .replace(/,/g, " ")
+    .replace(/(\d)-(\d)/g, "$1 -$2")
     .split(/\s+/);
 
   if (values.length % 2 !== 0) {

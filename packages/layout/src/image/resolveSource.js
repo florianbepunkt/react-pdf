@@ -7,8 +7,8 @@
  * @returns {Promise<Object>} resolved src
  */
 const resolveSource = async (src) => {
-  const source = typeof src === 'function' ? await src() : await src;
-  return typeof source === 'string' ? { uri: source } : source;
+  const source = typeof src === "function" ? await src() : await src;
+  return typeof source === "string" ? { uri: source } : source;
 };
 
 export default resolveSource;

@@ -1,5 +1,5 @@
 /* eslint-disable no-restricted-properties */
-import LinkedList from './linkedList';
+import LinkedList from "./linkedList";
 
 /**
  * @param {Object[]} nodes
@@ -15,10 +15,8 @@ const linebreak = (nodes, lines, settings) => {
   const options = {
     demerits: {
       line: (settings && settings.demerits && settings.demerits.line) || 10,
-      flagged:
-        (settings && settings.demerits && settings.demerits.flagged) || 100,
-      fitness:
-        (settings && settings.demerits && settings.demerits.fitness) || 3000,
+      flagged: (settings && settings.demerits && settings.demerits.flagged) || 100,
+      fitness: (settings && settings.demerits && settings.demerits.fitness) || 3000,
     },
     tolerance: (settings && settings.tolerance) || 3,
   };
@@ -36,15 +34,7 @@ const linebreak = (nodes, lines, settings) => {
     },
   };
 
-  function breakpoint(
-    position,
-    demerits,
-    ratio,
-    line,
-    fitnessClass,
-    totals,
-    previous,
-  ) {
+  function breakpoint(position, demerits, ratio, line, fitnessClass, totals, previous) {
     return {
       position,
       demerits,
@@ -71,7 +61,7 @@ const linebreak = (nodes, lines, settings) => {
         ? lineLengths[currentLine - 1]
         : lineLengths[lineLengths.length - 1];
 
-    if (nodes[end].type === 'penalty') {
+    if (nodes[end].type === "penalty") {
       width += nodes[end].width;
     }
 
@@ -111,15 +101,13 @@ const linebreak = (nodes, lines, settings) => {
     };
 
     for (let i = breakPointIndex; i < nodes.length; i += 1) {
-      if (nodes[i].type === 'glue') {
+      if (nodes[i].type === "glue") {
         result.width += nodes[i].width;
         result.stretch += nodes[i].stretch;
         result.shrink += nodes[i].shrink;
       } else if (
-        nodes[i].type === 'box' ||
-        (nodes[i].type === 'penalty' &&
-          nodes[i].penalty === -linebreak.infinity &&
-          i > breakPointIndex)
+        nodes[i].type === "box" ||
+        (nodes[i].type === "penalty" && nodes[i].penalty === -linebreak.infinity && i > breakPointIndex)
       ) {
         break;
       }
@@ -174,22 +162,14 @@ const linebreak = (nodes, lines, settings) => {
       while (active !== null) {
         next = active.next;
         currentLine = active.data.line + 1;
-        ratio = computeCost(
-          active.data.position,
-          index,
-          active.data,
-          currentLine,
-        );
+        ratio = computeCost(active.data.position, index, active.data, currentLine);
 
         // Deactive nodes when the distance between the current active node and the
         // current node becomes too large (i.e. it exceeds the stretch limit and the stretch
         // ratio becomes negative) or when the current node is a forced break (i.e. the end
         // of the paragraph when we want to remove all active nodes, but possibly have a final
         // candidate active node---if the paragraph can be set using the given tolerance value.)
-        if (
-          ratio < -1 ||
-          (node.type === 'penalty' && node.penalty === -linebreak.infinity)
-        ) {
+        if (ratio < -1 || (node.type === "penalty" && node.penalty === -linebreak.infinity)) {
           activeNodes.remove(active);
         }
 
@@ -199,31 +179,18 @@ const linebreak = (nodes, lines, settings) => {
           badness = 100 * Math.pow(Math.abs(ratio), 3);
 
           // Positive penalty
-          if (node.type === 'penalty' && node.penalty >= 0) {
-            demerits =
-              Math.pow(options.demerits.line + badness, 2) +
-              Math.pow(node.penalty, 2);
+          if (node.type === "penalty" && node.penalty >= 0) {
+            demerits = Math.pow(options.demerits.line + badness, 2) + Math.pow(node.penalty, 2);
             // Negative penalty but not a forced break
-          } else if (
-            node.type === 'penalty' &&
-            node.penalty !== -linebreak.infinity
-          ) {
-            demerits =
-              Math.pow(options.demerits.line + badness, 2) -
-              Math.pow(node.penalty, 2);
+          } else if (node.type === "penalty" && node.penalty !== -linebreak.infinity) {
+            demerits = Math.pow(options.demerits.line + badness, 2) - Math.pow(node.penalty, 2);
             // All other cases
           } else {
             demerits = Math.pow(options.demerits.line + badness, 2);
           }
 
-          if (
-            node.type === 'penalty' &&
-            nodes[active.data.position].type === 'penalty'
-          ) {
-            demerits +=
-              options.demerits.flagged *
-              node.flagged *
-              nodes[active.data.position].flagged;
+          if (node.type === "penalty" && nodes[active.data.position].type === "penalty") {
+            demerits += options.demerits.flagged * node.flagged * nodes[active.data.position].flagged;
           }
 
           // Calculate the fitness class for this candidate active node.
@@ -271,11 +238,7 @@ const linebreak = (nodes, lines, settings) => {
 
       tmpSum = computeSum(index);
 
-      for (
-        fitnessClass = 0;
-        fitnessClass < candidates.length;
-        fitnessClass += 1
-      ) {
+      for (fitnessClass = 0; fitnessClass < candidates.length; fitnessClass += 1) {
         candidate = candidates[fitnessClass];
 
         if (candidate.demerits < Infinity) {
@@ -301,22 +264,20 @@ const linebreak = (nodes, lines, settings) => {
   }
 
   // Add an active node for the start of the paragraph.
-  activeNodes.push(
-    new LinkedList.Node(breakpoint(0, 0, 0, 0, 0, undefined, null)),
-  );
+  activeNodes.push(new LinkedList.Node(breakpoint(0, 0, 0, 0, 0, undefined, null)));
 
   // eslint-disable-next-line no-shadow
   nodes.forEach((node, index, nodes) => {
-    if (node.type === 'box') {
+    if (node.type === "box") {
       sum.width += node.width;
-    } else if (node.type === 'glue') {
-      if (index > 0 && nodes[index - 1].type === 'box') {
+    } else if (node.type === "glue") {
+      if (index > 0 && nodes[index - 1].type === "box") {
         mainLoop(node, index, nodes);
       }
       sum.width += node.width;
       sum.stretch += node.stretch;
       sum.shrink += node.shrink;
-    } else if (node.type === 'penalty' && node.penalty !== linebreak.infinity) {
+    } else if (node.type === "penalty" && node.penalty !== linebreak.infinity) {
       mainLoop(node, index, nodes);
     }
   });
@@ -344,7 +305,7 @@ const linebreak = (nodes, lines, settings) => {
 linebreak.infinity = 10000;
 
 linebreak.glue = (width, value, stretch, shrink) => ({
-  type: 'glue',
+  type: "glue",
   value,
   width,
   stretch,
@@ -352,14 +313,14 @@ linebreak.glue = (width, value, stretch, shrink) => ({
 });
 
 linebreak.box = (width, value, hyphenated = false) => ({
-  type: 'box',
+  type: "box",
   width,
   value,
   hyphenated,
 });
 
 linebreak.penalty = (width, penalty, flagged) => ({
-  type: 'penalty',
+  type: "penalty",
   width,
   penalty,
   flagged,

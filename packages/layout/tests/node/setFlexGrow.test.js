@@ -1,7 +1,7 @@
-import { beforeEach, describe, expect, test, vi } from 'vitest';
-import setFlexGrow from '../../src/node/setFlexGrow';
+import { beforeEach, describe, expect, test, vi } from "vitest";
+import setFlexGrow from "../../src/node/setFlexGrow";
 
-describe('node setFlexGrow', () => {
+describe("node setFlexGrow", () => {
   const mock = vi.fn();
   const node = { yogaNode: { setFlexGrow: mock } };
 
@@ -9,14 +9,14 @@ describe('node setFlexGrow', () => {
     mock.mockReset();
   });
 
-  test('should return node if no yoga node available', () => {
+  test("should return node if no yoga node available", () => {
     const emptyNode = { box: { width: 10, height: 20 } };
     const result = setFlexGrow(null)(emptyNode);
 
     expect(result).toBe(emptyNode);
   });
 
-  test('Should set zero by default', () => {
+  test("Should set zero by default", () => {
     const result = setFlexGrow(null)(node);
 
     expect(mock.mock.calls).toHaveLength(1);
@@ -24,7 +24,7 @@ describe('node setFlexGrow', () => {
     expect(result).toBe(node);
   });
 
-  test('Should set provided value', () => {
+  test("Should set provided value", () => {
     const result = setFlexGrow(2)(node);
 
     expect(mock.mock.calls).toHaveLength(1);

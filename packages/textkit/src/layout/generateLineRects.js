@@ -1,5 +1,5 @@
-import intersects from '../rect/intersects';
-import partition from '../rect/partition';
+import intersects from "../rect/intersects";
+import partition from "../rect/partition";
 
 const getLineFragment = (lineRect, excludeRect) => {
   if (!intersects(excludeRect, lineRect)) return [lineRect];

@@ -1,27 +1,27 @@
-import { describe, expect, test } from 'vitest';
+import { describe, expect, test } from "vitest";
 
-import resolveMediaQueries from '../src/mediaQueries';
+import resolveMediaQueries from "../src/mediaQueries";
 
-describe('media queries', () => {
-  test('should resolve max-height media queries on narrow container', () => {
+describe("media queries", () => {
+  test("should resolve max-height media queries on narrow container", () => {
     const styles = resolveMediaQueries(
       { height: 300 },
       {
-        '@media max-height: 500': {
-          color: 'red',
+        "@media max-height: 500": {
+          color: "red",
         },
       },
     );
 
-    expect(styles.color).toBe('red');
+    expect(styles.color).toBe("red");
   });
 
-  test('should resolve max-height media queries on wider container', () => {
+  test("should resolve max-height media queries on wider container", () => {
     const styles = resolveMediaQueries(
       { height: 600 },
       {
-        '@media max-height: 500': {
-          color: 'red',
+        "@media max-height: 500": {
+          color: "red",
         },
       },
     );
@@ -29,25 +29,25 @@ describe('media queries', () => {
     expect(styles.color).toBe(undefined);
   });
 
-  test('should resolve max-width media queries on narrow container', () => {
+  test("should resolve max-width media queries on narrow container", () => {
     const styles = resolveMediaQueries(
       { width: 300 },
       {
-        '@media max-width: 500': {
-          color: 'red',
+        "@media max-width: 500": {
+          color: "red",
         },
       },
     );
 
-    expect(styles.color).toBe('red');
+    expect(styles.color).toBe("red");
   });
 
-  test('should resolve max-width media queries on wider container', () => {
+  test("should resolve max-width media queries on wider container", () => {
     const styles = resolveMediaQueries(
       { width: 600 },
       {
-        '@media max-width: 500': {
-          color: 'red',
+        "@media max-width: 500": {
+          color: "red",
         },
       },
     );
@@ -55,25 +55,25 @@ describe('media queries', () => {
     expect(styles.color).toBe(undefined);
   });
 
-  test('should resolve portrait media queries on portrait container', () => {
+  test("should resolve portrait media queries on portrait container", () => {
     const styles = resolveMediaQueries(
-      { orientation: 'portrait' },
+      { orientation: "portrait" },
       {
-        '@media orientation: portrait': {
-          color: 'red',
+        "@media orientation: portrait": {
+          color: "red",
         },
       },
     );
 
-    expect(styles.color).toBe('red');
+    expect(styles.color).toBe("red");
   });
 
-  test('should resolve portrait media queries on landscape container', () => {
+  test("should resolve portrait media queries on landscape container", () => {
     const styles = resolveMediaQueries(
-      { orientation: 'landscape' },
+      { orientation: "landscape" },
       {
-        '@media orientation: portrait': {
-          color: 'red',
+        "@media orientation: portrait": {
+          color: "red",
         },
       },
     );
@@ -81,25 +81,25 @@ describe('media queries', () => {
     expect(styles.color).toBe(undefined);
   });
 
-  test('should resolve landscape media queries on landscape container', () => {
+  test("should resolve landscape media queries on landscape container", () => {
     const styles = resolveMediaQueries(
-      { orientation: 'landscape' },
+      { orientation: "landscape" },
       {
-        '@media orientation: landscape': {
-          color: 'red',
+        "@media orientation: landscape": {
+          color: "red",
         },
       },
     );
 
-    expect(styles.color).toBe('red');
+    expect(styles.color).toBe("red");
   });
 
-  test('should resolve landscape media queries on portrait container', () => {
+  test("should resolve landscape media queries on portrait container", () => {
     const styles = resolveMediaQueries(
-      { orientation: 'portrait' },
+      { orientation: "portrait" },
       {
-        '@media orientation: landscape': {
-          color: 'red',
+        "@media orientation: landscape": {
+          color: "red",
         },
       },
     );

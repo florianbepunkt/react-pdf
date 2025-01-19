@@ -1,5 +1,5 @@
-import filterRuns from '../run/filter';
-import runAdvanceWidthBetween from '../run/advanceWidthBetween';
+import filterRuns from "../run/filter";
+import runAdvanceWidthBetween from "../run/advanceWidthBetween";
 
 /**
  * @typedef {import('../types.js').AttributedString} AttributedString
@@ -17,10 +17,7 @@ import runAdvanceWidthBetween from '../run/advanceWidthBetween';
  */
 const advanceWidthBetween = (start, end, attributedString) => {
   const runs = filterRuns(start, end, attributedString.runs);
-  return runs.reduce(
-    (acc, run) => acc + runAdvanceWidthBetween(start, end, run),
-    0,
-  );
+  return runs.reduce((acc, run) => acc + runAdvanceWidthBetween(start, end, run), 0);
 };
 
 export default advanceWidthBetween;

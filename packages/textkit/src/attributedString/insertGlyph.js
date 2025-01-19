@@ -1,8 +1,8 @@
-import append from './append';
-import add from '../run/add';
-import insert from '../run/insert';
-import runIndexAt from './runIndexAt';
-import stringFromCodePoints from '../utils/stringFromCodePoints';
+import append from "./append";
+import add from "../run/add";
+import insert from "../run/insert";
+import runIndexAt from "./runIndexAt";
+import stringFromCodePoints from "../utils/stringFromCodePoints";
 
 /**
  * @typedef {import('../types.js').AttributedString} AttributedString

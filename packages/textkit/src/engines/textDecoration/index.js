@@ -1,9 +1,9 @@
 /* eslint-disable no-param-reassign */
 
-import runAscent from '../../run/ascent';
-import ascent from '../../attributedString/ascent';
-import runAdvanceWidth from '../../run/advanceWidth';
-import advanceWidth from '../../attributedString/advanceWidth';
+import runAscent from "../../run/ascent";
+import ascent from "../../attributedString/ascent";
+import runAdvanceWidth from "../../run/advanceWidth";
+import advanceWidth from "../../attributedString/advanceWidth";
 
 // The base font size used for calculating underline thickness.
 const BASE_FONT_SIZE = 12;
@@ -24,10 +24,7 @@ const textDecoration = () => (lineFragment) => {
     const run = lineFragment.runs[i];
 
     const width = Math.min(maxX - x, runAdvanceWidth(run));
-    const thickness = Math.max(
-      0.5,
-      Math.floor(run.attributes.fontSize / BASE_FONT_SIZE),
-    );
+    const thickness = Math.max(0.5, Math.floor(run.attributes.fontSize / BASE_FONT_SIZE));
 
     if (run.attributes.underline) {
       const rect = {
@@ -39,8 +36,8 @@ const textDecoration = () => (lineFragment) => {
       const line = {
         rect,
         opacity: run.attributes.opacity,
-        color: run.attributes.underlineColor || 'black',
-        style: run.attributes.underlineStyle || 'solid',
+        color: run.attributes.underlineColor || "black",
+        style: run.attributes.underlineStyle || "solid",
       };
 
       lineFragment.decorationLines.push(line);
@@ -52,8 +49,8 @@ const textDecoration = () => (lineFragment) => {
       const line = {
         rect,
         opacity: run.attributes.opacity,
-        color: run.attributes.strikeColor || 'black',
-        style: run.attributes.strikeStyle || 'solid',
+        color: run.attributes.strikeColor || "black",
+        style: run.attributes.strikeStyle || "solid",
       };
 
       lineFragment.decorationLines.push(line);

@@ -1,4 +1,4 @@
-import getOrientation from './getOrientation';
+import getOrientation from "./getOrientation";
 
 /**
  * Return true if page is landscape
@@ -6,6 +6,6 @@ import getOrientation from './getOrientation';
  * @param {Object} page instance
  * @returns {boolean} is page landscape
  */
-const isLandscape = (page) => getOrientation(page) === 'landscape';
+const isLandscape = (page) => getOrientation(page) === "landscape";
 
 export default isLandscape;

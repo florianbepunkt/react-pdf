@@ -1,10 +1,10 @@
 // Note that this file is ran using a separate Vitest configuration
-import { expect, it } from 'vitest';
+import { expect, it } from "vitest";
 
-import { renderHook, waitFor, act } from '@testing-library/react';
-import { usePDF, Document, Page, Text } from '@react-pdf/renderer';
+import { renderHook, waitFor, act } from "@testing-library/react";
+import { usePDF, Document, Page, Text } from "@easypliant/react-pdf-renderer";
 
-const TestDocument = ({ title = 'Default' }) => (
+const TestDocument = ({ title = "Default" }) => (
   <Document title={title}>
     <Page>
       <Text>Hello tests</Text>
@@ -12,7 +12,7 @@ const TestDocument = ({ title = 'Default' }) => (
   </Document>
 );
 
-it('returns value, updater tuple', () => {
+it("returns value, updater tuple", () => {
   const { result } = renderHook(() => usePDF({ document: undefined }));
 
   expect(Array.isArray(result.current)).toBeTruthy();
@@ -25,24 +25,24 @@ it('returns value, updater tuple', () => {
     }),
   );
 
-  expect(typeof result.current[1]).toBe('function');
+  expect(typeof result.current[1]).toBe("function");
 });
 
-it('works with no args', () => {
+it("works with no args", () => {
   const { result } = renderHook(() => usePDF());
 
   expect(Array.isArray(result.current)).toBeTruthy();
-  expect(typeof result.current[0]).toBe('object');
-  expect(typeof result.current[1]).toBe('function');
+  expect(typeof result.current[0]).toBe("object");
+  expect(typeof result.current[1]).toBe("function");
 });
 
-it('renders document', async () => {
+it("renders document", async () => {
   const { result } = renderHook(() => usePDF({ document: <TestDocument /> }));
 
   await waitFor(() => expect(result.current[0].loading).toBeFalsy());
 });
 
-it('updates document', async () => {
+it("updates document", async () => {
   const { result } = renderHook(() => usePDF({ document: <TestDocument /> }));
 
   await waitFor(() => expect(result.current[0].loading).toBeFalsy());

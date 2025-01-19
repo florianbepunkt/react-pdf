@@ -1,9 +1,9 @@
-import { describe, expect, test } from 'vitest';
+import { describe, expect, test } from "vitest";
 
-import { Text, Document, Page } from '@react-pdf/primitives';
-import renderToImage from './renderComponent';
+import { Text, Document, Page } from "@easypliant/react-pdf-primitives";
+import renderToImage from "./renderComponent";
 
-const emptyString = '';
+const emptyString = "";
 
 const mount = async (children) => {
   const image = await renderToImage(
@@ -15,38 +15,38 @@ const mount = async (children) => {
   return image;
 };
 
-describe('renderer', () => {
-  test('empty string', async () => {
+describe("renderer", () => {
+  test("empty string", async () => {
     const image = await mount(<>{emptyString && <Text>{emptyString}</Text>}</>);
 
     expect(image).toMatchImageSnapshot();
   });
 
-  test('string', async () => {
-    const image = await mount(<>{'text' || <Text>text</Text>}</>);
+  test("string", async () => {
+    const image = await mount(<>{"text" || <Text>text</Text>}</>);
 
     expect(image).toMatchImageSnapshot();
   });
 
-  test('boolean', async () => {
+  test("boolean", async () => {
     const image = await mount(<>{true || <Text>text</Text>}</>);
 
     expect(image).toMatchImageSnapshot();
   });
 
-  test('zero', async () => {
+  test("zero", async () => {
     const image = await mount(<>{0 && <Text>text</Text>}</>);
 
     expect(image).toMatchImageSnapshot();
   });
 
-  test('numbers', async () => {
+  test("numbers", async () => {
     const image = await mount(<>{10 || <Text>text</Text>}</>);
 
     expect(image).toMatchImageSnapshot();
   });
 
-  test('empty text element', async () => {
+  test("empty text element", async () => {
     const image = await mount(<Text />);
 
     expect(image).toMatchImageSnapshot();

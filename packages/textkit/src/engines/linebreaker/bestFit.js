@@ -16,15 +16,11 @@ const getNextBreakpoint = (subnodes, widths, lineNumber) => {
 
   const calculateRatio = (node) => {
     if (sum.width < lineLength) {
-      return sum.stretch - node.stretch > 0
-        ? (lineLength - sum.width) / sum.stretch
-        : INFINITY;
+      return sum.stretch - node.stretch > 0 ? (lineLength - sum.width) / sum.stretch : INFINITY;
     }
 
     if (sum.width > lineLength) {
-      return sum.shrink - node.shrink > 0
-        ? (lineLength - sum.width) / sum.shrink
-        : INFINITY;
+      return sum.shrink - node.shrink > 0 ? (lineLength - sum.width) / sum.shrink : INFINITY;
     }
 
     return 0;
@@ -33,9 +29,9 @@ const getNextBreakpoint = (subnodes, widths, lineNumber) => {
   for (let i = 0; i < subnodes.length; i += 1) {
     const node = subnodes[i];
 
-    if (node.type === 'box') {
+    if (node.type === "box") {
       sum.width += node.width;
-    } else if (node.type === 'glue') {
+    } else if (node.type === "glue") {
       sum.width += node.width;
       sum.stretch += node.stretch;
       sum.shrink += node.shrink;
@@ -45,10 +41,7 @@ const getNextBreakpoint = (subnodes, widths, lineNumber) => {
       if (position === null) {
         let j = i === 0 ? i + 1 : i;
 
-        while (
-          j < subnodes.length &&
-          (subnodes[j].type === 'glue' || subnodes[j].type === 'penalty')
-        ) {
+        while (j < subnodes.length && (subnodes[j].type === "glue" || subnodes[j].type === "penalty")) {
           j++;
         }
 
@@ -57,9 +50,9 @@ const getNextBreakpoint = (subnodes, widths, lineNumber) => {
       break;
     }
 
-    if (node.type === 'penalty' || node.type === 'glue') {
+    if (node.type === "penalty" || node.type === "glue") {
       const ratio = calculateRatio(node);
-      const penalty = node.type === 'penalty' ? node.penalty : 0;
+      const penalty = node.type === "penalty" ? node.penalty : 0;
       const badness = 100 * Math.abs(ratio) ** 3 + penalty;
 
       if (minimumBadness >= badness) {

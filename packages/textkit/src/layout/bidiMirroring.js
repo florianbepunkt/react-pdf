@@ -1,5 +1,5 @@
-import bidiFactory from 'bidi-js';
-import { repeat } from '@react-pdf/fns';
+import bidiFactory from "bidi-js";
+import { repeat } from "@easypliant/react-pdf-fns";
 
 /**
  * @typedef {import('../types.js').AttributedString} AttributedString
@@ -31,8 +31,8 @@ const mirrorString = () => {
   return (attributedString) => {
     const levels = getBidiLevels(attributedString.runs);
 
-    let updatedString = '';
-    attributedString.string.split('').forEach((char, index) => {
+    let updatedString = "";
+    attributedString.string.split("").forEach((char, index) => {
       const isRTL = levels[index] % 2 === 1;
       const mirroredChar = isRTL
         ? bidi.getMirroredCharacter(attributedString.string.charAt(index))

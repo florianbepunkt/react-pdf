@@ -1,14 +1,20 @@
 {
-  "name": "@react-pdf/types",
-  "version": "2.7.0",
+  "name": "@easypliant/react-pdf-types",
+  "version": "3.0.0",
   "license": "MIT",
   "description": "React-pdf TypeScript definitions",
   "author": "Diego Muracciole <diegomuracciole@gmail.com>",
-  "homepage": "https://github.com/diegomura/react-pdf#readme",
+  "homepage": "https://github.com/easypliant/react-pdf#readme",
   "main": "index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/diegomura/react-pdf.git",
+    "url": "https://github.com/easypliant/react-pdf.git",
     "directory": "packages/types"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/easypliant"
+  },
+  "scripts": {
+    "format": "prettier --write \"./**/*.{js,jsx,ts,tsx,json}\""
   }
 }

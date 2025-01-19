@@ -1,19 +1,19 @@
-import { describe, expect, test } from 'vitest';
+import { describe, expect, test } from "vitest";
 
-import resolveStyles from '../../src/steps/resolveStyles';
+import resolveStyles from "../../src/steps/resolveStyles";
 
-describe('layout resolveStyles', () => {
-  test('Should resolve page styles', () => {
+describe("layout resolveStyles", () => {
+  test("Should resolve page styles", () => {
     const root = {
-      type: 'DOCUMENT',
+      type: "DOCUMENT",
       children: [
         {
-          type: 'PAGE',
+          type: "PAGE",
           style: {
-            paddingHorizontal: '10in',
-            paddingVertical: '10mm',
-            backgroundColor: 'red',
-            border: '1cm dotted green',
+            paddingHorizontal: "10in",
+            paddingVertical: "10mm",
+            backgroundColor: "red",
+            border: "1cm dotted green",
           },
         },
       ],
@@ -23,24 +23,24 @@ describe('layout resolveStyles', () => {
     expect(result).toMatchSnapshot();
   });
 
-  test('Should resolve several pages styles', () => {
+  test("Should resolve several pages styles", () => {
     const root = {
-      type: 'DOCUMENT',
+      type: "DOCUMENT",
       children: [
         {
-          type: 'PAGE',
+          type: "PAGE",
           style: {
-            paddingHorizontal: '10in',
-            paddingVertical: '10mm',
-            borderTop: '4 solid #FF00000',
+            paddingHorizontal: "10in",
+            paddingVertical: "10mm",
+            borderTop: "4 solid #FF00000",
           },
         },
         {
-          type: 'PAGE',
+          type: "PAGE",
           style: {
-            backgroundColor: 'red',
-            border: '1cm dotted green',
-            fontWeight: 'bold',
+            backgroundColor: "red",
+            border: "1cm dotted green",
+            fontWeight: "bold",
           },
         },
       ],
@@ -50,20 +50,20 @@ describe('layout resolveStyles', () => {
     expect(result).toMatchSnapshot();
   });
 
-  test('Should resolve page styles array', () => {
+  test("Should resolve page styles array", () => {
     const root = {
-      type: 'DOCUMENT',
+      type: "DOCUMENT",
       children: [
         {
-          type: 'PAGE',
+          type: "PAGE",
           style: [
             {
-              paddingHorizontal: '10in',
-              paddingVertical: '10mm',
+              paddingHorizontal: "10in",
+              paddingVertical: "10mm",
             },
             {
-              backgroundColor: 'red',
-              border: '1cm dotted green',
+              backgroundColor: "red",
+              border: "1cm dotted green",
             },
           ],
         },
@@ -74,21 +74,21 @@ describe('layout resolveStyles', () => {
     expect(result).toMatchSnapshot();
   });
 
-  test('Should resolve nested node styles', () => {
+  test("Should resolve nested node styles", () => {
     const root = {
-      type: 'DOCUMENT',
+      type: "DOCUMENT",
       children: [
         {
-          type: 'PAGE',
+          type: "PAGE",
           box: { width: 100, height: 200 },
           children: [
             {
-              type: 'VIEW',
+              type: "VIEW",
               style: {
-                paddingHorizontal: '10in',
-                paddingVertical: '10mm',
-                backgroundColor: 'red',
-                border: '1cm dotted green',
+                paddingHorizontal: "10in",
+                paddingVertical: "10mm",
+                backgroundColor: "red",
+                border: "1cm dotted green",
               },
             },
           ],
@@ -100,29 +100,29 @@ describe('layout resolveStyles', () => {
     expect(result).toMatchSnapshot();
   });
 
-  test('Should resolve nested node styles media queries', () => {
+  test("Should resolve nested node styles media queries", () => {
     const root = {
-      type: 'DOCUMENT',
+      type: "DOCUMENT",
       children: [
         {
-          type: 'PAGE',
+          type: "PAGE",
           box: { width: 100, height: 200 },
           children: [
             {
-              type: 'VIEW',
+              type: "VIEW",
               style: {
-                backgroundColor: 'red',
-                '@media max-width: 500': {
-                  backgroundColor: 'green',
+                backgroundColor: "red",
+                "@media max-width: 500": {
+                  backgroundColor: "green",
                 },
               },
             },
             {
-              type: 'VIEW',
+              type: "VIEW",
               style: {
-                backgroundColor: 'red',
-                '@media min-width: 500': {
-                  backgroundColor: 'green',
+                backgroundColor: "red",
+                "@media min-width: 500": {
+                  backgroundColor: "green",
                 },
               },
             },
@@ -135,29 +135,29 @@ describe('layout resolveStyles', () => {
     expect(result).toMatchSnapshot();
   });
 
-  test('Should resolve nested node styles media queries with page style', () => {
+  test("Should resolve nested node styles media queries with page style", () => {
     const root = {
-      type: 'DOCUMENT',
+      type: "DOCUMENT",
       children: [
         {
-          type: 'PAGE',
+          type: "PAGE",
           style: { width: 100, height: 200 },
           children: [
             {
-              type: 'VIEW',
+              type: "VIEW",
               style: {
-                backgroundColor: 'red',
-                '@media max-width: 500': {
-                  backgroundColor: 'green',
+                backgroundColor: "red",
+                "@media max-width: 500": {
+                  backgroundColor: "green",
                 },
               },
             },
             {
-              type: 'VIEW',
+              type: "VIEW",
               style: {
-                backgroundColor: 'red',
-                '@media min-width: 500': {
-                  backgroundColor: 'green',
+                backgroundColor: "red",
+                "@media min-width: 500": {
+                  backgroundColor: "green",
                 },
               },
             },
@@ -170,24 +170,24 @@ describe('layout resolveStyles', () => {
     expect(result).toMatchSnapshot();
   });
 
-  test('Should resolve nested node styles array', () => {
+  test("Should resolve nested node styles array", () => {
     const root = {
-      type: 'DOCUMENT',
+      type: "DOCUMENT",
       children: [
         {
-          type: 'PAGE',
+          type: "PAGE",
           box: { width: 100, height: 200 },
           children: [
             {
-              type: 'VIEW',
+              type: "VIEW",
               style: [
                 {
-                  paddingHorizontal: '10in',
-                  paddingVertical: '10mm',
+                  paddingHorizontal: "10in",
+                  paddingVertical: "10mm",
                 },
                 {
-                  backgroundColor: 'red',
-                  border: '1cm dotted green',
+                  backgroundColor: "red",
+                  border: "1cm dotted green",
                 },
               ],
             },
@@ -200,16 +200,16 @@ describe('layout resolveStyles', () => {
     expect(result).toMatchSnapshot();
   });
 
-  test('Should resolve default link styles', () => {
+  test("Should resolve default link styles", () => {
     const root = {
-      type: 'DOCUMENT',
+      type: "DOCUMENT",
       children: [
         {
-          type: 'PAGE',
+          type: "PAGE",
           box: { width: 100, height: 200 },
           children: [
             {
-              type: 'LINK',
+              type: "LINK",
               style: {},
             },
           ],
@@ -221,17 +221,17 @@ describe('layout resolveStyles', () => {
     expect(result).toMatchSnapshot();
   });
 
-  test('Should overide default link styles', () => {
+  test("Should overide default link styles", () => {
     const root = {
-      type: 'DOCUMENT',
+      type: "DOCUMENT",
       children: [
         {
-          type: 'PAGE',
+          type: "PAGE",
           box: { width: 100, height: 200 },
           children: [
             {
-              type: 'LINK',
-              style: { color: 'wheat', textDecoration: 'none' },
+              type: "LINK",
+              style: { color: "wheat", textDecoration: "none" },
             },
           ],
         },
@@ -242,17 +242,17 @@ describe('layout resolveStyles', () => {
     expect(result).toMatchSnapshot();
   });
 
-  test('Should overide default link styles with array', () => {
+  test("Should overide default link styles with array", () => {
     const root = {
-      type: 'DOCUMENT',
+      type: "DOCUMENT",
       children: [
         {
-          type: 'PAGE',
+          type: "PAGE",
           box: { width: 100, height: 200 },
           children: [
             {
-              type: 'LINK',
-              style: [{ color: 'wheat', textDecoration: 'none' }],
+              type: "LINK",
+              style: [{ color: "wheat", textDecoration: "none" }],
             },
           ],
         },

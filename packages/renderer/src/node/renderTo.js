@@ -1,7 +1,7 @@
-import fs from 'fs';
-import { Buffer } from 'buffer';
+import fs from "fs";
+import { Buffer } from "buffer";
 
-import { pdf } from '../index';
+import { pdf } from "../index";
 
 /**
  * @param {React.ReactElement} element
@@ -25,11 +25,11 @@ export const renderToFile = async (element, filePath, callback) => {
   output.pipe(stream);
 
   return new Promise((resolve, reject) => {
-    stream.on('finish', () => {
+    stream.on("finish", () => {
       if (callback) callback(output, filePath);
       resolve(output);
     });
-    stream.on('error', reject);
+    stream.on("error", reject);
   });
 };
 
@@ -42,16 +42,16 @@ export const renderToBuffer = (element) =>
     (stream) =>
       new Promise((resolve, reject) => {
         const chunks = [];
-        stream.on('data', (chunk) => chunks.push(chunk));
-        stream.on('end', () => resolve(Buffer.concat(chunks)));
-        stream.on('error', (error) => reject(error));
+        stream.on("data", (chunk) => chunks.push(chunk));
+        stream.on("end", () => resolve(Buffer.concat(chunks)));
+        stream.on("error", (error) => reject(error));
       }),
   );
 
 export const renderToString = (element) => {
-  if (process.env.NODE_ENV === 'development') {
+  if (process.env.NODE_ENV === "development") {
     console.warn(
-      '`renderToString` is deprecated and will be removed in next major release, use `renderToBuffer` instead',
+      "`renderToString` is deprecated and will be removed in next major release, use `renderToBuffer` instead",
     );
   }
 

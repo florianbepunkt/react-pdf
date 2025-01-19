@@ -1,5 +1,5 @@
-import isNil from './isNil';
-import castArray from './castArray';
+import isNil from "./isNil";
+import castArray from "./castArray";
 
 /**
  * Retrieves the value at a given path from an object.

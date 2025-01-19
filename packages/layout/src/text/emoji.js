@@ -1,6 +1,6 @@
 /* eslint-disable no-cond-assign */
-import emojiRegex from 'emoji-regex';
-import resolveImage from '@react-pdf/image';
+import emojiRegex from "emoji-regex";
+import resolveImage from "@easypliant/react-pdf-image";
 
 // Caches emoji images data
 const emojis = {};
@@ -27,17 +27,17 @@ const makeFetchEmojiImage = () => reflect(resolveImage);
  * The empty string needs to be removed otherwise the generated
  * url will be incorect.
  */
-const _removeVariationSelectors = (x) => x !== '️';
+const _removeVariationSelectors = (x) => x !== "️";
 
 const getCodePoints = (string, withVariationSelectors) =>
   Array.from(string)
     .filter(withVariationSelectors ? () => true : _removeVariationSelectors)
     .map((char) => char.codePointAt(0).toString(16))
-    .join('-');
+    .join("-");
 
 const buildEmojiUrl = (emoji, source) => {
   const { url, format, builder, withVariationSelectors } = source;
-  if (typeof builder === 'function') {
+  if (typeof builder === "function") {
     return builder(getCodePoints(emoji, withVariationSelectors));
   }
 
@@ -69,7 +69,7 @@ export const fetchEmojis = (string, source) => {
   return promises;
 };
 
-const specialCases = ['©️', '®', '™']; // Do not treat these as emojis if emoji not present
+const specialCases = ["©️", "®", "™"]; // Do not treat these as emojis if emoji not present
 
 export const embedEmojis = (fragments) => {
   const result = [];

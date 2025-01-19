@@ -3,13 +3,13 @@
 /* eslint-disable prefer-destructuring */
 /* eslint-disable no-restricted-syntax */
 
-import Text from './text';
-import Vector from './vector';
-import Images from './images';
-import Styles from './styles';
-import Transform from './transform';
-import { createElement } from './element';
-import getSize from '../utils/getPageSize';
+import Text from "./text";
+import Vector from "./vector";
+import Images from "./images";
+import Styles from "./styles";
+import Transform from "./transform";
+import { createElement } from "./element";
+import getSize from "../utils/getPageSize";
 
 // const DEFAULT_MARGINS = {
 //   top: 0,
@@ -20,8 +20,8 @@ import getSize from '../utils/getPageSize';
 
 class SVGPage {
   constructor({
-    size = 'letter',
-    orientation = 'portrait',
+    size = "letter",
+    orientation = "portrait",
     // margins = DEFAULT_MARGINS,
   } = {}) {
     const { width, height } = getSize(size, orientation);
@@ -34,28 +34,28 @@ class SVGPage {
     this.groupStack = [];
     this.stack = [this.getStyleState()];
 
-    this.root = createElement('svg');
-    this.root.setAttribute('version', '1.1');
-    this.root.setAttribute('width', this.width);
-    this.root.setAttribute('height', this.height);
+    this.root = createElement("svg");
+    this.root.setAttribute("version", "1.1");
+    this.root.setAttribute("width", this.width);
+    this.root.setAttribute("height", this.height);
 
-    this.defs = createElement('defs');
+    this.defs = createElement("defs");
     this.root.appendChild(this.defs);
 
-    this.currentElement = createElement('g');
+    this.currentElement = createElement("g");
     this.root.appendChild(this.currentElement);
   }
 
   closestGroupOrSvg(node) {
     node = node || this.currentElement;
 
-    if (node.nodeName === 'g' || node.nodeName === 'svg') return node;
+    if (node.nodeName === "g" || node.nodeName === "svg") return node;
 
     return this.closestGroupOrSvg(node.parentNode);
   }
 
   save() {
-    const group = createElement('g');
+    const group = createElement("g");
     const parent = this.closestGroupOrSvg();
 
     this.groupStack.push(parent);

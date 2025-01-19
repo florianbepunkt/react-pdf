@@ -56,5 +56,4 @@ class Element {
   }
 }
 
-export const createElement = (type, attributes) =>
-  new Element(type, attributes);
+export const createElement = (type, attributes) => new Element(type, attributes);

@@ -1,25 +1,25 @@
 /* eslint-disable no-param-reassign */
 
-import { createElement } from './element';
+import { createElement } from "./element";
 
 export default {
   addTransform(t) {
     const parent = this.closestGroupOrSvg();
 
     if (parent.childNodes.length > 0) {
-      const group = createElement('g');
+      const group = createElement("g");
       parent.appendChild(group);
       this.currentElement = group;
     }
 
-    let transform = this.currentElement.getAttribute('transform');
+    let transform = this.currentElement.getAttribute("transform");
     if (transform) {
-      transform += ' ';
+      transform += " ";
     } else {
-      transform = '';
+      transform = "";
     }
     transform += t;
-    this.currentElement.setAttribute('transform', transform);
+    this.currentElement.setAttribute("transform", transform);
   },
 
   translate(x, y) {

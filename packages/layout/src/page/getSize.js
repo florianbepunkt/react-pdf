@@ -1,8 +1,8 @@
-import isLandscape from './isLandscape';
+import isLandscape from "./isLandscape";
 
 const PAGE_SIZES = {
-  '4A0': [4767.87, 6740.79],
-  '2A0': [3370.39, 4767.87],
+  "4A0": [4767.87, 6740.79],
+  "2A0": [3370.39, 4767.87],
   A0: [2383.94, 3370.39],
   A1: [1683.78, 2383.94],
   A2: [1190.55, 1683.78],
@@ -107,7 +107,7 @@ const getNumberSize = (n) => toSizeObject([n]);
  * @returns {{ width: number, height: number }} size object with width and height
  */
 const getSize = (page) => {
-  const value = page.props?.size || 'A4';
+  const value = page.props?.size || "A4";
   const dpi = parseFloat(page.props?.dpi || 72);
 
   const type = typeof value;
@@ -117,12 +117,12 @@ const getSize = (page) => {
    */
   let size;
 
-  if (type === 'string') {
+  if (type === "string") {
     size = getStringSize(value);
   } else if (Array.isArray(value)) {
     size = toSizeObject(value);
     size = adjustDpi(size, dpi);
-  } else if (type === 'number') {
+  } else if (type === "number") {
     size = getNumberSize(value);
     size = adjustDpi(size, dpi);
   } else {

@@ -1,8 +1,8 @@
-import * as Yoga from 'yoga-layout/load';
+import * as Yoga from "yoga-layout/load";
 
 const FLEX_WRAP = {
   wrap: Yoga.Wrap.Wrap,
-  'wrap-reverse': Yoga.Wrap.WrapReverse,
+  "wrap-reverse": Yoga.Wrap.WrapReverse,
 };
 
 /**

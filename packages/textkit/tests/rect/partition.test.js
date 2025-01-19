@@ -1,9 +1,9 @@
-import { describe, expect, test } from 'vitest';
+import { describe, expect, test } from "vitest";
 
-import partition from '../../src/rect/partition';
+import partition from "../../src/rect/partition";
 
-describe('rect partition operator', () => {
-  test('should return empty rect if height 0', () => {
+describe("rect partition operator", () => {
+  test("should return empty rect if height 0", () => {
     const target = { x: 10, y: 10, width: 90, height: 110 };
     const result = partition(target, 0);
 
@@ -13,7 +13,7 @@ describe('rect partition operator', () => {
     ]);
   });
 
-  test('should return correct partition', () => {
+  test("should return correct partition", () => {
     const target = { x: 10, y: 10, width: 90, height: 110 };
     const result = partition(target, 20);
 

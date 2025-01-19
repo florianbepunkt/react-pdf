@@ -1,10 +1,10 @@
-import fs from 'fs';
-import zlib from 'zlib';
+import fs from "fs";
+import zlib from "zlib";
 
 class PNG {
   static decode(path, fn) {
     if (BROWSER) {
-      throw new Error('PNG.decode not available in browser build');
+      throw new Error("PNG.decode not available in browser build");
     } else {
       return fs.readFile(path, (err, file) => {
         const png = new PNG(file);
@@ -15,7 +15,7 @@ class PNG {
 
   static load(path) {
     if (BROWSER) {
-      throw new Error('PNG.load not available in browser build');
+      throw new Error("PNG.load not available in browser build");
     } else {
       const file = fs.readFileSync(path);
       return new PNG(file);
@@ -34,13 +34,13 @@ class PNG {
 
     while (true) {
       const chunkSize = this.readUInt32();
-      let section = '';
+      let section = "";
       for (i = 0; i < 4; i++) {
         section += String.fromCharCode(this.data[this.pos++]);
       }
 
       switch (section) {
-        case 'IHDR':
+        case "IHDR":
           // we can grab  interesting values from here (like width, height, etc)
           this.width = this.readUInt32();
           this.height = this.readUInt32();
@@ -51,17 +51,17 @@ class PNG {
           this.interlaceMethod = this.data[this.pos++];
           break;
 
-        case 'PLTE':
+        case "PLTE":
           this.palette = this.read(chunkSize);
           break;
 
-        case 'IDAT':
+        case "IDAT":
           for (i = 0; i < chunkSize; i++) {
             this.imgData.push(this.data[this.pos++]);
           }
           break;
 
-        case 'tRNS':
+        case "tRNS":
           // This chunk can only occur once and it must occur after the
           // PLTE chunk and before the IDAT chunk.
           this.transparency = {};
@@ -91,17 +91,14 @@ class PNG {
           }
           break;
 
-        case 'tEXt':
+        case "tEXt":
           var text = this.read(chunkSize);
           var index = text.indexOf(0);
           var key = String.fromCharCode.apply(String, text.slice(0, index));
-          this.text[key] = String.fromCharCode.apply(
-            String,
-            text.slice(index + 1),
-          );
+          this.text[key] = String.fromCharCode.apply(String, text.slice(index + 1));
           break;
 
-        case 'IEND':
+        case "IEND":
           // we've got everything we need!
           switch (this.colorType) {
             case 0:
@@ -121,10 +118,10 @@ class PNG {
 
           switch (this.colors) {
             case 1:
-              this.colorSpace = 'DeviceGray';
+              this.colorSpace = "DeviceGray";
               break;
             case 3:
-              this.colorSpace = 'DeviceRGB';
+              this.colorSpace = "DeviceRGB";
               break;
           }
 
@@ -139,7 +136,7 @@ class PNG {
       this.pos += 4; // Skip the CRC
 
       if (this.pos > this.data.length) {
-        throw new Error('Incomplete or corrupt PNG file');
+        throw new Error("Incomplete or corrupt PNG file");
       }
     }
   }
@@ -211,13 +208,7 @@ class PNG {
               for (i = 0; i < scanlineLength; i++) {
                 byte = data[pos++];
                 col = (i - (i % pixelBytes)) / pixelBytes;
-                upper =
-                  row &&
-                  buffer[
-                    (row - 1) * scanlineLength +
-                      col * pixelBytes +
-                      (i % pixelBytes)
-                  ];
+                upper = row && buffer[(row - 1) * scanlineLength + col * pixelBytes + (i % pixelBytes)];
                 buffer[c++] = (upper + byte) % 256;
               }
               break;
@@ -227,13 +218,7 @@ class PNG {
                 byte = data[pos++];
                 col = (i - (i % pixelBytes)) / pixelBytes;
                 left = i < pixelBytes ? 0 : buffer[c - pixelBytes];
-                upper =
-                  row &&
-                  buffer[
-                    (row - 1) * scanlineLength +
-                      col * pixelBytes +
-                      (i % pixelBytes)
-                  ];
+                upper = row && buffer[(row - 1) * scanlineLength + col * pixelBytes + (i % pixelBytes)];
                 buffer[c++] = (byte + Math.floor((left + upper) / 2)) % 256;
               }
               break;
@@ -249,19 +234,10 @@ class PNG {
                 if (row === 0) {
                   upper = upperLeft = 0;
                 } else {
-                  upper =
-                    buffer[
-                      (row - 1) * scanlineLength +
-                        col * pixelBytes +
-                        (i % pixelBytes)
-                    ];
+                  upper = buffer[(row - 1) * scanlineLength + col * pixelBytes + (i % pixelBytes)];
                   upperLeft =
                     col &&
-                    buffer[
-                      (row - 1) * scanlineLength +
-                        (col - 1) * pixelBytes +
-                        (i % pixelBytes)
-                    ];
+                    buffer[(row - 1) * scanlineLength + (col - 1) * pixelBytes + (i % pixelBytes)];
                 }
 
                 const p = left + upper - upperLeft;
@@ -289,8 +265,7 @@ class PNG {
             let pixelsPos = ((y0 + row * dy) * width + x0) * pixelBytes;
             let bufferPos = row * scanlineLength;
             for (i = 0; i < w; i++) {
-              for (let j = 0; j < pixelBytes; j++)
-                pixels[pixelsPos++] = buffer[bufferPos++];
+              for (let j = 0; j < pixelBytes; j++) pixels[pixelsPos++] = buffer[bufferPos++];
               pixelsPos += (dx - 1) * pixelBytes;
             }
           }
@@ -352,8 +327,7 @@ class PNG {
     let alpha = this.hasAlphaChannel;
 
     if (this.palette.length) {
-      palette =
-        this._decodedPalette || (this._decodedPalette = this.decodePalette());
+      palette = this._decodedPalette || (this._decodedPalette = this.decodePalette());
       colors = 4;
       alpha = true;
     }

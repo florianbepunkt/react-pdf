@@ -1,7 +1,6 @@
-import * as Yoga from 'yoga-layout/load';
+import * as Yoga from "yoga-layout/load";
 
-const getComputedBorder = (yogaNode, edge) =>
-  yogaNode ? yogaNode.getComputedBorder(edge) : 0;
+const getComputedBorder = (yogaNode, edge) => (yogaNode ? yogaNode.getComputedBorder(edge) : 0);
 
 /**
  * Get Yoga computed border width. Zero otherwise

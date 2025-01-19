@@ -7,20 +7,16 @@ const renderImage = (ctx, node) => {
   const paddingLeft = node.box.paddingLeft || 0;
 
   if (width === 0 || height === 0) {
-    console.warn(
-      `Image with src '${node.props.href}' skipped due to invalid dimensions`,
-    );
+    console.warn(`Image with src '${node.props.href}' skipped due to invalid dimensions`);
     return;
   }
 
   ctx.save();
 
-  ctx
-    .fillOpacity(opacity || 1)
-    .image(node.image.data, x + paddingLeft, y + paddingTop, {
-      width,
-      height,
-    });
+  ctx.fillOpacity(opacity || 1).image(node.image.data, x + paddingLeft, y + paddingTop, {
+    width,
+    height,
+  });
 
   ctx.restore();
 };

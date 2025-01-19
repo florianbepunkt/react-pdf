@@ -1,7 +1,7 @@
 /* eslint-disable prefer-destructuring */
 /* eslint-disable max-classes-per-file */
 
-import uuid from '../utils/uuid';
+import uuid from "../utils/uuid";
 
 export class Gradient {
   constructor(x1, y1, x2, y2) {
@@ -17,10 +17,9 @@ export class Gradient {
   stop(offset, color, opacity) {
     const stop = { offset };
 
-    if (color.indexOf('rgba') !== -1) {
+    if (color.indexOf("rgba") !== -1) {
       // Separate alpha value, since webkit can't handle it
-      const regex =
-        /rgba\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d?\.?\d*)\s*\)/gi;
+      const regex = /rgba\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d?\.?\d*)\s*\)/gi;
       const matches = regex.exec(color);
 
       stop.color = `rgb(${matches[1]},{${matches[2]}},${matches[3]})`;
@@ -40,7 +39,7 @@ export class LinearGradient extends Gradient {
   constructor(x1, y1, x2, y2) {
     super(x1, y1, x2, y2);
 
-    this.type = 'linearGradient';
+    this.type = "linearGradient";
   }
 
   get attributes() {
@@ -50,7 +49,7 @@ export class LinearGradient extends Gradient {
       y1: this.y1,
       x2: this.x2,
       y2: this.y2,
-      gradientUnits: 'userSpaceOnUse',
+      gradientUnits: "userSpaceOnUse",
     };
   }
 }
@@ -62,7 +61,7 @@ export class RadialGradient extends Gradient {
     this.r1 = r1;
     this.r2 = r2;
 
-    this.type = 'radialGradient';
+    this.type = "radialGradient";
   }
 
   get attributes() {
@@ -73,7 +72,7 @@ export class RadialGradient extends Gradient {
       r: this.r2,
       fx: this.x1,
       fy: this.y1,
-      gradientUnits: 'userSpaceOnUse',
+      gradientUnits: "userSpaceOnUse",
     };
   }
 }

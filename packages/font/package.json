@@ -1,13 +1,13 @@
 {
-  "name": "@react-pdf/font",
-  "version": "3.0.0",
+  "name": "@easypliant/react-pdf-font",
+  "version": "4.0.0",
   "license": "MIT",
   "description": "Register font and emoji source for react-pdf document",
   "author": "Diego Muracciole <diegomuracciole@gmail.com>",
-  "homepage": "https://github.com/diegomura/react-pdf#readme",
+  "homepage": "https://github.com/easypliant/react-pdf#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/diegomura/react-pdf.git",
+    "url": "https://github.com/easypliant/react-pdf.git",
     "directory": "packages/font"
   },
   "type": "module",
@@ -15,14 +15,18 @@
   "browser": {
     "./lib/index.js": "./lib/index.browser.js"
   },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/easypliant"
+  },
   "scripts": {
+    "format": "prettier --write \"./**/*.{js,jsx,ts,tsx,json}\"",
     "test": "vitest",
     "build": "rimraf ./lib && rollup -c",
     "watch": "rimraf ./lib && rollup -c -w"
   },
   "dependencies": {
     "@babel/runtime": "^7.20.13",
-    "@react-pdf/types": "^2.7.0",
+    "@easypliant/react-pdf-types": "^3.0.0",
     "cross-fetch": "^3.1.5",
     "fontkit": "^1.8.1",
     "is-url": "^1.2.4"

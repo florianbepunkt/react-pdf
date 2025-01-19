@@ -1,5 +1,5 @@
 const expandGap = (key, value) => {
-  const match = `${value}`.split(' ');
+  const match = `${value}`.split(" ");
 
   return {
     rowGap: match?.[0] || value,

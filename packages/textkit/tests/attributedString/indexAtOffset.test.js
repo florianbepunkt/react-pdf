@@ -1,9 +1,9 @@
-import { describe, expect, test } from 'vitest';
+import { describe, expect, test } from "vitest";
 
-import indexAtOffset from '../../src/attributedString/indexAtOffset';
+import indexAtOffset from "../../src/attributedString/indexAtOffset";
 
-describe('attributeString indexAtOffset operator', () => {
-  test('should return index for single run string', () => {
+describe("attributeString indexAtOffset operator", () => {
+  test("should return index for single run string", () => {
     const runs = [
       {
         start: 0,
@@ -25,7 +25,7 @@ describe('attributeString indexAtOffset operator', () => {
       },
     ];
 
-    const string = { string: 'Lorem', runs };
+    const string = { string: "Lorem", runs };
 
     expect(indexAtOffset(5, string)).toBe(0);
     expect(indexAtOffset(7, string)).toBe(1);
@@ -35,7 +35,7 @@ describe('attributeString indexAtOffset operator', () => {
     expect(indexAtOffset(42, string)).toBe(5);
   });
 
-  test('should return index for multiple run string', () => {
+  test("should return index for multiple run string", () => {
     const runs = [
       {
         start: 0,
@@ -57,7 +57,7 @@ describe('attributeString indexAtOffset operator', () => {
         positions: [{ xAdvance: 9 }, { xAdvance: 10 }],
       },
     ];
-    const string = { string: 'Lorem', runs };
+    const string = { string: "Lorem", runs };
 
     expect(indexAtOffset(5, string)).toBe(0);
     expect(indexAtOffset(7, string)).toBe(1);
@@ -67,7 +67,7 @@ describe('attributeString indexAtOffset operator', () => {
     expect(indexAtOffset(42, string)).toBe(5);
   });
 
-  test('should return index for single run string with ligature', () => {
+  test("should return index for single run string with ligature", () => {
     const runs = [
       {
         start: 0,
@@ -78,16 +78,11 @@ describe('attributeString indexAtOffset operator', () => {
           { id: 64257, codePoints: [102, 105] }, // fi
           { id: 109, codePoints: [109] }, // m
         ],
-        positions: [
-          { xAdvance: 6 },
-          { xAdvance: 7 },
-          { xAdvance: 10 },
-          { xAdvance: 9 },
-        ],
+        positions: [{ xAdvance: 6 }, { xAdvance: 7 }, { xAdvance: 10 }, { xAdvance: 9 }],
       },
     ];
 
-    const string = { string: 'Lofim', runs };
+    const string = { string: "Lofim", runs };
 
     expect(indexAtOffset(5, string)).toBe(0);
     expect(indexAtOffset(7, string)).toBe(1);
@@ -97,7 +92,7 @@ describe('attributeString indexAtOffset operator', () => {
     expect(indexAtOffset(40, string)).toBe(5);
   });
 
-  test('should return index for multiple run string with ligature', () => {
+  test("should return index for multiple run string with ligature", () => {
     const runs = [
       {
         start: 0,
@@ -120,7 +115,7 @@ describe('attributeString indexAtOffset operator', () => {
         positions: [{ xAdvance: 9 }, { xAdvance: 10 }, { xAdvance: 5 }],
       },
     ];
-    const string = { string: 'Lfirefim', runs };
+    const string = { string: "Lfirefim", runs };
 
     expect(indexAtOffset(5, string)).toBe(0);
     expect(indexAtOffset(7, string)).toBe(1);

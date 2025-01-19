@@ -1,4 +1,4 @@
-import setYogaValue from './setYogaValue';
+import setYogaValue from "./setYogaValue";
 
 /**
  * Set width to node's Yoga instance
@@ -7,7 +7,7 @@ import setYogaValue from './setYogaValue';
  * @param {Object} node instance
  * @returns {Object} node instance
  */
-export const setWidth = setYogaValue('width');
+export const setWidth = setYogaValue("width");
 
 /**
  * Set min width to node's Yoga instance
@@ -16,7 +16,7 @@ export const setWidth = setYogaValue('width');
  * @param {Object} node instance
  * @returns {Object} node instance
  */
-export const setMinWidth = setYogaValue('minWidth');
+export const setMinWidth = setYogaValue("minWidth");
 
 /**
  * Set max width to node's Yoga instance
@@ -25,7 +25,7 @@ export const setMinWidth = setYogaValue('minWidth');
  * @param {Object} node instance
  * @returns {Object} node instance
  */
-export const setMaxWidth = setYogaValue('maxWidth');
+export const setMaxWidth = setYogaValue("maxWidth");
 
 /**
  * Set height to node's Yoga instance
@@ -34,7 +34,7 @@ export const setMaxWidth = setYogaValue('maxWidth');
  * @param {Object} node instance
  * @returns {Object} node instance
  */
-export const setHeight = setYogaValue('height');
+export const setHeight = setYogaValue("height");
 
 /**
  * Set min height to node's Yoga instance
@@ -43,7 +43,7 @@ export const setHeight = setYogaValue('height');
  * @param {Object} node instance
  * @returns {Object} node instance
  */
-export const setMinHeight = setYogaValue('minHeight');
+export const setMinHeight = setYogaValue("minHeight");
 
 /**
  * Set max height to node's Yoga instance
@@ -52,4 +52,4 @@ export const setMinHeight = setYogaValue('minHeight');
  * @param {Object} node instance
  * @returns {Object} node instance
  */
-export const setMaxHeight = setYogaValue('maxHeight');
+export const setMaxHeight = setYogaValue("maxHeight");

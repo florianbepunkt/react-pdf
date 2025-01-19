@@ -1,9 +1,9 @@
 /* eslint-disable no-console */
 /* eslint-disable react/jsx-props-no-spreading */
 
-import { useEffect } from 'react';
+import { useEffect } from "react";
 
-import usePDF from './usePDF';
+import usePDF from "./usePDF";
 
 export const PDFViewer = ({
   title,
@@ -18,19 +18,10 @@ export const PDFViewer = ({
 
   useEffect(() => updateInstance(children), [children]);
 
-  const src = instance.url
-    ? `${instance.url}#toolbar=${showToolbar ? 1 : 0}`
-    : null;
+  const src = instance.url ? `${instance.url}#toolbar=${showToolbar ? 1 : 0}` : null;
 
   return (
-    <iframe
-      src={src}
-      title={title}
-      ref={innerRef}
-      style={style}
-      className={className}
-      {...props}
-    />
+    <iframe src={src} title={title} ref={innerRef} style={style} className={className} {...props} />
   );
 };
 

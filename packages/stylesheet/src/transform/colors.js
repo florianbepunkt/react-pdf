@@ -1,5 +1,5 @@
-import hlsToHex from 'hsl-to-hex';
-import colorString from 'color-string';
+import hlsToHex from "hsl-to-hex";
+import colorString from "color-string";
 
 const isRgb = (value) => /rgba?/g.test(value);
 const isHsl = (value) => /hsla?/g.test(value);

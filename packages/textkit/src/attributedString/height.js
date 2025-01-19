@@ -1,4 +1,4 @@
-import runHeight from '../run/height';
+import runHeight from "../run/height";
 
 /**
  * @typedef {import('../types.js').AttributedString} AttributedString

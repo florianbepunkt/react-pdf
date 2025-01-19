@@ -2,27 +2,23 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-param-reassign */
 
-import ReactFiberReconciler from 'react-reconciler';
-import * as scheduler from 'scheduler';
+import ReactFiberReconciler from "react-reconciler";
+import * as scheduler from "scheduler";
 
-import propsEqual from './utils/propsEqual';
+import propsEqual from "./utils/propsEqual";
 
 const emptyObject = {};
 
 const appendChild = (parentInstance, child) => {
   const isParentText =
-    parentInstance.type === 'TEXT' ||
-    parentInstance.type === 'LINK' ||
-    parentInstance.type === 'TSPAN';
-  const isChildTextInstance = child.type === 'TEXT_INSTANCE';
+    parentInstance.type === "TEXT" || parentInstance.type === "LINK" || parentInstance.type === "TSPAN";
+  const isChildTextInstance = child.type === "TEXT_INSTANCE";
   const isOrphanTextInstance = isChildTextInstance && !isParentText;
 
   // Ignore orphan text instances.
   // Caused by cases such as <>{name && <Text>{name}</Text>}</>
   if (isOrphanTextInstance) {
-    console.warn(
-      `Invalid '${child.value}' string child outside <Text> component`,
-    );
+    console.warn(`Invalid '${child.value}' string child outside <Text> component`);
     return;
   }
 
@@ -53,7 +49,7 @@ const createRenderer = ({ onChange = () => {} }) => {
     },
 
     createTextInstance(text, rootContainerInstance) {
-      return { type: 'TEXT_INSTANCE', value: text };
+      return { type: "TEXT_INSTANCE", value: text };
     },
 
     finalizeInitialChildren(element, type, props) {
@@ -101,7 +97,7 @@ const createRenderer = ({ onChange = () => {} }) => {
     appendChild,
 
     appendChildToContainer(parentInstance, child) {
-      if (parentInstance.type === 'ROOT') {
+      if (parentInstance.type === "ROOT") {
         parentInstance.document = child;
       } else {
         appendChild(parentInstance, child);
@@ -113,8 +109,7 @@ const createRenderer = ({ onChange = () => {} }) => {
 
       if (index === undefined) return;
 
-      if (index !== -1 && child)
-        parentInstance.children.splice(index, 0, child);
+      if (index !== -1 && child) parentInstance.children.splice(index, 0, child);
     },
 
     removeChild(parentInstance, child) {

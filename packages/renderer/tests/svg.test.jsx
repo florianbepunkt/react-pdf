@@ -1,27 +1,24 @@
 /* eslint-disable react/jsx-one-expression-per-line */
-import { describe, expect, test } from 'vitest';
+import { describe, expect, test } from "vitest";
 
-import { Document, Page, Svg, Font, Text, Tspan } from '@react-pdf/renderer';
-import renderToImage from './renderComponent';
-import { Tiger, Chart, Chart2, Gradients, Dasharrays } from './svgs';
+import { Document, Page, Svg, Font, Text, Tspan } from "@easypliant/react-pdf-renderer";
+import renderToImage from "./renderComponent";
+import { Tiger, Chart, Chart2, Gradients, Dasharrays } from "./svgs";
 
 // pdf.js does not render default fonts in node and I use Open Sans (:
 Font.register({
-  family: 'Open Sans',
-  src: 'https://fonts.gstatic.com/s/opensans/v17/mem8YaGs126MiZpBA-UFVZ0e.ttf',
+  family: "Open Sans",
+  src: "https://fonts.gstatic.com/s/opensans/v17/mem8YaGs126MiZpBA-UFVZ0e.ttf",
 });
 
-describe('Svg', () => {
-  test('should render Tspan component', async () => {
+describe("Svg", () => {
+  test("should render Tspan component", async () => {
     const image = await renderToImage(
       <Document>
-        <Page
-          style={{ border: '1 solid #e2e2e2', fontFamily: 'Open Sans' }}
-          size={[54, 47]}
-        >
+        <Page style={{ border: "1 solid #e2e2e2", fontFamily: "Open Sans" }} size={[54, 47]}>
           <Svg width={52} viewBox="0 0 52 45">
-            <Text x={2} y={20} style={{ fontFamily: 'Open Sans' }}>
-              hello{' '}
+            <Text x={2} y={20} style={{ fontFamily: "Open Sans" }}>
+              hello{" "}
               <Tspan x={2} y={35} fill="red">
                 world
               </Tspan>
@@ -34,7 +31,7 @@ describe('Svg', () => {
     expect(image).toMatchImageSnapshot();
   });
 
-  test('should render Tiger', async () => {
+  test("should render Tiger", async () => {
     const image = await renderToImage(
       <Document>
         <Page size={[400, 400]}>
@@ -46,7 +43,7 @@ describe('Svg', () => {
     expect(image).toMatchImageSnapshot();
   });
 
-  test('should render Chart', async () => {
+  test("should render Chart", async () => {
     const image = await renderToImage(
       <Document>
         <Page size={[400, 267]}>
@@ -58,7 +55,7 @@ describe('Svg', () => {
     expect(image).toMatchImageSnapshot();
   });
 
-  test('should render Chart2', async () => {
+  test("should render Chart2", async () => {
     const image = await renderToImage(
       <Document>
         <Page size={[400, 267]}>
@@ -70,7 +67,7 @@ describe('Svg', () => {
     expect(image).toMatchImageSnapshot();
   });
 
-  test('should render Gradients', async () => {
+  test("should render Gradients", async () => {
     const image = await renderToImage(
       <Document>
         <Page size={[100, 200]}>
@@ -82,7 +79,7 @@ describe('Svg', () => {
     expect(image).toMatchImageSnapshot();
   });
 
-  test('should render Dasharrays', async () => {
+  test("should render Dasharrays", async () => {
     const image = await renderToImage(
       <Document>
         <Page size={[100, 200]}>

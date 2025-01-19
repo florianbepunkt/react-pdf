@@ -1,4 +1,4 @@
-import positionsAdvanceWidth from '../positions/advanceWidth';
+import positionsAdvanceWidth from "../positions/advanceWidth";
 
 /**
  * @typedef {import('../types.js').Run} Run

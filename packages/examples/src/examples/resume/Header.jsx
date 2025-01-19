@@ -1,41 +1,41 @@
-import React from 'react';
-import { Link, Text, View, StyleSheet } from '@react-pdf/renderer';
+import React from "react";
+import { Link, Text, View, StyleSheet } from "@easypliant/react-pdf-renderer";
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
+    flexDirection: "row",
     borderBottomWidth: 2,
-    borderBottomColor: '#112131',
-    borderBottomStyle: 'solid',
-    alignItems: 'stretch',
+    borderBottomColor: "#112131",
+    borderBottomStyle: "solid",
+    alignItems: "stretch",
   },
   detailColumn: {
-    flexDirection: 'column',
+    flexDirection: "column",
     flexGrow: 9,
-    textTransform: 'uppercase',
+    textTransform: "uppercase",
   },
   linkColumn: {
-    flexDirection: 'column',
+    flexDirection: "column",
     flexGrow: 2,
-    alignSelf: 'flex-end',
-    justifySelf: 'flex-end',
+    alignSelf: "flex-end",
+    justifySelf: "flex-end",
   },
   name: {
     fontSize: 24,
-    fontFamily: 'Lato Bold',
+    fontFamily: "Lato Bold",
   },
   subtitle: {
     fontSize: 10,
-    justifySelf: 'flex-end',
-    fontFamily: 'Lato',
+    justifySelf: "flex-end",
+    fontFamily: "Lato",
   },
   link: {
-    fontFamily: 'Lato',
+    fontFamily: "Lato",
     fontSize: 10,
-    color: 'black',
-    textDecoration: 'none',
-    alignSelf: 'flex-end',
-    justifySelf: 'flex-end',
+    color: "black",
+    textDecoration: "none",
+    alignSelf: "flex-end",
+    justifySelf: "flex-end",
   },
 });
 

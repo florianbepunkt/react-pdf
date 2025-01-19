@@ -1,4 +1,4 @@
-import runAdvanceWidth from '../run/advanceWidth';
+import runAdvanceWidth from "../run/advanceWidth";
 
 /**
  * @typedef {import('../types.js').AttributedString} AttributedString

@@ -3,9 +3,7 @@
 /* eslint-disable prefer-destructuring */
 
 const getBookmarkValue = (title) => {
-  return typeof title === 'string'
-    ? { title, fit: false, expanded: false }
-    : title;
+  return typeof title === "string" ? { title, fit: false, expanded: false } : title;
 };
 
 const resolveBookmarks = (node) => {

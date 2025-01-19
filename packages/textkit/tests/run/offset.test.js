@@ -1,9 +1,9 @@
-import { describe, expect, test } from 'vitest';
+import { describe, expect, test } from "vitest";
 
-import offset from '../../src/run/offset';
+import offset from "../../src/run/offset";
 
-describe('run offset operator', () => {
-  test('should return always 0 if no glyphIndices present', () => {
+describe("run offset operator", () => {
+  test("should return always 0 if no glyphIndices present", () => {
     const run = {
       start: 0,
       end: 5,
@@ -23,7 +23,7 @@ describe('run offset operator', () => {
     expect(offset(4, run)).toBe(0);
   });
 
-  test('should return always 0 for run without ligatures', () => {
+  test("should return always 0 for run without ligatures", () => {
     const run = {
       start: 0,
       end: 5,
@@ -44,7 +44,7 @@ describe('run offset operator', () => {
     expect(offset(4, run)).toBe(0);
   });
 
-  test('should correctly return offset for run with ligature', () => {
+  test("should correctly return offset for run with ligature", () => {
     const run = {
       start: 0,
       end: 5,
@@ -64,7 +64,7 @@ describe('run offset operator', () => {
     expect(offset(4, run)).toBe(0);
   });
 
-  test('should correctly return offset for run with long ligature', () => {
+  test("should correctly return offset for run with long ligature", () => {
     const run = {
       start: 0,
       end: 5,

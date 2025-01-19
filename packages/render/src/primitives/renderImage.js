@@ -1,7 +1,7 @@
-import { isNil } from '@react-pdf/fns';
+import { isNil } from "@easypliant/react-pdf-fns";
 
-import clipNode from '../operations/clipNode';
-import resolveObjectFit from '../utils/resolveObjectFit';
+import clipNode from "../operations/clipNode";
+import resolveObjectFit from "../utils/resolveObjectFit";
 
 const drawImage = (ctx, node, options = {}) => {
   const { left, top } = node.box;
@@ -37,20 +37,13 @@ const drawImage = (ctx, node, options = {}) => {
 
       ctx
         .fillOpacity(imageOpacity)
-        .image(
-          image,
-          left + paddingLeft + xOffset,
-          top + paddingTop + yOffset,
-          {
-            width,
-            height,
-          },
-        );
+        .image(image, left + paddingLeft + xOffset, top + paddingTop + yOffset, {
+          width,
+          height,
+        });
     } else {
       console.warn(
-        `Image with src '${JSON.stringify(
-          node.props.src,
-        )}' skipped due to invalid dimensions`,
+        `Image with src '${JSON.stringify(node.props.src)}' skipped due to invalid dimensions`,
       );
     }
   }

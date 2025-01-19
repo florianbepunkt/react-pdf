@@ -1,6 +1,6 @@
-import * as P from '@react-pdf/primitives';
+import * as P from "@easypliant/react-pdf-primitives";
 
-import layoutText from '../text/layoutText';
+import layoutText from "../text/layoutText";
 
 const isType = (type) => (node) => node.type === type;
 
@@ -22,10 +22,8 @@ const shouldLayoutText = (node) => isText(node) && !node.lines;
  */
 const resolveTextLayout = (node, fontStore) => {
   if (shouldLayoutText(node)) {
-    const width =
-      node.box.width - (node.box.paddingRight + node.box.paddingLeft);
-    const height =
-      node.box.height - (node.box.paddingTop + node.box.paddingBottom);
+    const width = node.box.width - (node.box.paddingRight + node.box.paddingLeft);
+    const height = node.box.height - (node.box.paddingTop + node.box.paddingBottom);
 
     // eslint-disable-next-line no-param-reassign
     node.lines = layoutText(node, width, height, fontStore);

@@ -1,8 +1,8 @@
 /* eslint-disable no-param-reassign */
-import { isNil } from '@react-pdf/fns';
+import { isNil } from "@easypliant/react-pdf-fns";
 
-import renderGlyphs from './renderGlyphs';
-import parseColor from '../utils/parseColor';
+import renderGlyphs from "./renderGlyphs";
+import parseColor from "../utils/parseColor";
 
 const DEST_REGEXP = /^#.+/;
 
@@ -15,8 +15,8 @@ const renderAttachment = (ctx, attachment) => {
 
   ctx.image(image, 0, 0, {
     fit: [width, height],
-    align: 'center',
-    valign: 'bottom',
+    align: "center",
+    valign: "bottom",
   });
 };
 
@@ -48,9 +48,7 @@ const renderAttachments = (ctx, run) => {
 const renderRun = (ctx, run, options) => {
   const { font, fontSize, link } = run.attributes;
   const color = parseColor(run.attributes.color);
-  const opacity = isNil(run.attributes.opacity)
-    ? color.opacity
-    : run.attributes.opacity;
+  const opacity = isNil(run.attributes.opacity) ? color.opacity : run.attributes.opacity;
 
   const { height, descent, xAdvance } = run;
 
@@ -90,7 +88,7 @@ const renderRun = (ctx, run, options) => {
 
     ctx.restore();
   } else {
-    ctx.font(typeof font.name === 'string' ? font.name : font, fontSize);
+    ctx.font(typeof font.name === "string" ? font.name : font, fontSize);
 
     try {
       renderGlyphs(ctx, run.glyphs, run.positions, 0, 0);
@@ -140,14 +138,7 @@ const renderDecorationLine = (ctx, line) => {
     ctx.moveTo(line.rect.x, line.rect.y);
 
     for (let i = 0; i < stepCount; i += 1) {
-      ctx.bezierCurveTo(
-        x + step,
-        cp1y,
-        x + step,
-        cp2y,
-        x + 2 * step,
-        line.rect.y,
-      );
+      ctx.bezierCurveTo(x + step, cp1y, x + step, cp2y, x + 2 * step, line.rect.y);
       x += 2 * step;
     }
   } else {
@@ -156,10 +147,7 @@ const renderDecorationLine = (ctx, line) => {
 
     if (/double/.test(line.style)) {
       ctx.moveTo(line.rect.x, line.rect.y + line.rect.height * 2);
-      ctx.lineTo(
-        line.rect.x + line.rect.width,
-        line.rect.y + line.rect.height * 2,
-      );
+      ctx.lineTo(line.rect.x + line.rect.width, line.rect.y + line.rect.height * 2);
     }
   }
 

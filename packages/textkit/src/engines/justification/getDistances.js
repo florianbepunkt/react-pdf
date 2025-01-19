@@ -7,11 +7,7 @@ const getDistances = (gap, factors) => {
   const priorities = [];
   const unconstrained = [];
 
-  for (
-    let priority = KASHIDA_PRIORITY;
-    priority <= NULL_PRIORITY;
-    priority += 1
-  ) {
+  for (let priority = KASHIDA_PRIORITY; priority <= NULL_PRIORITY; priority += 1) {
     priorities[priority] = unconstrained[priority] = 0;
   }
 
@@ -70,8 +66,7 @@ const getDistances = (gap, factors) => {
   // if there is still space left over, assign it to the highest priority that we saw.
   // this violates their factors, but it only happens in extreme cases
   if (remainingGap > 0 && highestPriority > -1) {
-    priorities[highestPriority] =
-      (highestPrioritySum + (gap - total)) / highestPrioritySum;
+    priorities[highestPriority] = (highestPrioritySum + (gap - total)) / highestPrioritySum;
   }
 
   // create and return an array of distances to add to each glyph's advance

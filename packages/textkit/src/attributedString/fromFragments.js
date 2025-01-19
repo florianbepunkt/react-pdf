@@ -11,7 +11,7 @@
  */
 const fromFragments = (fragments) => {
   let offset = 0;
-  let string = '';
+  let string = "";
   const runs = [];
 
   fragments.forEach((fragment) => {

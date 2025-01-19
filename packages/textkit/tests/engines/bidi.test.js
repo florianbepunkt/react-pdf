@@ -1,17 +1,17 @@
-import { describe, expect, test } from 'vitest';
+import { describe, expect, test } from "vitest";
 
-import bidi from '../../src/engines/bidi';
+import bidi from "../../src/engines/bidi";
 
 const bidiInstance = bidi({});
 
-describe('Bidi', () => {
-  test('should return string with correct bidi level for ltr', () => {
+describe("Bidi", () => {
+  test("should return string with correct bidi level for ltr", () => {
     const result = bidiInstance({
-      string: 'English عربي English עִברִית فارسی 1234 English عربي ١٢٣٤٥',
+      string: "English عربي English עִברִית فارسی 1234 English عربي ١٢٣٤٥",
       runs: [
         {
           attributes: {
-            direction: 'ltr',
+            direction: "ltr",
           },
         },
       ],
@@ -27,13 +27,13 @@ describe('Bidi', () => {
     expect(result.runs[7].attributes.bidiLevel).toBe(2);
   });
 
-  test('should return string with correct bidi level for rtl', () => {
+  test("should return string with correct bidi level for rtl", () => {
     const result = bidiInstance({
-      string: 'English عربي English עִברִית فارسی 1234 English عربي ١٢٣٤٥',
+      string: "English عربي English עִברִית فارسی 1234 English عربي ١٢٣٤٥",
       runs: [
         {
           attributes: {
-            direction: 'rtl',
+            direction: "rtl",
           },
         },
       ],

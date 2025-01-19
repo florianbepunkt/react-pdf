@@ -1,9 +1,9 @@
 /* eslint-disable no-param-reassign */
 
-import Canvas from 'canvas';
-import pdfjs from 'pdfjs-dist/legacy/build/pdf';
+import Canvas from "canvas";
+import pdfjs from "pdfjs-dist/legacy/build/pdf";
 
-import { renderToBuffer } from '@react-pdf/renderer';
+import { renderToBuffer } from "@easypliant/react-pdf-renderer";
 
 /**
  * copy-pasted code from
@@ -12,7 +12,7 @@ import { renderToBuffer } from '@react-pdf/renderer';
 const NodeCanvasFactory = {
   create(width, height) {
     const canvas = Canvas.createCanvas(width, height);
-    const context = canvas.getContext('2d');
+    const context = canvas.getContext("2d");
     return {
       canvas,
       context,
@@ -36,10 +36,7 @@ async function getCanvas(pagePromise) {
   const page = await pagePromise;
   const viewport = page.getViewport({ scale: 1.0 });
   const canvasFactory = NodeCanvasFactory;
-  const { canvas, context } = canvasFactory.create(
-    viewport.width,
-    viewport.height,
-  );
+  const { canvas, context } = canvasFactory.create(viewport.width, viewport.height);
   const renderContext = {
     canvasContext: context,
     viewport,
@@ -55,10 +52,7 @@ async function getCanvas(pagePromise) {
 const GAP = 10;
 const composeCanvases = (canvases) => {
   const [maxWidth, maxHeight] = canvases.reduce(
-    ([width, height], canvas) => [
-      Math.max(width, canvas.width),
-      Math.max(height, canvas.height),
-    ],
+    ([width, height], canvas) => [Math.max(width, canvas.width), Math.max(height, canvas.height)],
     [0, 0],
   );
 
@@ -66,17 +60,12 @@ const composeCanvases = (canvases) => {
     maxWidth,
     maxHeight * canvases.length + GAP * (canvases.length - 1),
   );
-  const resultContext = resultCanvas.getContext('2d');
+  const resultContext = resultCanvas.getContext("2d");
 
   canvases.forEach((canvas, index) => {
     if (index) {
-      resultContext.fillStyle = '#e2e2e2';
-      resultContext.fillRect(
-        0,
-        maxHeight * index + GAP * (index - 1),
-        maxWidth,
-        GAP,
-      );
+      resultContext.fillStyle = "#e2e2e2";
+      resultContext.fillRect(0, maxHeight * index + GAP * (index - 1), maxWidth, GAP);
     }
     resultContext.drawImage(canvas, 0, maxHeight * index + GAP * index);
   });
@@ -95,13 +84,11 @@ const renderComponent = async (element) => {
   const source = await renderToBuffer(element);
 
   const document = await pdfjs.getDocument({
-    data: source,
+    data: source.buffer,
     verbosity: 0,
   }).promise;
 
-  const pages = range(document.numPages).map((pageIndex) =>
-    document.getPage(pageIndex + 1),
-  );
+  const pages = range(document.numPages).map((pageIndex) => document.getPage(pageIndex + 1));
 
   if (pages.length === 1) {
     return (await getCanvas(pages[0])).toBuffer();

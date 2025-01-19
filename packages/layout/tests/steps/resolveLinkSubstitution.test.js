@@ -1,21 +1,21 @@
-import { describe, expect, test } from 'vitest';
+import { describe, expect, test } from "vitest";
 
-import resolveLinkSubstitution from '../../src/steps/resolveLinkSubstitution';
+import resolveLinkSubstitution from "../../src/steps/resolveLinkSubstitution";
 
-describe('layout resolveStyles', () => {
-  test('should leave link with text children as it is', () => {
+describe("layout resolveStyles", () => {
+  test("should leave link with text children as it is", () => {
     const root = {
-      type: 'DOCUMENT',
+      type: "DOCUMENT",
       children: [
         {
-          type: 'PAGE',
+          type: "PAGE",
           children: [
             {
-              type: 'LINK',
-              props: { src: 'url' },
+              type: "LINK",
+              props: { src: "url" },
               children: [
                 {
-                  type: 'TEXT',
+                  type: "TEXT",
                 },
               ],
             },
@@ -28,17 +28,17 @@ describe('layout resolveStyles', () => {
     expect(result).toMatchSnapshot();
   });
 
-  test('should replace link with only one text instance as children', () => {
+  test("should replace link with only one text instance as children", () => {
     const root = {
-      type: 'DOCUMENT',
+      type: "DOCUMENT",
       children: [
         {
-          type: 'PAGE',
+          type: "PAGE",
           children: [
             {
-              type: 'LINK',
-              props: { src: 'url' },
-              children: [{ type: 'TEXT_INSTANCE' }],
+              type: "LINK",
+              props: { src: "url" },
+              children: [{ type: "TEXT_INSTANCE" }],
             },
           ],
         },
@@ -49,21 +49,21 @@ describe('layout resolveStyles', () => {
     expect(result).toMatchSnapshot();
   });
 
-  test('should replace link with only many text instances as children', () => {
+  test("should replace link with only many text instances as children", () => {
     const root = {
-      type: 'DOCUMENT',
+      type: "DOCUMENT",
       children: [
         {
-          type: 'PAGE',
+          type: "PAGE",
           children: [
             {
-              type: 'LINK',
-              props: { src: 'url' },
+              type: "LINK",
+              props: { src: "url" },
               children: [
-                { type: 'TEXT_INSTANCE' },
-                { type: 'TEXT_INSTANCE' },
-                { type: 'TEXT_INSTANCE' },
-                { type: 'TEXT_INSTANCE' },
+                { type: "TEXT_INSTANCE" },
+                { type: "TEXT_INSTANCE" },
+                { type: "TEXT_INSTANCE" },
+                { type: "TEXT_INSTANCE" },
               ],
             },
           ],
@@ -75,15 +75,15 @@ describe('layout resolveStyles', () => {
     expect(result).toMatchSnapshot();
   });
 
-  test('should replace link with render prop', () => {
+  test("should replace link with render prop", () => {
     const root = {
-      type: 'DOCUMENT',
+      type: "DOCUMENT",
       children: [
         {
-          type: 'PAGE',
+          type: "PAGE",
           children: [
             {
-              type: 'LINK',
+              type: "LINK",
               props: { render: () => {} },
             },
           ],

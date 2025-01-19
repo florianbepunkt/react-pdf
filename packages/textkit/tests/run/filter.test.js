@@ -1,15 +1,15 @@
-import { describe, expect, test } from 'vitest';
+import { describe, expect, test } from "vitest";
 
-import filter from '../../src/run/filter';
+import filter from "../../src/run/filter";
 
-describe('run filter operator', () => {
-  test('should return empty array if no runs passed', () => {
+describe("run filter operator", () => {
+  test("should return empty array if no runs passed", () => {
     const filtered = filter(2, 15, []);
 
     expect(filtered).toHaveLength(0);
   });
 
-  test('should filter only one run', () => {
+  test("should filter only one run", () => {
     const attributes = { font: {} };
     const runs = [{ start: 0, end: 15, attributes }];
     const filtered = filter(2, 15, runs);
@@ -18,7 +18,7 @@ describe('run filter operator', () => {
     expect(filtered[0]).toEqual(runs[0]);
   });
 
-  test('should filter many runs', () => {
+  test("should filter many runs", () => {
     const runs = [
       { start: 0, end: 6 },
       { start: 6, end: 12 },
@@ -30,7 +30,7 @@ describe('run filter operator', () => {
     expect(filtered[1]).toEqual(runs[1]);
   });
 
-  test('should filter trailing runs', () => {
+  test("should filter trailing runs", () => {
     const runs = [
       { start: 0, end: 6 },
       { start: 6, end: 12 },
@@ -41,7 +41,7 @@ describe('run filter operator', () => {
     expect(filtered[0]).toEqual(runs[1]);
   });
 
-  test('should filter leading runs', () => {
+  test("should filter leading runs", () => {
     const runs = [
       { start: 0, end: 6 },
       { start: 6, end: 12 },

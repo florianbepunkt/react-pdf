@@ -1,8 +1,8 @@
-import omit from '../run/omit';
-import stringHeight from '../attributedString/height';
-import generateLineRects from './generateLineRects';
+import omit from "../run/omit";
+import stringHeight from "../attributedString/height";
+import generateLineRects from "./generateLineRects";
 
-const ATTACHMENT_CODE = '\ufffc'; // 65532
+const ATTACHMENT_CODE = "\ufffc"; // 65532
 
 /**
  * @typedef {import('../types.js').AttributedString} AttributedString
@@ -20,7 +20,7 @@ const purgeAttachments = (attributedString) => {
 
   if (!shouldPurge) return attributedString;
 
-  const runs = attributedString.runs.map((run) => omit('attachment', run));
+  const runs = attributedString.runs.map((run) => omit("attachment", run));
 
   return Object.assign({}, attributedString, { runs });
 };

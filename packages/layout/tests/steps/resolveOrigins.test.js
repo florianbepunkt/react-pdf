@@ -1,16 +1,16 @@
-import { describe, expect, test } from 'vitest';
+import { describe, expect, test } from "vitest";
 
-import resolveOrigins from '../../src/steps/resolveOrigins';
+import resolveOrigins from "../../src/steps/resolveOrigins";
 
-describe('layout resolveOrigins', () => {
-  test('should not resolve for node without box', () => {
+describe("layout resolveOrigins", () => {
+  test("should not resolve for node without box", () => {
     const root = {
-      type: 'DOCUMENT',
+      type: "DOCUMENT",
       children: [
         {
-          type: 'PAGE',
+          type: "PAGE",
           style: {},
-          children: [{ type: 'VIEW', style: {} }],
+          children: [{ type: "VIEW", style: {} }],
         },
       ],
     };
@@ -19,12 +19,12 @@ describe('layout resolveOrigins', () => {
     expect(result).toMatchSnapshot();
   });
 
-  test('should resolve centered origin by default', () => {
+  test("should resolve centered origin by default", () => {
     const root = {
-      type: 'DOCUMENT',
+      type: "DOCUMENT",
       children: [
         {
-          type: 'PAGE',
+          type: "PAGE",
           style: {},
           box: { top: 50, left: 100, width: 300, height: 400 },
         },
@@ -35,12 +35,12 @@ describe('layout resolveOrigins', () => {
     expect(result).toMatchSnapshot();
   });
 
-  test('should resolve origin adjusted by fixed values', () => {
+  test("should resolve origin adjusted by fixed values", () => {
     const root = {
-      type: 'DOCUMENT',
+      type: "DOCUMENT",
       children: [
         {
-          type: 'PAGE',
+          type: "PAGE",
           box: { top: 50, left: 100, width: 300, height: 400 },
           style: { transformOriginX: 100, transformOriginY: 50 },
         },
@@ -51,14 +51,14 @@ describe('layout resolveOrigins', () => {
     expect(result).toMatchSnapshot();
   });
 
-  test('should resolve origin adjusted by percent values', () => {
+  test("should resolve origin adjusted by percent values", () => {
     const root = {
-      type: 'DOCUMENT',
+      type: "DOCUMENT",
       children: [
         {
-          type: 'PAGE',
+          type: "PAGE",
           box: { top: 50, left: 100, width: 300, height: 400 },
-          style: { transformOriginX: '20%', transformOriginY: '70%' },
+          style: { transformOriginX: "20%", transformOriginY: "70%" },
         },
       ],
     };
@@ -67,17 +67,17 @@ describe('layout resolveOrigins', () => {
     expect(result).toMatchSnapshot();
   });
 
-  test('should resolve origins for nested elements', () => {
+  test("should resolve origins for nested elements", () => {
     const root = {
-      type: 'DOCUMENT',
+      type: "DOCUMENT",
       children: [
         {
-          type: 'PAGE',
+          type: "PAGE",
           style: {},
           box: { top: 50, left: 100, width: 300, height: 400 },
           children: [
             {
-              type: 'VIEW',
+              type: "VIEW",
               style: {},
               box: { top: 0, left: 10, width: 50, height: 80 },
             },

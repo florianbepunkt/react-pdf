@@ -1,16 +1,16 @@
 const STYLES = {
-  strokeColorStyle: '#000000',
-  fillColorStyle: '#000000',
+  strokeColorStyle: "#000000",
+  fillColorStyle: "#000000",
   lineWidthStyle: 1,
-  fillRuleStyle: 'nonzero',
-  lineCapStyle: 'butt',
-  lineJoinStyle: 'miter',
-  lineDashStyle: '0 0',
+  fillRuleStyle: "nonzero",
+  lineCapStyle: "butt",
+  lineJoinStyle: "miter",
+  lineDashStyle: "0 0",
   fillOpacityStyle: 1,
   strokeOpacityStyle: 1,
   opacityStyle: 1,
   fontSizeStyle: 12,
-  fontFamilyStyle: 'Helvetica',
+  fontFamilyStyle: "Helvetica",
 };
 
 export default {
@@ -49,7 +49,7 @@ export default {
   },
 
   fillRule(rule) {
-    this.fillRuleStyle = rule.replaceAll('-', '');
+    this.fillRuleStyle = rule.replaceAll("-", "");
   },
 
   fillColor(color) {
@@ -81,7 +81,7 @@ export default {
   },
 
   lineDash(length, space) {
-    this.lineDashStyle = `${length} ${space || ''}`.trim();
+    this.lineDashStyle = `${length} ${space || ""}`.trim();
   },
 
   fontSize(size) {

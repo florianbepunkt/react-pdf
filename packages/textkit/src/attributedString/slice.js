@@ -1,6 +1,6 @@
-import sliceRun from '../run/slice';
-import filterRuns from '../run/filter';
-import subtractRun from '../run/subtract';
+import sliceRun from "../run/slice";
+import filterRuns from "../run/filter";
+import subtractRun from "../run/subtract";
 
 /**
  * @typedef {import('../types.js').AttributedString} AttributedString

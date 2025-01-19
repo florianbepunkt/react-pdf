@@ -1,57 +1,57 @@
-import { describe, expect, test } from 'vitest';
+import { describe, expect, test } from "vitest";
 
-import height from '../../src/run/height';
+import height from "../../src/run/height";
 
-describe('run height operator', () => {
-  test('should return 0 if font no attributes present', () => {
+describe("run height operator", () => {
+  test("should return 0 if font no attributes present", () => {
     const run = {};
 
     expect(height(run)).toBe(0);
   });
 
-  test('should return 0 if attributes empty', () => {
+  test("should return 0 if attributes empty", () => {
     const run = { attributes: {} };
 
     expect(height(run)).toBe(0);
   });
 
-  test('should line height if present', () => {
+  test("should line height if present", () => {
     const run = { attributes: { lineHeight: 20 } };
 
     expect(height(run)).toBe(20);
   });
 
-  test('should return 0 if font not present', () => {
+  test("should return 0 if font not present", () => {
     const run = { attributes: { fontSize: 12 } };
 
     expect(height(run)).toBe(0);
   });
 
-  test('should return 0 if fontSize not present', () => {
+  test("should return 0 if fontSize not present", () => {
     const run = { attributes: { font: { unitsPerEm: 2 } } };
 
     expect(height(run)).toBe(0);
   });
 
-  test('should return 0 if unknown font unitsPerEm', () => {
+  test("should return 0 if unknown font unitsPerEm", () => {
     const run = { attributes: { fontSize: 12, font: { height: 10 } } };
 
     expect(height(run)).toBe(0);
   });
 
-  test('should return 0 if unknown font descent', () => {
+  test("should return 0 if unknown font descent", () => {
     const run = { attributes: { fontSize: 12, font: { unitsPerEm: 2 } } };
 
     expect(height(run)).toBe(0);
   });
 
-  test('should return 0 if unknown font ascent', () => {
+  test("should return 0 if unknown font ascent", () => {
     const run = { attributes: { fontSize: 12, font: { unitsPerEm: 2 } } };
 
     expect(height(run)).toBe(0);
   });
 
-  test('should return correct height', () => {
+  test("should return correct height", () => {
     const run = {
       attributes: {
         fontSize: 12,

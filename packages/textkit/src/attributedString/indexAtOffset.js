@@ -1,6 +1,6 @@
-import runLength from '../run/length';
-import runAdvanceWidth from '../run/advanceWidth';
-import runIndexAtOffset from '../run/indexAtOffset';
+import runLength from "../run/length";
+import runAdvanceWidth from "../run/advanceWidth";
+import runIndexAtOffset from "../run/indexAtOffset";
 
 /**
  * @typedef {import('../types.js').AttributedString} AttributedString

@@ -1,19 +1,19 @@
-import React from 'react';
-import { Document, Page, View, Text } from '@react-pdf/renderer';
+import React from "react";
+import { Document, Page, View, Text } from "@easypliant/react-pdf-renderer";
 
 const palette = [
-  '#781c81',
-  '#521b80',
-  '#442f8b',
-  '#3f4c9f',
-  '#4069b4',
-  '#4582c1',
-  '#4e96bd',
-  '#5aa6a9',
-  '#68b090',
-  '#7ab878',
-  '#8dbc64',
-  '#a2be56',
+  "#781c81",
+  "#521b80",
+  "#442f8b",
+  "#3f4c9f",
+  "#4069b4",
+  "#4582c1",
+  "#4e96bd",
+  "#5aa6a9",
+  "#68b090",
+  "#7ab878",
+  "#8dbc64",
+  "#a2be56",
 ];
 
 const MinPresenceAhead = () => (
@@ -28,9 +28,9 @@ const MinPresenceAhead = () => (
             wrap={false}
             minPresenceAhead={i === 8 ? 90 : 0}
             style={{
-              width: '100%',
+              width: "100%",
               height: 80,
-              color: 'white',
+              color: "white",
               backgroundColor: color,
             }}
           >
@@ -44,8 +44,8 @@ const MinPresenceAhead = () => (
 );
 
 export default {
-  id: 'min-presence-ahead',
-  name: 'Min Presence Ahead',
-  description: '',
+  id: "min-presence-ahead",
+  name: "Min Presence Ahead",
+  description: "",
   Document: MinPresenceAhead,
 };

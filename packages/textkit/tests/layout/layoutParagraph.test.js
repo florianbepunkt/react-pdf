@@ -1,9 +1,9 @@
-import { describe, test } from 'vitest';
+import { describe, test } from "vitest";
 
-import layoutParagraph from '../../src/layout/layoutParagraph';
+import layoutParagraph from "../../src/layout/layoutParagraph";
 
-describe('layoutParagraph', () => {
-  test('should keep overflowing text in the last rect', () => {
+describe("layoutParagraph", () => {
+  test("should keep overflowing text in the last rect", () => {
     // eslint-disable-next-line no-unused-vars
     const linebreaker = (_options) => (attributedString, _availableWidths) => {
       return [attributedString];
@@ -18,10 +18,8 @@ describe('layoutParagraph', () => {
       height: 10,
     };
     const paragraph = {
-      string: 'Lorem',
-      runs: [
-        { start: 0, end: 5, attributes: { lineHeight: 11, color: 'red' } },
-      ],
+      string: "Lorem",
+      runs: [{ start: 0, end: 5, attributes: { lineHeight: 11, color: "red" } }],
     };
 
     layouter(container, paragraph);

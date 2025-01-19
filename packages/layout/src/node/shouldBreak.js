@@ -1,28 +1,20 @@
 /* eslint-disable no-continue */
 
-import getWrap from './getWrap';
+import getWrap from "./getWrap";
 
 const getBreak = (node) => node.props?.break || false;
 
 const getMinPresenceAhead = (node) => node.props?.minPresenceAhead || 0;
 
-const getFurthestEnd = (elements) =>
-  Math.max(...elements.map((node) => node.box.top + node.box.height));
+const getFurthestEnd = (elements) => Math.max(...elements.map((node) => node.box.top + node.box.height));
 
 const getEndOfMinPresenceAhead = (child) => {
-  return (
-    child.box.top +
-    child.box.height +
-    child.box.marginBottom +
-    getMinPresenceAhead(child)
-  );
+  return child.box.top + child.box.height + child.box.marginBottom + getMinPresenceAhead(child);
 };
 
 const getEndOfPresence = (child, futureElements) => {
   const afterMinPresenceAhead = getEndOfMinPresenceAhead(child);
-  const endOfFurthestFutureElement = getFurthestEnd(
-    futureElements.filter((node) => !node.props?.fixed),
-  );
+  const endOfFurthestFutureElement = getFurthestEnd(futureElements.filter((node) => !node.props?.fixed));
   return Math.min(afterMinPresenceAhead, endOfFurthestFutureElement);
 };
 

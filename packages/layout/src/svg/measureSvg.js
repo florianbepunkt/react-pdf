@@ -1,4 +1,4 @@
-import * as Yoga from 'yoga-layout/load';
+import * as Yoga from "yoga-layout/load";
 
 const getAspectRatio = (viewbox) => {
   if (!viewbox) return null;
@@ -21,22 +21,18 @@ const getAspectRatio = (viewbox) => {
  * @param {Object} node
  * @returns {MeasureSvg} measure svg
  */
-const measureCanvas =
-  (page, node) => (width, widthMode, height, heightMode) => {
-    const aspectRatio = getAspectRatio(node.props.viewBox) || 1;
+const measureCanvas = (page, node) => (width, widthMode, height, heightMode) => {
+  const aspectRatio = getAspectRatio(node.props.viewBox) || 1;
 
-    if (
-      widthMode === Yoga.MeasureMode.Exactly ||
-      widthMode === Yoga.MeasureMode.AtMost
-    ) {
-      return { width, height: width / aspectRatio };
-    }
+  if (widthMode === Yoga.MeasureMode.Exactly || widthMode === Yoga.MeasureMode.AtMost) {
+    return { width, height: width / aspectRatio };
+  }
 
-    if (heightMode === Yoga.MeasureMode.Exactly) {
-      return { width: height * aspectRatio };
-    }
+  if (heightMode === Yoga.MeasureMode.Exactly) {
+    return { width: height * aspectRatio };
+  }
 
-    return {};
-  };
+  return {};
+};
 
 export default measureCanvas;

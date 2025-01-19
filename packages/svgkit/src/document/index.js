@@ -2,11 +2,11 @@
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable class-methods-use-this */
 
-// import { PDFFont } from '@react-pdf/pdfkit';
+// import { PDFFont } from '@easypliant/react-pdf-pdfkit';
 
-import SVGPage from '../page';
-import serialize from './serialize';
-import { LinearGradient, RadialGradient } from '../gradient';
+import SVGPage from "../page";
+import serialize from "./serialize";
+import { LinearGradient, RadialGradient } from "../gradient";
 
 class SVGDocument {
   /**
@@ -196,7 +196,7 @@ class SVGDocument {
     if (length == null) return this;
 
     if (Array.isArray(length)) {
-      length = Array.from(length).join(' ');
+      length = Array.from(length).join(" ");
     } else {
       space = options.space != null ? options.space : length;
     }
@@ -223,11 +223,9 @@ class SVGDocument {
     const { width, height } = opts;
 
     if (!width || !height)
-      throw new Error(
-        'svgkit only supports image rendering with explicit width and height',
-      );
+      throw new Error("svgkit only supports image rendering with explicit width and height");
 
-    const href = `data:image;base64,${Buffer.from(data).toString('base64')}`;
+    const href = `data:image;base64,${Buffer.from(data).toString("base64")}`;
 
     return this.currentPage.image(href, x, y, width, height);
   }
@@ -237,7 +235,7 @@ class SVGDocument {
       this.fontSize(size);
     }
 
-    if (typeof src === 'string') {
+    if (typeof src === "string") {
       this.currentPage.fontFamily(src);
       return this;
     }
@@ -275,12 +273,12 @@ class SVGDocument {
   // }
 
   note() {
-    console.warn('note is not yet supported on svgkit');
+    console.warn("note is not yet supported on svgkit");
     return this;
   }
 
   end() {
-    this.serialized = this.pages.map((page) => serialize(page.root)).join('');
+    this.serialized = this.pages.map((page) => serialize(page.root)).join("");
   }
 }
 

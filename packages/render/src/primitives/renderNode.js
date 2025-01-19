@@ -1,18 +1,18 @@
-import * as P from '@react-pdf/primitives';
-import renderSvg from './renderSvg';
-import renderText from './renderText';
-import renderPage from './renderPage';
-import renderNote from './renderNote';
-import renderImage from './renderImage';
-import renderDebug from './renderDebug';
-import renderCanvas from './renderCanvas';
-import renderBorders from './renderBorders';
-import renderBackground from './renderBackground';
-import renderXml from './renderXml';
-import setLink from '../operations/setLink';
-import clipNode from '../operations/clipNode';
-import transform from '../operations/transform';
-import setDestination from '../operations/setDestination';
+import * as P from "@easypliant/react-pdf-primitives";
+import renderSvg from "./renderSvg";
+import renderText from "./renderText";
+import renderPage from "./renderPage";
+import renderNote from "./renderNote";
+import renderImage from "./renderImage";
+import renderDebug from "./renderDebug";
+import renderCanvas from "./renderCanvas";
+import renderBorders from "./renderBorders";
+import renderBackground from "./renderBackground";
+import renderXml from "./renderXml";
+import setLink from "../operations/setLink";
+import clipNode from "../operations/clipNode";
+import transform from "../operations/transform";
+import setDestination from "../operations/setDestination";
 
 const isRecursiveNode = (node) => node.type !== P.Text && node.type !== P.Svg;
 
@@ -42,7 +42,7 @@ const renderFns = {
 };
 
 const renderNode = (ctx, node, options) => {
-  const overflowHidden = node.style?.overflow === 'hidden';
+  const overflowHidden = node.style?.overflow === "hidden";
   const shouldRenderChildren = isRecursiveNode(node);
 
   if (node.type === P.Page) renderPage(ctx, node);

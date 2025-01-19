@@ -1,10 +1,10 @@
-import { describe, expect, test } from 'vitest';
+import { describe, expect, test } from "vitest";
 
-import * as P from '@react-pdf/primitives';
-import shouldBreak from '../../src/node/shouldBreak';
+import * as P from "@easypliant/react-pdf-primitives";
+import shouldBreak from "../../src/node/shouldBreak";
 
-describe('node shouldBreak', () => {
-  test('should not break when the child has enough space on the page', () => {
+describe("node shouldBreak", () => {
+  test("should not break when the child has enough space on the page", () => {
     const result = shouldBreak(
       {
         box: { top: 50, height: 400 },
@@ -16,7 +16,7 @@ describe('node shouldBreak', () => {
     expect(result).toEqual(false);
   });
 
-  test('should break when the child has enough space on the page', () => {
+  test("should break when the child has enough space on the page", () => {
     const result = shouldBreak(
       {
         box: { top: 50, height: 400 },
@@ -29,7 +29,7 @@ describe('node shouldBreak', () => {
     expect(result).toEqual(true);
   });
 
-  test('should not break when the child can be wrapped', () => {
+  test("should not break when the child can be wrapped", () => {
     const result = shouldBreak(
       {
         box: { top: 50, height: 1400 },
@@ -42,7 +42,7 @@ describe('node shouldBreak', () => {
     expect(result).toEqual(false);
   });
 
-  test('should break when the child is an unwrappable node', () => {
+  test("should break when the child is an unwrappable node", () => {
     const result = shouldBreak(
       {
         type: P.Image,
@@ -56,7 +56,7 @@ describe('node shouldBreak', () => {
     expect(result).toEqual(true);
   });
 
-  test('should break when the child has wrapping disabled', () => {
+  test("should break when the child has wrapping disabled", () => {
     const result = shouldBreak(
       {
         box: { top: 50, height: 1400 },
@@ -69,7 +69,7 @@ describe('node shouldBreak', () => {
     expect(result).toEqual(true);
   });
 
-  test('should break when minPresenceAhead is large enough and there are overflowing siblings after the child', () => {
+  test("should break when minPresenceAhead is large enough and there are overflowing siblings after the child", () => {
     const result = shouldBreak(
       {
         box: { top: 500, height: 400, marginTop: 0, marginBottom: 0 },
@@ -82,7 +82,7 @@ describe('node shouldBreak', () => {
     expect(result).toEqual(true);
   });
 
-  test('should break when minPresenceAhead is large enough and there are overflowing siblings due to margins after the child', () => {
+  test("should break when minPresenceAhead is large enough and there are overflowing siblings due to margins after the child", () => {
     const result = shouldBreak(
       {
         box: { top: 500, height: 400, marginTop: 0, marginBottom: 0 },
@@ -95,7 +95,7 @@ describe('node shouldBreak', () => {
     expect(result).toEqual(true);
   });
 
-  test('should not break when minPresenceAhead is not past the page end', () => {
+  test("should not break when minPresenceAhead is not past the page end", () => {
     const result = shouldBreak(
       {
         box: { top: 500, height: 400, marginTop: 0, marginBottom: 0 },
@@ -108,7 +108,7 @@ describe('node shouldBreak', () => {
     expect(result).toEqual(false);
   });
 
-  test('should not break when the siblings after the child do not overflow past the page end', () => {
+  test("should not break when the siblings after the child do not overflow past the page end", () => {
     const result = shouldBreak(
       {
         box: { top: 500, height: 400, marginTop: 0, marginBottom: 0 },
@@ -121,7 +121,7 @@ describe('node shouldBreak', () => {
     expect(result).toEqual(false);
   });
 
-  test('should not break when the siblings after the child do not overflow past the page end, with margins', () => {
+  test("should not break when the siblings after the child do not overflow past the page end, with margins", () => {
     const result = shouldBreak(
       {
         box: { top: 500, height: 400, marginTop: 0, marginBottom: 0 },
@@ -147,7 +147,7 @@ describe('node shouldBreak', () => {
     expect(result).toEqual(false);
   });
 
-  test('should not break due to minPresenceAhead when breaking does not improve presence, to avoid infinite loops', () => {
+  test("should not break due to minPresenceAhead when breaking does not improve presence, to avoid infinite loops", () => {
     const result = shouldBreak(
       {
         box: { top: 500, height: 400, marginTop: 500, marginBottom: 0 },
@@ -160,7 +160,7 @@ describe('node shouldBreak', () => {
     expect(result).toEqual(false);
   });
 
-  test('should never break fixed child', () => {
+  test("should never break fixed child", () => {
     const result = shouldBreak(
       {
         box: { top: 500, height: 400, marginTop: 0, marginBottom: 0 },
@@ -173,7 +173,7 @@ describe('node shouldBreak', () => {
     expect(result).toEqual(false);
   });
 
-  test('should ignore fixed elements after child', () => {
+  test("should ignore fixed elements after child", () => {
     const result = shouldBreak(
       {
         box: { top: 500, height: 400, marginTop: 0, marginBottom: 0 },
@@ -191,10 +191,10 @@ describe('node shouldBreak', () => {
     expect(result).toEqual(false);
   });
 
-  test('should work with trivial minimal reproduction example', () => {
+  test("should work with trivial minimal reproduction example", () => {
     const result = shouldBreak(
       {
-        type: 'VIEW',
+        type: "VIEW",
         box: {
           top: 30,
           height: 0,
@@ -205,7 +205,7 @@ describe('node shouldBreak', () => {
       },
       [
         {
-          type: 'VIEW',
+          type: "VIEW",
           box: {
             top: 30,
             height: 70,
@@ -214,7 +214,7 @@ describe('node shouldBreak', () => {
           },
         },
         {
-          type: 'VIEW',
+          type: "VIEW",
           box: {
             top: 130,
             height: 0,
@@ -229,10 +229,10 @@ describe('node shouldBreak', () => {
     expect(result).toEqual(false);
   });
 
-  test('should work with minimal infinite loop reproduction example', () => {
+  test("should work with minimal infinite loop reproduction example", () => {
     const result = shouldBreak(
       {
-        type: 'VIEW',
+        type: "VIEW",
         box: {
           top: 30,
           height: 0,
@@ -243,7 +243,7 @@ describe('node shouldBreak', () => {
       },
       [
         {
-          type: 'VIEW',
+          type: "VIEW",
           box: {
             top: 30,
             height: 71,
@@ -252,7 +252,7 @@ describe('node shouldBreak', () => {
           },
         },
         {
-          type: 'VIEW',
+          type: "VIEW",
           box: {
             top: 131,
             height: 0,
@@ -267,10 +267,10 @@ describe('node shouldBreak', () => {
     expect(result).toEqual(false);
   });
 
-  test('should work with reproduction from #2303', () => {
+  test("should work with reproduction from #2303", () => {
     const result = shouldBreak(
       {
-        type: 'TEXT',
+        type: "TEXT",
         box: {
           paddingTop: 0,
           paddingRight: 0,
@@ -297,28 +297,28 @@ describe('node shouldBreak', () => {
           marginBottom: 12,
           marginLeft: 12,
           fontSize: 14,
-          textAlign: 'justify',
-          fontFamily: 'Times-Roman',
+          textAlign: "justify",
+          fontFamily: "Times-Roman",
         },
         props: {
           minPresenceAhead: 4,
         },
         children: [
           {
-            type: 'TEXT_INSTANCE',
+            type: "TEXT_INSTANCE",
             value:
-              'En un lugar de la Mancha, de cuyo nombre no quiero acordarme, no ha mucho tiempo que vivía un hidalgo de los de lanza en astillero, adarga antigua, rocín flaco y galgo corredor. Una olla de algo más vaca que carnero, salpicón las más noches, duelos y quebrantos los sábados, lentejas los viernes, algún palomino de añadidura los domingos, consumían las tres partes de su hacienda. El resto della concluían sayo de velarte, calzas de velludo para las fiestas con sus pantuflos de lo mismo, los días de entre semana se honraba con su vellori de lo más fino. Tenía en su casa una ama que pasaba de los cuarenta, y una sobrina que no llegaba a los veinte, y un mozo de campo y plaza, que así ensillaba el rocín como tomaba la podadera. Frisaba la edad de nuestro hidalgo con los cincuenta años, era de complexión recia, seco de carnes, enjuto de rostro; gran madrugador y amigo de la caza. Quieren decir que tenía el sobrenombre de Quijada o Quesada (que en esto hay alguna diferencia en los autores que deste caso escriben), aunque por conjeturas verosímiles se deja entender que se llama Quijana; pero esto importa poco a nuestro cuento; basta que en la narración dél no se salga un punto de la verdad',
+              "En un lugar de la Mancha, de cuyo nombre no quiero acordarme, no ha mucho tiempo que vivía un hidalgo de los de lanza en astillero, adarga antigua, rocín flaco y galgo corredor. Una olla de algo más vaca que carnero, salpicón las más noches, duelos y quebrantos los sábados, lentejas los viernes, algún palomino de añadidura los domingos, consumían las tres partes de su hacienda. El resto della concluían sayo de velarte, calzas de velludo para las fiestas con sus pantuflos de lo mismo, los días de entre semana se honraba con su vellori de lo más fino. Tenía en su casa una ama que pasaba de los cuarenta, y una sobrina que no llegaba a los veinte, y un mozo de campo y plaza, que así ensillaba el rocín como tomaba la podadera. Frisaba la edad de nuestro hidalgo con los cincuenta años, era de complexión recia, seco de carnes, enjuto de rostro; gran madrugador y amigo de la caza. Quieren decir que tenía el sobrenombre de Quijada o Quesada (que en esto hay alguna diferencia en los autores que deste caso escriben), aunque por conjeturas verosímiles se deja entender que se llama Quijana; pero esto importa poco a nuestro cuento; basta que en la narración dél no se salga un punto de la verdad",
             style: {
-              fontFamily: 'Times-Roman',
+              fontFamily: "Times-Roman",
               fontSize: 14,
-              textAlign: 'justify',
+              textAlign: "justify",
             },
           },
         ],
       },
       [
         {
-          type: 'TEXT',
+          type: "TEXT",
           box: {
             paddingTop: 0,
             paddingRight: 0,
@@ -345,14 +345,14 @@ describe('node shouldBreak', () => {
           props: {},
           children: [
             {
-              type: 'TEXT_INSTANCE',
-              value: 'Orphans example. Try changing prop value',
+              type: "TEXT_INSTANCE",
+              value: "Orphans example. Try changing prop value",
               style: {},
             },
           ],
         },
         {
-          type: 'TEXT',
+          type: "TEXT",
           box: {
             paddingTop: 0,
             paddingRight: 0,
@@ -379,21 +379,21 @@ describe('node shouldBreak', () => {
             marginBottom: 12,
             marginLeft: 12,
             fontSize: 14,
-            textAlign: 'justify',
-            fontFamily: 'Times-Roman',
+            textAlign: "justify",
+            fontFamily: "Times-Roman",
           },
           props: {
             orphans: 4,
           },
           children: [
             {
-              type: 'TEXT_INSTANCE',
+              type: "TEXT_INSTANCE",
               value:
-                'En un lugar de la Mancha, de cuyo nombre no quiero acordarme, no ha mucho tiempo que vivía un hidalgo de los de lanza en astillero, adarga antigua, rocín flaco y galgo corredor. Una olla de algo más vaca que carnero, salpicón las más noches, duelos y quebrantos los sábados, lentejas los viernes, algún palomino de añadidura los domingos, consumían las tres partes de su hacienda. El resto della concluían sayo de velarte, calzas de velludo para las fiestas con sus pantuflos de lo mismo, los días de entre semana se honraba con su vellori de lo más fino. Tenía en su casa una ama que pasaba de los cuarenta, y una sobrina que no llegaba a los veinte, y un mozo de campo y plaza, que así ensillaba el rocín como tomaba la podadera. Frisaba la edad de nuestro hidalgo con los cincuenta años, era de complexión recia, seco de carnes, enjuto de rostro; gran madrugador y amigo de la caza. Quieren decir que tenía el sobrenombre de Quijada o Quesada (que en esto hay alguna diferencia en los autores que deste caso escriben), aunque por conjeturas verosímiles se deja entender que se llama Quijana; pero esto importa poco a nuestro cuento; basta que en la narración dél no se salga un punto de la verdad',
+                "En un lugar de la Mancha, de cuyo nombre no quiero acordarme, no ha mucho tiempo que vivía un hidalgo de los de lanza en astillero, adarga antigua, rocín flaco y galgo corredor. Una olla de algo más vaca que carnero, salpicón las más noches, duelos y quebrantos los sábados, lentejas los viernes, algún palomino de añadidura los domingos, consumían las tres partes de su hacienda. El resto della concluían sayo de velarte, calzas de velludo para las fiestas con sus pantuflos de lo mismo, los días de entre semana se honraba con su vellori de lo más fino. Tenía en su casa una ama que pasaba de los cuarenta, y una sobrina que no llegaba a los veinte, y un mozo de campo y plaza, que así ensillaba el rocín como tomaba la podadera. Frisaba la edad de nuestro hidalgo con los cincuenta años, era de complexión recia, seco de carnes, enjuto de rostro; gran madrugador y amigo de la caza. Quieren decir que tenía el sobrenombre de Quijada o Quesada (que en esto hay alguna diferencia en los autores que deste caso escriben), aunque por conjeturas verosímiles se deja entender que se llama Quijana; pero esto importa poco a nuestro cuento; basta que en la narración dél no se salga un punto de la verdad",
               style: {
-                fontFamily: 'Times-Roman',
+                fontFamily: "Times-Roman",
                 fontSize: 14,
-                textAlign: 'justify',
+                textAlign: "justify",
               },
             },
           ],
@@ -405,10 +405,10 @@ describe('node shouldBreak', () => {
     expect(result).toEqual(false);
   });
 
-  test('should not break when the child can wrap', () => {
+  test("should not break when the child can wrap", () => {
     const result = shouldBreak(
       {
-        type: 'TEXT',
+        type: "TEXT",
         box: {
           top: 425.23779296875,
           height: 419.439453125,
@@ -418,7 +418,7 @@ describe('node shouldBreak', () => {
       },
       [
         {
-          type: 'TEXT',
+          type: "TEXT",
           box: {
             top: 868.67724609375,
             height: 247.8505859375,

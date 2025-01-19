@@ -1,4 +1,4 @@
-import runIndexAt from './runIndexAt';
+import runIndexAt from "./runIndexAt";
 
 /**
  * @typedef {import('../types.js').AttributedString} AttributedString

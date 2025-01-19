@@ -1,9 +1,9 @@
-import scale from './scale';
-import offset from './offset';
-import getFont from './getFont';
-import sliceGlyph from '../glyph/slice';
-import glyphIndexAt from './glyphIndexAt';
-import normalizeIndices from '../indices/normalize';
+import scale from "./scale";
+import offset from "./offset";
+import getFont from "./getFont";
+import sliceGlyph from "../glyph/slice";
+import glyphIndexAt from "./glyphIndexAt";
+import normalizeIndices from "../indices/normalize";
 
 /**
  * @typedef {import('../types.js').Run} Run
@@ -31,8 +31,7 @@ const slice = (start, end, run) => {
 
   // Get start ligature chunks (if any)
   const startOffset = offset(start, run);
-  const startGlyphs =
-    startOffset > 0 ? sliceGlyph(startOffset, Infinity, font, startGlyph) : [];
+  const startGlyphs = startOffset > 0 ? sliceGlyph(startOffset, Infinity, font, startGlyph) : [];
 
   // Get end ligature chunks (if any)
   const endOffset = offset(end, run);

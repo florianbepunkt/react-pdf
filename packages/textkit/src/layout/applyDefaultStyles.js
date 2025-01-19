@@ -10,15 +10,14 @@
  */
 const applyAttributes = (a) => {
   return {
-    align: a.align || (a.direction === 'rtl' ? 'right' : 'left'),
-    alignLastLine:
-      a.alignLastLine || (a.align === 'justify' ? 'left' : a.align || 'left'),
+    align: a.align || (a.direction === "rtl" ? "right" : "left"),
+    alignLastLine: a.alignLastLine || (a.align === "justify" ? "left" : a.align || "left"),
     attachment: a.attachment || null,
     backgroundColor: a.backgroundColor || null,
     bullet: a.bullet || null,
     characterSpacing: a.characterSpacing || 0,
-    color: a.color || 'black',
-    direction: a.direction || 'ltr',
+    color: a.color || "black",
+    direction: a.direction || "ltr",
     features: a.features || [],
     fill: a.fill !== false,
     font: a.font || null,
@@ -38,12 +37,12 @@ const applyAttributes = (a) => {
     script: a.script || null,
     shrinkFactor: a.shrinkFactor || 0,
     strike: a.strike || false,
-    strikeColor: a.strikeColor || a.color || 'black',
-    strikeStyle: a.strikeStyle || 'solid',
+    strikeColor: a.strikeColor || a.color || "black",
+    strikeStyle: a.strikeStyle || "solid",
     stroke: a.stroke || false,
     underline: a.underline || false,
-    underlineColor: a.underlineColor || a.color || 'black',
-    underlineStyle: a.underlineStyle || 'solid',
+    underlineColor: a.underlineColor || a.color || "black",
+    underlineStyle: a.underlineStyle || "solid",
     verticalAlign: a.verticalAlign || null,
     wordSpacing: a.wordSpacing || 0,
     yOffset: a.yOffset || 0,
@@ -70,7 +69,7 @@ const applyDefaultStyles = () => {
    * @returns {AttributedString} attributed string
    */
   return (attributedString) => {
-    const string = attributedString.string || '';
+    const string = attributedString.string || "";
     const runs = (attributedString.runs || []).map(applyRunStyles);
 
     return { string, runs };

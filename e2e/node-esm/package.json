@@ -1,6 +1,6 @@
 {
-  "name": "@react-pdf/e2e-node-esm",
-  "version": "2.0.7",
+  "name": "@easypliant/react-pdf-e2e-node-esm",
+  "version": "3.0.2",
   "license": "MIT",
   "private": true,
   "type": "module",
@@ -12,7 +12,7 @@
     "start": "node ./index.js"
   },
   "dependencies": {
-    "@react-pdf/renderer": "^4.0.0",
+    "@easypliant/react-pdf-renderer": "^5.1.1",
     "react": "^18.2.0"
   }
 }

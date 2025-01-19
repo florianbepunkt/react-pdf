@@ -1,10 +1,10 @@
-import { describe, expect, test } from 'vitest';
+import { describe, expect, test } from "vitest";
 
-import { Document, Page, Text, Font } from '@react-pdf/renderer';
-import renderToImage from './renderComponent';
+import { Document, Page, Text, Font } from "@easypliant/react-pdf-renderer";
+import renderToImage from "./renderComponent";
 
-describe('emoji', () => {
-  test('should support builder function', async () => {
+describe("emoji", () => {
+  test("should support builder function", async () => {
     Font.registerEmojiSource({
       builder: (code) =>
         `https://cdn.jsdelivr.net/gh/shuding/fluentui-emoji-unicode/assets/${code.toLowerCase()}_3d.png`,
@@ -21,10 +21,10 @@ describe('emoji', () => {
     expect(image).toMatchImageSnapshot();
   });
 
-  test('should support Unicode 13.0 emoji', async () => {
+  test("should support Unicode 13.0 emoji", async () => {
     Font.registerEmojiSource({
-      format: 'png',
-      url: 'https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/72x72/',
+      format: "png",
+      url: "https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/72x72/",
     });
 
     const image = await renderToImage(

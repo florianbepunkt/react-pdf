@@ -1,6 +1,6 @@
-import * as P from '@react-pdf/primitives';
+import * as P from "@easypliant/react-pdf-primitives";
 
-import getDefs from './getDefs';
+import getDefs from "./getDefs";
 
 const isNotDefs = (node) => node.type !== P.Defs;
 
@@ -28,9 +28,7 @@ const parseNodeDefs = (defs) => (node) => {
   const fill = replaceDef(defs, node.props?.fill);
   const clipPath = replaceDef(defs, node.props?.clipPath);
   const props = Object.assign({}, node.props, { fill, clipPath });
-  const children = node.children
-    ? node.children.map(parseNodeDefs(defs))
-    : undefined;
+  const children = node.children ? node.children.map(parseNodeDefs(defs)) : undefined;
 
   return Object.assign({}, node, { props, children });
 };

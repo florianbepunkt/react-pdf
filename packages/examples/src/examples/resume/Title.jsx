@@ -1,12 +1,12 @@
-import React from 'react';
-import { Text, StyleSheet } from '@react-pdf/renderer';
+import React from "react";
+import { Text, StyleSheet } from "@easypliant/react-pdf-renderer";
 
 const styles = StyleSheet.create({
   title: {
-    fontFamily: 'Lato Bold',
+    fontFamily: "Lato Bold",
     fontSize: 14,
     marginBottom: 10,
-    textTransform: 'uppercase',
+    textTransform: "uppercase",
   },
 });
 

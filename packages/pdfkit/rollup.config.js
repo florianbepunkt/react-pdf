@@ -62,7 +62,7 @@ const getPlugins = ({ browser }) => [
       BROWSER: JSON.stringify(browser)
     }
   }),
-  babel(babelConfig()),
+  babel(babelConfig())
 ];
 
 const serverConfig = {
@@ -79,7 +79,4 @@ const browserConfig = {
   plugins: getPlugins({ browser: true })
 };
 
-export default [
-  serverConfig,
-  browserConfig,
-];
+export default [serverConfig, browserConfig];

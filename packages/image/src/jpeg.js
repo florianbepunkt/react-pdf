@@ -1,4 +1,4 @@
-import _JPEG from 'jay-peg';
+import _JPEG from "jay-peg";
 
 class JPEG {
   data = null;
@@ -11,7 +11,7 @@ class JPEG {
     this.data = data;
 
     if (data.readUInt16BE(0) !== 0xffd8) {
-      throw new Error('SOI not found in JPEG');
+      throw new Error("SOI not found in JPEG");
     }
 
     const markers = _JPEG.decode(this.data);
@@ -19,11 +19,11 @@ class JPEG {
     for (let i = 0; i < markers.length; i += 1) {
       const marker = markers[i];
 
-      if (marker.name === 'EXIF' && marker.entries.orientation) {
+      if (marker.name === "EXIF" && marker.entries.orientation) {
         this.orientation = marker.entries.orientation;
       }
 
-      if (marker.name === 'SOF') {
+      if (marker.name === "SOF") {
         this.width ||= marker.width;
         this.height ||= marker.height;
       }

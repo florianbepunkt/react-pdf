@@ -1,6 +1,6 @@
-import { describe, test, expect } from 'vitest';
+import { describe, test, expect } from "vitest";
 
-import bidiMirroring from '../../src/layout/bidiMirroring';
+import bidiMirroring from "../../src/layout/bidiMirroring";
 
 const bidiMirrorInstance = bidiMirroring();
 
@@ -18,15 +18,15 @@ const initializeToIndex = (size) => {
   return arr;
 };
 
-describe('bidiMirroring', () => {
-  test('should mirror characters correctly', () => {
-    const word = '(Lorem)';
+describe("bidiMirroring", () => {
+  test("should mirror characters correctly", () => {
+    const word = "(Lorem)";
     const attributedString = {
       string: word,
       runs: [
         {
           attributes: {
-            direction: 'rtl',
+            direction: "rtl",
             bidiLevel: 1,
           },
           start: 0,
@@ -39,7 +39,7 @@ describe('bidiMirroring', () => {
     };
     const result = bidiMirrorInstance(attributedString);
 
-    expect(result.string).toBe(')Lorem(');
+    expect(result.string).toBe(")Lorem(");
     const expectedGlyphs = swapElements(
       attributedString.runs[0].glyphs,
       0,
@@ -55,14 +55,14 @@ describe('bidiMirroring', () => {
     expect(result.runs[0].positions).toEqual(expectedPositions);
   });
 
-  test('should not mirror any characters', () => {
-    const word = '(Lorem)';
+  test("should not mirror any characters", () => {
+    const word = "(Lorem)";
     const attributedString = {
       string: word,
       runs: [
         {
           attributes: {
-            direction: 'rtl',
+            direction: "rtl",
             bidiLevel: 0,
           },
           start: 0,
@@ -77,8 +77,6 @@ describe('bidiMirroring', () => {
 
     expect(result.string).toBe(word);
     expect(result.runs[0].glyphs).toEqual(attributedString.runs[0].glyphs);
-    expect(result.runs[0].positions).toEqual(
-      attributedString.runs[0].positions,
-    );
+    expect(result.runs[0].positions).toEqual(attributedString.runs[0].positions);
   });
 });

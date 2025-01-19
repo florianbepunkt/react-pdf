@@ -1,4 +1,4 @@
-import slice from './slice';
+import slice from "./slice";
 
 /**
  * @typedef {import('../types.js').AttributedString} AttributedString

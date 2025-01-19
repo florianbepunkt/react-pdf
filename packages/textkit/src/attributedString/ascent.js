@@ -1,4 +1,4 @@
-import runAscent from '../run/ascent';
+import runAscent from "../run/ascent";
 
 /**
  * @typedef {import('../types.js').AttributedString} AttributedString

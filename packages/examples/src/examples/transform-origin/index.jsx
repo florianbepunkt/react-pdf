@@ -1,5 +1,5 @@
-import React from 'react';
-import { Document, Page, View } from '@react-pdf/renderer';
+import React from "react";
+import { Document, Page, View } from "@easypliant/react-pdf-renderer";
 
 const Box = ({ origin }) => (
   <View
@@ -16,7 +16,7 @@ const Box = ({ origin }) => (
 const TransformOrigin = () => {
   return (
     <Document>
-      <Page style={{ flexWrap: 'wrap', flexDirection: 'row' }}>
+      <Page style={{ flexWrap: "wrap", flexDirection: "row" }}>
         <Box origin="left" />
         <Box origin="center" />
         <Box origin="right" />
@@ -49,8 +49,8 @@ const TransformOrigin = () => {
 };
 
 export default {
-  id: 'transform-origin',
-  name: 'Transform Origin',
-  description: '',
+  id: "transform-origin",
+  name: "Transform Origin",
+  description: "",
   Document: TransformOrigin,
 };

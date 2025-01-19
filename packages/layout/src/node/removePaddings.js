@@ -1,15 +1,15 @@
-import { omit } from '@react-pdf/fns';
+import { omit } from "@easypliant/react-pdf-fns";
 
-import setPadding from './setPadding';
+import setPadding from "./setPadding";
 
 const PADDING_PROPS = [
-  'padding',
-  'paddingTop',
-  'paddingRight',
-  'paddingBottom',
-  'paddingLeft',
-  'paddingHorizontal',
-  'paddingVertical',
+  "padding",
+  "paddingTop",
+  "paddingRight",
+  "paddingBottom",
+  "paddingLeft",
+  "paddingHorizontal",
+  "paddingVertical",
 ];
 
 /**

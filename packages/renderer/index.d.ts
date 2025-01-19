@@ -1,7 +1,7 @@
 /* eslint-disable react/prefer-stateless-function */
 /* eslint-disable no-unused-vars */
 /* eslint-disable max-classes-per-file */
-import * as React from 'react';
+import * as React from "react";
 import {
   Style,
   PageSize,
@@ -14,7 +14,7 @@ import {
   Bookmark,
   PageLayout,
   PageMode,
-} from '@react-pdf/types';
+} from "@easypliant/react-pdf-types";
 
 declare class ReactPDF {
   // eslint-disable-next-line no-use-before-define
@@ -39,20 +39,12 @@ declare namespace ReactPDF {
     description?: string;
     hidden?: boolean;
     modifiedDate?: Date;
-    relationship?:
-      | 'Alternative'
-      | 'Data'
-      | 'Source'
-      | 'Supplement'
-      | 'Unspecified';
+    relationship?: "Alternative" | "Data" | "Source" | "Supplement" | "Unspecified";
     name: string;
     type: string;
   }
 
-  type PDFSubset =
-    | `PDF/A-1${'' | 'a' | 'b'}`
-    | `PDF/A-2${'' | 'a' | 'b'}`
-    | `PDF/A-3${'' | 'a' | 'b'}`;
+  type PDFSubset = `PDF/A-1${"" | "a" | "b"}` | `PDF/A-2${"" | "a" | "b"}` | `PDF/A-3${"" | "a" | "b"}`;
 
   interface DocumentProps {
     attachments: Attachment[];
@@ -80,9 +72,7 @@ declare namespace ReactPDF {
    * used as children of another react-pdf component. In addition, it should
    * only have childs of type <Page />.
    */
-  export class Document extends React.Component<
-    React.PropsWithChildren<DocumentProps>
-  > {}
+  export class Document extends React.Component<React.PropsWithChildren<DocumentProps>> {}
 
   interface NodeProps {
     id?: string;
@@ -128,9 +118,7 @@ declare namespace ReactPDF {
    * you want, but ensure not rendering a page inside any component besides
    * Document.
    */
-  export class Page extends React.Component<
-    React.PropsWithChildren<PageProps>
-  > {}
+  export class Page extends React.Component<React.PropsWithChildren<PageProps>> {}
 
   interface ViewProps extends NodeProps {
     id?: string;
@@ -144,19 +132,14 @@ declare namespace ReactPDF {
      * @see https://react-pdf.org/advanced#debugging
      */
     debug?: boolean;
-    render?: (props: {
-      pageNumber: number;
-      subPageNumber: number;
-    }) => React.ReactNode;
+    render?: (props: { pageNumber: number; subPageNumber: number }) => React.ReactNode;
   }
 
   /**
    * The most fundamental component for building a UI and is designed to be
    * nested inside other views and can have 0 to many children.
    */
-  export class View extends React.Component<
-    React.PropsWithChildren<ViewProps>
-  > {}
+  export class View extends React.Component<React.PropsWithChildren<ViewProps>> {}
 
   interface BaseImageProps extends NodeProps {
     /**
@@ -233,9 +216,7 @@ declare namespace ReactPDF {
    * A React component for displaying text. Text supports nesting of other
    * Text or Link components to create inline styling.
    */
-  export class Text extends React.Component<
-    React.PropsWithChildren<TextProps> | SVGTextProps
-  > {}
+  export class Text extends React.Component<React.PropsWithChildren<TextProps> | SVGTextProps> {}
 
   interface LinkProps extends NodeProps {
     /**
@@ -252,13 +233,17 @@ declare namespace ReactPDF {
     src?: string;
   }
 
+  interface XmlProps {
+    value: string;
+  }
+
+  export class Xml extends React.Component<XmlProps> {}
+
   /**
    * A React component for displaying a hyperlink. Link’s can be nested
    * inside a Text component, or being inside any other valid primitive.
    */
-  export class Link extends React.Component<
-    React.PropsWithChildren<LinkProps>
-  > {}
+  export class Link extends React.Component<React.PropsWithChildren<LinkProps>> {}
 
   interface NoteProps extends NodeProps {
     children: string;
@@ -272,11 +257,7 @@ declare namespace ReactPDF {
      * @see https://react-pdf.org/advanced#debugging
      */
     debug?: boolean;
-    paint: (
-      painter: any,
-      availableWidth: number,
-      availableHeight: number,
-    ) => null;
+    paint: (painter: any, availableWidth: number, availableHeight: number) => null;
   }
 
   export class Canvas extends React.Component<CanvasProps> {}
@@ -309,9 +290,7 @@ declare namespace ReactPDF {
   /**
    * The <Line /> element is used to create a line.
    */
-  export class Line extends React.Component<
-    React.PropsWithChildren<LineProps>
-  > {}
+  export class Line extends React.Component<React.PropsWithChildren<LineProps>> {}
 
   interface PolylineProps extends SVGPresentationAttributes {
     style?: SVGPresentationAttributes;
@@ -321,9 +300,7 @@ declare namespace ReactPDF {
   /**
    * The <Polyline /> element is used to create any shape that consists of only straight lines (that is connected at several points).
    */
-  export class Polyline extends React.Component<
-    React.PropsWithChildren<PolylineProps>
-  > {}
+  export class Polyline extends React.Component<React.PropsWithChildren<PolylineProps>> {}
 
   interface PolygonProps extends SVGPresentationAttributes {
     style?: SVGPresentationAttributes;
@@ -334,9 +311,7 @@ declare namespace ReactPDF {
    * The <Polygon /> element is used to create a graphic that contains at least three sides.
    * Polygons are made of straight lines, and the shape is "closed" (all the lines connect up).
    */
-  export class Polygon extends React.Component<
-    React.PropsWithChildren<PolygonProps>
-  > {}
+  export class Polygon extends React.Component<React.PropsWithChildren<PolygonProps>> {}
 
   interface PathProps extends SVGPresentationAttributes {
     style?: SVGPresentationAttributes;
@@ -346,9 +321,7 @@ declare namespace ReactPDF {
   /**
    * The <Path /> element is the most powerful element in the SVG library of basic shapes. It can be used to create lines, curves, arcs, and more.
    */
-  export class Path extends React.Component<
-    React.PropsWithChildren<PathProps>
-  > {}
+  export class Path extends React.Component<React.PropsWithChildren<PathProps>> {}
 
   interface RectProps extends SVGPresentationAttributes {
     style?: SVGPresentationAttributes;
@@ -363,9 +336,7 @@ declare namespace ReactPDF {
   /**
    * The <Rect /> element is used to create a rectangle and variations of a rectangle shape.
    */
-  export class Rect extends React.Component<
-    React.PropsWithChildren<RectProps>
-  > {}
+  export class Rect extends React.Component<React.PropsWithChildren<RectProps>> {}
 
   interface CircleProps extends SVGPresentationAttributes {
     style?: SVGPresentationAttributes;
@@ -377,9 +348,7 @@ declare namespace ReactPDF {
   /**
    * The <Circle /> element is used to create a circle.
    */
-  export class Circle extends React.Component<
-    React.PropsWithChildren<CircleProps>
-  > {}
+  export class Circle extends React.Component<React.PropsWithChildren<CircleProps>> {}
 
   interface EllipseProps extends SVGPresentationAttributes {
     style?: SVGPresentationAttributes;
@@ -393,9 +362,7 @@ declare namespace ReactPDF {
    * The <Ellipse /> element is used to create an ellipse.
    * An ellipse is closely related to a circle. The difference is that an ellipse has an x and a y radius that differs from each other, while a circle has equal x and y radius.
    */
-  export class Ellipse extends React.Component<
-    React.PropsWithChildren<EllipseProps>
-  > {}
+  export class Ellipse extends React.Component<React.PropsWithChildren<EllipseProps>> {}
 
   interface TspanProps extends SVGPresentationAttributes {
     x?: string | number;
@@ -406,9 +373,7 @@ declare namespace ReactPDF {
    * The <Tspan /> element defines a subtext within a <Text /> element or another <Tspan /> element.
    * It allows for adjustment of the style and/or position of that subtext as needed.
    */
-  export class Tspan extends React.Component<
-    React.PropsWithChildren<TspanProps>
-  > {}
+  export class Tspan extends React.Component<React.PropsWithChildren<TspanProps>> {}
 
   interface GProps extends SVGPresentationAttributes {
     style?: Style;
@@ -429,18 +394,14 @@ declare namespace ReactPDF {
   /**
    * The SVG <Stop /> element defines a color and its position to use on a gradient. This element is always a child of a <LinearGradient /> or <RadialGradient /> element
    */
-  export class Stop extends React.Component<
-    React.PropsWithChildren<StopProps>
-  > {}
+  export class Stop extends React.Component<React.PropsWithChildren<StopProps>> {}
 
   interface DefsProps {}
 
   /**
    * The <Defs /> element is used to store graphical objects that will be used at a later time. Objects created inside a <Defs /> element are not rendered directly. To display them you have to reference them
    */
-  export class Defs extends React.Component<
-    React.PropsWithChildren<DefsProps>
-  > {}
+  export class Defs extends React.Component<React.PropsWithChildren<DefsProps>> {}
 
   interface ClipPathProps {
     id?: string;
@@ -450,9 +411,7 @@ declare namespace ReactPDF {
    * The <ClipPath /> SVG element defines a clipping path, to be used by the clipPath property.
    * A clipping path restricts the region to which paint can be applied. Conceptually, parts of the drawing that lie outside of the region bounded by the clipping path are not drawn.
    */
-  export class ClipPath extends React.Component<
-    React.PropsWithChildren<ClipPathProps>
-  > {}
+  export class ClipPath extends React.Component<React.PropsWithChildren<ClipPathProps>> {}
 
   interface LinearGradientProps {
     id: string;
@@ -465,9 +424,7 @@ declare namespace ReactPDF {
   /**
    * The <LinearGradient /> element lets authors define linear gradients that can be applied to fill or stroke of graphical elements.
    */
-  export class LinearGradient extends React.Component<
-    React.PropsWithChildren<LinearGradientProps>
-  > {}
+  export class LinearGradient extends React.Component<React.PropsWithChildren<LinearGradientProps>> {}
 
   interface RadialGradientProps {
     id: string;
@@ -481,9 +438,7 @@ declare namespace ReactPDF {
   /**
    * The <RadialGradient /> element lets authors define radial gradients that can be applied to fill or stroke of graphical elements.
    */
-  export class RadialGradient extends React.Component<
-    React.PropsWithChildren<RadialGradientProps>
-  > {}
+  export class RadialGradient extends React.Component<React.PropsWithChildren<RadialGradientProps>> {}
 
   interface BlobProviderParams {
     blob: Blob | null;
@@ -520,17 +475,13 @@ declare namespace ReactPDF {
    */
   export class PDFViewer extends React.Component<PDFViewerProps> {}
 
-  interface PDFDownloadLinkProps
-    extends Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'href'> {
+  interface PDFDownloadLinkProps extends Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, "href"> {
     /** PDF filename. Alias for anchor tag `download` attribute. */
     fileName?: string;
     document: React.ReactElement<DocumentProps>;
     children?: React.ReactNode | React.ReactElement<BlobProviderParams>;
-    onClick?: React.AnchorHTMLAttributes<HTMLAnchorElement>['onClick'] &
-      ((
-        event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
-        instance: UsePDFInstance,
-      ) => void);
+    onClick?: React.AnchorHTMLAttributes<HTMLAnchorElement>["onClick"] &
+      ((event: React.MouseEvent<HTMLAnchorElement, MouseEvent>, instance: UsePDFInstance) => void);
   }
 
   /**
@@ -553,10 +504,7 @@ declare namespace ReactPDF {
    */
   export function usePDF(options?: {
     document?: React.ReactElement<DocumentProps>;
-  }): [
-    UsePDFInstance,
-    (newDocument: React.ReactElement<DocumentProps>) => void,
-  ];
+  }): [UsePDFInstance, (newDocument: React.ReactElement<DocumentProps>) => void];
 
   export const Font: FontStore;
 
@@ -575,12 +523,9 @@ declare namespace ReactPDF {
     toBlob: () => Promise<Blob>;
     // eslint-disable-next-line no-undef
     toBuffer: () => Promise<NodeJS.ReadableStream>;
-    on: (event: 'change', callback: () => void) => void;
-    updateContainer: (
-      document: React.ReactElement<any>,
-      callback?: () => void,
-    ) => void;
-    removeListener: (event: 'change', callback: () => void) => void;
+    on: (event: "change", callback: () => void) => void;
+    updateContainer: (document: React.ReactElement<any>, callback?: () => void) => void;
+    removeListener: (event: "change", callback: () => void) => void;
   };
 
   export const renderToStream: (
@@ -591,9 +536,7 @@ declare namespace ReactPDF {
   /**
    * @deprecated use the `renderToBuffer` method
    */
-  export const renderToString: (
-    document: React.ReactElement<DocumentProps>,
-  ) => Promise<string>;
+  export const renderToString: (document: React.ReactElement<DocumentProps>) => Promise<string>;
 
   export const renderToFile: (
     document: React.ReactElement<DocumentProps>,
@@ -609,7 +552,5 @@ declare namespace ReactPDF {
    * Render document into a nodejs buffer
    * @platform node
    */
-  export const renderToBuffer: (
-    document: React.ReactElement<ReactPDF.DocumentProps>,
-  ) => Promise<Buffer>;
+  export const renderToBuffer: (document: React.ReactElement<ReactPDF.DocumentProps>) => Promise<Buffer>;
 }

@@ -17,9 +17,9 @@ const verticalAlignment = () => {
       const { attributes } = run;
       const { verticalAlign } = attributes;
 
-      if (verticalAlign === 'sub') {
+      if (verticalAlign === "sub") {
         attributes.yOffset = -0.2;
-      } else if (verticalAlign === 'super') {
+      } else if (verticalAlign === "super") {
         attributes.yOffset = 0.4;
       }
     });

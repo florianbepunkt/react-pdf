@@ -1,4 +1,4 @@
-import getOrientation from './getOrientation';
+import getOrientation from "./getOrientation";
 
 /**
  * Return true if page is portrait
@@ -6,6 +6,6 @@ import getOrientation from './getOrientation';
  * @param {Object} page instance
  * @returns {boolean} is page portrait
  */
-const isPortrait = (page) => getOrientation(page) === 'portrait';
+const isPortrait = (page) => getOrientation(page) === "portrait";
 
 export default isPortrait;

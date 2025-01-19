@@ -1,23 +1,20 @@
-import './index.css';
+import "./index.css";
 
-import React, { useEffect, useState } from 'react';
-import { createRoot } from 'react-dom/client';
-import { PDFViewer } from '@react-pdf/renderer';
+import React, { useEffect, useState } from "react";
+import { createRoot } from "react-dom/client";
+import { PDFViewer } from "@easypliant/react-pdf-renderer";
 
-import EXAMPLES from './examples';
+import EXAMPLES from "./examples";
 
 const ExamplesPage = () => {
-  const [hash, setHash] = useState(
-    window.location.hash.substring(1) || 'page-wrap'
-  );
+  const [hash, setHash] = useState(window.location.hash.substring(1) || "page-wrap");
 
   const index = EXAMPLES.findIndex((example) => example.id === hash);
 
   useEffect(() => {
-    const listener = (event) =>
-      setHash(event.target.location.hash.substring(1));
-    window.addEventListener('popstate', listener);
-    return () => window.removeEventListener('popstate', listener);
+    const listener = (event) => setHash(event.target.location.hash.substring(1));
+    window.addEventListener("popstate", listener);
+    return () => window.removeEventListener("popstate", listener);
   });
 
   const { Document } = EXAMPLES[index];
@@ -48,7 +45,7 @@ const ExamplesPage = () => {
   );
 };
 
-const MOUNT_ELEMENT = document.createElement('div');
+const MOUNT_ELEMENT = document.createElement("div");
 
 document.body.appendChild(MOUNT_ELEMENT);
 

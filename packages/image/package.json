@@ -1,10 +1,10 @@
 {
-  "name": "@react-pdf/image",
-  "version": "3.0.0",
+  "name": "@easypliant/react-pdf-image",
+  "version": "4.0.0",
   "license": "MIT",
   "description": "Parses the images in png or jpeg format for react-pdf document",
   "author": "Diego Muracciole <diegomuracciole@gmail.com>",
-  "homepage": "https://github.com/diegomura/react-pdf#readme",
+  "homepage": "https://github.com/easypliant/react-pdf#readme",
   "type": "module",
   "main": "./lib/index.js",
   "browser": {
@@ -12,17 +12,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/diegomura/react-pdf.git",
+    "url": "https://github.com/easypliant/react-pdf.git",
     "directory": "packages/image"
   },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/easypliant"
+  },
   "scripts": {
+    "format": "prettier --write \"./**/*.{js,jsx,ts,tsx,json}\"",
     "test": "vitest",
     "build": "rimraf ./lib && rollup -c",
     "watch": "rimraf ./lib && rollup -c -w"
   },
   "dependencies": {
     "@babel/runtime": "^7.20.13",
-    "@react-pdf/png-js": "^3.0.0",
+    "@easypliant/react-pdf-png-js": "^4.0.0",
     "cross-fetch": "^3.1.5",
     "jay-peg": "^1.1.0"
   },

@@ -1,26 +1,23 @@
-import * as P from '@react-pdf/primitives';
-import { pick, compose } from '@react-pdf/fns';
+import * as P from "@easypliant/react-pdf-primitives";
+import { pick, compose } from "@easypliant/react-pdf-fns";
 
 const BASE_INHERITABLE_PROPERTIES = [
-  'color',
-  'fontFamily',
-  'fontSize',
-  'fontStyle',
-  'fontWeight',
-  'letterSpacing',
-  'opacity',
-  'textDecoration',
-  'textTransform',
-  'lineHeight',
-  'textAlign',
-  'visibility',
-  'wordSpacing',
+  "color",
+  "fontFamily",
+  "fontSize",
+  "fontStyle",
+  "fontWeight",
+  "letterSpacing",
+  "opacity",
+  "textDecoration",
+  "textTransform",
+  "lineHeight",
+  "textAlign",
+  "visibility",
+  "wordSpacing",
 ];
 
-const TEXT_INHERITABLE_PROPERTIES = [
-  ...BASE_INHERITABLE_PROPERTIES,
-  'backgroundColor',
-];
+const TEXT_INHERITABLE_PROPERTIES = [...BASE_INHERITABLE_PROPERTIES, "backgroundColor"];
 
 const isSvg = (node) => node.type === P.Svg;
 
@@ -29,9 +26,9 @@ const isText = (node) => node.type === P.Text;
 // Merge style values
 const mergeValues = (styleName, value, inheritedValue) => {
   switch (styleName) {
-    case 'textDecoration': {
+    case "textDecoration": {
       // merge not none and not false textDecoration values to one rule
-      return [inheritedValue, value].filter((v) => v && v !== 'none').join(' ');
+      return [inheritedValue, value].filter((v) => v && v !== "none").join(" ");
     }
     default:
       return value;
@@ -43,11 +40,7 @@ const merge = (inheritedStyles, style) => {
   const mergedStyles = { ...inheritedStyles };
 
   Object.entries(style).forEach(([styleName, value]) => {
-    mergedStyles[styleName] = mergeValues(
-      styleName,
-      value,
-      inheritedStyles[styleName],
-    );
+    mergedStyles[styleName] = mergeValues(styleName, value, inheritedStyles[styleName]);
   });
 
   return mergedStyles;
@@ -82,9 +75,7 @@ const resolveInheritance = (node) => {
 
   if (!node.children) return node;
 
-  const inheritableProperties = isText(node)
-    ? TEXT_INHERITABLE_PROPERTIES
-    : BASE_INHERITABLE_PROPERTIES;
+  const inheritableProperties = isText(node) ? TEXT_INHERITABLE_PROPERTIES : BASE_INHERITABLE_PROPERTIES;
 
   const inheritStyles = pick(inheritableProperties, node.style || {});
 

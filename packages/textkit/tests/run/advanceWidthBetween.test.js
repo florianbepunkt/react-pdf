@@ -1,21 +1,21 @@
-import { describe, expect, test } from 'vitest';
+import { describe, expect, test } from "vitest";
 
-import advanceWidthBetween from '../../src/run/advanceWidthBetween';
+import advanceWidthBetween from "../../src/run/advanceWidthBetween";
 
-describe('run advanceWidthBetween operator', () => {
-  test('should return 0 if positions not present', () => {
+describe("run advanceWidthBetween operator", () => {
+  test("should return 0 if positions not present", () => {
     const run = { start: 5, end: 15, attributes: {} };
 
     expect(advanceWidthBetween(8, 10, run)).toBe(0);
   });
 
-  test('should return 0 if positions empty', () => {
+  test("should return 0 if positions empty", () => {
     const run = { start: 5, end: 15, attributes: {}, positions: [] };
 
     expect(advanceWidthBetween(8, 10, run)).toBe(0);
   });
 
-  test('should return 0 for leading start and end', () => {
+  test("should return 0 for leading start and end", () => {
     const run = {
       start: 5,
       end: 10,
@@ -31,7 +31,7 @@ describe('run advanceWidthBetween operator', () => {
     expect(advanceWidthBetween(1, 2, run)).toBe(0);
   });
 
-  test('should return 0 for trailing start and end', () => {
+  test("should return 0 for trailing start and end", () => {
     const run = {
       start: 5,
       end: 10,
@@ -47,7 +47,7 @@ describe('run advanceWidthBetween operator', () => {
     expect(advanceWidthBetween(10, 15, run)).toBe(0);
   });
 
-  test('should return correct width when leading start', () => {
+  test("should return correct width when leading start", () => {
     const run = {
       start: 5,
       end: 10,
@@ -63,7 +63,7 @@ describe('run advanceWidthBetween operator', () => {
     expect(advanceWidthBetween(3, 7, run)).toBe(15);
   });
 
-  test('should return correct width when trailing end', () => {
+  test("should return correct width when trailing end", () => {
     const run = {
       start: 5,
       end: 10,
@@ -79,7 +79,7 @@ describe('run advanceWidthBetween operator', () => {
     expect(advanceWidthBetween(8, 15, run)).toBe(35);
   });
 
-  test('should return correct width when leading start and trailing end', () => {
+  test("should return correct width when leading start and trailing end", () => {
     const run = {
       start: 5,
       end: 10,
@@ -95,7 +95,7 @@ describe('run advanceWidthBetween operator', () => {
     expect(advanceWidthBetween(3, 15, run)).toBe(65);
   });
 
-  test('should sum up positions values', () => {
+  test("should sum up positions values", () => {
     const run = {
       start: 0,
       end: 5,
@@ -112,7 +112,7 @@ describe('run advanceWidthBetween operator', () => {
     expect(advanceWidthBetween(1, 4, run)).toBe(42);
   });
 
-  test('should sum up positions values when not starting on zero', () => {
+  test("should sum up positions values when not starting on zero", () => {
     const positions = [
       { xAdvance: 5 },
       { xAdvance: 10 },

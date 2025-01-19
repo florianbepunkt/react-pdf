@@ -1,9 +1,9 @@
-import slice from './slice';
-import concat from './concat';
-import append from './append';
-import getFont from './getFont';
-import isNumber from '../utils/isNumber';
-import glyphFromCodePoint from '../glyph/fromCodePoint';
+import slice from "./slice";
+import concat from "./concat";
+import append from "./append";
+import getFont from "./getFont";
+import isNumber from "../utils/isNumber";
+import glyphFromCodePoint from "../glyph/fromCodePoint";
 
 /**
  * @typedef {import('../types.js').Glyph} Glyph

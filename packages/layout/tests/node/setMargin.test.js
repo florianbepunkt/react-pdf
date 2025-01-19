@@ -1,15 +1,15 @@
-import { beforeEach, describe, expect, test, vi } from 'vitest';
+import { beforeEach, describe, expect, test, vi } from "vitest";
 
-import * as Yoga from 'yoga-layout/load';
+import * as Yoga from "yoga-layout/load";
 
 import setMargin, {
   setMarginTop,
   setMarginRight,
   setMarginBottom,
   setMarginLeft,
-} from '../../src/node/setMargin';
+} from "../../src/node/setMargin";
 
-describe('node setMargin', () => {
+describe("node setMargin", () => {
   const mock = vi.fn();
   const mockAuto = vi.fn();
   const mockPercent = vi.fn();
@@ -28,23 +28,23 @@ describe('node setMargin', () => {
     mockPercent.mockReset();
   });
 
-  describe('setMarginTop', () => {
-    test('should return node if no yoga node available', () => {
+  describe("setMarginTop", () => {
+    test("should return node if no yoga node available", () => {
       const emptyNode = { box: { width: 10, height: 20 } };
       const result = setMarginTop(null)(emptyNode);
 
       expect(result).toBe(emptyNode);
     });
 
-    test('Should call appropiate yoga node method for auto value', () => {
-      const result = setMarginTop('auto')(node);
+    test("Should call appropiate yoga node method for auto value", () => {
+      const result = setMarginTop("auto")(node);
 
       expect(mockAuto.mock.calls).toHaveLength(1);
       expect(mockAuto.mock.calls[0][0]).toBe(Yoga.Edge.Top);
       expect(result).toBe(node);
     });
 
-    test('Should call appropiate yoga node method for numeric values', () => {
+    test("Should call appropiate yoga node method for numeric values", () => {
       const result = setMarginTop(50)(node);
 
       expect(mock.mock.calls).toHaveLength(1);
@@ -53,8 +53,8 @@ describe('node setMargin', () => {
       expect(result).toBe(node);
     });
 
-    test('Should call appropiate yoga node method for percent values', () => {
-      const result = setMarginTop('50%')(node);
+    test("Should call appropiate yoga node method for percent values", () => {
+      const result = setMarginTop("50%")(node);
 
       expect(mockPercent.mock.calls).toHaveLength(1);
       expect(mockPercent.mock.calls[0][0]).toBe(Yoga.Edge.Top);
@@ -63,23 +63,23 @@ describe('node setMargin', () => {
     });
   });
 
-  describe('setMarginRight', () => {
-    test('should return node if no yoga node available', () => {
+  describe("setMarginRight", () => {
+    test("should return node if no yoga node available", () => {
       const emptyNode = { box: { width: 10, height: 20 } };
       const result = setMarginRight(null)(emptyNode);
 
       expect(result).toBe(emptyNode);
     });
 
-    test('Should call appropiate yoga node method for auto value', () => {
-      const result = setMarginRight('auto')(node);
+    test("Should call appropiate yoga node method for auto value", () => {
+      const result = setMarginRight("auto")(node);
 
       expect(mockAuto.mock.calls).toHaveLength(1);
       expect(mockAuto.mock.calls[0][0]).toBe(Yoga.Edge.Right);
       expect(result).toBe(node);
     });
 
-    test('Should call appropiate yoga node method for numeric values', () => {
+    test("Should call appropiate yoga node method for numeric values", () => {
       const result = setMarginRight(50)(node);
 
       expect(mock.mock.calls).toHaveLength(1);
@@ -88,8 +88,8 @@ describe('node setMargin', () => {
       expect(result).toBe(node);
     });
 
-    test('Should call appropiate yoga node method for percent values', () => {
-      const result = setMarginRight('50%')(node);
+    test("Should call appropiate yoga node method for percent values", () => {
+      const result = setMarginRight("50%")(node);
 
       expect(mockPercent.mock.calls).toHaveLength(1);
       expect(mockPercent.mock.calls[0][0]).toBe(Yoga.Edge.Right);
@@ -98,23 +98,23 @@ describe('node setMargin', () => {
     });
   });
 
-  describe('setMarginBottom', () => {
-    test('should return node if no yoga node available', () => {
+  describe("setMarginBottom", () => {
+    test("should return node if no yoga node available", () => {
       const emptyNode = { box: { width: 10, height: 20 } };
       const result = setMarginBottom(null)(emptyNode);
 
       expect(result).toBe(emptyNode);
     });
 
-    test('Should call appropiate yoga node method for auto value', () => {
-      const result = setMarginBottom('auto')(node);
+    test("Should call appropiate yoga node method for auto value", () => {
+      const result = setMarginBottom("auto")(node);
 
       expect(mockAuto.mock.calls).toHaveLength(1);
       expect(mockAuto.mock.calls[0][0]).toBe(Yoga.Edge.Bottom);
       expect(result).toBe(node);
     });
 
-    test('Should call appropiate yoga node method for numeric values', () => {
+    test("Should call appropiate yoga node method for numeric values", () => {
       const result = setMarginBottom(50)(node);
 
       expect(mock.mock.calls).toHaveLength(1);
@@ -123,8 +123,8 @@ describe('node setMargin', () => {
       expect(result).toBe(node);
     });
 
-    test('Should call appropiate yoga node method for percent values', () => {
-      const result = setMarginBottom('50%')(node);
+    test("Should call appropiate yoga node method for percent values", () => {
+      const result = setMarginBottom("50%")(node);
 
       expect(mockPercent.mock.calls).toHaveLength(1);
       expect(mockPercent.mock.calls[0][0]).toBe(Yoga.Edge.Bottom);
@@ -133,23 +133,23 @@ describe('node setMargin', () => {
     });
   });
 
-  describe('setMarginLeft', () => {
-    test('should return node if no yoga node available', () => {
+  describe("setMarginLeft", () => {
+    test("should return node if no yoga node available", () => {
       const emptyNode = { box: { width: 10, height: 20 } };
       const result = setMarginLeft(null)(emptyNode);
 
       expect(result).toBe(emptyNode);
     });
 
-    test('Should call appropiate yoga node method for auto value', () => {
-      const result = setMarginLeft('auto')(node);
+    test("Should call appropiate yoga node method for auto value", () => {
+      const result = setMarginLeft("auto")(node);
 
       expect(mockAuto.mock.calls).toHaveLength(1);
       expect(mockAuto.mock.calls[0][0]).toBe(Yoga.Edge.Left);
       expect(result).toBe(node);
     });
 
-    test('Should call appropiate yoga node method for numeric values', () => {
+    test("Should call appropiate yoga node method for numeric values", () => {
       const result = setMarginLeft(50)(node);
 
       expect(mock.mock.calls).toHaveLength(1);
@@ -158,8 +158,8 @@ describe('node setMargin', () => {
       expect(result).toBe(node);
     });
 
-    test('Should call appropiate yoga node method for percent values', () => {
-      const result = setMarginLeft('50%')(node);
+    test("Should call appropiate yoga node method for percent values", () => {
+      const result = setMarginLeft("50%")(node);
 
       expect(mockPercent.mock.calls).toHaveLength(1);
       expect(mockPercent.mock.calls[0][0]).toBe(Yoga.Edge.Left);
@@ -168,16 +168,16 @@ describe('node setMargin', () => {
     });
   });
 
-  describe('setMargin', () => {
-    test('should return node if no yoga node available', () => {
+  describe("setMargin", () => {
+    test("should return node if no yoga node available", () => {
       const emptyNode = { box: { width: 10, height: 20 } };
       const result = setMargin(null)(emptyNode);
 
       expect(result).toBe(emptyNode);
     });
 
-    test('Should call appropiate yoga node method for auto value', () => {
-      const result = setMargin('auto')(node);
+    test("Should call appropiate yoga node method for auto value", () => {
+      const result = setMargin("auto")(node);
 
       expect(mockAuto.mock.calls).toHaveLength(4);
       expect(mockAuto.mock.calls[0][0]).toBe(Yoga.Edge.Top);
@@ -187,7 +187,7 @@ describe('node setMargin', () => {
       expect(result).toBe(node);
     });
 
-    test('Should call appropiate yoga node method for numeric values', () => {
+    test("Should call appropiate yoga node method for numeric values", () => {
       const result = setMargin(50)(node);
 
       expect(mock.mock.calls).toHaveLength(4);
@@ -198,8 +198,8 @@ describe('node setMargin', () => {
       expect(result).toBe(node);
     });
 
-    test('Should call appropiate yoga node method for percent values', () => {
-      const result = setMargin('50%')(node);
+    test("Should call appropiate yoga node method for percent values", () => {
+      const result = setMargin("50%")(node);
 
       expect(mockPercent.mock.calls).toHaveLength(4);
       expect(mockPercent.mock.calls[0]).toEqual([Yoga.Edge.Top, 50]);

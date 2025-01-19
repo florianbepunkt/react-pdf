@@ -1,4 +1,4 @@
-import { capitalize, upperFirst } from '@react-pdf/fns';
+import { capitalize, upperFirst } from "@easypliant/react-pdf-fns";
 
 /**
  * Apply transformation to text string
@@ -9,13 +9,13 @@ import { capitalize, upperFirst } from '@react-pdf/fns';
  */
 const transformText = (text, transformation) => {
   switch (transformation) {
-    case 'uppercase':
+    case "uppercase":
       return text.toUpperCase();
-    case 'lowercase':
+    case "lowercase":
       return text.toLowerCase();
-    case 'capitalize':
+    case "capitalize":
       return capitalize(text);
-    case 'upperfirst':
+    case "upperfirst":
       return upperFirst(text);
     default:
       return text;

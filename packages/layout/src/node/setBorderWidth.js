@@ -1,6 +1,6 @@
-import * as Yoga from 'yoga-layout/load';
+import * as Yoga from "yoga-layout/load";
 
-import setYogaValue from './setYogaValue';
+import setYogaValue from "./setYogaValue";
 
 /**
  * @typedef {Function} NodeInstanceWrapper
@@ -15,7 +15,7 @@ import setYogaValue from './setYogaValue';
  * @param {Object} node node instance
  * @returns {Object} node instance
  */
-export const setBorderTop = setYogaValue('border', Yoga.Edge.Top);
+export const setBorderTop = setYogaValue("border", Yoga.Edge.Top);
 
 /**
  * Set border right attribute to node's Yoga instance
@@ -24,7 +24,7 @@ export const setBorderTop = setYogaValue('border', Yoga.Edge.Top);
  * @param {Object} node node instance
  * @returns {Object} node instance
  */
-export const setBorderRight = setYogaValue('border', Yoga.Edge.Right);
+export const setBorderRight = setYogaValue("border", Yoga.Edge.Right);
 
 /**
  * Set border bottom attribute to node's Yoga instance
@@ -33,7 +33,7 @@ export const setBorderRight = setYogaValue('border', Yoga.Edge.Right);
  * @param {Object} node node instance
  * @returns {Object} node instance
  */
-export const setBorderBottom = setYogaValue('border', Yoga.Edge.Bottom);
+export const setBorderBottom = setYogaValue("border", Yoga.Edge.Bottom);
 
 /**
  * Set border left attribute to node's Yoga instance
@@ -42,7 +42,7 @@ export const setBorderBottom = setYogaValue('border', Yoga.Edge.Bottom);
  * @param {Object} node node instance
  * @returns {Object} node instance
  */
-export const setBorderLeft = setYogaValue('border', Yoga.Edge.Left);
+export const setBorderLeft = setYogaValue("border", Yoga.Edge.Left);
 
 /**
  * Set all border widths at once
